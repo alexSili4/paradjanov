@@ -29,6 +29,8 @@ const scaleRef = ref(1);
 const isDraggableRef = ref(false);
 const isDeskRef = ref(false);
 
+const mapClassNames = () => ['map', { 'map-transform': !isDraggableRef.value }];
+
 onMounted(() => {
   getIsDesk(isDeskRef);
   const targetElement = mapRef.value;
@@ -36,23 +38,6 @@ onMounted(() => {
   mapOriginalWidthRef.value = width;
   mapOriginalHeightRef.value = height;
 });
-
-const toggleShowAllMap = (e) => {
-  showAllMap.value = !showAllMap.value;
-
-  if (showAllMap.value) {
-    prevLeftRef.value = leftRef.value;
-    prevTopRef.value = topRef.value;
-  }
-
-  const scale = showAllMap.value ? getScale(mapRef.value) : 1;
-  scaleRef.value = scale;
-
-  topRef.value = showAllMap.value ? 0 : prevTopRef.value;
-  leftRef.value = showAllMap.value ? 0 : prevLeftRef.value;
-
-  e.currentTarget.blur();
-};
 
 function onResizeWindow() {
   getIsDesk(isDeskRef);
@@ -160,6 +145,23 @@ function onTouchend() {
   isDraggableRef.value = false;
 }
 
+const toggleShowAllMap = (e) => {
+  showAllMap.value = !showAllMap.value;
+
+  if (showAllMap.value) {
+    prevLeftRef.value = leftRef.value;
+    prevTopRef.value = topRef.value;
+  }
+
+  const scale = showAllMap.value ? getScale(mapRef.value) : 1;
+  scaleRef.value = scale;
+
+  topRef.value = showAllMap.value ? 0 : prevTopRef.value;
+  leftRef.value = showAllMap.value ? 0 : prevLeftRef.value;
+
+  e.currentTarget.blur();
+};
+
 const mapInlineStyles = () => {
   const scale = isDeskRef.value ? scaleRef.value : 1;
 
@@ -170,8 +172,6 @@ const mapInlineStyles = () => {
     transform: `scale(${scale})`,
   };
 };
-
-const mapClassNames = () => ['map', { 'map-transform': !isDraggableRef.value }];
 </script>
 
 <template>

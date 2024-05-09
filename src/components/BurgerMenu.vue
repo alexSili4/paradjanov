@@ -11,6 +11,11 @@ const props = defineProps({
   isOpenMenu: Boolean,
 });
 
+const burgerMenuClassNames = () => [
+  'burger-menu-wrap',
+  { 'hide-menu': !props.isOpenMenu },
+];
+
 onMounted(() => {
   getIsDesk(isDeskRef);
 });
@@ -18,11 +23,6 @@ onMounted(() => {
 function onWindowResize() {
   getIsDesk(isDeskRef);
 }
-
-const burgerMenuClassNames = () => [
-  'burger-menu-wrap',
-  { 'hide-menu': !props.isOpenMenu },
-];
 </script>
 
 <template>
@@ -80,7 +80,8 @@ const burgerMenuClassNames = () => [
 .burger-menu-item-icon {
   display: block;
   transform-origin: left center;
-  transition: transform var(--smooth-transition),
+  transition:
+    transform var(--smooth-transition),
     opacity var(--smooth-transition);
 }
 

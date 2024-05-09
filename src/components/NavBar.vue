@@ -17,6 +17,12 @@ defineProps({
   toggleShowAllMap: Function,
 });
 
+const menuBtnClassNames = () => ['menu-btn', { 'menu-open': isOpenMenu.value }];
+const menuBtnWrapClassNames = () => [
+  'menu-btn-wrap',
+  { 'menu-open': isOpenMenu.value },
+];
+
 onBeforeMount(() => {
   getIsDesk(isDeskRef);
 
@@ -33,12 +39,6 @@ const onZoomBtnClick = (e) => {
   isOpenMenu.value = !isOpenMenu.value;
   e.currentTarget.blur();
 };
-
-const menuBtnClassNames = () => ['menu-btn', { 'menu-open': isOpenMenu.value }];
-const menuBtnWrapClassNames = () => [
-  'menu-btn-wrap',
-  { 'menu-open': isOpenMenu.value },
-];
 </script>
 
 <template>
