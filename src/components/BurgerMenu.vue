@@ -1,7 +1,7 @@
 <script setup>
 import BurgerMenuItemMobile from 'icons/navBar/burger-menu-item-mobile.svg?component';
 import BurgerMenuItemDesk from 'icons/navBar/burger-menu-item-desk.svg?component';
-import { onMounted, ref } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import { getIsDesk } from 'utils';
 
 window.addEventListener('resize', onWindowResize);
@@ -11,11 +11,6 @@ const props = defineProps({
   isOpenMenu: Boolean,
 });
 
-const burgerMenuClassNames = () => [
-  'burger-menu-wrap',
-  { 'hide-menu': !props.isOpenMenu },
-];
-
 onMounted(() => {
   getIsDesk(isDeskRef);
 });
@@ -23,10 +18,17 @@ onMounted(() => {
 function onWindowResize() {
   getIsDesk(isDeskRef);
 }
+
+const getBurgerMenuClassNames = () => [
+  'burger-menu-wrap',
+  { 'hide-menu': !props.isOpenMenu },
+];
+
+const burgerMenuClassNames = computed(getBurgerMenuClassNames);
 </script>
 
 <template>
-  <div :class="burgerMenuClassNames()">
+  <div :class="burgerMenuClassNames">
     <BurgerMenuItemDesk
       class="burger-menu-item-icon first-item"
       v-if="isDeskRef"

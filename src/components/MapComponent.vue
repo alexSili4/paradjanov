@@ -2,7 +2,7 @@
 import NavBar from 'components/NavBar.vue';
 import ParajanovsLife from 'components/ParajanovsLife.vue';
 import { cards } from 'constants';
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, computed } from 'vue';
 import {
   getPositionProps,
   getContentGeometry,
@@ -28,8 +28,6 @@ const topRef = ref(0);
 const scaleRef = ref(1);
 const isDraggableRef = ref(false);
 const isDeskRef = ref(false);
-
-const mapClassNames = () => ['map', { 'map-transform': !isDraggableRef.value }];
 
 onMounted(() => {
   getIsDesk(isDeskRef);
@@ -162,7 +160,7 @@ const toggleShowAllMap = (e) => {
   e.currentTarget.blur();
 };
 
-const mapInlineStyles = () => {
+const getMapInlineStyles = () => {
   const scale = isDeskRef.value ? scaleRef.value : 1;
 
   return {
@@ -172,16 +170,24 @@ const mapInlineStyles = () => {
     transform: `scale(${scale})`,
   };
 };
+
+const getMapClassNames = () => [
+  'map',
+  { 'map-transform': !isDraggableRef.value },
+];
+
+const mapInlineStyles = computed(getMapInlineStyles);
+const mapClassNames = computed(getMapClassNames);
 </script>
 
 <template>
   <div class="map-container">
     <ul
-      :class="mapClassNames()"
+      :class="mapClassNames"
       @mousedown="onMouseDown"
       @touchstart="onTouchstart"
       ref="mapRef"
-      :style="mapInlineStyles()"
+      :style="mapInlineStyles"
     >
       <ParajanovsLife />
     </ul>

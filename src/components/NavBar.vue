@@ -5,7 +5,7 @@ import ZoomInMap from 'icons/navBar/zoom-in-map.svg?component';
 import MenuDesk from 'icons/navBar/menu-desk.svg?component';
 import MenuMobile from 'icons/navBar/menu-mobile.svg?component';
 import BurgerMenu from 'components/BurgerMenu.vue';
-import { ref, onBeforeMount } from 'vue';
+import { ref, onBeforeMount, computed } from 'vue';
 import { getIsDesk } from 'utils';
 
 window.addEventListener('resize', onWindowResize);
@@ -16,12 +16,6 @@ defineProps({
   cards: Array,
   toggleShowAllMap: Function,
 });
-
-const menuBtnClassNames = () => ['menu-btn', { 'menu-open': isOpenMenu.value }];
-const menuBtnWrapClassNames = () => [
-  'menu-btn-wrap',
-  { 'menu-open': isOpenMenu.value },
-];
 
 onBeforeMount(() => {
   getIsDesk(isDeskRef);
@@ -39,6 +33,19 @@ const onZoomBtnClick = (e) => {
   isOpenMenu.value = !isOpenMenu.value;
   e.currentTarget.blur();
 };
+
+const getMenuBtnClassNames = () => [
+  'menu-btn',
+  { 'menu-open': isOpenMenu.value },
+];
+
+const getMenuBtnWrapClassNames = () => [
+  'menu-btn-wrap',
+  { 'menu-open': isOpenMenu.value },
+];
+
+const menuBtnClassNames = computed(getMenuBtnClassNames);
+const menuBtnWrapClassNames = computed(getMenuBtnWrapClassNames);
 </script>
 
 <template>
@@ -54,12 +61,8 @@ const onZoomBtnClick = (e) => {
     <button type="button" class="nav-btn" v-show="!isDeskRef">
       <Arrow class="nav-btn-icon prev-btn-icon" />
     </button>
-    <div :class="menuBtnWrapClassNames()">
-      <button
-        type="button"
-        :class="menuBtnClassNames()"
-        @click="onZoomBtnClick"
-      >
+    <div :class="menuBtnWrapClassNames">
+      <button type="button" :class="menuBtnClassNames" @click="onZoomBtnClick">
         <MenuDesk class="menu-btn-icon" v-if="isDeskRef" />
         <MenuMobile class="menu-btn-icon" v-else />
         <BurgerMenu :isOpenMenu="isOpenMenu" />
