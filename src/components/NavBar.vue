@@ -13,8 +13,21 @@ window.addEventListener('resize', onWindowResize);
 const isDeskRef = ref(false);
 const isOpenMenu = ref(false);
 defineProps({
-  cards: Array,
   toggleShowAllMap: Function,
+  cards: {
+    type: Array,
+    required: true,
+    validator: (value) =>
+      value.every((item) => {
+        const keys = Object.keys(item);
+
+        return (
+          typeof item === 'object' &&
+          keys.includes('id') &&
+          typeof item.id === 'string'
+        );
+      }),
+  },
 });
 
 onBeforeMount(() => {

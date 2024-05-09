@@ -1,11 +1,11 @@
 const cards = [
-  { title: 'i' },
-  { title: 'ii' },
-  { title: 'iii' },
-  { title: 'iv' },
-  { title: 'v' },
-  { title: 'vi' },
-  { title: 'vii' },
+  { id: 'i' },
+  { id: 'ii' },
+  { id: 'iii' },
+  { id: 'iv' },
+  { id: 'v' },
+  { id: 'vi' },
+  { id: 'vii' },
 ];
 
 export default cards;

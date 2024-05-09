@@ -6,7 +6,20 @@ window.addEventListener('resize', onWindowResize);
 
 const isDeskRef = ref(false);
 defineProps({
-  cards: Array,
+  cards: {
+    type: Array,
+    required: true,
+    validator: (value) =>
+      value.every((item) => {
+        const keys = Object.keys(item);
+
+        return (
+          typeof item === 'object' &&
+          keys.includes('id') &&
+          typeof item.id === 'string'
+        );
+      }),
+  },
 });
 
 onMounted(() => {
@@ -20,9 +33,9 @@ function onWindowResize() {
 
 <template>
   <ul class="cards-number-list" v-show="isDeskRef">
-    <li class="cards-number-list-item" :key="title" v-for="{ title } in cards">
+    <li class="cards-number-list-item" :key="id" v-for="{ id } in cards">
       <button type="button" class="cards-number-btn">
-        <span class="cards-number-btn-title">{{ title }}</span>
+        <span class="cards-number-btn-title">{{ id }}</span>
       </button>
     </li>
   </ul>
