@@ -1,6 +1,7 @@
 <script setup>
 import NavBar from 'components/NavBar.vue';
 import ParajanovsLife from 'components/ParajanovsLife.vue';
+import ShadowsOfForgottenAncestors from 'components/ShadowsOfForgottenAncestors.vue';
 import { cards } from 'constants';
 import { ref, onMounted, computed } from 'vue';
 import {
@@ -193,6 +194,7 @@ const mapClassNames = computed(getMapClassNames);
       :style="mapInlineStyles"
     >
       <ParajanovsLife :isDesk="isDesk" :card="cards[0]" />
+      <ShadowsOfForgottenAncestors :isDesk="isDesk" :card="cards[0]" />
     </ul>
   </div>
   <NavBar

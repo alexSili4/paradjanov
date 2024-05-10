@@ -42,6 +42,4 @@ defineProps({
     padding: 145px 419px 54px 80px;
   }
 }
-
-
 </style>
