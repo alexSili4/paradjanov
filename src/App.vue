@@ -1,11 +1,10 @@
 <script setup>
 import MapComponent from 'components/MapComponent.vue';
-
-// import Header from 'components/HeaderComponent.vue'
+import Header from 'components/HeaderComponent.vue';
 </script>
 
 <template>
-  <!-- <Header /> -->
+  <Header />
   <main>
     <MapComponent />
   </main>

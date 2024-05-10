@@ -1,25 +1,13 @@
 <script setup>
 import { onMounted, ref } from 'vue';
 import { getIsDesk } from 'utils';
+import { cardsValidator } from 'validator';
 
 window.addEventListener('resize', onWindowResize);
 
 const isDeskRef = ref(false);
 defineProps({
-  cards: {
-    type: Array,
-    required: true,
-    validator: (value) =>
-      value.every((item) => {
-        const keys = Object.keys(item);
-
-        return (
-          typeof item === 'object' &&
-          keys.includes('id') &&
-          typeof item.id === 'string'
-        );
-      }),
-  },
+  cards: cardsValidator,
 });
 
 onMounted(() => {

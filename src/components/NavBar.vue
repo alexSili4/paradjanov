@@ -7,6 +7,8 @@ import MenuMobile from 'icons/navBar/menu-mobile.svg?component';
 import BurgerMenu from 'components/BurgerMenu.vue';
 import { ref, onBeforeMount, computed } from 'vue';
 import { getIsDesk } from 'utils';
+import { cardsValidator } from 'validator';
+import MobileMenu from './MobileMenu.vue';
 
 window.addEventListener('resize', onWindowResize);
 
@@ -14,20 +16,7 @@ const isDeskRef = ref(false);
 const isOpenMenu = ref(false);
 defineProps({
   toggleShowAllMap: Function,
-  cards: {
-    type: Array,
-    required: true,
-    validator: (value) =>
-      value.every((item) => {
-        const keys = Object.keys(item);
-
-        return (
-          typeof item === 'object' &&
-          keys.includes('id') &&
-          typeof item.id === 'string'
-        );
-      }),
-  },
+  cards: cardsValidator,
 });
 
 onBeforeMount(() => {
@@ -57,8 +46,17 @@ const getMenuBtnWrapClassNames = () => [
   { 'menu-open': isOpenMenu.value },
 ];
 
+const getNavBtnClassNames = () => [
+  'nav-btn',
+  { 'menu-open': isOpenMenu.value },
+];
+
+const getShowMobileMenu = () => isOpenMenu.value && !isDeskRef.value;
+
 const menuBtnClassNames = computed(getMenuBtnClassNames);
 const menuBtnWrapClassNames = computed(getMenuBtnWrapClassNames);
+const navBtnClassNames = computed(getNavBtnClassNames);
+const showMobileMenu = computed(getShowMobileMenu);
 </script>
 
 <template>
@@ -71,7 +69,7 @@ const menuBtnWrapClassNames = computed(getMenuBtnWrapClassNames);
     >
       <ZoomInMap class="zoom-btn-icon" />
     </button>
-    <button type="button" class="nav-btn" v-show="!isDeskRef">
+    <button type="button" :class="navBtnClassNames" v-show="!isDeskRef">
       <Arrow class="nav-btn-icon prev-btn-icon" />
     </button>
     <div :class="menuBtnWrapClassNames">
@@ -82,11 +80,12 @@ const menuBtnWrapClassNames = computed(getMenuBtnWrapClassNames);
       </button>
       <CardsNumberList :cards="cards" />
     </div>
-    <button type="button" class="nav-btn" v-show="!isDeskRef">
+    <button type="button" :class="navBtnClassNames" v-show="!isDeskRef">
       <Arrow class="nav-btn-icon" />
     </button>
     <div class="zoom-btn fake-btn" v-show="isDeskRef"></div>
   </div>
+  <MobileMenu :cards="cards" :showMobileMenu="showMobileMenu" />
 </template>
 
 <style scoped>
@@ -110,6 +109,15 @@ const menuBtnWrapClassNames = computed(getMenuBtnWrapClassNames);
   border-radius: 100px;
   backdrop-filter: blur(20px);
   background-color: rgba(255, 255, 255, 0.34);
+  transition:
+    opacity var(--transition-duration-and-func),
+    visibility var(--transition-duration-and-func);
+}
+
+.nav-btn.menu-open {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .nav-btn-icon {
@@ -126,6 +134,8 @@ const menuBtnWrapClassNames = computed(getMenuBtnWrapClassNames);
 
 .menu-btn {
   position: relative;
+
+  display: block;
   border: none;
   padding: 0;
   background-color: transparent;
