@@ -8,8 +8,14 @@ import {
   getContentGeometry,
   getScale,
   getScaleOnResizeWindow,
-  getIsDesk,
 } from 'utils';
+
+const props = defineProps({
+  isDesk: {
+    type: Boolean,
+    required: true,
+  },
+});
 
 document.addEventListener('mouseup', onMouseUp);
 document.addEventListener('touchend', onTouchend);
@@ -27,10 +33,8 @@ const leftRef = ref(0);
 const topRef = ref(0);
 const scaleRef = ref(1);
 const isDraggableRef = ref(false);
-const isDeskRef = ref(false);
 
 onMounted(() => {
-  getIsDesk(isDeskRef);
   const targetElement = mapRef.value;
   const { height, width } = getContentGeometry(targetElement);
   mapOriginalWidthRef.value = width;
@@ -38,7 +42,6 @@ onMounted(() => {
 });
 
 function onResizeWindow() {
-  getIsDesk(isDeskRef);
   const targetElement = mapRef.value;
   const { innerHeight } = window;
   const { height } = getContentGeometry(targetElement);
@@ -161,7 +164,7 @@ const toggleShowAllMap = (e) => {
 };
 
 const getMapInlineStyles = () => {
-  const scale = isDeskRef.value ? scaleRef.value : 1;
+  const scale = props.isDesk ? scaleRef.value : 1;
 
   return {
     top: `${topRef.value}px`,
@@ -189,10 +192,14 @@ const mapClassNames = computed(getMapClassNames);
       ref="mapRef"
       :style="mapInlineStyles"
     >
-      <ParajanovsLife />
+      <ParajanovsLife :isDesk="isDesk" :card="cards[0]" />
     </ul>
   </div>
-  <NavBar :cards="cards" :toggleShowAllMap="toggleShowAllMap" />
+  <NavBar
+    :cards="cards"
+    :toggleShowAllMap="toggleShowAllMap"
+    :isDesk="isDesk"
+  />
 </template>
 
 <style scoped>

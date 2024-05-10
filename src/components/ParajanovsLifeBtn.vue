@@ -6,14 +6,35 @@ import GrapeIconMobile from 'icons/parajanovsLife/grape-mobile.svg?component';
 import NavArroWIconDesk from 'icons/parajanovsLife/nav-arrow-desk.svg?component';
 import LeafIconDesk from 'icons/parajanovsLife/leaf-desk.svg?component';
 import LeafIconMobile from 'icons/parajanovsLife/leaf-mobile.svg?component';
+import { cardValidator } from 'validator';
+import ShipToLeftIconDesk from 'icons/parajanovsLife/ship-to-left-desk.svg?component';
+import ShipToRightIconDesk from 'icons/parajanovsLife/ship-to-right-desk.svg?component';
+import ParajanovFaceIconDesk from 'icons/parajanovsLife/parajanov-face-desk.svg?component';
+import QuoteIconDesk from 'icons/parajanovsLife/quote-desk.svg?component';
+import ShipToLeftIconMobile from 'icons/parajanovsLife/ship-to-left-mobile.svg?component';
+import ShipToRightIconMobile from 'icons/parajanovsLife/ship-to-right-mobile.svg?component';
+import ParajanovFaceIconMobile from 'icons/parajanovsLife/parajanov-face-mobile.svg?component';
+import QuoteIconMobile from 'icons/parajanovsLife/quote-mobile.svg?component';
 
 defineProps({
   isDesk: Boolean,
+  card: cardValidator,
 });
 </script>
 
 <template>
   <button type="button" class="card-btn">
+    <span class="card-title-wrap">
+      <span class="card-title">{{ card.title }}</span>
+    </span>
+    <ShipToLeftIconDesk class="ship-to-left-icon" v-if="isDesk" />
+    <ShipToLeftIconMobile class="ship-to-left-icon" v-else />
+    <ShipToRightIconDesk class="ship-to-right-icon" v-if="isDesk" />
+    <ShipToRightIconMobile class="ship-to-right-icon" v-else />
+    <ParajanovFaceIconDesk class="parajanov-face-icon" v-if="isDesk" />
+    <ParajanovFaceIconMobile class="parajanov-face-icon" v-else />
+    <QuoteIconDesk class="quote-icon" v-if="isDesk" />
+    <QuoteIconMobile class="quote-icon" v-else />
     <span class="icon-btn-wrap">
       <LeafIconDesk class="leaf-icon btn-icon" v-if="isDesk" />
       <LeafIconMobile class="leaf-icon btn-icon" v-else />
@@ -29,21 +50,19 @@ defineProps({
 
 <style scoped>
 .card-btn {
+  position: relative;
   display: block;
-  width: 616px;
-  height: 352px;
+  width: 370px;
+  height: 303px;
   padding: 0;
   border: none;
   background-color: transparent;
-  background-image: url('images/parajanovsLife/card-bg-mobile.png');
-  background-repeat: no-repeat;
-  background-size: 616px 352px;
 }
 
 .icon-btn-wrap {
   position: absolute;
-  top: 148px;
-  left: 324px;
+  top: 98px;
+  left: 255px;
   width: 134px;
   height: 134px;
   padding-top: 30px;
@@ -87,6 +106,11 @@ defineProps({
   transition: opacity var(--transition-duration-and-func);
 }
 
+.card-btn:not(:is(:hover, :focus)) .nav-arrow-icon {
+  transform: rotate(-90deg);
+  opacity: 0;
+}
+
 .card-btn:is(:hover, :focus) .leaf-icon {
   transform: translateY(5px);
 }
@@ -99,17 +123,67 @@ defineProps({
   transform: rotate(21.65deg);
 }
 
+.card-title-wrap {
+  position: absolute;
+  top: 141px;
+  left: 81px;
+  width: 289px;
+  height: 162px;
+  background-image: url('icons/parajanovsLife/title-bg-mobile.svg');
+  background-repeat: no-repeat;
+  background-size: 289px 162px;
+  background-position: 0 0;
+  padding-top: 46px;
+  padding-left: 88px;
+  text-align: left;
+}
+
+.card-title {
+  color: rgb(53, 59, 63);
+  font-family: Shnobel;
+  font-size: 38px;
+  font-weight: 400;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.ship-to-left-icon {
+  position: absolute;
+  top: 238px;
+  left: 16px;
+  display: block;
+}
+
+.ship-to-right-icon {
+  position: absolute;
+  top: 272px;
+  left: 42px;
+  display: block;
+}
+
+.parajanov-face-icon {
+  position: absolute;
+  top: 1px;
+  left: 0px;
+  display: block;
+}
+
+.quote-icon {
+  position: absolute;
+  top: 40px;
+  left: 239px;
+  display: block;
+}
+
 @media screen and (min-width: 1280px) {
   .card-btn {
-    width: 1440.5px;
-    height: 820px;
-    background-image: url('images/parajanovsLife/card-bg-desk.png');
-    background-size: 1441px 820px;
+    width: 941px;
+    height: 621px;
   }
 
   .icon-btn-wrap {
-    top: 345px;
-    left: 757px;
+    top: 199px;
+    left: 677px;
     width: 314px;
     height: 313px;
     padding-top: 70px;
@@ -123,7 +197,13 @@ defineProps({
 
   .leaf-icon {
     top: 138px;
-    left: 9px;
+    left: 8px;
+  }
+
+  .card-number {
+    top: 123px;
+    left: 145px;
+    font-size: 60px;
   }
 
   .nav-arrow-icon {
@@ -134,23 +214,47 @@ defineProps({
     transform-origin: center top;
   }
 
-  .card-btn:not(:is(:hover, :focus)) .nav-arrow-icon {
-    transform: rotate(-90deg);
-    opacity: 0;
-  }
-
-  .card-number {
-    top: 123px;
-    left: 147px;
-    font-size: 60px;
-  }
-
   .card-btn:is(:hover, :focus) .card-number {
     opacity: 0;
   }
 
   .card-btn:is(:hover, :focus) .leaf-icon {
     transform: translateY(7px);
+  }
+
+  .card-title-wrap {
+    top: 299px;
+    left: 271px;
+    width: 670px;
+    height: 321px;
+    background-image: url('icons/parajanovsLife/title-bg-desk.svg');
+    background-size: 670px 321px;
+    padding-top: 50px;
+    padding-left: 193px;
+  }
+
+  .card-title {
+    font-size: 90px;
+  }
+
+  .ship-to-left-icon {
+    top: 509px;
+    left: 73px;
+  }
+
+  .ship-to-right-icon {
+    top: 599px;
+    left: 131px;
+  }
+
+  .parajanov-face-icon {
+    top: -19px;
+    left: 0px;
+  }
+
+  .quote-icon {
+    top: 63px;
+    left: 640px;
   }
 }
 </style>

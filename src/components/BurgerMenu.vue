@@ -1,23 +1,12 @@
 <script setup>
 import BurgerMenuItemMobile from 'icons/navBar/burger-menu-item-mobile.svg?component';
 import BurgerMenuItemDesk from 'icons/navBar/burger-menu-item-desk.svg?component';
-import { computed, onMounted, ref } from 'vue';
-import { getIsDesk } from 'utils';
+import { computed } from 'vue';
 
-window.addEventListener('resize', onWindowResize);
-
-const isDeskRef = ref(false);
 const props = defineProps({
-  isOpenMenu: Boolean,
+  isOpenMenu: { type: Boolean, required: true },
+  isDesk: { type: Boolean, required: true },
 });
-
-onMounted(() => {
-  getIsDesk(isDeskRef);
-});
-
-function onWindowResize() {
-  getIsDesk(isDeskRef);
-}
 
 const getBurgerMenuClassNames = () => [
   'burger-menu-wrap',
@@ -31,18 +20,15 @@ const burgerMenuClassNames = computed(getBurgerMenuClassNames);
   <div :class="burgerMenuClassNames">
     <BurgerMenuItemDesk
       class="burger-menu-item-icon first-item"
-      v-if="isDeskRef"
+      v-if="isDesk"
     />
     <BurgerMenuItemMobile class="burger-menu-item-icon first-item" v-else />
     <BurgerMenuItemDesk
       class="burger-menu-item-icon second-item"
-      v-if="isDeskRef"
+      v-if="isDesk"
     />
     <BurgerMenuItemMobile class="burger-menu-item-icon second-item" v-else />
-    <BurgerMenuItemDesk
-      class="burger-menu-item-icon last-item"
-      v-if="isDeskRef"
-    />
+    <BurgerMenuItemDesk class="burger-menu-item-icon last-item" v-if="isDesk" />
     <BurgerMenuItemMobile class="burger-menu-item-icon last-item" v-else />
   </div>
 </template>

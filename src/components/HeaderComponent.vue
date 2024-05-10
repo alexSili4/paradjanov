@@ -1,33 +1,26 @@
 <script setup>
-import LogoDesk from 'icons/header/logo-desk.svg?component'
-import LogoMobile from 'icons/header/logo-mobile.svg?component'
-import handWithCup from 'images/header/hand-with-cup.png'
-import Warning from 'icons/header/warning.svg?component'
-import { onMounted, ref } from 'vue'
-import { getIsDesk } from 'utils'
+import LogoDesk from 'icons/header/logo-desk.svg?component';
+import LogoMobile from 'icons/header/logo-mobile.svg?component';
+import handWithCup from 'images/header/hand-with-cup.png';
+import Warning from 'icons/header/warning.svg?component';
 
-window.addEventListener('resize', onWindowResize)
-
-const isDeskRef = ref(false)
-
-onMounted(() => {
-  getIsDesk(isDeskRef)
-})
-
-function onWindowResize() {
-  getIsDesk(isDeskRef)
-}
+defineProps({
+  isDesk: {
+    type: Boolean,
+    required: true,
+  },
+});
 </script>
 
 <template>
   <header class="header">
     <a href="/" class="logo-link">
-      <LogoDesk class="logo-link-icon" v-if="isDeskRef" />
+      <LogoDesk class="logo-link-icon" v-if="isDesk" />
       <LogoMobile class="logo-link-icon" v-else />
     </a>
     <button type="button" class="hand-btn">
       <img :src="handWithCup" alt="рука з чашкою" class="hand-with-cup-img" />
-      <Warning class="warning-icon" v-show="isDeskRef" />
+      <Warning class="warning-icon" v-show="isDesk" />
     </button>
   </header>
 </template>
@@ -42,7 +35,6 @@ function onWindowResize() {
   display: flex;
   justify-content: space-between;
   transform: translateX(-50%);
-  user-select: none;
 }
 
 .logo-link {

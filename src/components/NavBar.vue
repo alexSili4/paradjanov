@@ -6,30 +6,27 @@ import MenuDesk from 'icons/navBar/menu-desk.svg?component';
 import MenuMobile from 'icons/navBar/menu-mobile.svg?component';
 import BurgerMenu from 'components/BurgerMenu.vue';
 import { ref, onBeforeMount, computed } from 'vue';
-import { getIsDesk } from 'utils';
 import { cardsValidator } from 'validator';
 import MobileMenu from 'components/MobileMenu.vue';
 
-window.addEventListener('resize', onWindowResize);
-
-const isDeskRef = ref(false);
 const isOpenMenu = ref(false);
-defineProps({
-  toggleShowAllMap: Function,
+const props = defineProps({
   cards: cardsValidator,
+  toggleShowAllMap: {
+    type: Function,
+    required: true,
+  },
+  isDesk: {
+    type: Boolean,
+    required: true,
+  },
 });
 
 onBeforeMount(() => {
-  getIsDesk(isDeskRef);
-
-  if (isDeskRef.value) {
+  if (props.isDesk) {
     isOpenMenu.value = true;
   }
 });
-
-function onWindowResize() {
-  getIsDesk(isDeskRef);
-}
 
 const onZoomBtnClick = (e) => {
   isOpenMenu.value = !isOpenMenu.value;
@@ -51,7 +48,7 @@ const getNavBtnClassNames = () => [
   { 'menu-open': isOpenMenu.value },
 ];
 
-const getShowMobileMenu = () => isOpenMenu.value && !isDeskRef.value;
+const getShowMobileMenu = () => isOpenMenu.value && !props.isDesk;
 
 const menuBtnClassNames = computed(getMenuBtnClassNames);
 const menuBtnWrapClassNames = computed(getMenuBtnWrapClassNames);
@@ -65,25 +62,25 @@ const showMobileMenu = computed(getShowMobileMenu);
       type="button"
       class="zoom-btn"
       @click="toggleShowAllMap"
-      v-show="isDeskRef"
+      v-show="isDesk"
     >
       <ZoomInMap class="zoom-btn-icon" />
     </button>
-    <button type="button" :class="navBtnClassNames" v-show="!isDeskRef">
+    <button type="button" :class="navBtnClassNames" v-show="!isDesk">
       <Arrow class="nav-btn-icon prev-btn-icon" />
     </button>
     <div :class="menuBtnWrapClassNames">
       <button type="button" :class="menuBtnClassNames" @click="onZoomBtnClick">
-        <MenuDesk class="menu-btn-icon" v-if="isDeskRef" />
+        <MenuDesk class="menu-btn-icon" v-if="isDesk" />
         <MenuMobile class="menu-btn-icon" v-else />
-        <BurgerMenu :isOpenMenu="isOpenMenu" />
+        <BurgerMenu :isOpenMenu="isOpenMenu" :isDesk="isDesk" />
       </button>
-      <CardsNumberList :cards="cards" />
+      <CardsNumberList :cards="cards" :isDesk="isDesk" />
     </div>
-    <button type="button" :class="navBtnClassNames" v-show="!isDeskRef">
+    <button type="button" :class="navBtnClassNames" v-show="!isDesk">
       <Arrow class="nav-btn-icon" />
     </button>
-    <div class="zoom-btn fake-btn" v-show="isDeskRef"></div>
+    <div class="zoom-btn fake-btn" v-show="isDesk"></div>
   </div>
   <MobileMenu :cards="cards" :showMobileMenu="showMobileMenu" />
 </template>
@@ -99,7 +96,6 @@ const showMobileMenu = computed(getShowMobileMenu);
   justify-content: space-between;
   width: calc(100% - 16px - 16px);
   transform: translateX(-50%);
-  user-select: none;
 }
 
 .nav-btn {

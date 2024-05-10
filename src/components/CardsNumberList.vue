@@ -1,26 +1,14 @@
 <script setup>
-import { onMounted, ref } from 'vue';
-import { getIsDesk } from 'utils';
 import { cardsValidator } from 'validator';
 
-window.addEventListener('resize', onWindowResize);
-
-const isDeskRef = ref(false);
 defineProps({
   cards: cardsValidator,
+  isDesk: { type: Boolean, required: true },
 });
-
-onMounted(() => {
-  getIsDesk(isDeskRef);
-});
-
-function onWindowResize() {
-  getIsDesk(isDeskRef);
-}
 </script>
 
 <template>
-  <ul class="cards-number-list" v-show="isDeskRef">
+  <ul class="cards-number-list" v-show="isDesk">
     <li class="cards-number-list-item" :key="id" v-for="{ id } in cards">
       <button type="button" class="cards-number-btn">
         <span class="cards-number-btn-title">{{ id }}</span>
