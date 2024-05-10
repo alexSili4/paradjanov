@@ -12,8 +12,6 @@ defineProps({
   cards: cardsValidator,
   showMobileMenu: Boolean,
 });
-
-const number = (value) => value + 1;
 </script>
 
 <template>
@@ -23,41 +21,39 @@ const number = (value) => value + 1;
         <li
           class="mobile-menu-list-item"
           :key="index"
-          v-for="({ title }, index) in cards"
+          v-for="({ title, number }, index) in cards"
         >
           <a class="mobile-menu-link" href="#">
             <span class="mobile-menu-link-text">
-              <span class="mobile-menu-link-text-number"
-                >{{ number(index) }}.</span
-              >
+              <span class="mobile-menu-link-text-number">{{ number }}.</span>
               <span class="mobile-menu-link-text-title">{{ title }}</span>
             </span>
             <ParajanovsLifeIcon
-              v-show="number(index) === 1"
+              v-show="number === 1"
               class="mobile-menu-link-icon"
             />
             <ShadowsOfForgottenAncestorsIcon
-              v-show="number(index) === 2"
+              v-show="number === 2"
               class="mobile-menu-link-icon"
             />
             <InspiredByParajanovIcon
-              v-show="number(index) === 3"
+              v-show="number === 3"
               class="mobile-menu-link-icon"
             />
             <TastePreferencesIcon
-              v-show="number(index) === 4"
+              v-show="number === 4"
               class="mobile-menu-link-icon"
             />
             <GlassesFromSilpoIcon
-              v-show="number(index) === 5"
+              v-show="number === 5"
               class="mobile-menu-link-icon"
             />
             <IngeniousCollagesIcon
-              v-show="number(index) === 6"
+              v-show="number === 6"
               class="mobile-menu-link-icon"
             />
             <GarnetColorIcon
-              v-show="number(index) === 7"
+              v-show="number === 7"
               class="mobile-menu-link-icon"
             />
           </a>

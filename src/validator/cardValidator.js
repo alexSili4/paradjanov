@@ -7,6 +7,8 @@ const cardValidator = {
     return (
       keys.includes('id') &&
       typeof value.id === 'string' &&
+      keys.includes('number') &&
+      typeof value.number === 'number' &&
       keys.includes('title') &&
       typeof value.title === 'string'
     );

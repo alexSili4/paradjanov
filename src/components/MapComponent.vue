@@ -194,7 +194,7 @@ const mapClassNames = computed(getMapClassNames);
       :style="mapInlineStyles"
     >
       <ParajanovsLife :isDesk="isDesk" :card="cards[0]" />
-      <ShadowsOfForgottenAncestors :isDesk="isDesk" :card="cards[0]" />
+      <ShadowsOfForgottenAncestors :card="cards[1]" />
     </ul>
   </div>
   <NavBar

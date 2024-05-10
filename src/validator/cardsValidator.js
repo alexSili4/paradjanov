@@ -9,6 +9,8 @@ const cardsValidator = {
         typeof item === 'object' &&
         keys.includes('id') &&
         typeof item.id === 'string' &&
+        keys.includes('number') &&
+        typeof item.number === 'number' &&
         keys.includes('title') &&
         typeof item.title === 'string'
       );

@@ -43,7 +43,7 @@ defineProps({
       <GrapeIconDesk class="grape-icon btn-icon" v-if="isDesk" />
       <GrapeIconMobile class="grape-icon btn-icon" v-else />
       <NavArroWIconDesk class="nav-arrow-icon btn-icon" v-show="isDesk" />
-      <span class="card-number">1</span>
+      <span class="card-number">{{card.number}}</span>
     </span>
   </button>
 </template>
