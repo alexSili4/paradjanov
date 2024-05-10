@@ -1,8 +1,8 @@
 <script setup>
-import ParajanovsLifeBtn from 'components/ParajanovsLifeBtn.vue';
+// import ParajanovsLifeBtn from 'components/ParajanovsLifeBtn.vue';
 import ParajanovsLifeArticle from 'components/ParajanovsLifeArticle.vue';
-import { onMounted, ref } from 'vue';
 import { getIsDesk } from 'utils';
+import { onMounted, ref } from 'vue';
 
 window.addEventListener('resize', onWindowResize);
 
@@ -20,7 +20,7 @@ function onWindowResize() {
 <template>
   <li class="map-item">
     <div>
-      <ParajanovsLifeBtn :isDesk="isDeskRef" />
+      <!-- <ParajanovsLifeBtn :isDesk="isDeskRef" /> -->
       <ParajanovsLifeArticle />
       <div></div>
     </div>

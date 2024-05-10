@@ -7,12 +7,12 @@ export default defineConfig({
   plugins: [vue(), svgLoader()],
   resolve: {
     alias: {
-      components: '/src/components',
-      images: '/src/images',
-      icons: '/src/icons',
-      constants: '/src/constants',
-      utils: '/src/utils',
-      validator: '/src/validator',
+      'components': '/src/components',
+      'images': '/src/images',
+      'icons': '/src/icons',
+      'constants': '/src/constants',
+      'utils': '/src/utils',
+      'validator': '/src/validator',
     },
   },
 });

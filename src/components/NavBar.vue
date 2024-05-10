@@ -8,7 +8,7 @@ import BurgerMenu from 'components/BurgerMenu.vue';
 import { ref, onBeforeMount, computed } from 'vue';
 import { getIsDesk } from 'utils';
 import { cardsValidator } from 'validator';
-import MobileMenu from './MobileMenu.vue';
+import MobileMenu from 'components/MobileMenu.vue';
 
 window.addEventListener('resize', onWindowResize);
 
