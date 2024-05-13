@@ -7,6 +7,8 @@ import { ref, onMounted, computed } from 'vue';
 import { getPositionProps, getContentGeometry, getScale, getScaleOnResizeWindow } from 'utils';
 import InspiredByParajanov from 'components/InspiredByParajanov.vue';
 import TastePreferences from 'components/TastePreferences.vue';
+import GlassesFromSilpo from 'components/GlassesFromSilpo.vue';
+import IngeniousCollages from 'components/IngeniousCollages.vue';
 
 const props = defineProps({
   isDesk: {
@@ -175,6 +177,8 @@ const mapClassNames = computed(getMapClassNames);
       <ShadowsOfForgottenAncestors :card="cards[1]" />
       <InspiredByParajanov :card="cards[2]" />
       <TastePreferences :card="cards[3]" />
+      <GlassesFromSilpo :card="cards[4]" />
+      <IngeniousCollages :card="cards[5]" />
     </ul>
   </div>
   <NavBar :cards="cards" :toggleShowAllMap="toggleShowAllMap" :isDesk="isDesk" />

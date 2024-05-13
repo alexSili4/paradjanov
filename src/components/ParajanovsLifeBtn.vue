@@ -43,7 +43,7 @@ defineProps({
       <GrapeIconDesk class="grape-icon btn-icon" v-if="isDesk" />
       <GrapeIconMobile class="grape-icon btn-icon" v-else />
       <NavArroWIconDesk class="nav-arrow-icon btn-icon" v-show="isDesk" />
-      <span class="card-number">{{card.number}}</span>
+      <span class="card-number">{{ card.number }}</span>
     </span>
   </button>
 </template>
@@ -139,7 +139,7 @@ defineProps({
 }
 
 .card-title {
-  color: rgb(53, 59, 63);
+  color: #353b3f;
   font-family: Shnobel;
   font-size: 38px;
   font-weight: 400;

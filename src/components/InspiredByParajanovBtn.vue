@@ -68,7 +68,7 @@ defineProps({
 }
 
 .card-title {
-  color: rgb(53, 59, 63);
+  color: #353b3f;
   font-family: Shnobel;
   font-size: 90px;
   font-weight: 400;

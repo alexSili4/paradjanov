@@ -1,12 +1,15 @@
 <script setup>
 import { cardValidator } from 'validator';
-import GrapeIcon from 'icons/tastePreferences/grape.svg?component';
-import LeafIcon from 'icons/tastePreferences/leaf.svg?component';
-import MainGrapeIcon from 'icons/tastePreferences/main-grape.svg?component';
-import NavArroWIcon from 'icons/tastePreferences/nav-arrow.svg?component';
-import CornIcon from 'icons/tastePreferences/corn.svg?component';
-import HeroIcon from 'icons/tastePreferences/hero.svg?component';
-import PotIcon from 'icons/tastePreferences/pot.svg?component';
+import GrapeIcon from 'icons/glassesFromSilpo/grape.svg?component';
+import LeafIcon from 'icons/glassesFromSilpo/leaf.svg?component';
+import MainGrapeIcon from 'icons/glassesFromSilpo/main-grape.svg?component';
+import NavArroWIcon from 'icons/glassesFromSilpo/nav-arrow.svg?component';
+import BakeIcon from 'icons/glassesFromSilpo/bake.svg?component';
+import BigGlassIcon from 'icons/glassesFromSilpo/big-glass.svg?component';
+import CometIcon from 'icons/glassesFromSilpo/comet.svg?component';
+import MediumGlassIcon from 'icons/glassesFromSilpo/medium-glass.svg?component';
+import SmallGlassIcon from 'icons/glassesFromSilpo/small-glass.svg?component';
+import TowelIcon from 'icons/glassesFromSilpo/towel.svg?component';
 
 defineProps({
   card: cardValidator,
@@ -15,19 +18,22 @@ defineProps({
 
 <template>
   <button type="button" class="card-btn">
-    <CornIcon class="corn-icon" />
     <span class="card-title-wrap">
       <span class="card-title">{{ card.title }}</span>
     </span>
+    <TowelIcon class="towel-icon" />
+    <BigGlassIcon class="big-glass-icon" />
+    <MediumGlassIcon class="medium-glass-icon" />
+    <SmallGlassIcon class="small-glass-icon" />
+    <CometIcon class="comet-icon" />
+    <BakeIcon class="bake-icon" />
     <span class="icon-btn-wrap">
       <LeafIcon class="leaf-icon btn-icon" />
-      <MainGrapeIcon class="main-grape-icon btn-icon" />
       <GrapeIcon class="grape-icon btn-icon" />
+      <MainGrapeIcon class="main-grape-icon btn-icon" />
       <NavArroWIcon class="nav-arrow-icon btn-icon" />
       <span class="card-number">{{ card.number }}</span>
     </span>
-    <HeroIcon class="hero-icon" />
-    <PotIcon class="pot-icon" />
   </button>
 </template>
 
@@ -35,8 +41,8 @@ defineProps({
 .card-btn {
   position: relative;
   display: block;
-  width: 933px;
-  height: 511px;
+  width: 927px;
+  height: 682px;
   padding: 0;
   border: none;
   background-color: transparent;
@@ -44,16 +50,16 @@ defineProps({
 
 .card-title-wrap {
   position: absolute;
-  top: 128px;
-  left: 284px;
-  width: 649px;
-  height: 290px;
-  background-image: url('icons/tastePreferences/title-bg.svg');
+  top: 158px;
+  left: 377px;
+  width: 550px;
+  height: 293px;
+  background-image: url('icons/glassesFromSilpo/title-bg.svg');
   background-repeat: no-repeat;
-  background-size: 649px 290px;
+  background-size: 550px 293px;
   background-position: 0 0;
   padding-top: 42px;
-  padding-left: 142px;
+  padding-left: 103px;
   text-align: left;
 }
 
@@ -63,45 +69,63 @@ defineProps({
   font-size: 90px;
   font-weight: 400;
   line-height: 1.2;
-  /* letter-spacing: -0.01; */
   text-transform: uppercase;
 }
 
-.corn-icon {
+.bake-icon {
   position: absolute;
-  top: -280px;
-  left: -211px;
+  top: 400px;
+  left: 480px;
   display: block;
 }
 
-.hero-icon {
+.big-glass-icon {
   position: absolute;
-  top: -69px;
-  left: 198px;
+  top: 182px;
+  left: 119px;
   display: block;
 }
 
-.pot-icon {
+.comet-icon {
   position: absolute;
-  top: 1px;
-  left: 1px;
+  top: -131px;
+  left: -190px;
+  display: block;
+}
+
+.medium-glass-icon {
+  position: absolute;
+  top: 276px;
+  left: 254px;
+  display: block;
+}
+
+.small-glass-icon {
+  position: absolute;
+  top: 339px;
+  left: 70px;
+  display: block;
+}
+
+.towel-icon {
+  position: absolute;
+  top: 358px;
+  left: 0px;
   display: block;
 }
 
 .icon-btn-wrap {
   position: absolute;
-  top: 207px;
-  left: 744px;
-  width: 314px;
-  height: 313px;
-  padding-top: 71px;
-  padding-left: 66px;
+  top: -7px;
+  left: 260px;
+  width: 325px;
+  height: 320px;
 }
 
 .leaf-icon {
   position: absolute;
-  top: 218px;
-  left: 90px;
+  top: 20px;
+  left: 137px;
   display: block;
 }
 
@@ -118,23 +142,23 @@ defineProps({
 
 .grape-icon {
   position: absolute;
-  top: 183px;
-  left: 18px;
+  top: 75px;
+  left: 156.2px;
   display: block;
 }
 
 .nav-arrow-icon {
   position: absolute;
-  top: 132px;
-  left: 120px;
+  top: 116px;
+  left: 104px;
   display: block;
   transform-origin: center top;
 }
 
 .card-number {
   position: absolute;
-  top: 126px;
-  left: 139px;
+  top: 102px;
+  left: 124px;
   color: var(--white-color);
   font-family: Shnobel;
   font-size: 60px;
@@ -144,20 +168,20 @@ defineProps({
 }
 
 .card-btn:not(:is(:hover, :focus)) .nav-arrow-icon {
-  transform: rotate(-90deg);
+  transform: rotate(90deg);
   opacity: 0;
 }
 
 .card-btn:is(:hover, :focus) .leaf-icon {
-  transform: translateY(4px);
+  transform: translateY(-3px);
 }
 
 .card-btn:is(:hover, :focus) .main-grape-icon {
-  transform: rotate(9.06deg);
+  transform: rotate(7.72deg);
 }
 
 .card-btn:is(:hover, :focus) .grape-icon {
-  transform: rotate(16.06deg);
+  transform: rotate(10.66deg);
 }
 
 @media screen and (min-width: 1280px) {
