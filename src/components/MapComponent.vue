@@ -4,12 +4,8 @@ import ParajanovsLife from 'components/ParajanovsLife.vue';
 import ShadowsOfForgottenAncestors from 'components/ShadowsOfForgottenAncestors.vue';
 import { cards } from 'constants';
 import { ref, onMounted, computed } from 'vue';
-import {
-  getPositionProps,
-  getContentGeometry,
-  getScale,
-  getScaleOnResizeWindow,
-} from 'utils';
+import { getPositionProps, getContentGeometry, getScale, getScaleOnResizeWindow } from 'utils';
+import InspiredByParajanov from 'components/InspiredByParajanov.vue';
 
 const props = defineProps({
   isDesk: {
@@ -68,12 +64,7 @@ function onResizeWindow() {
 function onMouseMove(e) {
   const targetElement = mapRef.value;
   const { clientX, clientY } = e;
-  const {
-    shouldUpdatePositionTop,
-    shouldUpdatePositionLeft,
-    leftPosition,
-    topPosition,
-  } = getPositionProps({
+  const { shouldUpdatePositionTop, shouldUpdatePositionLeft, leftPosition, topPosition } = getPositionProps({
     element: targetElement,
     offsetY: offsetYRef.value,
     offsetX: offsetXRef.value,
@@ -104,12 +95,7 @@ function onMouseDown(e) {
 function onTouchmove(e) {
   const targetElement = mapRef.value;
   const { clientX, clientY } = e.changedTouches[0];
-  const {
-    shouldUpdatePositionTop,
-    shouldUpdatePositionLeft,
-    leftPosition,
-    topPosition,
-  } = getPositionProps({
+  const { shouldUpdatePositionTop, shouldUpdatePositionLeft, leftPosition, topPosition } = getPositionProps({
     element: targetElement,
     offsetY: offsetYRef.value,
     offsetX: offsetXRef.value,
@@ -175,10 +161,7 @@ const getMapInlineStyles = () => {
   };
 };
 
-const getMapClassNames = () => [
-  'map',
-  { 'map-transform': !isDraggableRef.value },
-];
+const getMapClassNames = () => ['map', { 'map-transform': !isDraggableRef.value }];
 
 const mapInlineStyles = computed(getMapInlineStyles);
 const mapClassNames = computed(getMapClassNames);
@@ -186,22 +169,13 @@ const mapClassNames = computed(getMapClassNames);
 
 <template>
   <div class="map-container">
-    <ul
-      :class="mapClassNames"
-      @mousedown="onMouseDown"
-      @touchstart="onTouchstart"
-      ref="mapRef"
-      :style="mapInlineStyles"
-    >
+    <ul :class="mapClassNames" @mousedown="onMouseDown" @touchstart="onTouchstart" ref="mapRef" :style="mapInlineStyles">
       <ParajanovsLife :isDesk="isDesk" :card="cards[0]" />
       <ShadowsOfForgottenAncestors :card="cards[1]" />
+      <InspiredByParajanov :card="cards[2]" />
     </ul>
   </div>
-  <NavBar
-    :cards="cards"
-    :toggleShowAllMap="toggleShowAllMap"
-    :isDesk="isDesk"
-  />
+  <NavBar :cards="cards" :toggleShowAllMap="toggleShowAllMap" :isDesk="isDesk" />
 </template>
 
 <style scoped>
@@ -215,12 +189,8 @@ const mapClassNames = computed(getMapClassNames);
   left: 0px;
   width: 2669.77px;
   height: 1380px;
-  background-image: url('icons/map/path-06-mobile.svg'),
-    url('icons/map/path-05-mobile.svg'), url('icons/map/path-04-mobile.svg'),
-    url('icons/map/path-03-mobile.svg'), url('icons/map/path-02-mobile.svg'),
-    url('icons/map/path-01-mobile.svg'),
-    url('icons/map/inscriptions-mobile.svg'), url('icons/map/stars-mobile.svg'),
-    url('images/map/map-bg-mobile.jpg');
+  background-image: url('icons/map/path-06-mobile.svg'), url('icons/map/path-05-mobile.svg'), url('icons/map/path-04-mobile.svg'), url('icons/map/path-03-mobile.svg'),
+    url('icons/map/path-02-mobile.svg'), url('icons/map/path-01-mobile.svg'), url('icons/map/inscriptions-mobile.svg'), url('icons/map/stars-mobile.svg'), url('images/map/map-bg-mobile.jpg');
   background-size:
     375.2px 417.94px,
     698.4px 412.39px,
@@ -256,11 +226,8 @@ const mapClassNames = computed(getMapClassNames);
   .map {
     width: 6243px;
     height: 3227px;
-    background-image: url('icons/map/path-06-desk.svg'),
-      url('icons/map/path-05-desk.svg'), url('icons/map/path-04-desk.svg'),
-      url('icons/map/path-03-desk.svg'), url('icons/map/path-02-desk.svg'),
-      url('icons/map/path-01-desk.svg'), url('icons/map/inscriptions-desk.svg'),
-      url('icons/map/stars-desk.svg'), url('images/map/map-bg-desk.jpg');
+    background-image: url('icons/map/path-06-desk.svg'), url('icons/map/path-05-desk.svg'), url('icons/map/path-04-desk.svg'), url('icons/map/path-03-desk.svg'), url('icons/map/path-02-desk.svg'),
+      url('icons/map/path-01-desk.svg'), url('icons/map/inscriptions-desk.svg'), url('icons/map/stars-desk.svg'), url('images/map/map-bg-desk.jpg');
     background-size:
       877.36px 977.32px,
       1633.13px 964.34px,

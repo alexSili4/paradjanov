@@ -1,7 +1,7 @@
 <script setup>
 import { cardValidator } from 'validator';
-import ShadowsOfForgottenAncestorsBtn from 'components/ShadowsOfForgottenAncestorsBtn.vue';
-import ShadowsOfForgottenAncestorsArticle from 'components/ShadowsOfForgottenAncestorsArticle.vue';
+import InspiredByParajanovBtn from 'components/InspiredByParajanovBtn.vue';
+import InspiredByParajanovArticle from 'components/InspiredByParajanovArticle.vue';
 
 defineProps({
   card: cardValidator,
@@ -11,8 +11,8 @@ defineProps({
 <template>
   <li class="map-item">
     <div class="map-item-card">
-      <ShadowsOfForgottenAncestorsBtn :card="card" />
-      <ShadowsOfForgottenAncestorsArticle />
+      <InspiredByParajanovBtn :card="card" />
+      <InspiredByParajanovArticle />
     </div>
   </li>
 </template>
@@ -20,9 +20,9 @@ defineProps({
 <style scoped>
 .map-item {
   position: absolute;
-  top: 1154px;
-  left: 1681px;
-  padding: 8px 249px 78px 356px;
+  top: 1974px;
+  left: 240px;
+  padding: 77px 263px 70px 44px;
 }
 
 .map-item-card {
@@ -31,8 +31,8 @@ defineProps({
 
 @media screen and (max-width: 1279px) {
   .map-item {
-    top: 480px;
-    left: 725px;
+    top: 820px;
+    left: 110px;
     transform-origin: left top;
     transform: scale(0.4277);
   }
