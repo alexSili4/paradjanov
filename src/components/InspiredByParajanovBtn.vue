@@ -2,6 +2,8 @@
 import { cardValidator } from 'validator';
 import CentaurIcon from 'icons/inspiredByParajanov/centaur.svg?component';
 import ParadjanovIcon from 'icons/inspiredByParajanov/paradjanov.svg?component';
+import LeftEyeIcon from 'icons/inspiredByParajanov/left-eye.svg?component';
+import RightEyeIcon from 'icons/inspiredByParajanov/right-eye.svg?component';
 import GrapeIcon from 'icons/inspiredByParajanov/grape.svg?component';
 import HeadsIcon from 'icons/inspiredByParajanov/heads.svg?component';
 import LandIcon from 'icons/inspiredByParajanov/land.svg?component';
@@ -10,8 +12,6 @@ import MainGrapeIcon from 'icons/inspiredByParajanov/main-grape.svg?component';
 import SilpoIcon from 'icons/inspiredByParajanov/silpo.svg?component';
 import SunIcon from 'icons/inspiredByParajanov/sun.svg?component';
 import NavArroWIcon from 'icons/inspiredByParajanov/nav-arrow.svg?component';
-import LeftEyeIcon from 'icons/inspiredByParajanov/left-eye.svg?component';
-import RightEyeIcon from 'icons/inspiredByParajanov/right-eye.svg?component';
 
 defineProps({
   card: cardValidator,
@@ -34,7 +34,7 @@ defineProps({
       <span class="card-number">{{ card.number }}</span>
     </span>
     <HeadsIcon class="heads-icon" />
-    <ParadjanovIcon class="paradjanov-icon" />
+    <ParadjanovIcon class="paradjanov-icon-qwerty" />
     <SilpoIcon class="silpo-icon" />
     <LeftEyeIcon class="left-eye-icon" />
     <RightEyeIcon class="right-eye-icon" />
@@ -97,7 +97,7 @@ defineProps({
   display: block;
 }
 
-.paradjanov-icon {
+.paradjanov-icon-qwerty {
   position: absolute;
   top: 0px;
   left: 173px;

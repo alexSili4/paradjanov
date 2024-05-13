@@ -6,6 +6,7 @@ import { cards } from 'constants';
 import { ref, onMounted, computed } from 'vue';
 import { getPositionProps, getContentGeometry, getScale, getScaleOnResizeWindow } from 'utils';
 import InspiredByParajanov from 'components/InspiredByParajanov.vue';
+import TastePreferences from 'components/TastePreferences.vue';
 
 const props = defineProps({
   isDesk: {
@@ -173,6 +174,7 @@ const mapClassNames = computed(getMapClassNames);
       <ParajanovsLife :isDesk="isDesk" :card="cards[0]" />
       <ShadowsOfForgottenAncestors :card="cards[1]" />
       <InspiredByParajanov :card="cards[2]" />
+      <TastePreferences :card="cards[3]" />
     </ul>
   </div>
   <NavBar :cards="cards" :toggleShowAllMap="toggleShowAllMap" :isDesk="isDesk" />
