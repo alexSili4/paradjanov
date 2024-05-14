@@ -103,6 +103,10 @@ function onMouseDown(e) {
 }
 
 function onTouchmove(e) {
+  if (activeArticle.value) {
+    return;
+  }
+
   const targetElement = mapRef.value;
   const { clientX, clientY } = e.changedTouches[0];
   const { shouldUpdatePositionTop, shouldUpdatePositionLeft, leftPosition, topPosition } = getPositionProps({
@@ -123,10 +127,6 @@ function onTouchmove(e) {
 }
 
 function onTouchstart(e) {
-  if (activeArticle.value) {
-    return;
-  }
-
   const targetElement = mapRef.value;
   isDraggableRef.value = true;
   const { left, top } = getContentGeometry(targetElement);

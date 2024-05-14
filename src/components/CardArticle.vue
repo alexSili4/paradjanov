@@ -23,27 +23,22 @@ defineProps({
   transition: transform var(--transition-duration-and-func);
 }
 
-.container-enter-from,
-.container-leave-to {
-  transform: translateX(100%);
-}
-
 .article-container {
   position: fixed;
   z-index: 100;
-  top: 0;
+  top: 200px;
   right: 0;
-  width: 726px;
-  height: 100%;
+  width: 100%;
+  height: calc(100% - 200px);
   background-color: var(--white-color);
-  padding: 92px 48px 56px;
+  padding: 24px 16px;
   overflow-y: auto;
 }
 
 .close-btn {
   position: absolute;
   top: 24px;
-  right: 48px;
+  right: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -60,6 +55,32 @@ defineProps({
   background-color: #3d3f7f;
 }
 
-.close-btn-icon {
+@media screen and (min-width: 1280px) {
+  .container-enter-from,
+  .container-leave-to {
+    transform: translateX(100%);
+  }
+
+  .article-container {
+    top: 0;
+    right: 0;
+    width: 726px;
+    height: 100%;
+    padding: 92px 48px 56px;
+  }
+
+  .close-btn {
+    top: 24px;
+    right: 48px;
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media screen and (max-width: 1279px) {
+  .container-enter-from,
+  .container-leave-to {
+    transform: translateY(100%);
+  }
 }
 </style>
