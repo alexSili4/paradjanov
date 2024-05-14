@@ -9,12 +9,12 @@ import LeafIconMobile from 'icons/parajanovsLife/leaf-mobile.svg?component';
 import { cardValidator } from 'validator';
 import ShipToLeftIconDesk from 'icons/parajanovsLife/ship-to-left-desk.svg?component';
 import ShipToRightIconDesk from 'icons/parajanovsLife/ship-to-right-desk.svg?component';
-import ParajanovFaceIconDesk from 'icons/parajanovsLife/parajanov-face-desk.svg?component';
 import QuoteIconDesk from 'icons/parajanovsLife/quote-desk.svg?component';
 import ShipToLeftIconMobile from 'icons/parajanovsLife/ship-to-left-mobile.svg?component';
 import ShipToRightIconMobile from 'icons/parajanovsLife/ship-to-right-mobile.svg?component';
-import ParajanovFaceIconMobile from 'icons/parajanovsLife/parajanov-face-mobile.svg?component';
 import QuoteIconMobile from 'icons/parajanovsLife/quote-mobile.svg?component';
+import { Vue3Lottie } from 'vue3-lottie';
+import parajanovsLife from 'animations/parajanovsLife.json';
 
 defineProps({
   isDesk: Boolean,
@@ -39,8 +39,6 @@ defineProps({
     <ShipToLeftIconMobile class="ship-to-left-icon" v-else />
     <ShipToRightIconDesk class="ship-to-right-icon" v-if="isDesk" />
     <ShipToRightIconMobile class="ship-to-right-icon" v-else />
-    <ParajanovFaceIconDesk class="parajanov-face-icon" v-if="isDesk" />
-    <ParajanovFaceIconMobile class="parajanov-face-icon" v-else />
     <QuoteIconDesk class="quote-icon" v-if="isDesk" />
     <QuoteIconMobile class="quote-icon" v-else />
     <span class="icon-btn-wrap">
@@ -53,6 +51,7 @@ defineProps({
       <NavArroWIconDesk class="nav-arrow-icon btn-icon" v-show="isDesk" />
       <span class="card-number">{{ card.number }}</span>
     </span>
+    <Vue3Lottie :animationData="parajanovsLife" :height="card.animation[0].height" :width="card.animation[0].width" class="animation-item" />
   </button>
 </template>
 
@@ -173,18 +172,24 @@ defineProps({
   display: block;
 }
 
-.parajanov-face-icon {
-  position: absolute;
-  top: 1px;
-  left: 0px;
-  display: block;
-}
-
 .quote-icon {
   position: absolute;
   top: 40px;
   left: 239px;
   display: block;
+}
+
+.animation-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+@media screen and (max-width: 1279px) {
+  .animation-item {
+    transform-origin: left top;
+    transform: scale(0.4277);
+  }
 }
 
 @media screen and (min-width: 1280px) {
@@ -267,6 +272,9 @@ defineProps({
   .quote-icon {
     top: 63px;
     left: 640px;
+  }
+
+  .animation-item {
   }
 }
 </style>

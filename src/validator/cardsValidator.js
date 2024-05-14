@@ -12,7 +12,9 @@ const cardsValidator = {
         keys.includes('number') &&
         typeof item.number === 'number' &&
         keys.includes('title') &&
-        typeof item.title === 'string'
+        typeof item.title === 'string' &&
+        keys.includes('animation') &&
+        typeof item.animation === 'object'
       );
     }),
 };
