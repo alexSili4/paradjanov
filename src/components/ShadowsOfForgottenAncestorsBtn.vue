@@ -14,7 +14,8 @@ defineProps({
   onCardBtnClick: {
     type: Function,
     required: true,
-  },  isDraggable: {
+  },
+  isDraggable: {
     type: Boolean,
     required: true,
   },
@@ -22,7 +23,7 @@ defineProps({
 </script>
 
 <template>
-  <button type="button" :class="['card-btn', { 'card-btn-disabled': isDraggable }]" @click="onCardBtnClick">
+  <button type="button" :class="['card-btn', { 'card-btn-disabled': isDraggable }]" @click="onCardBtnClick" :disabled="isDraggable">
     <LandIcon class="land-icon" />
     <CandlesIcon class="candles-icon" />
     <HeroesIcon class="heroes-icon" />

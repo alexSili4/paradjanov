@@ -27,7 +27,7 @@ defineProps({
 </script>
 
 <template>
-  <button type="button" :class="['card-btn', { 'card-btn-disabled': isDraggable }]" @click="onCardBtnClick">
+  <button type="button" :class="['card-btn', { 'card-btn-disabled': isDraggable }]" @click="onCardBtnClick" :disabled="isDraggable">
     <BodyIcon class="body-icon" />
     <FrameIcon class="frame-icon" />
     <TopGrapeIcon class="top-grape-icon" />

@@ -93,10 +93,6 @@ function onMouseDown(e) {
     return;
   }
 
-  if (e.target.closest('button')) {
-    e.preventDefault();
-  }
-
   const targetElement = mapRef.value;
   const { left, top } = getContentGeometry(targetElement);
   const { clientX, clientY } = e;
@@ -157,6 +153,7 @@ const onCloseArticleBtnClick = (e) => {
 };
 
 const onCardBtnClick = (e) => {
+  e.currentTarget.blur();
   const { cardId } = e.currentTarget.dataset;
   activeArticle.value = cardId;
 };

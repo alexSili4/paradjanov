@@ -29,7 +29,7 @@ defineProps({
 </script>
 
 <template>
-  <button type="button" :class="['card-btn', { 'card-btn-disabled': isDraggable }]" @click="onCardBtnClick">
+  <button type="button" :class="['card-btn', { 'card-btn-disabled': isDraggable }]" @click="onCardBtnClick" :disabled="isDraggable">
     <CometIcon class="comet-icon" />
     <LandIcon class="land-icon" />
     <LeftChickenIcon class="left-chicken-icon" />
