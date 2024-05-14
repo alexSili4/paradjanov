@@ -17,11 +17,19 @@ import SmallGrapeIcon from 'icons/garnetColor/small-grape.svg?component';
 
 defineProps({
   card: cardValidator,
+  onCardBtnClick: {
+    type: Function,
+    required: true,
+  },
+  isDraggable: {
+    type: Boolean,
+    required: true,
+  },
 });
 </script>
 
 <template>
-  <button type="button" class="card-btn">
+  <button type="button" :class="['card-btn', { 'card-btn-disabled': isDraggable }]" @click="onCardBtnClick">
     <CometIcon class="comet-icon" />
     <LandIcon class="land-icon" />
     <LeftChickenIcon class="left-chicken-icon" />
@@ -54,6 +62,10 @@ defineProps({
   padding: 0;
   border: none;
   background-color: transparent;
+}
+
+.card-btn-disabled {
+  pointer-events: none;
 }
 
 .card-title-wrap {

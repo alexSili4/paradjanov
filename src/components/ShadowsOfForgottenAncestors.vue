@@ -5,13 +5,21 @@ import ShadowsOfForgottenAncestorsArticle from 'components/ShadowsOfForgottenAnc
 
 defineProps({
   card: cardValidator,
+  onCardBtnClick: {
+    type: Function,
+    required: true,
+  },
+  isDraggable: {
+    type: Boolean,
+    required: true,
+  },
 });
 </script>
 
 <template>
   <li class="map-item">
     <div class="map-item-card">
-      <ShadowsOfForgottenAncestorsBtn :card="card" />
+      <ShadowsOfForgottenAncestorsBtn :card="card" :data-card-id="card.id" :onCardBtnClick="onCardBtnClick" :isDraggable="isDraggable" />
       <ShadowsOfForgottenAncestorsArticle />
     </div>
   </li>

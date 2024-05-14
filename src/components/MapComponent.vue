@@ -10,6 +10,7 @@ import TastePreferences from 'components/TastePreferences.vue';
 import GlassesFromSilpo from 'components/GlassesFromSilpo.vue';
 import IngeniousCollages from 'components/IngeniousCollages.vue';
 import GarnetColor from 'components/GarnetColor.vue';
+import CardArticle from 'components/CardArticle.vue';
 
 const props = defineProps({
   isDesk: {
@@ -34,6 +35,7 @@ const leftRef = ref(0);
 const topRef = ref(0);
 const scaleRef = ref(1);
 const isDraggableRef = ref(false);
+const activeArticle = ref(null);
 
 onMounted(() => {
   const targetElement = mapRef.value;
@@ -66,6 +68,7 @@ function onResizeWindow() {
 }
 
 function onMouseMove(e) {
+  isDraggableRef.value = true;
   const targetElement = mapRef.value;
   const { clientX, clientY } = e;
   const { shouldUpdatePositionTop, shouldUpdatePositionLeft, leftPosition, topPosition } = getPositionProps({
@@ -86,12 +89,19 @@ function onMouseMove(e) {
 }
 
 function onMouseDown(e) {
+  if (activeArticle.value) {
+    return;
+  }
+
+  if (e.target.closest('button')) {
+    e.preventDefault();
+  }
+
   const targetElement = mapRef.value;
   const { left, top } = getContentGeometry(targetElement);
   const { clientX, clientY } = e;
 
   document.addEventListener('mousemove', onMouseMove);
-  isDraggableRef.value = true;
   offsetXRef.value = clientX - left;
   offsetYRef.value = clientY - top;
 }
@@ -117,6 +127,10 @@ function onTouchmove(e) {
 }
 
 function onTouchstart(e) {
+  if (activeArticle.value) {
+    return;
+  }
+
   const targetElement = mapRef.value;
   isDraggableRef.value = true;
   const { left, top } = getContentGeometry(targetElement);
@@ -137,7 +151,18 @@ function onTouchend() {
   isDraggableRef.value = false;
 }
 
+const onCloseArticleBtnClick = (e) => {
+  e.currentTarget.blur();
+  activeArticle.value = null;
+};
+
+const onCardBtnClick = (e) => {
+  const { cardId } = e.currentTarget.dataset;
+  activeArticle.value = cardId;
+};
+
 const toggleShowAllMap = (e) => {
+  e.currentTarget.blur();
   showAllMap.value = !showAllMap.value;
 
   if (showAllMap.value) {
@@ -150,17 +175,16 @@ const toggleShowAllMap = (e) => {
 
   topRef.value = showAllMap.value ? 0 : prevTopRef.value;
   leftRef.value = showAllMap.value ? 0 : prevLeftRef.value;
-
-  e.currentTarget.blur();
 };
 
 const getMapInlineStyles = () => {
   const scale = props.isDesk ? scaleRef.value : 1;
+  const cursor = activeArticle.value ? 'auto' : 'move';
 
   return {
     top: `${topRef.value}px`,
     left: `${leftRef.value}px`,
-    cursor: isDraggableRef.value ? 'grabbing' : 'move',
+    cursor: isDraggableRef.value ? 'grabbing' : cursor,
     transform: `scale(${scale})`,
   };
 };
@@ -174,21 +198,24 @@ const mapClassNames = computed(getMapClassNames);
 <template>
   <div class="map-container">
     <ul :class="mapClassNames" @mousedown="onMouseDown" @touchstart="onTouchstart" ref="mapRef" :style="mapInlineStyles">
-      <ParajanovsLife :isDesk="isDesk" :card="cards[0]" />
-      <ShadowsOfForgottenAncestors :card="cards[1]" />
-      <InspiredByParajanov :card="cards[2]" />
-      <TastePreferences :card="cards[3]" />
-      <GlassesFromSilpo :card="cards[4]" />
-      <IngeniousCollages :card="cards[5]" />
-      <GarnetColor :card="cards[6]" />
+      <ParajanovsLife :isDesk="isDesk" :card="cards[0]" :onCardBtnClick="onCardBtnClick" :isDraggable="isDraggableRef" />
+      <ShadowsOfForgottenAncestors :card="cards[1]" :onCardBtnClick="onCardBtnClick" :isDraggable="isDraggableRef" />
+      <InspiredByParajanov :card="cards[2]" :onCardBtnClick="onCardBtnClick" :isDraggable="isDraggableRef" />
+      <TastePreferences :card="cards[3]" :onCardBtnClick="onCardBtnClick" :isDraggable="isDraggableRef" />
+      <GlassesFromSilpo :card="cards[4]" :onCardBtnClick="onCardBtnClick" :isDraggable="isDraggableRef" />
+      <IngeniousCollages :card="cards[5]" :onCardBtnClick="onCardBtnClick" :isDraggable="isDraggableRef" />
+      <GarnetColor :card="cards[6]" :onCardBtnClick="onCardBtnClick" :isDraggable="isDraggableRef" />
     </ul>
   </div>
   <NavBar :cards="cards" :toggleShowAllMap="toggleShowAllMap" :isDesk="isDesk" />
+  <CardArticle :isShow="Boolean(activeArticle)" :onCloseBtnClick="onCloseArticleBtnClick">тут буде стаття</CardArticle>
 </template>
 
 <style scoped>
 .map-container {
   position: relative;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .map {
@@ -256,13 +283,6 @@ const mapClassNames = computed(getMapClassNames);
       0 0,
       0 0,
       0 0;
-  }
-}
-
-@media screen and (max-width: 1279px) {
-  .map-container {
-    height: 100vh;
-    overflow: hidden;
   }
 }
 </style>

@@ -15,11 +15,19 @@ import TopGrapeIcon from 'icons/ingeniousCollages/top-grape.svg?component';
 
 defineProps({
   card: cardValidator,
+  onCardBtnClick: {
+    type: Function,
+    required: true,
+  },
+  isDraggable: {
+    type: Boolean,
+    required: true,
+  },
 });
 </script>
 
 <template>
-  <button type="button" class="card-btn">
+  <button type="button" :class="['card-btn', { 'card-btn-disabled': isDraggable }]" @click="onCardBtnClick">
     <BodyIcon class="body-icon" />
     <FrameIcon class="frame-icon" />
     <TopGrapeIcon class="top-grape-icon" />
@@ -50,6 +58,10 @@ defineProps({
   padding: 0;
   border: none;
   background-color: transparent;
+}
+
+.card-btn-disabled {
+  pointer-events: none;
 }
 
 .card-title-wrap {

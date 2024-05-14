@@ -5,13 +5,21 @@ import GlassesFromSilpoArticle from 'components/GlassesFromSilpoArticle.vue';
 
 defineProps({
   card: cardValidator,
+  onCardBtnClick: {
+    type: Function,
+    required: true,
+  },
+  isDraggable: {
+    type: Boolean,
+    required: true,
+  },
 });
 </script>
 
 <template>
   <li class="map-item">
     <div class="map-item-card">
-      <GlassesFromSilpoBtn :card="card" />
+      <GlassesFromSilpoBtn :card="card" :data-card-id="card.id" :onCardBtnClick="onCardBtnClick" :isDraggable="isDraggable" />
       <GlassesFromSilpoArticle />
     </div>
   </li>

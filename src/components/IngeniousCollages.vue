@@ -5,13 +5,21 @@ import IngeniousCollagesArticle from 'components/IngeniousCollagesArticle.vue';
 
 defineProps({
   card: cardValidator,
+  onCardBtnClick: {
+    type: Function,
+    required: true,
+  },
+  isDraggable: {
+    type: Boolean,
+    required: true,
+  },
 });
 </script>
 
 <template>
   <li class="map-item">
     <div class="map-item-card">
-      <IngeniousCollagesBtn :card="card" />
+      <IngeniousCollagesBtn :card="card" :data-card-id="card.id" :onCardBtnClick="onCardBtnClick" :isDraggable="isDraggable" />
       <IngeniousCollagesArticle />
     </div>
   </li>

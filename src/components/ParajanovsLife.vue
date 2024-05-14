@@ -9,16 +9,22 @@ defineProps({
     type: Boolean,
     required: true,
   },
+  onCardBtnClick: {
+    type: Function,
+    required: true,
+  },
+  isDraggable: {
+    type: Boolean,
+    required: true,
+  },
 });
 </script>
 
 <template>
   <li class="map-item">
     <div class="map-item-card">
-      <ParajanovsLifeBtn :isDesk="isDesk" :card="card" />
+      <ParajanovsLifeBtn :isDesk="isDesk" :card="card" :data-card-id="card.id" :onCardBtnClick="onCardBtnClick" :isDraggable="isDraggable" />
       <ParajanovsLifeArticle />
-      <div class="no-hover"></div>
-      <div></div>
     </div>
   </li>
 </template>

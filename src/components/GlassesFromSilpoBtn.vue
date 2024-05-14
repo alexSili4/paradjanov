@@ -13,11 +13,19 @@ import TowelIcon from 'icons/glassesFromSilpo/towel.svg?component';
 
 defineProps({
   card: cardValidator,
+  onCardBtnClick: {
+    type: Function,
+    required: true,
+  },
+  isDraggable: {
+    type: Boolean,
+    required: true,
+  },
 });
 </script>
 
 <template>
-  <button type="button" class="card-btn">
+  <button type="button" :class="['card-btn', { 'card-btn-disabled': isDraggable }]" @click="onCardBtnClick">
     <span class="card-title-wrap">
       <span class="card-title">{{ card.title }}</span>
     </span>
@@ -46,6 +54,10 @@ defineProps({
   padding: 0;
   border: none;
   background-color: transparent;
+}
+
+.card-btn-disabled {
+  pointer-events: none;
 }
 
 .card-title-wrap {

@@ -5,13 +5,21 @@ import InspiredByParajanovArticle from 'components/InspiredByParajanovArticle.vu
 
 defineProps({
   card: cardValidator,
+  onCardBtnClick: {
+    type: Function,
+    required: true,
+  },
+  isDraggable: {
+    type: Boolean,
+    required: true,
+  },
 });
 </script>
 
 <template>
   <li class="map-item">
     <div class="map-item-card">
-      <InspiredByParajanovBtn :card="card" />
+      <InspiredByParajanovBtn :card="card" :data-card-id="card.id" :onCardBtnClick="onCardBtnClick" :isDraggable="isDraggable" />
       <InspiredByParajanovArticle />
     </div>
   </li>
