@@ -9,6 +9,7 @@ import InspiredByParajanov from 'components/InspiredByParajanov.vue';
 import TastePreferences from 'components/TastePreferences.vue';
 import GlassesFromSilpo from 'components/GlassesFromSilpo.vue';
 import IngeniousCollages from 'components/IngeniousCollages.vue';
+import GarnetColor from 'components/GarnetColor.vue';
 
 const props = defineProps({
   isDesk: {
@@ -179,6 +180,7 @@ const mapClassNames = computed(getMapClassNames);
       <TastePreferences :card="cards[3]" />
       <GlassesFromSilpo :card="cards[4]" />
       <IngeniousCollages :card="cards[5]" />
+      <GarnetColor :card="cards[6]" />
     </ul>
   </div>
   <NavBar :cards="cards" :toggleShowAllMap="toggleShowAllMap" :isDesk="isDesk" />
