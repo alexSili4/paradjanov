@@ -3,7 +3,7 @@ import { cardsValidator } from 'validator';
 
 defineProps({
   cards: cardsValidator,
-  activeCard: { type: String, required: true },
+  activeCardId: { type: String, required: true },
   isDesk: { type: Boolean, required: true },
   onNavBtnClick: {
     type: Function,
@@ -15,7 +15,7 @@ defineProps({
 <template>
   <ul class="cards-number-list" v-show="isDesk">
     <li class="cards-number-list-item" :key="id" v-for="{ id } in cards">
-      <button type="button" :class="['cards-number-btn', { active: id === activeCard }]" @click="onNavBtnClick" :data-card-id="id">
+      <button type="button" :class="['cards-number-btn', { active: id === activeCardId }]" @click="onNavBtnClick" :data-card-id="id">
         <span class="cards-number-btn-title">{{ id }}</span>
       </button>
     </li>

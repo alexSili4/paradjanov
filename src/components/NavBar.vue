@@ -5,17 +5,18 @@ import ZoomInMap from 'icons/navBar/zoom-in-map.svg?component';
 import MenuDesk from 'icons/navBar/menu-desk.svg?component';
 import MenuMobile from 'icons/navBar/menu-mobile.svg?component';
 import BurgerMenu from 'components/BurgerMenu.vue';
-import { ref, onBeforeMount, computed, watch } from 'vue';
+import { ref, onBeforeMount, computed } from 'vue';
 import { cardsValidator } from 'validator';
 import MobileMenu from 'components/MobileMenu.vue';
 import router from 'router';
-import { useRoute } from 'vue-router';
 
-const route = useRoute();
 const isOpenMenu = ref(false);
-const cardIdRef = ref(null);
 const props = defineProps({
   cards: cardsValidator,
+  activeCardId: {
+    type: String,
+    required: true,
+  },
   toggleShowAllMap: {
     type: Function,
     required: true,
@@ -30,18 +31,7 @@ onBeforeMount(() => {
   if (props.isDesk) {
     isOpenMenu.value = true;
   }
-
-  const defaultCardId = props.cards[0].id;
-  const { cardId } = route.query;
-  cardIdRef.value = cardId || defaultCardId;
 });
-
-watch(
-  () => route.query,
-  (newQuery) => {
-    cardIdRef.value = newQuery.cardId;
-  }
-);
 
 const onZoomBtnClick = (e) => {
   isOpenMenu.value = !isOpenMenu.value;
@@ -86,7 +76,7 @@ const showMobileMenu = computed(getShowMobileMenu);
         <MenuMobile class="menu-btn-icon" v-else />
         <BurgerMenu :isOpenMenu="isOpenMenu" :isDesk="isDesk" />
       </button>
-      <CardsNumberList :cards="cards" :isDesk="isDesk" :onNavBtnClick="onNavBtnClick" :activeCard="cardIdRef" />
+      <CardsNumberList :cards="cards" :isDesk="isDesk" :onNavBtnClick="onNavBtnClick" :activeCardId="activeCardId" />
     </div>
     <button type="button" :class="navBtnClassNames" v-show="!isDesk">
       <Arrow class="nav-btn-icon" />

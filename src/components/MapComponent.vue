@@ -3,7 +3,7 @@ import NavBar from 'components/NavBar.vue';
 import ParajanovsLife from 'components/ParajanovsLife.vue';
 import ShadowsOfForgottenAncestors from 'components/ShadowsOfForgottenAncestors.vue';
 import { cards } from 'constants';
-import { ref, onMounted, computed } from 'vue';
+import { ref, onMounted, computed, watch, onBeforeMount } from 'vue';
 import { getPositionProps, getContentGeometry, getScale, getScaleOnResizeWindow } from 'utils';
 import InspiredByParajanov from 'components/InspiredByParajanov.vue';
 import TastePreferences from 'components/TastePreferences.vue';
@@ -11,6 +11,9 @@ import GlassesFromSilpo from 'components/GlassesFromSilpo.vue';
 import IngeniousCollages from 'components/IngeniousCollages.vue';
 import GarnetColor from 'components/GarnetColor.vue';
 import CardArticle from 'components/CardArticle.vue';
+import { useRoute } from 'vue-router';
+
+const route = useRoute();
 
 const props = defineProps({
   isDesk: {
@@ -36,6 +39,13 @@ const topRef = ref(0);
 const scaleRef = ref(1);
 const isDraggableRef = ref(false);
 const activeArticle = ref(null);
+const activeCardIdRef = ref(null);
+
+onBeforeMount(() => {
+  const defaultCardId = cards[0].id;
+  const { cardId } = route.query;
+  activeCardIdRef.value = cardId || defaultCardId;
+});
 
 onMounted(() => {
   const targetElement = mapRef.value;
@@ -43,6 +53,41 @@ onMounted(() => {
   mapOriginalWidthRef.value = width;
   mapOriginalHeightRef.value = height;
 });
+
+const onQueriesChangeDependencies = () => route.query;
+const onQueriesChange = ({ cardId }) => {
+  activeCardIdRef.value = cardId;
+};
+watch(onQueriesChangeDependencies, onQueriesChange);
+
+const onActiveCardIdChangeDependencies = () => [activeCardIdRef.value, mapRef.value];
+const onActiveCardIdChange = () => {
+  if (!mapRef.value) {
+    return;
+  }
+
+  const targetCard = mapRef.value.querySelector(`[data-card-id=${activeCardIdRef.value}]`);
+  const { widthCenter, heightCenter } = getContentGeometry(targetCard);
+  const { width: mapWidth } = getContentGeometry(mapRef.value);
+  const { innerHeight, innerWidth } = window;
+  const viewportHeightCenter = innerHeight / 2;
+  const viewportWidthCenter = innerWidth / 2;
+  const targetElementWidthCenter = viewportWidthCenter - widthCenter;
+  const targetElementHeightCenter = viewportHeightCenter - heightCenter;
+  const totOffset = topRef.value + targetElementHeightCenter;
+  let leftOffset = leftRef.value + targetElementWidthCenter;
+  topRef.value = totOffset;
+  const mapRightSide = mapWidth + leftOffset;
+  const rightGap = innerWidth - mapRightSide;
+
+  if (rightGap > 0) {
+    console.log(rightGap);
+    leftOffset = leftOffset + rightGap;
+  }
+
+  leftRef.value = leftOffset;
+};
+watch(onActiveCardIdChangeDependencies, onActiveCardIdChange);
 
 function onResizeWindow() {
   const targetElement = mapRef.value;
@@ -147,6 +192,11 @@ function onTouchend() {
   isDraggableRef.value = false;
 }
 
+// const setFocusOnActiveCard = () => {
+// const targetElement = mapRef.value.querySelector(`[data-card-id=${activeCardIdRef.value}]`);
+// console.log(targetElement);
+// };
+
 const onCloseArticleBtnClick = (e) => {
   e.currentTarget.blur();
   activeArticle.value = null;
@@ -204,7 +254,7 @@ const mapClassNames = computed(getMapClassNames);
       <GarnetColor :card="cards[6]" :onCardBtnClick="onCardBtnClick" :isDraggable="isDraggableRef" />
     </ul>
   </div>
-  <NavBar :cards="cards" :toggleShowAllMap="toggleShowAllMap" :isDesk="isDesk" />
+  <NavBar :cards="cards" :toggleShowAllMap="toggleShowAllMap" :isDesk="isDesk" :activeCardId="activeCardIdRef" />
   <CardArticle :isShow="Boolean(activeArticle)" :onCloseBtnClick="onCloseArticleBtnClick"
     >Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iure aspernatur quaerat doloremque perferendis rerum tempore, voluptatibus quasi tempora? Vero ipsa eius eos labore impedit architecto ut
     totam quod officia! Ipsa veritatis obcaecati quos id sequi maiores sunt, eius, minima nam labore blanditiis itaque ipsam. Facilis maxime consectetur nisi quis nostrum doloremque nemo laboriosam
