@@ -3,6 +3,7 @@ import { cardsValidator } from 'validator';
 
 defineProps({
   cards: cardsValidator,
+  activeCard: { type: String, required: true },
   isDesk: { type: Boolean, required: true },
   onNavBtnClick: {
     type: Function,
@@ -14,7 +15,7 @@ defineProps({
 <template>
   <ul class="cards-number-list" v-show="isDesk">
     <li class="cards-number-list-item" :key="id" v-for="{ id } in cards">
-      <button type="button" class="cards-number-btn" @click="onNavBtnClick" :data-card-id="id">
+      <button type="button" :class="['cards-number-btn', { active: id === activeCard }]" @click="onNavBtnClick" :data-card-id="id">
         <span class="cards-number-btn-title">{{ id }}</span>
       </button>
     </li>
@@ -60,11 +61,11 @@ defineProps({
   transition: transform var(--transition-duration-and-func);
 }
 
-.cards-number-btn:is(:hover, :focus) {
+.cards-number-btn:is(:hover, :focus, .active) {
   border-color: var(--white-color);
 }
 
-.cards-number-btn:is(:hover, :focus) .cards-number-btn-title {
+.cards-number-btn:is(:hover, :focus, .active) .cards-number-btn-title {
   transform: translateX(-50%) translateY(-1.5px) scale(0.83);
   transform-origin: top center;
 }
