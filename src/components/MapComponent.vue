@@ -68,19 +68,20 @@ const onActiveCardIdChange = () => {
 
   const targetCard = mapRef.value.querySelector(`[data-card-id=${activeCardIdRef.value}]`);
   const { widthCenter, heightCenter } = getContentGeometry(targetCard);
-  const { width: mapWidth, left } = getContentGeometry(mapRef.value);
+  const { width: mapWidth, height: mapHeight } = getContentGeometry(mapRef.value);
   const { innerHeight, innerWidth } = window;
   const viewportHeightCenter = innerHeight / 2;
   const viewportWidthCenter = innerWidth / 2;
   const targetElementWidthCenter = viewportWidthCenter - widthCenter;
   const targetElementHeightCenter = viewportHeightCenter - heightCenter;
-  const totOffset = topRef.value + targetElementHeightCenter;
+  let topOffset = topRef.value + targetElementHeightCenter;
   let leftOffset = leftRef.value + targetElementWidthCenter;
-  topRef.value = totOffset;
   const mapRightSide = mapWidth + leftOffset;
+  const mapBottomSide = mapHeight + topOffset;
   const rightGap = innerWidth - mapRightSide;
   const leftGap = leftOffset;
-  // console.log('left', viewportHeightCenter - targetElementWidthCenter);
+  const topGap = topOffset;
+  const bottomGap = innerHeight - mapBottomSide;
 
   if (rightGap > 0) {
     leftOffset = leftOffset + rightGap;
@@ -90,6 +91,15 @@ const onActiveCardIdChange = () => {
     leftOffset = leftOffset - leftGap;
   }
 
+  if (topGap > 0) {
+    topOffset = topOffset - topGap;
+  }
+
+  if (bottomGap > 0) {
+    topOffset = topOffset + bottomGap;
+  }
+
+  topRef.value = topOffset;
   leftRef.value = leftOffset;
 };
 watch(onActiveCardIdChangeDependencies, onActiveCardIdChange);
