@@ -14,6 +14,8 @@ export default defineConfig({
       utils: '/src/utils',
       validator: '/src/validator',
       animations: '/src/animations',
+      views: '/src/views',
+      router: '/src/router',
     },
   },
 });

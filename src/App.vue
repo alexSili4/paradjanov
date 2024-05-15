@@ -1,8 +1,8 @@
 <script setup>
-import MapComponent from 'components/MapComponent.vue';
 import Header from 'components/HeaderComponent.vue';
 import { onBeforeMount, ref } from 'vue';
 import { getIsDesk } from 'utils';
+import { RouterView } from 'vue-router';
 
 window.addEventListener('resize', onWindowResize);
 
@@ -20,7 +20,7 @@ function onWindowResize() {
 <template>
   <Header :isDesk="isDeskRef" />
   <main>
-    <MapComponent :isDesk="isDeskRef" />
+    <router-view :isDesk="isDeskRef" />
   </main>
 </template>
 

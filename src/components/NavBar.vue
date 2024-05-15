@@ -8,6 +8,7 @@ import BurgerMenu from 'components/BurgerMenu.vue';
 import { ref, onBeforeMount, computed } from 'vue';
 import { cardsValidator } from 'validator';
 import MobileMenu from 'components/MobileMenu.vue';
+import router from 'router';
 
 const isOpenMenu = ref(false);
 const props = defineProps({
@@ -33,20 +34,21 @@ const onZoomBtnClick = (e) => {
   e.currentTarget.blur();
 };
 
-const getMenuBtnClassNames = () => [
-  'menu-btn',
-  { 'menu-open': isOpenMenu.value },
-];
+const getMenuBtnClassNames = () => ['menu-btn', { 'menu-open': isOpenMenu.value }];
 
-const getMenuBtnWrapClassNames = () => [
-  'menu-btn-wrap',
-  { 'menu-open': isOpenMenu.value },
-];
+const getMenuBtnWrapClassNames = () => ['menu-btn-wrap', { 'menu-open': isOpenMenu.value }];
 
-const getNavBtnClassNames = () => [
-  'nav-btn',
-  { 'menu-open': isOpenMenu.value },
-];
+const getNavBtnClassNames = () => ['nav-btn', { 'menu-open': isOpenMenu.value }];
+
+const onNavBtnClick = (e) => {
+  e.currentTarget.blur();
+  const { cardId } = e.currentTarget.dataset;
+  router.push({ path: '/', query: { cardId } });
+
+  if (!props.isDesk) {
+    isOpenMenu.value = false;
+  }
+};
 
 const getShowMobileMenu = () => isOpenMenu.value && !props.isDesk;
 
@@ -58,12 +60,7 @@ const showMobileMenu = computed(getShowMobileMenu);
 
 <template>
   <div class="nav-bar">
-    <button
-      type="button"
-      class="zoom-btn"
-      @click="toggleShowAllMap"
-      v-show="isDesk"
-    >
+    <button type="button" class="zoom-btn" @click="toggleShowAllMap" v-show="isDesk">
       <ZoomInMap class="zoom-btn-icon" />
     </button>
     <button type="button" :class="navBtnClassNames" v-show="!isDesk">
@@ -75,14 +72,14 @@ const showMobileMenu = computed(getShowMobileMenu);
         <MenuMobile class="menu-btn-icon" v-else />
         <BurgerMenu :isOpenMenu="isOpenMenu" :isDesk="isDesk" />
       </button>
-      <CardsNumberList :cards="cards" :isDesk="isDesk" />
+      <CardsNumberList :cards="cards" :isDesk="isDesk" :onNavBtnClick="onNavBtnClick" />
     </div>
     <button type="button" :class="navBtnClassNames" v-show="!isDesk">
       <Arrow class="nav-btn-icon" />
     </button>
     <div class="zoom-btn fake-btn" v-show="isDesk"></div>
   </div>
-  <MobileMenu :cards="cards" :showMobileMenu="showMobileMenu" />
+  <MobileMenu :cards="cards" :showMobileMenu="showMobileMenu" :onNavBtnClick="onNavBtnClick" />
 </template>
 
 <style scoped>

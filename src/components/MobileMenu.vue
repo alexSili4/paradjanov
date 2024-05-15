@@ -11,6 +11,10 @@ import ShadowsOfForgottenAncestorsIcon from 'icons/mobileMenu/shadows-of-forgott
 defineProps({
   cards: cardsValidator,
   showMobileMenu: Boolean,
+  onNavBtnClick: {
+    type: Function,
+    required: true,
+  },
 });
 </script>
 
@@ -18,45 +22,20 @@ defineProps({
   <Transition name="mobile-menu">
     <div class="mobile-menu" v-show="showMobileMenu">
       <ul class="mobile-menu-list">
-        <li
-          class="mobile-menu-list-item"
-          :key="index"
-          v-for="({ title, number }, index) in cards"
-        >
-          <a class="mobile-menu-link" href="#">
+        <li class="mobile-menu-list-item" :key="index" v-for="({ title, number, id }, index) in cards">
+          <button type="button" class="mobile-menu-btn" @click="onNavBtnClick" :data-card-id="id">
             <span class="mobile-menu-link-text">
               <span class="mobile-menu-link-text-number">{{ number }}.</span>
               <span class="mobile-menu-link-text-title">{{ title }}</span>
             </span>
-            <ParajanovsLifeIcon
-              v-show="number === 1"
-              class="mobile-menu-link-icon"
-            />
-            <ShadowsOfForgottenAncestorsIcon
-              v-show="number === 2"
-              class="mobile-menu-link-icon"
-            />
-            <InspiredByParajanovIcon
-              v-show="number === 3"
-              class="mobile-menu-link-icon"
-            />
-            <TastePreferencesIcon
-              v-show="number === 4"
-              class="mobile-menu-link-icon"
-            />
-            <GlassesFromSilpoIcon
-              v-show="number === 5"
-              class="mobile-menu-link-icon"
-            />
-            <IngeniousCollagesIcon
-              v-show="number === 6"
-              class="mobile-menu-link-icon"
-            />
-            <GarnetColorIcon
-              v-show="number === 7"
-              class="mobile-menu-link-icon"
-            />
-          </a>
+            <ParajanovsLifeIcon v-show="number === 1" class="mobile-menu-link-icon" />
+            <ShadowsOfForgottenAncestorsIcon v-show="number === 2" class="mobile-menu-link-icon" />
+            <InspiredByParajanovIcon v-show="number === 3" class="mobile-menu-link-icon" />
+            <TastePreferencesIcon v-show="number === 4" class="mobile-menu-link-icon" />
+            <GlassesFromSilpoIcon v-show="number === 5" class="mobile-menu-link-icon" />
+            <IngeniousCollagesIcon v-show="number === 6" class="mobile-menu-link-icon" />
+            <GarnetColorIcon v-show="number === 7" class="mobile-menu-link-icon" />
+          </button>
         </li>
       </ul>
     </div>
@@ -91,10 +70,14 @@ defineProps({
   gap: 33px;
 }
 
-.mobile-menu-link {
+.mobile-menu-btn {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  text-align: left;
+  padding: 0;
+  border: none;
+  background-color: transparent;
 }
 
 .mobile-menu-link-text {
