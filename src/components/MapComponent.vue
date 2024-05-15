@@ -4,7 +4,7 @@ import ParajanovsLife from 'components/ParajanovsLife.vue';
 import ShadowsOfForgottenAncestors from 'components/ShadowsOfForgottenAncestors.vue';
 import { cards } from 'constants';
 import { ref, onMounted, computed, watch, onBeforeMount } from 'vue';
-import { getPositionProps, getContentGeometry, getScale, getScaleOnResizeWindow } from 'utils';
+import { getPositionProps, getContentGeometry, getScale, getScaleOnResizeWindow, setFocusOnActiveCard } from 'utils';
 import InspiredByParajanov from 'components/InspiredByParajanov.vue';
 import TastePreferences from 'components/TastePreferences.vue';
 import GlassesFromSilpo from 'components/GlassesFromSilpo.vue';
@@ -62,42 +62,12 @@ watch(onQueriesChangeDependencies, onQueriesChange);
 
 const onActiveCardIdChangeDependencies = () => [activeCardIdRef.value, mapRef.value];
 const onActiveCardIdChange = () => {
-  if (!mapRef.value) {
+  const container = mapRef.value;
+  if (!container) {
     return;
   }
 
-  const targetCard = mapRef.value.querySelector(`[data-card-id=${activeCardIdRef.value}]`);
-  const { widthCenter, heightCenter } = getContentGeometry(targetCard);
-  const { width: mapWidth, height: mapHeight } = getContentGeometry(mapRef.value);
-  const { innerHeight, innerWidth } = window;
-  const viewportHeightCenter = innerHeight / 2;
-  const viewportWidthCenter = innerWidth / 2;
-  const targetElementWidthCenter = viewportWidthCenter - widthCenter;
-  const targetElementHeightCenter = viewportHeightCenter - heightCenter;
-  let topOffset = topRef.value + targetElementHeightCenter;
-  let leftOffset = leftRef.value + targetElementWidthCenter;
-  const mapRightSide = mapWidth + leftOffset;
-  const mapBottomSide = mapHeight + topOffset;
-  const rightGap = innerWidth - mapRightSide;
-  const leftGap = leftOffset;
-  const topGap = topOffset;
-  const bottomGap = innerHeight - mapBottomSide;
-
-  if (rightGap > 0) {
-    leftOffset = leftOffset + rightGap;
-  }
-
-  if (leftGap > 0) {
-    leftOffset = leftOffset - leftGap;
-  }
-
-  if (topGap > 0) {
-    topOffset = topOffset - topGap;
-  }
-
-  if (bottomGap > 0) {
-    topOffset = topOffset + bottomGap;
-  }
+  const { topOffset, leftOffset } = setFocusOnActiveCard({ container, activeCardId: activeCardIdRef.value, top: topRef.value, left: leftRef.value });
 
   topRef.value = topOffset;
   leftRef.value = leftOffset;
