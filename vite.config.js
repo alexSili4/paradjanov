@@ -16,6 +16,7 @@ export default defineConfig({
       animations: '/src/animations',
       views: '/src/views',
       router: '/src/router',
+      fonts: '/src/fonts',
     },
   },
 });
