@@ -76,6 +76,8 @@ defineProps({
 }
 
 .card-title {
+  display: inline-block;
+  width: 355px;
   color: #353b3f;
   font-family: Shnobel;
   font-size: 90px;

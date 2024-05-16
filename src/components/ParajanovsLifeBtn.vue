@@ -31,16 +31,16 @@ defineProps({
 </script>
 
 <template>
+  <ShipToLeftIconDesk class="ship-to-left-icon" v-if="isDesk" />
+  <ShipToLeftIconMobile class="ship-to-left-icon" v-else />
+  <ShipToRightIconDesk class="ship-to-right-icon" v-if="isDesk" />
+  <ShipToRightIconMobile class="ship-to-right-icon" v-else />
+  <QuoteIconDesk class="quote-icon" v-if="isDesk" />
+  <QuoteIconMobile class="quote-icon" v-else />
   <button type="button" :class="['card-btn', { 'card-btn-disabled': isDraggable }]" @click="onCardBtnClick" :disabled="isDraggable">
     <span class="card-title-wrap">
       <span class="card-title">{{ card.title }}</span>
     </span>
-    <ShipToLeftIconDesk class="ship-to-left-icon" v-if="isDesk" />
-    <ShipToLeftIconMobile class="ship-to-left-icon" v-else />
-    <ShipToRightIconDesk class="ship-to-right-icon" v-if="isDesk" />
-    <ShipToRightIconMobile class="ship-to-right-icon" v-else />
-    <QuoteIconDesk class="quote-icon" v-if="isDesk" />
-    <QuoteIconMobile class="quote-icon" v-else />
     <span class="icon-btn-wrap">
       <LeafIconDesk class="leaf-icon btn-icon" v-if="isDesk" />
       <LeafIconMobile class="leaf-icon btn-icon" v-else />
@@ -51,8 +51,8 @@ defineProps({
       <NavArroWIconDesk class="nav-arrow-icon btn-icon" v-show="isDesk" />
       <span class="card-number">{{ card.number }}</span>
     </span>
-    <Vue3Lottie :animationData="parajanovsLife" :height="card.animation[0].height" :width="card.animation[0].width" class="animation-item" />
   </button>
+  <Vue3Lottie :animationData="parajanovsLife" :height="card.animation[0].height" :width="card.animation[0].width" class="animation-item" />
 </template>
 
 <style scoped>
