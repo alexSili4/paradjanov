@@ -5,12 +5,18 @@ import ZoomInMap from 'icons/navBar/zoom-in-map.svg?component';
 import MenuDesk from 'icons/navBar/menu-desk.svg?component';
 import MenuMobile from 'icons/navBar/menu-mobile.svg?component';
 import BurgerMenu from 'components/BurgerMenu.vue';
-import { ref, onBeforeMount, computed } from 'vue';
+import { ref, onBeforeMount, computed, watch } from 'vue';
 import { cardsValidator } from 'validator';
 import MobileMenu from 'components/MobileMenu.vue';
 import router from 'router';
+import { useRoute } from 'vue-router';
+import { getPrevAndNextCardId } from 'utils';
+
+const route = useRoute();
 
 const isOpenMenu = ref(false);
+const nextCardIdRef = ref(null);
+const prevCardIdRef = ref(null);
 const props = defineProps({
   cards: cardsValidator,
   activeCardId: {
@@ -31,7 +37,22 @@ onBeforeMount(() => {
   if (props.isDesk) {
     isOpenMenu.value = true;
   }
+
+  const defaultCardId = props.cards[0].id;
+  const query = route.query;
+  const cardId = query.cardId || defaultCardId;
+  const { prevCardId, nextCardId } = getPrevAndNextCardId(cardId);
+  prevCardIdRef.value = prevCardId;
+  nextCardIdRef.value = nextCardId;
 });
+
+const onActiveCardIdChangeDependencies = () => route.query;
+const onActiveCardIdChange = ({ cardId }) => {
+  const { prevCardId, nextCardId } = getPrevAndNextCardId(cardId);
+  prevCardIdRef.value = prevCardId;
+  nextCardIdRef.value = nextCardId;
+};
+watch(onActiveCardIdChangeDependencies, onActiveCardIdChange);
 
 const onZoomBtnClick = (e) => {
   isOpenMenu.value = !isOpenMenu.value;
@@ -67,7 +88,7 @@ const showMobileMenu = computed(getShowMobileMenu);
     <button type="button" class="zoom-btn" @click="toggleShowAllMap" v-show="isDesk">
       <ZoomInMap class="zoom-btn-icon" />
     </button>
-    <button type="button" :class="navBtnClassNames" v-show="!isDesk">
+    <button type="button" :class="navBtnClassNames" v-show="!isDesk" :data-card-id="prevCardIdRef" @click="onNavBtnClick">
       <Arrow class="nav-btn-icon prev-btn-icon" />
     </button>
     <div :class="menuBtnWrapClassNames">
@@ -78,7 +99,7 @@ const showMobileMenu = computed(getShowMobileMenu);
       </button>
       <CardsNumberList :cards="cards" :isDesk="isDesk" :onNavBtnClick="onNavBtnClick" :activeCardId="activeCardId" />
     </div>
-    <button type="button" :class="navBtnClassNames" v-show="!isDesk">
+    <button type="button" :class="navBtnClassNames" v-show="!isDesk" :data-card-id="nextCardIdRef" @click="onNavBtnClick">
       <Arrow class="nav-btn-icon" />
     </button>
     <div class="zoom-btn fake-btn" v-show="isDesk"></div>

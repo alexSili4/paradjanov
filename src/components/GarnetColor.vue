@@ -39,8 +39,8 @@ defineProps({
 
 @media screen and (max-width: 1279px) {
   .map-item {
-    /* top: 830px; */
-    /* left: 1325px; */
+    top: 840px;
+    left: 1950px;
     transform-origin: left top;
     transform: scale(0.4277);
   }

@@ -177,11 +177,6 @@ function onTouchend() {
   isDraggableRef.value = false;
 }
 
-// const setFocusOnActiveCard = () => {
-// const targetElement = mapRef.value.querySelector(`[data-card-id=${activeCardIdRef.value}]`);
-// console.log(targetElement);
-// };
-
 const onCloseArticleBtnClick = (e) => {
   e.currentTarget.blur();
   activeArticle.value = null;

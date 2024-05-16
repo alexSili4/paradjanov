@@ -6,3 +6,4 @@ export { default as getScaleOnResizeWindow } from './getScaleOnResizeWindow';
 export { default as setFocusOnActiveCard } from './setFocusOnActiveCard';
 export { default as getViewportParams } from './getViewportParams';
 export { default as getGap } from './getGap';
+export { default as getPrevAndNextCardId } from './getPrevAndNextCardId';
