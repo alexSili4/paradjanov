@@ -8,13 +8,19 @@ defineProps({
 </script>
 
 <template>
-  <Transition name="container">
-    <div class="article-container" v-show="isShow">
-      <button type="button" class="close-btn" @click="onCloseBtnClick">
-        <CloseBtnIcon class="close-btn-icon" />
-      </button>
-      <slot></slot></div
-  ></Transition>
+  <Teleport to="body">
+    <Transition name="container">
+      <div class="article-wrap" v-show="isShow">
+        <div class="article-decorative-element"></div>
+        <div class="article-container">
+          <button type="button" class="close-btn" @click="onCloseBtnClick">
+            <CloseBtnIcon class="close-btn-icon" />
+          </button>
+          <slot></slot>
+        </div>
+      </div>
+    </Transition>
+  </Teleport>
 </template>
 
 <style scoped>
@@ -23,7 +29,7 @@ defineProps({
   transition: transform var(--transition-duration-and-func);
 }
 
-.article-container {
+.article-wrap {
   position: fixed;
   z-index: 100;
   top: 200px;
@@ -31,6 +37,19 @@ defineProps({
   width: 100%;
   height: calc(100% - 200px);
   background-color: var(--white-color);
+}
+
+.article-decorative-element {
+  position: absolute;
+  top: -22px;
+  left: 0;
+  width: 100%;
+  height: 22px;
+  background-image: url('../icons/cardArticle/article-bg-mobile.svg');
+}
+
+.article-container {
+  height: 100%;
   padding: 24px 16px;
   overflow-y: auto;
 }
@@ -61,11 +80,17 @@ defineProps({
     transform: translateX(100%);
   }
 
-  .article-container {
+  .article-wrap {
+    position: fixed;
+    z-index: 100;
     top: 0;
     right: 0;
     width: 726px;
     height: 100%;
+    background-color: var(--white-color);
+  }
+
+  .article-container {
     padding: 92px 48px 56px;
   }
 

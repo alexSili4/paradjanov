@@ -2,9 +2,19 @@
 import { cardValidator } from 'validator';
 import GlassesFromSilpoBtn from 'components/GlassesFromSilpoBtn.vue';
 import GlassesFromSilpoArticle from 'components/GlassesFromSilpoArticle.vue';
+import CardArticle from 'components/CardArticle.vue';
+import { computed } from 'vue';
 
-defineProps({
+const props = defineProps({
   card: cardValidator,
+  activeArticle: {
+    type: [String, null],
+    required: true,
+  },
+  onCloseArticleBtnClick: {
+    type: Function,
+    required: true,
+  },
   onCardBtnClick: {
     type: Function,
     required: true,
@@ -14,13 +24,17 @@ defineProps({
     required: true,
   },
 });
+
+const isShow = computed(() => props.activeArticle === props.card.id);
 </script>
 
 <template>
   <li class="map-item">
     <div class="map-item-card">
       <GlassesFromSilpoBtn :card="card" :data-card-id="card.id" :onCardBtnClick="onCardBtnClick" :isDraggable="isDraggable" />
-      <GlassesFromSilpoArticle />
+      <CardArticle :isShow="isShow" :onCloseBtnClick="onCloseArticleBtnClick">
+        <GlassesFromSilpoArticle />
+      </CardArticle>
     </div>
   </li>
 </template>

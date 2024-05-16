@@ -10,7 +10,6 @@ import TastePreferences from 'components/TastePreferences.vue';
 import GlassesFromSilpo from 'components/GlassesFromSilpo.vue';
 import IngeniousCollages from 'components/IngeniousCollages.vue';
 import GarnetColor from 'components/GarnetColor.vue';
-import CardArticle from 'components/CardArticle.vue';
 import { useRoute } from 'vue-router';
 
 const route = useRoute();
@@ -38,7 +37,7 @@ const leftRef = ref(0);
 const topRef = ref(0);
 const scaleRef = ref(1);
 const isDraggableRef = ref(false);
-const activeArticle = ref(null);
+const activeArticleRef = ref(null);
 const activeCardIdRef = ref(null);
 
 onBeforeMount(() => {
@@ -119,7 +118,7 @@ function onMouseMove(e) {
 }
 
 function onMouseDown(e) {
-  if (activeArticle.value) {
+  if (activeArticleRef.value) {
     return;
   }
 
@@ -133,7 +132,7 @@ function onMouseDown(e) {
 }
 
 function onTouchmove(e) {
-  if (activeArticle.value) {
+  if (activeArticleRef.value) {
     return;
   }
 
@@ -179,13 +178,13 @@ function onTouchend() {
 
 const onCloseArticleBtnClick = (e) => {
   e.currentTarget.blur();
-  activeArticle.value = null;
+  activeArticleRef.value = null;
 };
 
 const onCardBtnClick = (e) => {
   e.currentTarget.blur();
   const { cardId } = e.currentTarget.dataset;
-  activeArticle.value = cardId;
+  activeArticleRef.value = cardId;
 };
 
 const toggleShowAllMap = (e) => {
@@ -206,7 +205,7 @@ const toggleShowAllMap = (e) => {
 
 const getMapInlineStyles = () => {
   const scale = props.isDesk ? scaleRef.value : 1;
-  const cursor = activeArticle.value ? 'auto' : 'move';
+  const cursor = activeArticleRef.value ? 'auto' : 'move';
 
   return {
     top: `${topRef.value}px`,
@@ -225,57 +224,23 @@ const mapClassNames = computed(getMapClassNames);
 <template>
   <div class="map-container">
     <ul :class="mapClassNames" @mousedown="onMouseDown" @touchstart="onTouchstart" ref="mapRef" :style="mapInlineStyles">
-      <ParajanovsLife :isDesk="isDesk" :card="cards[0]" :onCardBtnClick="onCardBtnClick" :isDraggable="isDraggableRef" />
-      <ShadowsOfForgottenAncestors :card="cards[1]" :onCardBtnClick="onCardBtnClick" :isDraggable="isDraggableRef" />
-      <InspiredByParajanov :card="cards[2]" :onCardBtnClick="onCardBtnClick" :isDraggable="isDraggableRef" />
-      <TastePreferences :card="cards[3]" :onCardBtnClick="onCardBtnClick" :isDraggable="isDraggableRef" />
-      <GlassesFromSilpo :card="cards[4]" :onCardBtnClick="onCardBtnClick" :isDraggable="isDraggableRef" />
-      <IngeniousCollages :card="cards[5]" :onCardBtnClick="onCardBtnClick" :isDraggable="isDraggableRef" />
-      <GarnetColor :card="cards[6]" :onCardBtnClick="onCardBtnClick" :isDraggable="isDraggableRef" />
+      <ParajanovsLife
+        :isDesk="isDesk"
+        :card="cards[0]"
+        :onCardBtnClick="onCardBtnClick"
+        :isDraggable="isDraggableRef"
+        :onCloseArticleBtnClick="onCloseArticleBtnClick"
+        :activeArticle="activeArticleRef"
+      />
+      <ShadowsOfForgottenAncestors :card="cards[1]" :onCardBtnClick="onCardBtnClick" :isDraggable="isDraggableRef" :onCloseArticleBtnClick="onCloseArticleBtnClick" :activeArticle="activeArticleRef" />
+      <InspiredByParajanov :card="cards[2]" :onCardBtnClick="onCardBtnClick" :isDraggable="isDraggableRef" :onCloseArticleBtnClick="onCloseArticleBtnClick" :activeArticle="activeArticleRef" />
+      <TastePreferences :card="cards[3]" :onCardBtnClick="onCardBtnClick" :isDraggable="isDraggableRef" :onCloseArticleBtnClick="onCloseArticleBtnClick" :activeArticle="activeArticleRef" />
+      <GlassesFromSilpo :card="cards[4]" :onCardBtnClick="onCardBtnClick" :isDraggable="isDraggableRef" :onCloseArticleBtnClick="onCloseArticleBtnClick" :activeArticle="activeArticleRef" />
+      <IngeniousCollages :card="cards[5]" :onCardBtnClick="onCardBtnClick" :isDraggable="isDraggableRef" :onCloseArticleBtnClick="onCloseArticleBtnClick" :activeArticle="activeArticleRef" />
+      <GarnetColor :card="cards[6]" :onCardBtnClick="onCardBtnClick" :isDraggable="isDraggableRef" :onCloseArticleBtnClick="onCloseArticleBtnClick" :activeArticle="activeArticleRef" />
     </ul>
   </div>
   <NavBar :cards="cards" :toggleShowAllMap="toggleShowAllMap" :isDesk="isDesk" :activeCardId="activeCardIdRef" />
-  <CardArticle :isShow="Boolean(activeArticle)" :onCloseBtnClick="onCloseArticleBtnClick"
-    >Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iure aspernatur quaerat doloremque perferendis rerum tempore, voluptatibus quasi tempora? Vero ipsa eius eos labore impedit architecto ut
-    totam quod officia! Ipsa veritatis obcaecati quos id sequi maiores sunt, eius, minima nam labore blanditiis itaque ipsam. Facilis maxime consectetur nisi quis nostrum doloremque nemo laboriosam
-    deleniti, eum vitae. Aspernatur cumque recusandae optio ratione animi libero excepturi ea similique, corrupti quo accusantium quas pariatur maiores nam distinctio. Iusto velit officiis numquam
-    voluptates error a illum placeat pariatur consequatur atque aliquid voluptate deserunt voluptatibus voluptas architecto nam quis quidem itaque, molestias quod minima? Aliquid vel laudantium
-    repellat cumque magnam totam, minima repellendus suscipit numquam excepturi vero illo ex tempore fuga ad odio eum sequi cupiditate eaque rerum, iste hic ipsum? Cumque distinctio dignissimos
-    praesentium numquam porro, id consequatur nesciunt velit maiores dolores ipsam sed deserunt minus. Error quis eaque animi obcaecati rerum eius, veniam doloremque, adipisci facilis voluptates
-    beatae voluptas. Veniam, voluptatem? Error veritatis iure est iusto a optio molestias omnis facere! Pariatur consequuntur excepturi, placeat nihil tempore explicabo quos fuga nesciunt voluptatem,
-    neque distinctio quia quasi, soluta vitae voluptates aliquid repellendus architecto quam beatae. Neque facere voluptas exercitationem aliquid delectus, dolores est voluptatibus nisi excepturi
-    quibusdam voluptate velit sequi fuga eligendi ipsam laborum rerum molestiae aspernatur earum, numquam aut. Facilis ut, tenetur assumenda sapiente in sed. Officiis, fuga. Voluptatum odit voluptas
-    mollitia quasi sapiente similique officia aut a. Consequuntur est, quo ipsa veniam iure reprehenderit atque autem esse adipisci voluptatibus magni in nemo fuga ad officiis reiciendis ut
-    praesentium porro, nostrum cupiditate sint magnam quasi. Veniam, quibusdam suscipit consequatur animi voluptatibus odio dolores perferendis laboriosam possimus. Quod laudantium sed ratione
-    aspernatur consequuntur voluptates id minus doloribus reiciendis veniam qui necessitatibus optio, dolorem, temporibus laboriosam ab ad, vero repudiandae et assumenda nulla! Perferendis tempore
-    provident et quia dolores! Ex praesentium delectus blanditiis mollitia eligendi eius perspiciatis commodi, soluta quas, provident ratione nulla saepe consequuntur ut libero esse velit? Nesciunt
-    delectus odit assumenda eveniet dicta fuga quae, repudiandae enim explicabo molestias harum repellat non quibusdam optio numquam impedit nisi, at excepturi. Architecto illum numquam, id deserunt
-    nesciunt nostrum? Velit libero exercitationem dignissimos hic maxime unde dolorem laborum debitis minus consequatur magni modi saepe quod id, natus autem eligendi quas earum! Amet, neque. Animi
-    nesciunt corporis nostrum labore accusantium doloremque molestiae eligendi sunt modi quos minus distinctio, nam rem aspernatur tenetur? Reprehenderit, omnis. Nihil repellat quisquam iusto in quia
-    totam ut asperiores reprehenderit modi tempore, molestiae nesciunt. Unde maxime in corrupti autem iure aliquid amet necessitatibus reprehenderit totam fugiat, explicabo eligendi illum veniam natus
-    voluptas quae cum! Incidunt eum aliquid nisi accusamus non temporibus tempore voluptatum provident iure voluptas autem cum ab, excepturi quibusdam numquam praesentium ipsam deserunt tempora
-    repellat. Amet blanditiis corporis voluptas eveniet dolores similique quasi molestias quae totam odit quisquam maxime iste omnis suscipit architecto fuga, nobis voluptate itaque officiis maiores
-    quis sunt perspiciatis nulla. In totam accusantium quam porro modi facere id rerum natus sit. Tempora quae itaque optio dolorum dolores amet suscipit corrupti officiis dolore corporis totam ipsa
-    voluptatem, aliquid recusandae nisi fuga! Distinctio aspernatur doloremque aut illum, quia nesciunt eligendi tempore perspiciatis ipsum ipsam quidem, ad asperiores quisquam officiis deserunt
-    sapiente sed fuga, ex beatae omnis esse praesentium. Neque, a! Inventore, rem. Aliquam cum excepturi molestias repellat porro sed labore officiis earum magni quis? Inventore id, suscipit eaque et
-    excepturi nemo adipisci dolor totam, similique fugiat voluptates aliquam ratione, fugit explicabo natus ea cum optio eveniet mollitia voluptatem tempora ipsum temporibus! Quia delectus illum ut
-    suscipit! Commodi placeat autem ipsam non corrupti tempora eveniet illo numquam rerum cumque excepturi voluptatum dolor, recusandae est voluptatibus aspernatur omnis molestiae accusantium officiis
-    blanditiis quam rem. Ratione, iure numquam nam, nihil modi, maiores exercitationem itaque libero rerum neque architecto! Earum cum quibusdam hic, obcaecati accusantium distinctio rem maiores minus
-    harum veniam aperiam sapiente explicabo temporibus, delectus necessitatibus. Quae iusto minima, et architecto ipsa neque dignissimos quo id consectetur aut illum laboriosam aliquam maiores, atque
-    veniam obcaecati est amet, nihil dolor? Nostrum tempora laboriosam, libero quo enim numquam obcaecati commodi exercitationem iure eos dolor, dolorum natus quod! Repellendus earum rem numquam
-    dolorem hic laudantium neque, soluta deserunt, quos fugiat vitae natus sunt! Aliquid expedita officia facilis blanditiis, architecto et nesciunt voluptatum. Incidunt iure architecto labore aliquid
-    accusamus necessitatibus ut iste velit dolorem? Itaque est tempore exercitationem hic unde nobis numquam at nesciunt! Repudiandae dignissimos perferendis ipsam nihil obcaecati in explicabo dolores
-    veniam commodi ullam atque, ipsa, aliquam error aperiam beatae vitae recusandae at tenetur nisi pariatur id eius doloremque. Porro labore velit est nihil, nesciunt distinctio libero voluptate
-    optio. Officia assumenda eaque, sed est totam laborum itaque quidem aliquam earum. Labore dicta qui quam minus optio, placeat libero earum sequi magnam, consectetur dolores facere numquam aliquid
-    cumque officiis, dolorem consequatur iste non ab. Deserunt omnis at officia vel asperiores id in consectetur veritatis, nemo sit doloremque recusandae labore illo voluptatibus modi incidunt error
-    ullam odit? Officiis esse sapiente maiores velit dolore! Magnam, eos quo a culpa quaerat minima nisi, eum accusamus quis officia sapiente nam illo voluptatum facilis quod expedita! Rerum accusamus
-    ex aliquam distinctio asperiores dicta atque vel, dolorem sit quidem sequi dolorum mollitia cupiditate magnam quas placeat voluptates. Amet omnis asperiores sapiente voluptas blanditiis quam
-    repudiandae voluptate tempora ullam illum placeat quod reiciendis consequatur, atque ad molestiae modi. Similique molestiae officia eligendi quis reiciendis est amet tempore, quidem perferendis
-    aliquid veniam repellat sint quasi natus totam ipsum ullam accusamus adipisci sequi enim voluptatem cupiditate. Itaque non voluptates dicta commodi accusamus nostrum modi totam est animi? Facilis
-    nobis corrupti debitis incidunt odio quas cum, quae modi eaque, dignissimos architecto id expedita voluptate nulla, tenetur alias fuga voluptates veniam. Dolores, tenetur! Expedita autem impedit
-    ad optio, deserunt hic nisi eligendi aspernatur fuga animi consectetur quos aperiam explicabo esse ex ratione deleniti amet atque laudantium quisquam aliquam velit nobis quaerat. Aut veritatis
-    tenetur nisi, odit eveniet alias quam minima rem cum, hic illum cumque? Consectetur ullam, ipsa perferendis facere magni earum accusantium autem soluta natus architecto.</CardArticle
-  >
 </template>
 
 <style scoped>

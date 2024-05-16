@@ -2,6 +2,14 @@
   font-family: 'Shnobel';
   src:
     local('Shnobel'),
-    url('fonts/shnobel/Shnobel-Regular.otf') format('opentype');
+    url('fonts/shnobel/Shnobel-Regular.ttf') format('truetype');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Geologica';
+  src:
+    local('Geologica'),
+    url('fonts/geologica/Geologica-Light.ttf') format('truetype');
   font-weight: 400;
 }
