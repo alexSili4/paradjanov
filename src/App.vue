@@ -18,10 +18,10 @@ function onWindowResize() {
 </script>
 
 <template>
-  <Header :isDesk="isDeskRef" />
   <main>
     <router-view :isDesk="isDeskRef" />
   </main>
+  <Header :isDesk="isDeskRef" />
 </template>
 
 <style scoped></style>

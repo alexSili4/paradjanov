@@ -1,20 +1,21 @@
 <script setup>
 import { cardValidator } from 'validator';
-import CentaurIcon from 'icons/inspiredByParajanov/centaur.svg?component';
-import ParadjanovIcon from 'icons/inspiredByParajanov/paradjanov.svg?component';
-import LeftEyeIcon from 'icons/inspiredByParajanov/left-eye.svg?component';
-import RightEyeIcon from 'icons/inspiredByParajanov/right-eye.svg?component';
 import GrapeIcon from 'icons/inspiredByParajanov/grape.svg?component';
-import HeadsIcon from 'icons/inspiredByParajanov/heads.svg?component';
+import HeadsIcon from '../icons/inspiredByParajanov/heads.svg?component';
 import LandIcon from 'icons/inspiredByParajanov/land.svg?component';
 import LeafIcon from 'icons/inspiredByParajanov/leaf.svg?component';
 import MainGrapeIcon from 'icons/inspiredByParajanov/main-grape.svg?component';
-import SilpoIcon from 'icons/inspiredByParajanov/silpo.svg?component';
 import SunIcon from 'icons/inspiredByParajanov/sun.svg?component';
 import NavArroWIcon from 'icons/inspiredByParajanov/nav-arrow.svg?component';
+import centaur from 'animations/centaur.json';
+import logoWithHero from 'animations/logo-with-hero.json';
 
 defineProps({
   card: cardValidator,
+  dataCardId: {
+    type: String,
+    required: true,
+  },
   onCardBtnClick: {
     type: Function,
     required: true,
@@ -27,59 +28,83 @@ defineProps({
 </script>
 
 <template>
-  <button type="button" :class="['card-btn', { 'card-btn-disabled': isDraggable }]" @click="onCardBtnClick" :disabled="isDraggable">
+  <div class="map-item-card">
     <SunIcon class="sun-icon" />
     <LandIcon class="land-icon" />
-    <CentaurIcon class="centaur-icon" />
-    <span class="card-title-wrap">
-      <span class="card-title">{{ card.title }}</span>
-    </span>
-    <span class="icon-btn-wrap">
-      <LeafIcon class="leaf-icon btn-icon" />
-      <MainGrapeIcon class="main-grape-icon btn-icon" />
-      <GrapeIcon class="grape-icon btn-icon" />
-      <NavArroWIcon class="nav-arrow-icon btn-icon" />
-      <span class="card-number">{{ card.number }}</span>
-    </span>
     <HeadsIcon class="heads-icon" />
-    <ParadjanovIcon class="paradjanov-icon-qwerty" />
-    <SilpoIcon class="silpo-icon" />
-    <LeftEyeIcon class="left-eye-icon" />
-    <RightEyeIcon class="right-eye-icon" />
-  </button>
+    <Vue3Lottie :animationData="centaur" class="animation-centaur" :height="card.animation[0].height" :width="card.animation[0].width" />
+    <Vue3Lottie :animationData="logoWithHero" class="animation-logo-with-hero" :height="card.animation[1].height" :width="card.animation[1].width" />
+    <div class="card-title-wrap">
+      <p class="card-title">{{ card.title }}</p>
+      <button :data-card-id="dataCardId" type="button" class="card-btn test" @click="onCardBtnClick" :disabled="isDraggable"></button>
+      <span class="icon-btn-wrap">
+        <LeafIcon class="leaf-icon btn-icon" />
+        <MainGrapeIcon class="main-grape-icon btn-icon" />
+        <GrapeIcon class="grape-icon btn-icon" />
+        <NavArroWIcon class="nav-arrow-icon btn-icon" />
+        <span class="card-number">{{ card.number }}</span>
+      </span>
+    </div>
+  </div>
 </template>
 
 <style scoped>
-.card-btn {
+.map-item-card {
   position: relative;
-  display: block;
-  width: 1135px;
-  height: 673px;
-  padding: 0;
-  border: none;
-  background-color: transparent;
+  padding: 466px 548px 70px 157px;
 }
 
-.card-btn-disabled {
-  pointer-events: none;
+.sun-icon {
+  position: absolute;
+  top: 285px;
+  left: 668px;
+  display: block;
+}
+
+.land-icon {
+  position: absolute;
+  top: 296px;
+  left: 150px;
+  display: block;
+}
+
+.heads-icon {
+  position: absolute;
+  z-index: 10;
+  top: 100px;
+  left: 23px;
+  display: block;
+}
+
+.animation-centaur {
+  position: absolute;
+  top: 47px;
+  left: 431px;
+  outline: 1px solid red;
+}
+
+.animation-logo-with-hero {
+  position: absolute;
+  z-index: 10;
+  top: 0px;
+  left: 186px;
+  outline: 1px solid red;
 }
 
 .card-title-wrap {
-  position: absolute;
-  top: 389px;
-  left: 114px;
-  width: 736px;
-  height: 284px;
+  position: relative;
+  width: 735.71px;
+  height: 284.22px;
   background-image: url('icons/inspiredByParajanov/title-bg.svg');
   background-repeat: no-repeat;
-  background-size: 736px 284px;
+  background-size: 735.71px 284.22px;
   background-position: 0 0;
-  padding-top: 38px;
-  padding-left: 174px;
-  text-align: left;
 }
 
 .card-title {
+  position: absolute;
+  top: 38px;
+  left: 174px;
   color: #353b3f;
   font-family: Shnobel;
   font-size: 90px;
@@ -88,75 +113,29 @@ defineProps({
   text-transform: uppercase;
 }
 
-.land-icon {
+.card-btn {
   position: absolute;
-  top: 156px;
-  left: 107px;
-  display: block;
-}
-
-.centaur-icon {
-  position: absolute;
-  top: 217px;
-  left: 861px;
-  display: block;
-}
-
-.heads-icon {
-  position: absolute;
-  top: -83px;
-  left: -26px;
-  display: block;
-}
-
-.paradjanov-icon-qwerty {
-  position: absolute;
-  top: 0px;
-  left: 173px;
-  display: block;
-}
-
-.silpo-icon {
-  position: absolute;
-  top: 106px;
-  left: 183px;
-  display: block;
-}
-
-.sun-icon {
-  position: absolute;
-  top: 208px;
-  left: 625px;
-  display: block;
-}
-
-.left-eye-icon {
-  position: absolute;
-  top: 172px;
-  left: 331px;
-  display: block;
-}
-
-.right-eye-icon {
-  position: absolute;
-  top: 163px;
-  left: 405px;
-  display: block;
+  z-index: 10;
+  top: 20px;
+  width: 100%;
+  height: 245px;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  outline: 1px solid greenyellow;
 }
 
 .icon-btn-wrap {
   position: absolute;
-  top: 397px;
-  left: -58px;
-  width: 314px;
-  height: 313px;
-  padding-top: 63px;
-  padding-left: 59px;
+  top: 8px;
+  left: -172px;
+  padding-left: 15px;
+  pointer-events: none;
 }
 
 .leaf-icon {
   position: absolute;
-  top: 78px;
+  top: 79px;
   left: 219px;
   display: block;
 }
@@ -199,25 +178,31 @@ defineProps({
   transition: opacity var(--transition-duration-and-func);
 }
 
-.card-btn:not(:is(:hover, :focus)) .nav-arrow-icon {
+.card-btn:is(:hover, :focus) {
+  cursor:
+    url('icons/cursor-pointer.svg') 25 0,
+    auto;
+}
+
+.card-btn:not(:is(:hover, :focus)) ~ .icon-btn-wrap > .nav-arrow-icon {
   transform: rotate(90deg);
   opacity: 0;
 }
 
-.card-btn:is(:hover, :focus) .leaf-icon {
-  transform: translateY(4px);
+.card-btn:is(:hover, :focus) ~ .icon-btn-wrap > .leaf-icon {
+  transform: translateY(-3px);
 }
 
-.card-btn:is(:hover, :focus) .main-grape-icon {
+.card-btn:is(:hover, :focus) ~ .icon-btn-wrap > .main-grape-icon {
   transform: rotate(9.92deg);
 }
 
-.card-btn:is(:hover, :focus) .grape-icon {
+.card-btn:is(:hover, :focus) ~ .icon-btn-wrap > .grape-icon {
   transform: rotate(12.31deg);
 }
 
 @media screen and (min-width: 1280px) {
-  .card-btn:is(:hover, :focus) .card-number {
+  .card-btn:is(:hover, :focus) ~ .icon-btn-wrap > .card-number {
     opacity: 0;
   }
 }

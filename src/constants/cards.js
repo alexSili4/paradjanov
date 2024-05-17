@@ -16,8 +16,16 @@ const cards = [
     title: 'ТIнi забутих предкIв',
     animation: [
       {
-        width: 0,
-        height: 0,
+        width: 343,
+        height: 314,
+      },
+      {
+        width: 485,
+        height: 436,
+      },
+      {
+        width: 416.4,
+        height: 325.46,
       },
     ],
   },
@@ -27,8 +35,12 @@ const cards = [
     title: 'НатхненI Параджановим',
     animation: [
       {
-        width: 0,
-        height: 0,
+        width: 846,
+        height: 618,
+      },
+      {
+        width: 366,
+        height: 437,
       },
     ],
   },
@@ -38,8 +50,12 @@ const cards = [
     title: 'смакові вподобання',
     animation: [
       {
-        width: 0,
-        height: 0,
+        width: 723,
+        height: 695,
+      },
+      {
+        width: 432.27,
+        height: 509.85,
       },
     ],
   },

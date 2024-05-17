@@ -4,16 +4,21 @@ import GrapeIcon from 'icons/tastePreferences/grape.svg?component';
 import LeafIcon from 'icons/tastePreferences/leaf.svg?component';
 import MainGrapeIcon from 'icons/tastePreferences/main-grape.svg?component';
 import NavArroWIcon from 'icons/tastePreferences/nav-arrow.svg?component';
-import CornIcon from 'icons/tastePreferences/corn.svg?component';
 import HeroIcon from 'icons/tastePreferences/hero.svg?component';
-import PotIcon from 'icons/tastePreferences/pot.svg?component';
+import corn from 'animations/corn.json';
+import pot from 'animations/pot.json';
 
 defineProps({
   card: cardValidator,
+  dataCardId: {
+    type: String,
+    required: true,
+  },
   onCardBtnClick: {
     type: Function,
     required: true,
-  },  isDraggable: {
+  },
+  isDraggable: {
     type: Boolean,
     required: true,
   },
@@ -21,97 +26,96 @@ defineProps({
 </script>
 
 <template>
-  <button type="button" :class="['card-btn', { 'card-btn-disabled': isDraggable }]" @click="onCardBtnClick" :disabled="isDraggable">
-    <CornIcon class="corn-icon" />
-    <span class="card-title-wrap">
-      <span class="card-title">{{ card.title }}</span>
-    </span>
-    <span class="icon-btn-wrap">
-      <LeafIcon class="leaf-icon btn-icon" />
-      <MainGrapeIcon class="main-grape-icon btn-icon" />
-      <GrapeIcon class="grape-icon btn-icon" />
-      <NavArroWIcon class="nav-arrow-icon btn-icon" />
-      <span class="card-number">{{ card.number }}</span>
-    </span>
+  <div class="map-item-card">
+    <div class="card-title-wrap">
+      <p class="card-title">{{ card.title }}</p>
+      <button :data-card-id="dataCardId" type="button" class="card-btn test" @click="onCardBtnClick" :disabled="isDraggable"></button>
+      <span class="icon-btn-wrap">
+        <LeafIcon class="leaf-icon btn-icon" />
+        <MainGrapeIcon class="main-grape-icon btn-icon" />
+        <GrapeIcon class="grape-icon btn-icon" />
+        <NavArroWIcon class="nav-arrow-icon btn-icon" />
+        <span class="card-number">{{ card.number }}</span>
+      </span>
+    </div>
+    <Vue3Lottie :animationData="corn" class="animation-corn" :height="card.animation[0].height" :width="card.animation[0].width" />
     <HeroIcon class="hero-icon" />
-    <PotIcon class="pot-icon" />
-  </button>
+    <Vue3Lottie :animationData="pot" class="animation-pot" :height="card.animation[1].height" :width="card.animation[1].width" />
+  </div>
 </template>
 
 <style scoped>
-.card-btn {
+.map-item-card {
   position: relative;
-  display: block;
-  width: 933px;
-  height: 511px;
-  padding: 0;
-  border: none;
-  background-color: transparent;
+  padding: 327px 277px 203px 514px;
 }
 
-.card-btn-disabled {
-  pointer-events: none;
+.hero-icon {
+  position: absolute;
+  top: 130px;
+  left: 429px;
+  display: block;
+}
+
+.animation-corn {
+  position: absolute;
+  top: -12px;
+  left: 34px;
+  outline: 1px solid red;
+}
+
+.animation-pot {
+  position: absolute;
+  top: 200px;
+  left: 232px;
+  outline: 1px solid red;
 }
 
 .card-title-wrap {
-  position: absolute;
-  top: 128px;
-  left: 284px;
+  position: relative;
   width: 649px;
   height: 290px;
   background-image: url('icons/tastePreferences/title-bg.svg');
   background-repeat: no-repeat;
   background-size: 649px 290px;
   background-position: 0 0;
-  padding-top: 42px;
-  padding-left: 142px;
-  text-align: left;
 }
 
 .card-title {
+  position: absolute;
+  top: 43px;
+  left: 162px;
   color: #353b3f;
   font-family: Shnobel;
   font-size: 90px;
   font-weight: 400;
   line-height: 1.2;
-  /* letter-spacing: -0.01; */
   text-transform: uppercase;
 }
 
-.corn-icon {
+.card-btn {
   position: absolute;
-  top: -280px;
-  left: -211px;
-  display: block;
-}
-
-.hero-icon {
-  position: absolute;
-  top: -69px;
-  left: 198px;
-  display: block;
-}
-
-.pot-icon {
-  position: absolute;
-  top: 1px;
-  left: 1px;
-  display: block;
+  z-index: 10;
+  top: 20px;
+  left: 140px;
+  width: calc(100% - 140px);
+  height: 250px;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  outline: 1px solid greenyellow;
 }
 
 .icon-btn-wrap {
   position: absolute;
-  top: 207px;
-  left: 744px;
-  width: 314px;
-  height: 313px;
-  padding-top: 71px;
-  padding-left: 66px;
+  top: 80px;
+  left: 461px;
+  pointer-events: none;
 }
 
 .leaf-icon {
   position: absolute;
-  top: 218px;
+  top: 217px;
   left: 90px;
   display: block;
 }
@@ -154,25 +158,31 @@ defineProps({
   transition: opacity var(--transition-duration-and-func);
 }
 
-.card-btn:not(:is(:hover, :focus)) .nav-arrow-icon {
+.card-btn:is(:hover, :focus) {
+  cursor:
+    url('icons/cursor-pointer.svg') 25 0,
+    auto;
+}
+
+.card-btn:not(:is(:hover, :focus)) ~ .icon-btn-wrap > .nav-arrow-icon {
   transform: rotate(-90deg);
   opacity: 0;
 }
 
-.card-btn:is(:hover, :focus) .leaf-icon {
+.card-btn:is(:hover, :focus) ~ .icon-btn-wrap > .leaf-icon {
   transform: translateY(4px);
 }
 
-.card-btn:is(:hover, :focus) .main-grape-icon {
+.card-btn:is(:hover, :focus) ~ .icon-btn-wrap > .main-grape-icon {
   transform: rotate(9.06deg);
 }
 
-.card-btn:is(:hover, :focus) .grape-icon {
+.card-btn:is(:hover, :focus) ~ .icon-btn-wrap > .grape-icon {
   transform: rotate(16.06deg);
 }
 
 @media screen and (min-width: 1280px) {
-  .card-btn:is(:hover, :focus) .card-number {
+  .card-btn:is(:hover, :focus) ~ .icon-btn-wrap > .card-number {
     opacity: 0;
   }
 }

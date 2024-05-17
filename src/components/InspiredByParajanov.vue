@@ -30,12 +30,10 @@ const isShow = computed(() => props.activeArticle === props.card.id);
 
 <template>
   <li class="map-item">
-    <div class="map-item-card">
-      <InspiredByParajanovBtn :card="card" :data-card-id="card.id" :onCardBtnClick="onCardBtnClick" :isDraggable="isDraggable" />
-      <CardArticle :isShow="isShow" :onCloseBtnClick="onCloseArticleBtnClick">
-        <InspiredByParajanovArticle />
-      </CardArticle>
-    </div>
+    <InspiredByParajanovBtn :card="card" :data-card-id="card.id" :onCardBtnClick="onCardBtnClick" :isDraggable="isDraggable" />
+    <CardArticle :isShow="isShow" :onCloseBtnClick="onCloseArticleBtnClick">
+      <InspiredByParajanovArticle />
+    </CardArticle>
   </li>
 </template>
 
@@ -44,11 +42,6 @@ const isShow = computed(() => props.activeArticle === props.card.id);
   position: absolute;
   top: 1974px;
   left: 240px;
-  padding: 77px 263px 70px 44px;
-}
-
-.map-item-card {
-  position: relative;
 }
 
 @media screen and (max-width: 1279px) {

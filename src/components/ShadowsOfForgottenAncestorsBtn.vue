@@ -1,16 +1,20 @@
 <script setup>
 import { cardValidator } from 'validator';
-import CandlesIcon from 'icons/shadowsOfForgottenAncestors/candles.svg?component';
 import GrapeIcon from 'icons/shadowsOfForgottenAncestors/grape.svg?component';
-import HeroesIcon from 'icons/shadowsOfForgottenAncestors/heroes.svg?component';
 import LandIcon from 'icons/shadowsOfForgottenAncestors/land.svg?component';
 import LeafIcon from 'icons/shadowsOfForgottenAncestors/leaf.svg?component';
 import MainGrapeIcon from 'icons/shadowsOfForgottenAncestors/main-grape.svg?component';
-import ParajanovBatIcon from 'icons/shadowsOfForgottenAncestors/parajanov-bat.svg?component';
 import NavArroWIcon from 'icons/shadowsOfForgottenAncestors/nav-arrow.svg?component';
+import parajanovBat from 'animations/parajanovBat.json';
+import heroes from 'animations/heroes.json';
+import candles from 'animations/candles.json';
 
 defineProps({
   card: cardValidator,
+  dataCardId: {
+    type: String,
+    required: true,
+  },
   onCardBtnClick: {
     type: Function,
     required: true,
@@ -23,55 +27,73 @@ defineProps({
 </script>
 
 <template>
-  <button type="button" :class="['card-btn', { 'card-btn-disabled': isDraggable }]" @click="onCardBtnClick" :disabled="isDraggable">
+  <div class="map-item-card">
     <LandIcon class="land-icon" />
-    <CandlesIcon class="candles-icon" />
-    <HeroesIcon class="heroes-icon" />
-    <span class="card-title-wrap">
-      <span class="card-title">{{ card.title }}</span>
-    </span>
-    <ParajanovBatIcon class="parajanov-bat-icon" />
-    <span class="icon-btn-wrap">
-      <LeafIcon class="leaf-icon btn-icon" />
-      <MainGrapeIcon class="main-grape-icon btn-icon" />
-      <GrapeIcon class="grape-icon btn-icon" />
-      <NavArroWIcon class="nav-arrow-icon btn-icon" />
-      <span class="card-number">{{ card.number }}</span>
-    </span>
-  </button>
+    <Vue3Lottie :animationData="parajanovBat" class="animation-parajanov-bat" :height="card.animation[0].height" :width="card.animation[0].width" />
+    <Vue3Lottie :animationData="candles" class="animation-candles" :height="card.animation[2].height" :width="card.animation[2].width" />
+    <Vue3Lottie :animationData="heroes" class="animation-heroes" :height="card.animation[1].height" :width="card.animation[1].width" />
+    <div class="card-title-wrap">
+      <p class="card-title">{{ card.title }}</p>
+      <button :data-card-id="dataCardId" type="button" class="card-btn test" @click="onCardBtnClick" :disabled="isDraggable"></button>
+      <span class="icon-btn-wrap">
+        <LeafIcon class="leaf-icon btn-icon" />
+        <MainGrapeIcon class="main-grape-icon btn-icon" />
+        <GrapeIcon class="grape-icon btn-icon" />
+        <NavArroWIcon class="nav-arrow-icon btn-icon" />
+        <span class="card-number">{{ card.number }}</span>
+      </span>
+    </div>
+  </div>
 </template>
 
 <style scoped>
-.card-btn {
+.map-item-card {
   position: relative;
-  display: block;
-  width: 836px;
-  height: 735px;
-  padding: 0;
-  border: none;
-  background-color: transparent;
+  padding: 448px 328px 77px 545px;
 }
 
-.card-btn-disabled {
-  pointer-events: none;
+.land-icon {
+  position: absolute;
+  top: 234px;
+  left: 404px;
+  display: block;
+}
+
+.animation-parajanov-bat {
+  position: absolute;
+  top: 75px;
+  left: 225px;
+  outline: 1px solid red;
+}
+
+.animation-heroes {
+  position: absolute;
+  top: 100px;
+  left: 688px;
+  outline: 1px solid red;
+}
+
+.animation-candles {
+  position: absolute;
+  top: 8px;
+  left: 724px;
+  outline: 1px solid red;
 }
 
 .card-title-wrap {
-  position: absolute;
-  top: 442px;
-  left: 211px;
-  width: 550px;
-  height: 293px;
+  position: relative;
+  width: 567px;
+  height: 295px;
   background-image: url('icons/shadowsOfForgottenAncestors/title-bg.svg');
   background-repeat: no-repeat;
-  background-size: 550px 293px;
+  background-size: 567px 295px;
   background-position: 0 0;
-  padding-top: 42px;
-  padding-left: 71px;
-  text-align: left;
 }
 
 .card-title {
+  position: absolute;
+  top: 42px;
+  left: 71px;
   color: #353b3f;
   font-family: Shnobel;
   font-size: 90px;
@@ -80,48 +102,29 @@ defineProps({
   text-transform: uppercase;
 }
 
-.land-icon {
+.card-btn {
   position: absolute;
-  top: 150px;
-  left: 17px;
-  display: block;
-}
-
-.candles-icon {
-  position: absolute;
-  top: 1px;
-  left: 368px;
-  display: block;
-}
-
-.heroes-icon {
-  position: absolute;
-  top: 60px;
-  left: 289px;
-  display: block;
-}
-
-.parajanov-bat-icon {
-  position: absolute;
-  top: 80px;
-  left: -97px;
-  display: block;
+  z-index: 10;
+  top: 20px;
+  width: 100%;
+  height: 250px;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  outline: 1px solid greenyellow;
 }
 
 .icon-btn-wrap {
   position: absolute;
-  top: 353px;
-  left: 1px;
-  width: 314px;
-  height: 313px;
-  padding-top: 6px;
-  padding-left: 13px;
+  top: -88px;
+  left: -189px;
+  pointer-events: none;
 }
 
 .leaf-icon {
   position: absolute;
-  top: 213px;
-  left: 121px;
+  top: 204px;
+  left: 108px;
   display: block;
 }
 
@@ -138,23 +141,22 @@ defineProps({
 
 .grape-icon {
   position: absolute;
-  top: 141px;
-  left: 23px;
+  top: 135px;
+  left: 10px;
   display: block;
 }
 
 .nav-arrow-icon {
   position: absolute;
-  top: 128px;
-  left: 118px;
+  top: 117px;
+  left: 101px;
   display: block;
   transform-origin: center top;
 }
-
 .card-number {
   position: absolute;
-  top: 117px;
-  left: 136px;
+  top: 112px;
+  left: 124px;
   color: var(--white-color);
   font-family: Shnobel;
   font-size: 60px;
@@ -163,25 +165,36 @@ defineProps({
   transition: opacity var(--transition-duration-and-func);
 }
 
-.card-btn:not(:is(:hover, :focus)) .nav-arrow-icon {
+.card-btn:is(:hover, :focus) {
+  cursor:
+    url('icons/cursor-pointer.svg') 25 0,
+    auto;
+}
+
+.card-btn:not(:is(:hover, :focus)) ~ .icon-btn-wrap > .nav-arrow-icon {
+  transform: rotate(-90deg);
+  opacity: 0;
+}
+
+.card-btn:is(:hover, :focus) ~ .icon-btn-wrap > .leaf-icon {
+  transform: translateY(4px);
+}
+
+.card-btn:is(:hover, :focus) ~ .icon-btn-wrap > .main-grape-icon {
+  transform: rotate(5.25deg);
+}
+
+.card-btn:is(:hover, :focus) ~ .icon-btn-wrap > .grape-icon {
+  transform: rotate(11.34deg);
+}
+
+.card-btn:not(:is(:hover, :focus)) ~ .icon-btn-wrap > .nav-arrow-icon {
   transform: rotate(90deg);
   opacity: 0;
 }
 
-.card-btn:is(:hover, :focus) .leaf-icon {
-  transform: translateY(4px);
-}
-
-.card-btn:is(:hover, :focus) .main-grape-icon {
-  transform: rotate(5.25deg);
-}
-
-.card-btn:is(:hover, :focus) .grape-icon {
-  transform: rotate(11.34deg);
-}
-
 @media screen and (min-width: 1280px) {
-  .card-btn:is(:hover, :focus) .card-number {
+  .card-btn:is(:hover, :focus) ~ .icon-btn-wrap > .card-number {
     opacity: 0;
   }
 }
@@ -191,4 +204,82 @@ defineProps({
     display: none;
   }
 }
+
+/* .card-btn {
+
+} */
+
+/* .card-btn-disabled {
+  pointer-events: none;
+} */
+
+/* .card-title-wrap {
+  position: absolute;
+  top: 442px;
+  left: 211px;
+  width: 550px;
+  height: 293px;
+  background-image: ;
+  background-repeat: no-repeat;
+  background-size: 550px 293px;
+  background-position: 0 0;
+  padding-top: 42px;
+  padding-left: 71px;
+  text-align: left;
+} */
+
+/* .land-icon {
+
+} */
+
+/* .candles-icon {
+  position: absolute;
+  top: 1px;
+  left: 368px;
+  display: block;
+} */
+
+/* .icon-btn-wrap {
+  position: absolute;
+  top: 353px;
+  left: 1px;
+  width: 314px;
+  height: 313px;
+  padding-top: 6px;
+  padding-left: 13px;
+} */
+
+/* .leaf-icon {
+  position: absolute;
+  top: 213px;
+  left: 121px;
+  display: block;
+} */
+
+/* .btn-icon {
+  transition:
+    transform var(--transition-duration-and-func),
+    opacity var(--transition-duration-and-func);
+} */
+
+/* .main-grape-icon {
+  position: relative;
+  display: block;
+} */
+
+/* .grape-icon {
+  position: absolute;
+  top: 141px;
+  left: 23px;
+  display: block;
+} */
+
+/* .nav-arrow-icon {
+
+} */
+
+/*  */
+
+/*
+} */
 </style>
