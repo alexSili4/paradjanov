@@ -71,11 +71,6 @@ defineProps({
   transform: rotate(-10.06deg);
 }
 
-.hand-btn:is(:hover, :focus) .warning-icon {
-  transform: translateY(44px);
-  fill: var(--white-color);
-}
-
 @media screen and (min-width: 1280px) {
   .header {
     top: 24px;
@@ -94,15 +89,18 @@ defineProps({
 
   .warning-icon {
     position: absolute;
-    top: 37.13px;
-    left: 23.51px;
+    top: 38.7px;
+    left: 27.7px;
     display: block;
-    width: 73.97px;
-    height: 39.75px;
-    fill: transparent;
+    opacity: 0;
     transition:
-      fill var(--transition-duration-and-func),
+      opacity var(--transition-duration-and-func),
       transform var(--transition-duration-and-func);
+  }
+
+  .hand-btn:is(:hover, :focus) .warning-icon {
+    transform: translateY(80px);
+    opacity: 1;
   }
 }
 </style>
