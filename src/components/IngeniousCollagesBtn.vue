@@ -6,7 +6,7 @@ import MainGrapeIcon from 'icons/ingeniousCollages/main-grape.svg?component';
 import NavArroWIcon from 'icons/ingeniousCollages/nav-arrow.svg?component';
 import GrapesIcon from 'icons/ingeniousCollages/grapes.svg?component';
 import SmallGrapeIcon from 'icons/ingeniousCollages/small-grape.svg?component';
-// import ingeniousCollages from '../animations/ingeniousCollages.json'
+import ingeniousCollages from '../animations/ingeniousCollages.json';
 
 defineProps({
   card: cardValidator,
@@ -27,7 +27,6 @@ defineProps({
 
 <template>
   <div class="map-item-card">
-    <Vue3Lottie :animationData="ingeniousCollages" class="animation-item" :height="card.animation[0].height" :width="card.animation[0].width" />
     <div class="card-title-wrap">
       <p class="card-title">{{ card.title }}</p>
       <button :data-card-id="dataCardId" type="button" class="card-btn test" @click="onCardBtnClick" :disabled="isDraggable"></button>
@@ -41,6 +40,7 @@ defineProps({
     </div>
     <GrapesIcon class="grapes-icon" />
     <SmallGrapeIcon class="small-grape-icon" />
+    <Vue3Lottie :animationData="ingeniousCollages" class="animation-item" :height="card.animation[0].height" :width="card.animation[0].width" />
   </div>
 </template>
 
