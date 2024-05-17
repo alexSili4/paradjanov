@@ -29,8 +29,8 @@ const isShow = computed(() => props.activeArticle === props.card.id);
 </script>
 
 <template>
-  <li class="map-item">
-    <GlassesFromSilpoBtn :card="card" :data-card-id="card.id" :onCardBtnClick="onCardBtnClick" :isDraggable="isDraggable" />
+  <li class="map-item" :data-card-id="card.id">
+    <GlassesFromSilpoBtn :card="card" :onCardBtnClick="onCardBtnClick" :isDraggable="isDraggable" />
     <CardArticle :isShow="isShow" :onCloseBtnClick="onCloseArticleBtnClick">
       <GlassesFromSilpoArticle />
     </CardArticle>

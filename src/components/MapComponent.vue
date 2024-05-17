@@ -118,7 +118,7 @@ function onMouseMove(e) {
 }
 
 function onMouseDown(e) {
-  const cardBtn = e.target.closest('.test');
+  const cardBtn = e.target.closest('.card-article-btn');
 
   if (activeArticleRef.value || cardBtn) {
     return;
@@ -134,7 +134,7 @@ function onMouseDown(e) {
 }
 
 function onTouchmove(e) {
-  const cardBtn = e.target.closest('.test');
+  const cardBtn = e.target.closest('.card-article-btn');
 
   if (activeArticleRef.value || cardBtn) {
     return;

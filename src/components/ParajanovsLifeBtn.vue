@@ -19,10 +19,6 @@ import parajanovsLife from 'animations/parajanovsLife.json';
 defineProps({
   isDesk: Boolean,
   card: cardValidator,
-  dataCardId: {
-    type: String,
-    required: true,
-  },
   onCardBtnClick: {
     type: Function,
     required: true,
@@ -45,7 +41,7 @@ defineProps({
     <Vue3Lottie :animationData="parajanovsLife" :height="card.animation[0].height" :width="card.animation[0].width" class="animation-item" />
     <div class="card-title-wrap">
       <p class="card-title">{{ card.title }}</p>
-      <button :data-card-id="dataCardId" type="button" class="card-btn test" @click="onCardBtnClick" :disabled="isDraggable"></button>
+      <button type="button" class="card-btn card-article-btn" @click="onCardBtnClick" :disabled="isDraggable"></button>
       <span class="icon-btn-wrap">
         <LeafIconDesk class="leaf-icon btn-icon" v-if="isDesk" />
         <LeafIconMobile class="leaf-icon btn-icon" v-else />

@@ -13,10 +13,6 @@ import glassesFromSilpo350 from '../animations/glassesFromSilpo350.json';
 
 defineProps({
   card: cardValidator,
-  dataCardId: {
-    type: String,
-    required: true,
-  },
   onCardBtnClick: {
     type: Function,
     required: true,
@@ -34,7 +30,7 @@ defineProps({
     <TowelIcon class="towel-icon" />
     <div class="card-title-wrap">
       <p class="card-title">{{ card.title }}</p>
-      <button :data-card-id="dataCardId" type="button" class="card-btn test" @click="onCardBtnClick" :disabled="isDraggable"></button>
+      <button type="button" class="card-btn card-article-btn" @click="onCardBtnClick" :disabled="isDraggable"></button>
       <span class="icon-btn-wrap">
         <LeafIcon class="leaf-icon btn-icon" />
         <MainGrapeIcon class="main-grape-icon btn-icon" />

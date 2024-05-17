@@ -14,10 +14,6 @@ import garnetColor from '../animations/garnetColor.json';
 
 defineProps({
   card: cardValidator,
-  dataCardId: {
-    type: String,
-    required: true,
-  },
   onCardBtnClick: {
     type: Function,
     required: true,
@@ -39,7 +35,7 @@ defineProps({
     <Vue3Lottie :animationData="garnetColor" class="animation-item" :height="card.animation[0].height" :width="card.animation[0].width" />
     <div class="card-title-wrap">
       <p class="card-title">{{ card.title }}</p>
-      <button :data-card-id="dataCardId" type="button" class="card-btn test" @click="onCardBtnClick" :disabled="isDraggable"></button>
+      <button type="button" class="card-btn card-article-btn" @click="onCardBtnClick" :disabled="isDraggable"></button>
       <span class="icon-btn-wrap">
         <MainGrapeIcon class="main-grape-icon btn-icon" />
         <LeafIcon class="leaf-icon btn-icon" />
