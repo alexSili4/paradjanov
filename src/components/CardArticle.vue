@@ -32,10 +32,10 @@ defineProps({
 .article-wrap {
   position: fixed;
   z-index: 100;
-  top: 200px;
+  top: 100px;
   right: 0;
   width: 100%;
-  height: calc(100% - 200px);
+  height: calc(100% - 100px);
   background-color: var(--white-color);
 }
 

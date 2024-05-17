@@ -34,10 +34,6 @@ const props = defineProps({
 });
 
 onBeforeMount(() => {
-  if (props.isDesk) {
-    isOpenMenu.value = true;
-  }
-
   const defaultCardId = props.cards[0].id;
   const query = route.query;
   const cardId = query.cardId || defaultCardId;

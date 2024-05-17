@@ -260,9 +260,14 @@ const mapClassNames = computed(getMapClassNames);
   left: 0px;
   width: 2669.77px;
   height: 1380px;
-  background-image: url('icons/map/path-06-mobile.svg'), url('icons/map/path-05-mobile.svg'), url('icons/map/path-04-mobile.svg'), url('icons/map/path-03-mobile.svg'),
-    url('icons/map/path-02-mobile.svg'), url('icons/map/path-01-mobile.svg'), url('icons/map/inscriptions-mobile.svg'), url('icons/map/stars-mobile.svg'), url('images/map/map-bg-mobile.jpg');
+  background-image: url('icons/map/sheep.svg'), url('icons/map/inspired-by-parajanov.svg'), url('icons/map/quote.svg'), url('icons/map/quote-2.svg'), url('icons/map/path-06-mobile.svg'),
+    url('icons/map/path-05-mobile.svg'), url('icons/map/path-04-mobile.svg'), url('icons/map/path-03-mobile.svg'), url('icons/map/path-02-mobile.svg'), url('icons/map/path-01-mobile.svg'),
+    url('icons/map/inscriptions-mobile.svg'), url('icons/map/stars-mobile.svg'), url('images/map/map-bg-mobile.jpg');
   background-size:
+    97.8px 72.7px,
+    210.4px 149.6px,
+    231.7px 55.7px,
+    245.8px 53.4px,
     375.2px 417.94px,
     698.4px 412.39px,
     404.39px 563.63px,
@@ -273,6 +278,10 @@ const mapClassNames = computed(getMapClassNames);
     2670px 1380px,
     2669.77px 1380px;
   background-position:
+    top 300px left 2200px,
+    top 185px left 2270px,
+    top 660px left 1450px,
+    top 930px left 900px,
     top 715.87px left 1913.33px,
     top 214.53px left 1759.11px,
     top 388.3px left 1346.96px,
@@ -297,9 +306,14 @@ const mapClassNames = computed(getMapClassNames);
   .map {
     width: 6243px;
     height: 3227px;
-    background-image: url('icons/map/path-06-desk.svg'), url('icons/map/path-05-desk.svg'), url('icons/map/path-04-desk.svg'), url('icons/map/path-03-desk.svg'), url('icons/map/path-02-desk.svg'),
-      url('icons/map/path-01-desk.svg'), url('icons/map/inscriptions-desk.svg'), url('icons/map/stars-desk.svg'), url('images/map/map-bg-desk.jpg');
+    background-image: url('icons/map/sheep.svg'), url('icons/map/inspired-by-parajanov.svg'), url('icons/map/quote.svg'), url('icons/map/quote-2.svg'), url('icons/map/path-06-desk.svg'),
+      url('icons/map/path-05-desk.svg'), url('icons/map/path-04-desk.svg'), url('icons/map/path-03-desk.svg'), url('icons/map/path-02-desk.svg'), url('icons/map/path-01-desk.svg'),
+      url('icons/map/inscriptions-desk.svg'), url('icons/map/stars-desk.svg'), url('images/map/map-bg-desk.jpg');
     background-size:
+      255.48px 181.68px,
+      526px 374px,
+      579.27px 139.37px,
+      614.51px 133.63px,
       877.36px 977.32px,
       1633.13px 964.34px,
       945.62px 1318px,
@@ -310,6 +324,10 @@ const mapClassNames = computed(getMapClassNames);
       6244px 3228px,
       6243px 3227px;
     background-position:
+      top 713px left 5144px,
+      top 408px left 5275px,
+      top 1556px left 3412px,
+      top 2166px left 2087px,
       top 1674px left 4474.14px,
       top 501.67px left 4113.5px,
       top 908px left 3149.75px,

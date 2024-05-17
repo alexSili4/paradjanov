@@ -56,6 +56,7 @@ defineProps({
   padding: 0;
   border: none;
   background-color: transparent;
+  transform-origin: top right;
 }
 
 .hand-with-cup-img {
