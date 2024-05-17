@@ -19,6 +19,10 @@ import parajanovsLife from 'animations/parajanovsLife.json';
 defineProps({
   isDesk: Boolean,
   card: cardValidator,
+  dataCardId: {
+    type: String,
+    required: true,
+  },
   onCardBtnClick: {
     type: Function,
     required: true,
@@ -31,53 +35,64 @@ defineProps({
 </script>
 
 <template>
-  <ShipToLeftIconDesk class="ship-to-left-icon" v-if="isDesk" />
-  <ShipToLeftIconMobile class="ship-to-left-icon" v-else />
-  <ShipToRightIconDesk class="ship-to-right-icon" v-if="isDesk" />
-  <ShipToRightIconMobile class="ship-to-right-icon" v-else />
-  <QuoteIconDesk class="quote-icon" v-if="isDesk" />
-  <QuoteIconMobile class="quote-icon" v-else />
-  <button type="button" :class="['card-btn', { 'card-btn-disabled': isDraggable }]" @click="onCardBtnClick" :disabled="isDraggable">
-    <span class="card-title-wrap">
-      <span class="card-title">{{ card.title }}</span>
-    </span>
-    <span class="icon-btn-wrap">
-      <LeafIconDesk class="leaf-icon btn-icon" v-if="isDesk" />
-      <LeafIconMobile class="leaf-icon btn-icon" v-else />
-      <MainGrapeIconDesk class="main-grape-icon btn-icon" v-if="isDesk" />
-      <MainGrapeIconMobile class="main-grape-icon btn-icon" v-else />
-      <GrapeIconDesk class="grape-icon btn-icon" v-if="isDesk" />
-      <GrapeIconMobile class="grape-icon btn-icon" v-else />
-      <NavArroWIconDesk class="nav-arrow-icon btn-icon" v-show="isDesk" />
-      <span class="card-number">{{ card.number }}</span>
-    </span>
-  </button>
-  <Vue3Lottie :animationData="parajanovsLife" :height="card.animation[0].height" :width="card.animation[0].width" class="animation-item" />
+  <div class="map-item-card">
+    <ShipToLeftIconDesk class="ship-to-left-icon" v-if="isDesk" />
+    <ShipToLeftIconMobile class="ship-to-left-icon" v-else />
+    <ShipToRightIconDesk class="ship-to-right-icon" v-if="isDesk" />
+    <ShipToRightIconMobile class="ship-to-right-icon" v-else />
+    <QuoteIconDesk class="quote-icon" v-if="isDesk" />
+    <QuoteIconMobile class="quote-icon" v-else />
+    <Vue3Lottie :animationData="parajanovsLife" :height="card.animation[0].height" :width="card.animation[0].width" class="animation-item" />
+    <div class="card-title-wrap">
+      <p class="card-title">{{ card.title }}</p>
+      <button :data-card-id="dataCardId" type="button" class="card-btn test" @click="onCardBtnClick" :disabled="isDraggable"></button>
+      <span class="icon-btn-wrap">
+        <LeafIconDesk class="leaf-icon btn-icon" v-if="isDesk" />
+        <LeafIconMobile class="leaf-icon btn-icon" v-else />
+        <MainGrapeIconDesk class="main-grape-icon btn-icon" v-if="isDesk" />
+        <MainGrapeIconMobile class="main-grape-icon btn-icon" v-else />
+        <GrapeIconDesk class="grape-icon btn-icon" v-if="isDesk" />
+        <GrapeIconMobile class="grape-icon btn-icon" v-else />
+        <NavArroWIconDesk class="nav-arrow-icon btn-icon" v-show="isDesk" />
+        <span class="card-number">{{ card.number }}</span>
+      </span>
+    </div>
+  </div>
 </template>
 
 <style scoped>
-.card-btn {
+.map-item-card {
   position: relative;
-  display: block;
-  width: 370px;
-  height: 303px;
+  padding: 190px 177px 1px 150px;
+}
+
+.card-title-wrap {
+  position: relative;
+  width: 288px;
+  height: 161px;
+  background-image: url('icons/parajanovsLife/title-bg-mobile.svg');
+  background-repeat: no-repeat;
+  background-size: 288px 161px;
+  background-position: 0 0;
+}
+
+.card-btn {
+  position: absolute;
+  z-index: 10;
+  top: 20px;
+  width: 100%;
+  height: 120px;
   padding: 0;
   border: none;
   background-color: transparent;
-}
-
-.card-btn-disabled {
-  pointer-events: none;
+  outline: 1px solid greenyellow;
 }
 
 .icon-btn-wrap {
   position: absolute;
-  top: 98px;
-  left: 255px;
-  width: 134px;
-  height: 134px;
-  padding-top: 30px;
-  padding-left: 28px;
+  top: -43px;
+  left: 174px;
+  pointer-events: none;
 }
 
 .main-grape-icon {
@@ -117,39 +132,33 @@ defineProps({
   transition: opacity var(--transition-duration-and-func);
 }
 
-.card-btn:not(:is(:hover, :focus)) .nav-arrow-icon {
+.card-btn:is(:hover, :focus) {
+  cursor:
+    url('icons/cursor-pointer.svg') 25 0,
+    auto;
+}
+
+.card-btn:not(:is(:hover, :focus)) ~ .icon-btn-wrap > .nav-arrow-icon {
   transform: rotate(-90deg);
   opacity: 0;
 }
 
-.card-btn:is(:hover, :focus) .leaf-icon {
+.card-btn:is(:hover, :focus) ~ .icon-btn-wrap > .leaf-icon {
   transform: translateY(5px);
 }
 
-.card-btn:is(:hover, :focus) .main-grape-icon {
+.card-btn:is(:hover, :focus) ~ .icon-btn-wrap > .main-grape-icon {
   transform: rotate(2.44deg);
 }
 
-.card-btn:is(:hover, :focus) .grape-icon {
+.card-btn:is(:hover, :focus) ~ .icon-btn-wrap > .grape-icon {
   transform: rotate(21.65deg);
 }
 
-.card-title-wrap {
-  position: absolute;
-  top: 141px;
-  left: 81px;
-  width: 289px;
-  height: 162px;
-  background-image: url('icons/parajanovsLife/title-bg-mobile.svg');
-  background-repeat: no-repeat;
-  background-size: 289px 162px;
-  background-position: 0 0;
-  padding-top: 46px;
-  padding-left: 88px;
-  text-align: left;
-}
-
 .card-title {
+  position: absolute;
+  top: 46px;
+  left: 88px;
   color: #353b3f;
   font-family: Shnobel;
   font-size: 38px;
@@ -160,29 +169,31 @@ defineProps({
 
 .ship-to-left-icon {
   position: absolute;
-  top: 238px;
-  left: 16px;
+  top: 287px;
+  left: 85px;
   display: block;
 }
 
 .ship-to-right-icon {
   position: absolute;
-  top: 272px;
-  left: 42px;
+  top: 321px;
+  left: 111px;
   display: block;
 }
 
 .quote-icon {
   position: absolute;
-  top: 40px;
-  left: 239px;
+  top: 89px;
+  left: 308px;
   display: block;
 }
 
 .animation-item {
   position: absolute;
-  top: 0;
-  left: 0;
+  z-index: 10;
+  top: 50px;
+  left: 69px;
+  outline: 1px solid red;
 }
 
 @media screen and (max-width: 1279px) {
@@ -193,18 +204,26 @@ defineProps({
 }
 
 @media screen and (min-width: 1280px) {
+  .map-item-card {
+    padding: 445px 420px 54px 351px;
+  }
+
+  .card-title-wrap {
+    width: 670px;
+    height: 321px;
+    background-image: url('icons/parajanovsLife/title-bg-desk.svg');
+    background-size: 670px 321px;
+  }
+
   .card-btn {
-    width: 941px;
-    height: 621px;
+    top: 30px;
+    width: 100%;
+    height: 250px;
   }
 
   .icon-btn-wrap {
-    top: 199px;
-    left: 677px;
-    width: 314px;
-    height: 313px;
-    padding-top: 70px;
-    padding-left: 65px;
+    top: -100px;
+    left: 406px;
   }
 
   .grape-icon {
@@ -231,50 +250,38 @@ defineProps({
     transform-origin: center top;
   }
 
-  .card-btn:is(:hover, :focus) .card-number {
+  .card-btn:is(:hover, :focus) ~ .icon-btn-wrap > .card-number {
     opacity: 0;
   }
 
-  .card-btn:is(:hover, :focus) .leaf-icon {
+  .card-btn:is(:hover, :focus) ~ .icon-btn-wrap > .leaf-icon {
     transform: translateY(7px);
   }
 
-  .card-title-wrap {
-    top: 299px;
-    left: 271px;
-    width: 670px;
-    height: 321px;
-    background-image: url('icons/parajanovsLife/title-bg-desk.svg');
-    background-size: 670px 321px;
-    padding-top: 50px;
-    padding-left: 193px;
-  }
-
   .card-title {
+    top: 50px;
+    left: 193px;
     font-size: 90px;
   }
 
   .ship-to-left-icon {
-    top: 509px;
-    left: 73px;
+    top: 655px;
+    left: 152px;
   }
 
   .ship-to-right-icon {
-    top: 599px;
-    left: 131px;
-  }
-
-  .parajanov-face-icon {
-    top: -19px;
-    left: 0px;
+    top: 745px;
+    left: 211px;
   }
 
   .quote-icon {
-    top: 63px;
-    left: 640px;
+    top: 209px;
+    left: 720px;
   }
 
   .animation-item {
+    top: 127px;
+    left: 80px;
   }
 }
 </style>
