@@ -5,8 +5,8 @@ import LeafIcon from 'icons/ingeniousCollages/leaf.svg?component';
 import MainGrapeIcon from 'icons/ingeniousCollages/main-grape.svg?component';
 import NavArroWIcon from 'icons/ingeniousCollages/nav-arrow.svg?component';
 import GrapesIcon from 'icons/ingeniousCollages/grapes.svg?component';
-// import SmallGrapeIcon from 'icons/ingeniousCollages/small-grape.svg?component';
-// import TopGrapeIcon from 'icons/ingeniousCollages/top-grape.svg?component';
+import SmallGrapeIcon from 'icons/ingeniousCollages/small-grape.svg?component';
+// import ingeniousCollages from '../animations/ingeniousCollages.json'
 
 defineProps({
   card: cardValidator,
@@ -27,8 +27,7 @@ defineProps({
 
 <template>
   <div class="map-item-card">
-    <!-- <TopGrapeIcon class="top-grape-icon" /> <SmallGrapeIcon class="small-grape-icon" /> -->
-    <!-- <Vue3Lottie :animationData="parajanovBat" class="animation-parajanov-bat" :height="card.animation[0].height" :width="card.animation[0].width" /> -->
+    <Vue3Lottie :animationData="ingeniousCollages" class="animation-item" :height="card.animation[0].height" :width="card.animation[0].width" />
     <div class="card-title-wrap">
       <p class="card-title">{{ card.title }}</p>
       <button :data-card-id="dataCardId" type="button" class="card-btn test" @click="onCardBtnClick" :disabled="isDraggable"></button>
@@ -41,6 +40,7 @@ defineProps({
       </span>
     </div>
     <GrapesIcon class="grapes-icon" />
+    <SmallGrapeIcon class="small-grape-icon" />
   </div>
 </template>
 
@@ -50,21 +50,11 @@ defineProps({
   padding: 256px 228px 281px 548px;
 }
 
-.top-grape-icon {
-}
-
-.small-grape-icon {
+.animation-item {
   position: absolute;
-  top: 499px;
-  left: 249px;
-  display: block;
-}
-
-.grapes-icon {
-  position: absolute;
-  top: 498px;
-  left: 663px;
-  display: block;
+  top: -83px;
+  left: 103px;
+  outline: 1px solid red;
 }
 
 .card-title-wrap {
@@ -152,6 +142,20 @@ defineProps({
   font-weight: 400;
   line-height: 1.3;
   transition: opacity var(--transition-duration-and-func);
+}
+
+.small-grape-icon {
+  position: absolute;
+  top: 499px;
+  left: 249px;
+  display: block;
+}
+
+.grapes-icon {
+  position: absolute;
+  top: 498px;
+  left: 663px;
+  display: block;
 }
 
 .card-btn:is(:hover, :focus) {

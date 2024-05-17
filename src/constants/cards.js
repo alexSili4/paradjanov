@@ -76,8 +76,8 @@ const cards = [
     title: 'Геніальні колажі',
     animation: [
       {
-        width: 0,
-        height: 0,
+        width: 950,
+        height: 617,
       },
     ],
   },
@@ -87,8 +87,8 @@ const cards = [
     title: 'Колір граната',
     animation: [
       {
-        width: 0,
-        height: 0,
+        width: 617.14,
+        height: 412.28,
       },
     ],
   },

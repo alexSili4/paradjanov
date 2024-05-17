@@ -30,12 +30,10 @@ const isShow = computed(() => props.activeArticle === props.card.id);
 
 <template>
   <li class="map-item">
-    <div class="map-item-card">
-      <TastePreferencesBtn :card="card" :data-card-id="card.id" :onCardBtnClick="onCardBtnClick" :isDraggable="isDraggable" />
-      <CardArticle :isShow="isShow" :onCloseBtnClick="onCloseArticleBtnClick">
-        <TastePreferencesArticle />
-      </CardArticle>
-    </div>
+    <TastePreferencesBtn :card="card" :data-card-id="card.id" :onCardBtnClick="onCardBtnClick" :isDraggable="isDraggable" />
+    <CardArticle :isShow="isShow" :onCloseBtnClick="onCloseArticleBtnClick">
+      <TastePreferencesArticle />
+    </CardArticle>
   </li>
 </template>
 
@@ -44,11 +42,6 @@ const isShow = computed(() => props.activeArticle === props.card.id);
   position: absolute;
   top: 1974px;
   left: 3121px;
-  padding: 217px 277px 110px 232px;
-}
-
-.map-item-card {
-  position: relative;
 }
 
 @media screen and (max-width: 1279px) {

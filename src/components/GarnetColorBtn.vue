@@ -6,17 +6,18 @@ import MainGrapeIcon from 'icons/garnetColor/main-grape.svg?component';
 import NavArroWIcon from 'icons/garnetColor/nav-arrow.svg?component';
 import CometIcon from 'icons/garnetColor/comet.svg?component';
 import GrapesIcon from 'icons/garnetColor/grapes.svg?component';
-import LaceIcon from 'icons/garnetColor/lace.svg?component';
 import LandIcon from 'icons/garnetColor/land.svg?component';
 import LeftChickenIcon from 'icons/garnetColor/left-chicken.svg?component';
-import LeftHandIcon from 'icons/garnetColor/left-hand.svg?component';
-import ParadjanovIcon from 'icons/garnetColor/paradjanov.svg?component';
 import RightChickenIcon from 'icons/garnetColor/right-chicken.svg?component';
-import RightHandIcon from 'icons/garnetColor/right-hand.svg?component';
 import SmallGrapeIcon from 'icons/garnetColor/small-grape.svg?component';
+// import garnetColor from '../animations/garnetColor.json';
 
 defineProps({
   card: cardValidator,
+  dataCardId: {
+    type: String,
+    required: true,
+  },
   onCardBtnClick: {
     type: Function,
     required: true,
@@ -29,61 +30,90 @@ defineProps({
 </script>
 
 <template>
-  <button type="button" :class="['card-btn', { 'card-btn-disabled': isDraggable }]" @click="onCardBtnClick" :disabled="isDraggable">
-    <CometIcon class="comet-icon" />
+  <div class="map-item-card">
     <LandIcon class="land-icon" />
+    <CometIcon class="comet-icon" />
+    <SmallGrapeIcon class="small-grape-icon" />
     <LeftChickenIcon class="left-chicken-icon" />
     <RightChickenIcon class="right-chicken-icon" />
-    <ParadjanovIcon class="paradjanov-icon" />
-    <LaceIcon class="lace-icon" />
-    <LeftHandIcon class="left-hand-icon" />
-    <RightHandIcon class="right-hand-icon" />
-    <SmallGrapeIcon class="small-grape-icon" />
-    <span class="card-title-wrap">
-      <span class="card-title">{{ card.title }}</span>
-    </span>
-    <span class="icon-btn-wrap">
-      <MainGrapeIcon class="main-grape-icon btn-icon" />
-      <NavArroWIcon class="nav-arrow-icon btn-icon" />
-      <LeafIcon class="leaf-icon btn-icon" />
-      <GrapeIcon class="grape-icon btn-icon" />
-      <span class="card-number">{{ card.number }}</span>
-    </span>
+    <Vue3Lottie :animationData="garnetColor" class="animation-item" :height="card.animation[0].height" :width="card.animation[0].width" />
+    <div class="card-title-wrap">
+      <p class="card-title">{{ card.title }}</p>
+      <button :data-card-id="dataCardId" type="button" class="card-btn test" @click="onCardBtnClick" :disabled="isDraggable"></button>
+      <span class="icon-btn-wrap">
+        <MainGrapeIcon class="main-grape-icon btn-icon" />
+        <LeafIcon class="leaf-icon btn-icon" />
+        <GrapeIcon class="grape-icon btn-icon" />
+        <NavArroWIcon class="nav-arrow-icon btn-icon" />
+        <span class="card-number">{{ card.number }}</span>
+      </span>
+    </div>
     <GrapesIcon class="grapes-icon" />
-  </button>
+  </div>
 </template>
 
 <style scoped>
-.card-btn {
+.map-item-card {
   position: relative;
-  display: block;
-  width: 899px;
-  height: 697px;
-  padding: 0;
-  border: none;
-  background-color: transparent;
+  padding: 469px 71px 106px 695px;
 }
 
-.card-btn-disabled {
-  pointer-events: none;
+.land-icon {
+  position: absolute;
+  top: 174px;
+  left: 560px;
+  display: block;
+}
+
+.comet-icon {
+  position: absolute;
+  top: -63px;
+  left: 1195px;
+  display: block;
+}
+
+.small-grape-icon {
+  position: absolute;
+  top: 730px;
+  left: 1121px;
+  display: block;
+}
+
+.left-chicken-icon {
+  position: absolute;
+  top: 498px;
+  left: 589px;
+  display: block;
+}
+
+.right-chicken-icon {
+  position: absolute;
+  top: 408px;
+  left: 1278px;
+  display: block;
+}
+
+.animation-item {
+  position: absolute;
+  top: 121px;
+  left: 637px;
+  outline: 1px solid red;
 }
 
 .card-title-wrap {
-  position: absolute;
-  top: 341px;
-  left: 142px;
-  width: 678px;
-  height: 254px;
+  position: relative;
+  width: 674px;
+  height: 245px;
   background-image: url('icons/garnetColor/title-bg.svg');
   background-repeat: no-repeat;
-  background-size: 678px 254px;
+  background-size: 674px 245px;
   background-position: 0 0;
-  padding-top: 87px;
-  padding-left: 133px;
-  text-align: left;
 }
 
 .card-title {
+  position: absolute;
+  top: 78px;
+  left: 129px;
   color: #353b3f;
   font-family: Shnobel;
   font-size: 90px;
@@ -92,82 +122,24 @@ defineProps({
   text-transform: uppercase;
 }
 
-.comet-icon {
+.card-btn {
   position: absolute;
-  top: -182px;
-  left: 646px;
-  display: block;
-}
-
-.grapes-icon {
-  position: absolute;
-  top: 561px;
-  left: 656px;
-  display: block;
-}
-
-.lace-icon {
-  position: absolute;
-  top: 159px;
-  left: 98px;
-  display: block;
-}
-
-.land-icon {
-  position: absolute;
-  top: 55px;
-  left: 4px;
-  display: block;
-}
-
-.left-chicken-icon {
-  position: absolute;
-  top: 379px;
-  left: 40px;
-  display: block;
-}
-
-.left-hand-icon {
-  position: absolute;
-  top: 196px;
-  left: 117px;
-  display: block;
-}
-
-.paradjanov-icon {
-  position: absolute;
-  top: 1px;
-  left: 85px;
-  display: block;
-}
-
-.right-chicken-icon {
-  position: absolute;
-  top: 289px;
-  left: 728px;
-  display: block;
-}
-
-.right-hand-icon {
-  position: absolute;
-  top: 194px;
-  left: 480px;
-  display: block;
-}
-
-.small-grape-icon {
-  position: absolute;
-  top: 611px;
-  left: 571px;
-  display: block;
+  z-index: 10;
+  top: 20px;
+  left: 20px;
+  width: calc(100% - 40px);
+  height: 210px;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  outline: 1px solid greenyellow;
 }
 
 .icon-btn-wrap {
   position: absolute;
-  top: 382px;
-  left: 5px;
-  width: 322px;
-  height: 320px;
+  top: 35px;
+  left: -145px;
+  pointer-events: none;
 }
 
 .leaf-icon {
@@ -197,16 +169,16 @@ defineProps({
 
 .nav-arrow-icon {
   position: absolute;
-  top: 142px;
-  left: 123px;
+  top: 139px;
+  left: 127px;
   display: block;
   transform-origin: center top;
 }
 
 .card-number {
   position: absolute;
-  top: 136px;
-  left: 145px;
+  top: 133px;
+  left: 150px;
   color: var(--white-color);
   font-family: Shnobel;
   font-size: 60px;
@@ -215,25 +187,38 @@ defineProps({
   transition: opacity var(--transition-duration-and-func);
 }
 
-.card-btn:not(:is(:hover, :focus)) .nav-arrow-icon {
+.grapes-icon {
+  position: absolute;
+  top: 680px;
+  left: 1206px;
+  display: block;
+}
+
+.card-btn:is(:hover, :focus) {
+  cursor:
+    url('icons/cursor-pointer.svg') 25 0,
+    auto;
+}
+
+.card-btn:not(:is(:hover, :focus)) ~ .icon-btn-wrap > .nav-arrow-icon {
   transform: rotate(90deg);
   opacity: 0;
 }
 
-.card-btn:is(:hover, :focus) .leaf-icon {
+.card-btn:is(:hover, :focus) ~ .icon-btn-wrap > .leaf-icon {
   transform: translateY(-4px);
 }
 
-.card-btn:is(:hover, :focus) .main-grape-icon {
+.card-btn:is(:hover, :focus) ~ .icon-btn-wrap > .main-grape-icon {
   transform: rotate(7.32deg);
 }
 
-.card-btn:is(:hover, :focus) .grape-icon {
+.card-btn:is(:hover, :focus) ~ .icon-btn-wrap > .grape-icon {
   transform: rotate(13.41deg);
 }
 
 @media screen and (min-width: 1280px) {
-  .card-btn:is(:hover, :focus) .card-number {
+  .card-btn:is(:hover, :focus) ~ .icon-btn-wrap > .card-number {
     opacity: 0;
   }
 }

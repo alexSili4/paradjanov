@@ -31,15 +31,15 @@ defineProps({
   z-index: 100;
   top: 11px;
   left: 50%;
-  width: calc(100% - 16px - 16px);
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  width: calc(100% - 16px - 16px);
   transform: translateX(-50%);
 }
 
 .logo-link {
   flex-shrink: 0;
-  align-self: flex-start;
 }
 
 .logo-link-icon {
@@ -62,8 +62,8 @@ defineProps({
 .hand-with-cup-img {
   position: relative;
   z-index: 1;
-  width: 67.91px;
-  height: 63px;
+  width: 80px;
+  height: 75px;
   transition: transform var(--transition-duration-and-func);
 }
 
@@ -88,8 +88,8 @@ defineProps({
   }
 
   .hand-with-cup-img {
-    width: 103px;
-    height: 96px;
+    width: 125px;
+    height: 116px;
   }
 
   .warning-icon {
