@@ -61,14 +61,12 @@ defineProps({
   position: absolute;
   top: -12px;
   left: 34px;
-  outline: 1px solid red;
 }
 
 .animation-pot {
   position: absolute;
   top: 200px;
   left: 232px;
-  outline: 1px solid red;
 }
 
 .card-title-wrap {
@@ -103,7 +101,6 @@ defineProps({
   padding: 0;
   border: none;
   background-color: transparent;
-  outline: 1px solid greenyellow;
 }
 
 .icon-btn-wrap {

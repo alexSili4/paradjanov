@@ -63,21 +63,18 @@ defineProps({
   position: absolute;
   top: 75px;
   left: 225px;
-  outline: 1px solid red;
 }
 
 .animation-heroes {
   position: absolute;
   top: 100px;
   left: 688px;
-  outline: 1px solid red;
 }
 
 .animation-candles {
   position: absolute;
   top: 8px;
   left: 724px;
-  outline: 1px solid red;
 }
 
 .card-title-wrap {
@@ -111,7 +108,6 @@ defineProps({
   padding: 0;
   border: none;
   background-color: transparent;
-  outline: 1px solid greenyellow;
 }
 
 .icon-btn-wrap {

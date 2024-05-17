@@ -85,7 +85,6 @@ defineProps({
   padding: 0;
   border: none;
   background-color: transparent;
-  outline: 1px solid greenyellow;
 }
 
 .icon-btn-wrap {
@@ -193,7 +192,6 @@ defineProps({
   z-index: 10;
   top: 50px;
   left: 69px;
-  outline: 1px solid red;
 }
 
 @media screen and (max-width: 1279px) {

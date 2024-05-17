@@ -65,8 +65,16 @@ const cards = [
     title: 'Стакани від сільпо',
     animation: [
       {
-        width: 0,
-        height: 0,
+        width: 252,
+        height: 433,
+      },
+      {
+        width: 273,
+        height: 293,
+      },
+      {
+        width: 299,
+        height: 336,
       },
     ],
   },

@@ -97,7 +97,6 @@ defineProps({
   position: absolute;
   top: 121px;
   left: 637px;
-  outline: 1px solid red;
 }
 
 .card-title-wrap {
@@ -132,7 +131,6 @@ defineProps({
   padding: 0;
   border: none;
   background-color: transparent;
-  outline: 1px solid greenyellow;
 }
 
 .icon-btn-wrap {

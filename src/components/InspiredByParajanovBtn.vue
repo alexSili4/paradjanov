@@ -80,7 +80,6 @@ defineProps({
   position: absolute;
   top: 47px;
   left: 431px;
-  outline: 1px solid red;
 }
 
 .animation-logo-with-hero {
@@ -88,7 +87,6 @@ defineProps({
   z-index: 10;
   top: 0px;
   left: 186px;
-  outline: 1px solid red;
 }
 
 .card-title-wrap {
@@ -122,7 +120,6 @@ defineProps({
   padding: 0;
   border: none;
   background-color: transparent;
-  outline: 1px solid greenyellow;
 }
 
 .icon-btn-wrap {
