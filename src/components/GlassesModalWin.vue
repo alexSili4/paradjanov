@@ -1,28 +1,53 @@
 <script setup>
 import ArrowIcon from 'icons/arrow.svg?component';
+import { glassesValidator } from 'validator';
+import { register } from 'swiper/element/bundle';
+import { ref } from 'vue';
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import 'swiper/swiper-bundle.css';
 
-defineProps({
+register();
+
+const mySwiper = ref(null);
+const mySwiper2 = ref(null);
+
+const props = defineProps({
   isShow: { type: Boolean, required: true },
+  glasses: glassesValidator,
 });
+
+const onNextBtnClick = () => {
+  mySwiper.value.swiper.slideNext();
+  mySwiper2.value.swiper.slideNext();
+};
+
+const onPrevBtnClick = () => {
+  mySwiper.value.swiper.slidePrev();
+  mySwiper2.value.swiper.slidePrev();
+};
 </script>
 
 <template>
   <Teleport to="body">
     <Transition name="container">
-      <div class="cup-modal-win" v-show="isShow">
+      <div class="glass-modal-win" v-show="isShow">
         <div class="container">
           <div class="slider"></div>
           <div class="content-wrap">
             <div class="volume-of-glasses-wrap">
-              <p class="volume-of-glasses-text">Натхнені стакани 350 мл</p>
+              <swiper-container ref="mySwiper" :slides-per-view="1" :space-between="10" :allowTouchMove="false">
+                <swiper-slide class="volume-of-glasses-text">Натхнені стакани {{ glasses[0].volume }} мл</swiper-slide>
+                <swiper-slide class="volume-of-glasses-text">Натхнені стакани {{ glasses[1].volume }} мл</swiper-slide>
+                <swiper-slide class="volume-of-glasses-text">Натхнені стакани {{ glasses[2].volume }} мл</swiper-slide>
+              </swiper-container>
               <ul class="controls-list">
                 <li class="controls-list-item">
-                  <button type="button" class="nav-btn">
+                  <button ref="prev" type="button" class="nav-btn" @click="onPrevBtnClick">
                     <ArrowIcon class="nav-btn-icon prev-btn-icon" />
                   </button>
                 </li>
                 <li class="controls-list-item">
-                  <button type="button" class="nav-btn">
+                  <button ref="next" type="button" class="nav-btn" @click="onNextBtnClick">
                     <ArrowIcon class="nav-btn-icon" />
                   </button>
                 </li>
@@ -30,10 +55,17 @@ defineProps({
             </div>
             <div class="text-wrap">
               <p class="title">Натхнені стакани</p>
-              <p class="description">
-                100 років тому народився хлопчик якому судилося зняти кілька фільмів, визнаних шедеврами, потрапити до радянської в'язниці, вижити там у найважчих умовах і стати одним із найвидатніших
-                кінорежисерів ХХ століття.
-              </p>
+              <swiper-container ref="mySwiper2" :slides-per-view="1" :space-between="10">
+                <swiper-slide
+                  ><p class="description">{{ glasses[0].desc }}</p></swiper-slide
+                >
+                <swiper-slide>
+                  <p class="description">{{ glasses[1].desc }}</p></swiper-slide
+                >
+                <swiper-slide
+                  ><p class="description">{{ glasses[2].desc }}</p></swiper-slide
+                >
+              </swiper-container>
             </div>
           </div>
         </div>
@@ -54,7 +86,7 @@ defineProps({
   transform: scale(0);
 }
 
-.cup-modal-win {
+.glass-modal-win {
   position: fixed;
   z-index: 100;
   top: 0;
@@ -142,10 +174,11 @@ defineProps({
 .prev-btn-icon {
 }
 
+.nav-btn-icon.prev-btn-icon {
+  transform: rotate(180deg);
+}
+
 .text-wrap {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
 }
 
 .title {
@@ -159,6 +192,7 @@ defineProps({
 }
 
 .description {
+  margin-top: 24px;
   color: var(--white-color);
   font-family: Geologica;
   font-size: 18px;
@@ -177,7 +211,7 @@ defineProps({
 }
 
 @media screen and (min-width: 1280px) {
-  .cup-modal-win {
+  .glass-modal-win {
     background-image: url('icons/cupModalWin/lower-star-desk.svg'), url('icons/cupModalWin/top-star-desk.svg'), url('icons/cupModalWin/lower-bubbles-desk.svg'),
       url('icons/cupModalWin/top-bubbles-desk.svg');
     background-position:

@@ -5,7 +5,8 @@ import handWithCup from 'images/header/hand-with-cup.png';
 import Warning from 'icons/header/warning.svg?component';
 import { computed, ref } from 'vue';
 import CloseBtnIcon from 'icons/close-btn.svg?component';
-import CupModalWin from 'components/CupModalWin.vue';
+import GlassesModalWin from 'components/GlassesModalWin.vue';
+import { glasses } from 'constants';
 
 const showCupModalWin = ref(false);
 
@@ -40,7 +41,7 @@ const hideCupBtnClassNames = computed(getHideCupBtnClassNames);
       </button>
       <button type="button" :class="hideCupBtnClassNames" @click="toggleShowCupModalWin"><CloseBtnIcon class="close-btn-icon" /></button>
     </div>
-    <CupModalWin :isShow="showCupModalWin" />
+    <GlassesModalWin :isShow="showCupModalWin" :glasses="glasses" />
   </header>
 </template>
 
