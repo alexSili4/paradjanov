@@ -1,6 +1,4 @@
-import { cards } from 'constants';
-
-const getPrevAndNextCardId = (cardId) => {
+const getPrevAndNextCardId = ({ cardId, cards }) => {
   const firstIndex = 0;
   const lastIndex = cards.length - 1;
 

@@ -41,6 +41,7 @@ const isDraggableRef = ref(false);
 const activeArticleRef = ref(null);
 const activeCardIdRef = ref(null);
 const isOpenMenuRef = ref(false);
+const isMovingRef = ref(false);
 
 onBeforeMount(() => {
   const defaultCardId = cards[0].id;
@@ -56,7 +57,7 @@ onMounted(() => {
 });
 
 const changeActiveCardId = (cardId) => {
-  if (showAllMap.value) {
+  if (showAllMap.value || isMovingRef.value) {
     return;
   }
 
@@ -222,10 +223,15 @@ const onZoomBtnClick = (e) => {
   e.currentTarget.blur();
 };
 
+const cancelMove = () => {
+  isMovingRef.value = false;
+};
+
 const onNavBtnClick = (e) => {
   e.currentTarget.blur();
+  isMovingRef.value = true;
   const { cardId } = e.currentTarget.dataset;
-  changeActiveCardId(cardId);
+  router.push({ path: '/', query: { cardId } });
 
   if (!props.isDesk) {
     isOpenMenuRef.value = false;
@@ -266,6 +272,7 @@ const mapClassNames = computed(getMapClassNames);
         :activeArticle="activeArticleRef"
         :onNavBtnClick="onNavBtnClick"
         :changeActiveCardId="changeActiveCardId"
+        :cancelMove="cancelMove"
       />
       <ShadowsOfForgottenAncestors
         :card="cards[1]"
@@ -276,6 +283,7 @@ const mapClassNames = computed(getMapClassNames);
         :isDesk="isDesk"
         :onNavBtnClick="onNavBtnClick"
         :changeActiveCardId="changeActiveCardId"
+        :cancelMove="cancelMove"
       />
       <InspiredByParajanov
         :card="cards[2]"
@@ -286,6 +294,7 @@ const mapClassNames = computed(getMapClassNames);
         :isDesk="isDesk"
         :onNavBtnClick="onNavBtnClick"
         :changeActiveCardId="changeActiveCardId"
+        :cancelMove="cancelMove"
       />
       <TastePreferences
         :card="cards[3]"
@@ -296,6 +305,7 @@ const mapClassNames = computed(getMapClassNames);
         :isDesk="isDesk"
         :onNavBtnClick="onNavBtnClick"
         :changeActiveCardId="changeActiveCardId"
+        :cancelMove="cancelMove"
       />
       <GlassesFromSilpo
         :card="cards[4]"
@@ -306,6 +316,7 @@ const mapClassNames = computed(getMapClassNames);
         :isDesk="isDesk"
         :onNavBtnClick="onNavBtnClick"
         :changeActiveCardId="changeActiveCardId"
+        :cancelMove="cancelMove"
       />
       <IngeniousCollages
         :card="cards[5]"
@@ -316,6 +327,8 @@ const mapClassNames = computed(getMapClassNames);
         :isDesk="isDesk"
         :onNavBtnClick="onNavBtnClick"
         :changeActiveCardId="changeActiveCardId"
+        :cancelMove="cancelMove"
+        :isMoving="isMovingRef"
       />
       <GarnetColor
         :card="cards[6]"
@@ -326,6 +339,8 @@ const mapClassNames = computed(getMapClassNames);
         :isDesk="isDesk"
         :onNavBtnClick="onNavBtnClick"
         :changeActiveCardId="changeActiveCardId"
+        :cancelMove="cancelMove"
+        :isMoving="isMovingRef"
       />
     </ul>
   </div>

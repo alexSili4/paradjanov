@@ -4,7 +4,8 @@ import { getPrevAndNextCardId } from 'utils';
 import { cardValidator } from 'validator';
 import { onBeforeMount, ref } from 'vue';
 import { useRoute } from 'vue-router';
-import NextBtnIcon from '../icons/cardArticle/next-btn-icon.svg?component';
+import NextBtnIcon from 'icons/cardArticle/next-btn-icon.svg?component';
+import { cards } from 'constants';
 
 const route = useRoute();
 
@@ -23,7 +24,7 @@ onBeforeMount(() => {
   const defaultCardId = props.card.id;
   const query = route.query;
   const cardId = query.cardId || defaultCardId;
-  const { prevCardId, nextCardId } = getPrevAndNextCardId(cardId);
+  const { prevCardId, nextCardId } = getPrevAndNextCardId({ cardId, cards });
   prevCardIdRef.value = prevCardId;
   nextCardIdRef.value = nextCardId;
 });

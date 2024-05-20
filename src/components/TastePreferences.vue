@@ -5,6 +5,9 @@ import TastePreferencesArticle from 'components/TastePreferencesArticle.vue';
 import CardArticle from 'components/CardArticle.vue';
 import { computed, onMounted, ref } from 'vue';
 import { intersectionObserverOptions } from 'constants';
+import { useRoute } from 'vue-router';
+
+const route = useRoute();
 
 const mapItemRef = ref(null);
 const playAnimationRef = ref(false);
@@ -36,15 +39,24 @@ const props = defineProps({
     type: Function,
     required: true,
   },
+  cancelMove: {
+    type: Function,
+    required: true,
+  },
 });
 
 const playAnimationChange = (entries) => {
   entries.forEach((entry) => {
+    const { cardId: targetCardId } = entry.target.dataset;
+    const { cardId } = route.query;
+    const isTargetCard = cardId === targetCardId;
     const isNewValue = playAnimationRef.value !== entry.isIntersecting;
+    const shouldChangeCardId = entry.isIntersecting && isNewValue && !props.isMoving && isTargetCard;
 
-    if (isNewValue) {
+    if (shouldChangeCardId) {
       playAnimationRef.value = entry.isIntersecting;
       props.changeActiveCardId(props.card.id);
+      props.cancelMove();
     }
   });
 };

@@ -1,5 +1,5 @@
 <script setup>
-import Arrow from 'icons/navBar/arrow.svg?component';
+import Arrow from 'icons/arrow.svg?component';
 import CardsNumberList from 'components/CardsNumberList.vue';
 import ZoomInMap from 'icons/navBar/zoom-in-map.svg?component';
 import MenuDesk from 'icons/navBar/menu-desk.svg?component';
@@ -51,14 +51,14 @@ onBeforeMount(() => {
   const defaultCardId = props.cards[0].id;
   const query = route.query;
   const cardId = query.cardId || defaultCardId;
-  const { prevCardId, nextCardId } = getPrevAndNextCardId(cardId);
+  const { prevCardId, nextCardId } = getPrevAndNextCardId({ cardId, cards: props.cards });
   prevCardIdRef.value = prevCardId;
   nextCardIdRef.value = nextCardId;
 });
 
 const onActiveCardIdChangeDependencies = () => route.query;
 const onActiveCardIdChange = ({ cardId }) => {
-  const { prevCardId, nextCardId } = getPrevAndNextCardId(cardId);
+  const { prevCardId, nextCardId } = getPrevAndNextCardId({ cardId, cards: props.cards });
   prevCardIdRef.value = prevCardId;
   nextCardIdRef.value = nextCardId;
 };
