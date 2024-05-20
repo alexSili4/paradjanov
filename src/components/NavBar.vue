@@ -19,6 +19,10 @@ const nextCardIdRef = ref(null);
 const prevCardIdRef = ref(null);
 const props = defineProps({
   cards: cardsValidator,
+  showArticle: {
+    type: Boolean,
+    required: true,
+  },
   activeCardId: {
     type: String,
     required: true,
@@ -63,7 +67,7 @@ const getMenuBtnClassNames = () => ['menu-btn', { 'menu-open': isOpenMenu.value 
 
 const getMenuBtnWrapClassNames = () => ['menu-btn-wrap', { 'menu-open': isOpenMenu.value }];
 
-const getNavBtnClassNames = () => ['nav-btn', { 'menu-open': isOpenMenu.value }];
+const getNavBtnClassNames = () => ['nav-btn', { 'menu-open': isOpenMenu.value, active: props.showArticle }];
 
 const onNavBtnClick = (e) => {
   e.currentTarget.blur();
@@ -131,7 +135,12 @@ const showMobileMenu = computed(getShowMobileMenu);
   background-color: rgba(255, 255, 255, 0.34);
   transition:
     opacity var(--transition-duration-and-func),
-    visibility var(--transition-duration-and-func);
+    visibility var(--transition-duration-and-func),
+    background-color var(--transition-duration-and-func);
+}
+
+.nav-btn.active {
+  background-color: #939ccb;
 }
 
 .nav-btn.menu-open {

@@ -292,7 +292,14 @@ const mapClassNames = computed(getMapClassNames);
       />
     </ul>
   </div>
-  <NavBar :cards="cards" :toggleShowAllMap="toggleShowAllMap" :isDesk="isDesk" :activeCardId="activeCardIdRef" :activeArticleRefChange="activeArticleRefChange" />
+  <NavBar
+    :cards="cards"
+    :toggleShowAllMap="toggleShowAllMap"
+    :isDesk="isDesk"
+    :activeCardId="activeCardIdRef"
+    :activeArticleRefChange="activeArticleRefChange"
+    :showArticle="Boolean(activeArticleRef)"
+  />
 </template>
 
 <style scoped>
