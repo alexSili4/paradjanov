@@ -7,7 +7,13 @@ defineProps({
 <template>
   <Teleport to="body">
     <Transition name="container">
-      <div class="cup-modal-win" v-show="isShow"></div>
+      <div class="cup-modal-win" v-show="isShow">
+        <div class="text-wrap">
+          <p class="title">Натхнені стакани</p>
+          <p class="description"></p>
+        </div>
+        <div class="slider"></div>
+      </div>
     </Transition>
   </Teleport>
 </template>
