@@ -31,6 +31,10 @@ const props = defineProps({
     type: Boolean,
     required: true,
   },
+  activeArticleRefChange: {
+    type: Function,
+    required: true,
+  },
 });
 
 onBeforeMount(() => {
@@ -69,6 +73,8 @@ const onNavBtnClick = (e) => {
   if (!props.isDesk) {
     isOpenMenu.value = false;
   }
+
+  props.activeArticleRefChange(cardId);
 };
 
 const getShowMobileMenu = () => isOpenMenu.value && !props.isDesk;

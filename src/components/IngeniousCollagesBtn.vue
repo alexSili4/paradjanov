@@ -36,7 +36,7 @@ defineProps({
     </div>
     <GrapesIcon class="grapes-icon" />
     <SmallGrapeIcon class="small-grape-icon" />
-    <Vue3Lottie :animationData="ingeniousCollages" class="animation-item" :height="card.animation[0].height" :width="card.animation[0].width" />
+    <Vue3Lottie :autoPlay="true" :animationData="ingeniousCollages" class="animation-item" :height="card.animation[0].height" :width="card.animation[0].width" />
   </div>
 </template>
 

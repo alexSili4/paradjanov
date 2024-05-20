@@ -32,7 +32,7 @@ defineProps({
     <SmallGrapeIcon class="small-grape-icon" />
     <LeftChickenIcon class="left-chicken-icon" />
     <RightChickenIcon class="right-chicken-icon" />
-    <Vue3Lottie :animationData="garnetColor" class="animation-item" :height="card.animation[0].height" :width="card.animation[0].width" />
+    <Vue3Lottie :autoPlay="true" :animationData="garnetColor" class="animation-item" :height="card.animation[0].height" :width="card.animation[0].width" />
     <div class="card-title-wrap">
       <p class="card-title">{{ card.title }}</p>
       <button type="button" class="card-btn card-article-btn" @click="onCardBtnClick" :disabled="isDraggable"></button>

@@ -187,7 +187,7 @@ const onCloseArticleBtnClick = (e) => {
 
 const onCardBtnClick = (e) => {
   e.currentTarget.blur();
-  const { cardId } = e.currentTarget.dataset;
+  const { cardId } = e.target.closest('.map-item').dataset;
   activeArticleRef.value = cardId;
 };
 
@@ -205,6 +205,12 @@ const toggleShowAllMap = (e) => {
 
   topRef.value = showAllMap.value ? 0 : prevTopRef.value;
   leftRef.value = showAllMap.value ? 0 : prevLeftRef.value;
+};
+
+const activeArticleRefChange = (cardId) => {
+  if (activeArticleRef.value) {
+    activeArticleRef.value = cardId;
+  }
 };
 
 const getMapInlineStyles = () => {
@@ -236,15 +242,57 @@ const mapClassNames = computed(getMapClassNames);
         :onCloseArticleBtnClick="onCloseArticleBtnClick"
         :activeArticle="activeArticleRef"
       />
-      <ShadowsOfForgottenAncestors :card="cards[1]" :onCardBtnClick="onCardBtnClick" :isDraggable="isDraggableRef" :onCloseArticleBtnClick="onCloseArticleBtnClick" :activeArticle="activeArticleRef" />
-      <InspiredByParajanov :card="cards[2]" :onCardBtnClick="onCardBtnClick" :isDraggable="isDraggableRef" :onCloseArticleBtnClick="onCloseArticleBtnClick" :activeArticle="activeArticleRef" />
-      <TastePreferences :card="cards[3]" :onCardBtnClick="onCardBtnClick" :isDraggable="isDraggableRef" :onCloseArticleBtnClick="onCloseArticleBtnClick" :activeArticle="activeArticleRef" />
-      <GlassesFromSilpo :card="cards[4]" :onCardBtnClick="onCardBtnClick" :isDraggable="isDraggableRef" :onCloseArticleBtnClick="onCloseArticleBtnClick" :activeArticle="activeArticleRef" />
-      <IngeniousCollages :card="cards[5]" :onCardBtnClick="onCardBtnClick" :isDraggable="isDraggableRef" :onCloseArticleBtnClick="onCloseArticleBtnClick" :activeArticle="activeArticleRef" />
-      <GarnetColor :card="cards[6]" :onCardBtnClick="onCardBtnClick" :isDraggable="isDraggableRef" :onCloseArticleBtnClick="onCloseArticleBtnClick" :activeArticle="activeArticleRef" />
+      <ShadowsOfForgottenAncestors
+        :card="cards[1]"
+        :onCardBtnClick="onCardBtnClick"
+        :isDraggable="isDraggableRef"
+        :onCloseArticleBtnClick="onCloseArticleBtnClick"
+        :activeArticle="activeArticleRef"
+        :isDesk="isDesk"
+      />
+      <InspiredByParajanov
+        :card="cards[2]"
+        :onCardBtnClick="onCardBtnClick"
+        :isDraggable="isDraggableRef"
+        :onCloseArticleBtnClick="onCloseArticleBtnClick"
+        :activeArticle="activeArticleRef"
+        :isDesk="isDesk"
+      />
+      <TastePreferences
+        :card="cards[3]"
+        :onCardBtnClick="onCardBtnClick"
+        :isDraggable="isDraggableRef"
+        :onCloseArticleBtnClick="onCloseArticleBtnClick"
+        :activeArticle="activeArticleRef"
+        :isDesk="isDesk"
+      />
+      <GlassesFromSilpo
+        :card="cards[4]"
+        :onCardBtnClick="onCardBtnClick"
+        :isDraggable="isDraggableRef"
+        :onCloseArticleBtnClick="onCloseArticleBtnClick"
+        :activeArticle="activeArticleRef"
+        :isDesk="isDesk"
+      />
+      <IngeniousCollages
+        :card="cards[5]"
+        :onCardBtnClick="onCardBtnClick"
+        :isDraggable="isDraggableRef"
+        :onCloseArticleBtnClick="onCloseArticleBtnClick"
+        :activeArticle="activeArticleRef"
+        :isDesk="isDesk"
+      />
+      <GarnetColor
+        :card="cards[6]"
+        :onCardBtnClick="onCardBtnClick"
+        :isDraggable="isDraggableRef"
+        :onCloseArticleBtnClick="onCloseArticleBtnClick"
+        :activeArticle="activeArticleRef"
+        :isDesk="isDesk"
+      />
     </ul>
   </div>
-  <NavBar :cards="cards" :toggleShowAllMap="toggleShowAllMap" :isDesk="isDesk" :activeCardId="activeCardIdRef" />
+  <NavBar :cards="cards" :toggleShowAllMap="toggleShowAllMap" :isDesk="isDesk" :activeCardId="activeCardIdRef" :activeArticleRefChange="activeArticleRefChange" />
 </template>
 
 <style scoped>

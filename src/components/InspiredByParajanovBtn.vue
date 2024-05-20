@@ -28,8 +28,8 @@ defineProps({
     <SunIcon class="sun-icon" />
     <LandIcon class="land-icon" />
     <HeadsIcon class="heads-icon" />
-    <Vue3Lottie :animationData="centaur" class="animation-centaur" :height="card.animation[0].height" :width="card.animation[0].width" />
-    <Vue3Lottie :animationData="logoWithHero" class="animation-logo-with-hero" :height="card.animation[1].height" :width="card.animation[1].width" />
+    <Vue3Lottie :autoPlay="true" :animationData="centaur" class="animation-centaur" :height="card.animation[0].height" :width="card.animation[0].width" />
+    <Vue3Lottie :autoPlay="true" :animationData="logoWithHero" class="animation-logo-with-hero" :height="card.animation[1].height" :width="card.animation[1].width" />
     <div class="card-title-wrap">
       <p class="card-title">{{ card.title }}</p>
       <button type="button" class="card-btn card-article-btn" @click="onCardBtnClick" :disabled="isDraggable"></button>

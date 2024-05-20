@@ -39,9 +39,9 @@ defineProps({
         <span class="card-number">{{ card.number }}</span>
       </span>
     </div>
-    <Vue3Lottie :animationData="glassesFromSilpo350" class="animation-glasses-from-silpo-350" :height="card.animation[2].height" :width="card.animation[2].width" />
-    <Vue3Lottie :animationData="glassesFromSilpo110" class="animation-glasses-from-silpo-110" :height="card.animation[0].height" :width="card.animation[0].width" />
-    <Vue3Lottie :animationData="glassesFromSilpo250" class="animation-glasses-from-silpo-250" :height="card.animation[1].height" :width="card.animation[1].width" />
+    <Vue3Lottie :autoPlay="true" :animationData="glassesFromSilpo350" class="animation-glasses-from-silpo-350" :height="card.animation[2].height" :width="card.animation[2].width" />
+    <Vue3Lottie :autoPlay="true" :animationData="glassesFromSilpo110" class="animation-glasses-from-silpo-110" :height="card.animation[0].height" :width="card.animation[0].width" />
+    <Vue3Lottie :autoPlay="true" :animationData="glassesFromSilpo250" class="animation-glasses-from-silpo-250" :height="card.animation[1].height" :width="card.animation[1].width" />
     <BakeIcon class="bake-icon" />
   </div>
 </template>

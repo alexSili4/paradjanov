@@ -1,9 +1,10 @@
 <script setup>
-import CloseBtnIcon from 'icons/article/close-btn.svg';
+import CloseBtnIcon from 'icons/cardArticle/close-btn.svg';
 
 defineProps({
   onCloseBtnClick: { type: Function, required: true },
   isShow: { type: Boolean, required: true },
+  isDesk: { type: Boolean, required: true },
 });
 </script>
 
@@ -17,6 +18,10 @@ defineProps({
             <CloseBtnIcon class="close-btn-icon" />
           </button>
           <slot></slot>
+          <ul class="nav-btn-list" v-show="isDesk">
+            <li class="nav-btn-list-item"><button class="nav-btn" type="button">Попередній</button></li>
+            <li class="nav-btn-list-item"><button class="nav-btn" type="button">Наступний</button></li>
+          </ul>
         </div>
       </div>
     </Transition>
@@ -31,7 +36,7 @@ defineProps({
 
 .article-wrap {
   position: fixed;
-  z-index: 100;
+  z-index: 10;
   top: 100px;
   right: 0;
   width: 100%;
@@ -45,7 +50,7 @@ defineProps({
   left: 0;
   width: 100%;
   height: 22px;
-  background-image: url('../icons/cardArticle/article-bg-mobile.svg');
+  background-image: url('icons/cardArticle/article-bg-mobile.svg');
 }
 
 .article-container {
@@ -88,6 +93,15 @@ defineProps({
     width: 726px;
     height: 100%;
     background-color: var(--white-color);
+  }
+
+  .article-decorative-element {
+    position: absolute;
+    top: 0px;
+    left: -53px;
+    width: 53px;
+    min-height: 100%;
+    background-image: url('icons/cardArticle/article-bg-desk.svg');
   }
 
   .article-container {

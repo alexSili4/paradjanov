@@ -35,7 +35,7 @@ const isShow = computed(() => props.activeArticle === props.card.id);
 <template>
   <li class="map-item" :data-card-id="card.id">
     <ParajanovsLifeBtn :isDesk="isDesk" :card="card" :onCardBtnClick="onCardBtnClick" :isDraggable="isDraggable" />
-    <CardArticle :isShow="isShow" :onCloseBtnClick="onCloseArticleBtnClick">
+    <CardArticle :isShow="isShow" :onCloseBtnClick="onCloseArticleBtnClick" :isDesk="isDesk">
       <ParajanovsLifeArticle />
     </CardArticle>
   </li>
