@@ -32,6 +32,10 @@ const props = defineProps({
     type: Boolean,
     required: true,
   },
+  changeActiveCardId: {
+    type: Function,
+    required: true,
+  },
 });
 
 const playAnimationChange = (entries) => {
@@ -40,6 +44,7 @@ const playAnimationChange = (entries) => {
 
     if (isNewValue) {
       playAnimationRef.value = entry.isIntersecting;
+      props.changeActiveCardId(props.card.id);
     }
   });
 };
