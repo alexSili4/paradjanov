@@ -3,6 +3,11 @@ import LogoDesk from 'icons/header/logo-desk.svg?component';
 import LogoMobile from 'icons/header/logo-mobile.svg?component';
 import handWithCup from 'images/header/hand-with-cup.png';
 import Warning from 'icons/header/warning.svg?component';
+import { computed, ref } from 'vue';
+import CloseBtnIcon from 'icons/close-btn.svg?component';
+import CupModalWin from 'components/CupModalWin.vue';
+
+const showCupModalWin = ref(false);
 
 defineProps({
   isDesk: {
@@ -10,6 +15,16 @@ defineProps({
     required: true,
   },
 });
+
+const toggleShowCupModalWin = () => {
+  showCupModalWin.value = !showCupModalWin.value;
+};
+
+const getShowCupBtnClassNames = () => ['show-cup-btn', { show: !showCupModalWin.value }];
+const getHideCupBtnClassNames = () => ['hide-cup-btn', { show: showCupModalWin.value }];
+
+const showCupBtnClassNames = computed(getShowCupBtnClassNames);
+const hideCupBtnClassNames = computed(getHideCupBtnClassNames);
 </script>
 
 <template>
@@ -18,17 +33,21 @@ defineProps({
       <LogoDesk class="logo-link-icon" v-if="isDesk" />
       <LogoMobile class="logo-link-icon" v-else />
     </a>
-    <button type="button" class="hand-btn">
-      <img :src="handWithCup" alt="рука з чашкою" class="hand-with-cup-img" />
-      <Warning class="warning-icon" v-show="isDesk" />
-    </button>
+    <div class="show-cup-btn-wrap">
+      <button type="button" :class="showCupBtnClassNames" @click="toggleShowCupModalWin">
+        <img :src="handWithCup" alt="рука з чашкою" class="hand-with-cup-img" />
+        <Warning class="warning-icon" v-show="isDesk" />
+      </button>
+      <button type="button" :class="hideCupBtnClassNames" @click="toggleShowCupModalWin"><CloseBtnIcon class="close-btn-icon" /></button>
+    </div>
+    <CupModalWin :isShow="showCupModalWin" />
   </header>
 </template>
 
 <style scoped>
 .header {
   position: fixed;
-  z-index: 100;
+  z-index: 1000;
   top: 11px;
   left: 50%;
   display: flex;
@@ -48,7 +67,11 @@ defineProps({
   height: 60px;
 }
 
-.hand-btn {
+.show-cup-btn-wrap {
+  position: relative;
+}
+
+.show-cup-btn {
   flex-shrink: 0;
   position: relative;
   align-self: flex-start;
@@ -57,6 +80,12 @@ defineProps({
   border: none;
   background-color: transparent;
   transform-origin: top right;
+  transition: opacity var(--transition-duration-and-func);
+}
+
+.show-cup-btn:not(.show) {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .hand-with-cup-img {
@@ -67,7 +96,29 @@ defineProps({
   transition: transform var(--transition-duration-and-func);
 }
 
-.hand-btn:is(:hover, :focus) .hand-with-cup-img {
+.hide-cup-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: none;
+  padding: 0;
+  border-radius: 50%;
+  background-color: #939ccb;
+  transform: translateX(-50%) translateY(-50%);
+  transition: opacity var(--transition-duration-and-func);
+}
+
+.hide-cup-btn:not(.show) {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.show-cup-btn:is(:hover, :focus) .hand-with-cup-img {
   transform: rotate(-10.06deg);
 }
 
@@ -98,7 +149,12 @@ defineProps({
       transform var(--transition-duration-and-func);
   }
 
-  .hand-btn:is(:hover, :focus) .warning-icon {
+  .hide-cup-btn {
+  }
+  .close-btn-icon {
+  }
+
+  .show-cup-btn:is(:hover, :focus) .warning-icon {
     transform: translateY(80px);
     opacity: 1;
   }

@@ -1,5 +1,5 @@
 <script setup>
-import CloseBtnIcon from 'icons/cardArticle/close-btn.svg';
+import CloseBtnIcon from 'icons/close-btn.svg?component';
 import { getPrevAndNextCardId } from 'utils';
 import { cardValidator } from 'validator';
 import { onBeforeMount, ref } from 'vue';
