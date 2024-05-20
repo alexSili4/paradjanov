@@ -3,7 +3,11 @@ import { cardValidator } from 'validator';
 import ShadowsOfForgottenAncestorsBtn from 'components/ShadowsOfForgottenAncestorsBtn.vue';
 import ShadowsOfForgottenAncestorsArticle from 'components/ShadowsOfForgottenAncestorsArticle.vue';
 import CardArticle from 'components/CardArticle.vue';
-import { computed } from 'vue';
+import { computed, onMounted, ref } from 'vue';
+import { intersectionObserverOptions } from 'constants';
+
+const mapItemRef = ref(null);
+const playAnimationRef = ref(false);
 
 const props = defineProps({
   card: cardValidator,
@@ -30,12 +34,28 @@ const props = defineProps({
   },
 });
 
+const playAnimationChange = (entries) => {
+  entries.forEach((entry) => {
+    const isNewValue = playAnimationRef.value !== entry.isIntersecting;
+
+    if (isNewValue) {
+      playAnimationRef.value = entry.isIntersecting;
+    }
+  });
+};
+
+const observer = new IntersectionObserver(playAnimationChange, intersectionObserverOptions);
+
+onMounted(() => {
+  observer.observe(mapItemRef.value);
+});
+
 const isShow = computed(() => props.activeArticle === props.card.id);
 </script>
 
 <template>
-  <li class="map-item" :data-card-id="card.id">
-    <ShadowsOfForgottenAncestorsBtn :card="card" :onCardBtnClick="onCardBtnClick" :isDraggable="isDraggable" />
+  <li class="map-item" :data-card-id="card.id" ref="mapItemRef">
+    <ShadowsOfForgottenAncestorsBtn :card="card" :onCardBtnClick="onCardBtnClick" :isDraggable="isDraggable" :playAnimation="playAnimationRef" />
     <CardArticle :isShow="isShow" :onCloseBtnClick="onCloseArticleBtnClick" :isDesk="isDesk" :onNavBtnClick="onNavBtnClick" :card="card">
       <ShadowsOfForgottenAncestorsArticle />
     </CardArticle>

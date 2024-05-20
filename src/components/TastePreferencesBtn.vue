@@ -7,9 +7,14 @@ import NavArroWIcon from 'icons/tastePreferences/nav-arrow.svg?component';
 import HeroIcon from 'icons/tastePreferences/hero.svg?component';
 import corn from 'animations/corn.json';
 import pot from 'animations/pot.json';
+import { Vue3Lottie } from 'vue3-lottie';
 
 defineProps({
   card: cardValidator,
+  playAnimation: {
+    type: Boolean,
+    required: true,
+  },
   onCardBtnClick: {
     type: Function,
     required: true,
@@ -34,9 +39,9 @@ defineProps({
         <span class="card-number">{{ card.number }}</span>
       </span>
     </div>
-    <Vue3Lottie :autoPlay="true" :animationData="corn" class="animation-corn" :height="card.animation[0].height" :width="card.animation[0].width" />
+    <Vue3Lottie :autoPlay="playAnimation" :animationData="corn" class="animation-corn" :height="card.animation[0].height" :width="card.animation[0].width" />
     <HeroIcon class="hero-icon" />
-    <Vue3Lottie :autoPlay="true" :animationData="pot" class="animation-pot" :height="card.animation[1].height" :width="card.animation[1].width" />
+    <Vue3Lottie :autoPlay="playAnimation" :animationData="pot" class="animation-pot" :height="card.animation[1].height" :width="card.animation[1].width" />
   </div>
 </template>
 

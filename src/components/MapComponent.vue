@@ -55,6 +55,10 @@ onMounted(() => {
   mapOriginalHeightRef.value = height;
 });
 
+// const changeActiveCardId = ({ cardId }) => {
+//   activeCardIdRef.value = cardId;
+// }
+
 const onQueriesChangeDependencies = () => route.query;
 const onQueriesChange = ({ cardId }) => {
   activeCardIdRef.value = cardId;
