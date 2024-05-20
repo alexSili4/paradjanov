@@ -7,6 +7,10 @@ import { computed } from 'vue';
 
 const props = defineProps({
   card: cardValidator,
+  onNavBtnClick: {
+    type: Function,
+    required: true,
+  },
   isDesk: { type: Boolean, required: true },
   activeArticle: {
     type: [String, null],
@@ -32,7 +36,7 @@ const isShow = computed(() => props.activeArticle === props.card.id);
 <template>
   <li class="map-item" :data-card-id="card.id">
     <ShadowsOfForgottenAncestorsBtn :card="card" :onCardBtnClick="onCardBtnClick" :isDraggable="isDraggable" />
-    <CardArticle :isShow="isShow" :onCloseBtnClick="onCloseArticleBtnClick" :isDesk="isDesk">
+    <CardArticle :isShow="isShow" :onCloseBtnClick="onCloseArticleBtnClick" :isDesk="isDesk" :onNavBtnClick="onNavBtnClick" :card="card">
       <ShadowsOfForgottenAncestorsArticle />
     </CardArticle>
   </li>

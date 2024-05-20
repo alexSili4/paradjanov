@@ -11,6 +11,7 @@ import GlassesFromSilpo from 'components/GlassesFromSilpo.vue';
 import IngeniousCollages from 'components/IngeniousCollages.vue';
 import GarnetColor from 'components/GarnetColor.vue';
 import { useRoute } from 'vue-router';
+import router from 'router';
 
 const route = useRoute();
 
@@ -39,6 +40,7 @@ const scaleRef = ref(1);
 const isDraggableRef = ref(false);
 const activeArticleRef = ref(null);
 const activeCardIdRef = ref(null);
+const isOpenMenuRef = ref(false);
 
 onBeforeMount(() => {
   const defaultCardId = cards[0].id;
@@ -207,7 +209,20 @@ const toggleShowAllMap = (e) => {
   leftRef.value = showAllMap.value ? 0 : prevLeftRef.value;
 };
 
-const activeArticleRefChange = (cardId) => {
+const onZoomBtnClick = (e) => {
+  isOpenMenuRef.value = !isOpenMenuRef.value;
+  e.currentTarget.blur();
+};
+
+const onNavBtnClick = (e) => {
+  e.currentTarget.blur();
+  const { cardId } = e.currentTarget.dataset;
+  router.push({ path: '/', query: { cardId } });
+
+  if (!props.isDesk) {
+    isOpenMenuRef.value = false;
+  }
+
   if (activeArticleRef.value) {
     activeArticleRef.value = cardId;
   }
@@ -241,6 +256,7 @@ const mapClassNames = computed(getMapClassNames);
         :isDraggable="isDraggableRef"
         :onCloseArticleBtnClick="onCloseArticleBtnClick"
         :activeArticle="activeArticleRef"
+        :onNavBtnClick="onNavBtnClick"
       />
       <ShadowsOfForgottenAncestors
         :card="cards[1]"
@@ -249,6 +265,7 @@ const mapClassNames = computed(getMapClassNames);
         :onCloseArticleBtnClick="onCloseArticleBtnClick"
         :activeArticle="activeArticleRef"
         :isDesk="isDesk"
+        :onNavBtnClick="onNavBtnClick"
       />
       <InspiredByParajanov
         :card="cards[2]"
@@ -257,6 +274,7 @@ const mapClassNames = computed(getMapClassNames);
         :onCloseArticleBtnClick="onCloseArticleBtnClick"
         :activeArticle="activeArticleRef"
         :isDesk="isDesk"
+        :onNavBtnClick="onNavBtnClick"
       />
       <TastePreferences
         :card="cards[3]"
@@ -265,6 +283,7 @@ const mapClassNames = computed(getMapClassNames);
         :onCloseArticleBtnClick="onCloseArticleBtnClick"
         :activeArticle="activeArticleRef"
         :isDesk="isDesk"
+        :onNavBtnClick="onNavBtnClick"
       />
       <GlassesFromSilpo
         :card="cards[4]"
@@ -273,6 +292,7 @@ const mapClassNames = computed(getMapClassNames);
         :onCloseArticleBtnClick="onCloseArticleBtnClick"
         :activeArticle="activeArticleRef"
         :isDesk="isDesk"
+        :onNavBtnClick="onNavBtnClick"
       />
       <IngeniousCollages
         :card="cards[5]"
@@ -281,6 +301,7 @@ const mapClassNames = computed(getMapClassNames);
         :onCloseArticleBtnClick="onCloseArticleBtnClick"
         :activeArticle="activeArticleRef"
         :isDesk="isDesk"
+        :onNavBtnClick="onNavBtnClick"
       />
       <GarnetColor
         :card="cards[6]"
@@ -289,6 +310,7 @@ const mapClassNames = computed(getMapClassNames);
         :onCloseArticleBtnClick="onCloseArticleBtnClick"
         :activeArticle="activeArticleRef"
         :isDesk="isDesk"
+        :onNavBtnClick="onNavBtnClick"
       />
     </ul>
   </div>
@@ -297,8 +319,10 @@ const mapClassNames = computed(getMapClassNames);
     :toggleShowAllMap="toggleShowAllMap"
     :isDesk="isDesk"
     :activeCardId="activeCardIdRef"
-    :activeArticleRefChange="activeArticleRefChange"
     :showArticle="Boolean(activeArticleRef)"
+    :onNavBtnClick="onNavBtnClick"
+    :onZoomBtnClick="onZoomBtnClick"
+    :isOpenMenu="isOpenMenuRef"
   />
 </template>
 

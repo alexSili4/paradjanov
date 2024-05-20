@@ -1,10 +1,30 @@
 <script setup>
 import CloseBtnIcon from 'icons/cardArticle/close-btn.svg';
+import { getPrevAndNextCardId } from 'utils';
+import { cardValidator } from 'validator';
+import { onBeforeMount, ref } from 'vue';
+import { useRoute } from 'vue-router';
 
-defineProps({
+const route = useRoute();
+
+const nextCardIdRef = ref(null);
+const prevCardIdRef = ref(null);
+
+const props = defineProps({
+  card: cardValidator,
   onCloseBtnClick: { type: Function, required: true },
+  onNavBtnClick: { type: Function, required: true },
   isShow: { type: Boolean, required: true },
   isDesk: { type: Boolean, required: true },
+});
+
+onBeforeMount(() => {
+  const defaultCardId = props.card.id;
+  const query = route.query;
+  const cardId = query.cardId || defaultCardId;
+  const { prevCardId, nextCardId } = getPrevAndNextCardId(cardId);
+  prevCardIdRef.value = prevCardId;
+  nextCardIdRef.value = nextCardId;
 });
 </script>
 
@@ -19,8 +39,8 @@ defineProps({
           </button>
           <slot></slot>
           <ul class="nav-btn-list" v-show="isDesk">
-            <li class="nav-btn-list-item"><button class="nav-btn" type="button">Попередній</button></li>
-            <li class="nav-btn-list-item"><button class="nav-btn" type="button">Наступний</button></li>
+            <li class="nav-btn-list-item"><button class="nav-btn" type="button" @click="onNavBtnClick" :data-card-id="prevCardIdRef">Попередній</button></li>
+            <li class="nav-btn-list-item"><button class="nav-btn" type="button" @click="onNavBtnClick" :data-card-id="nextCardIdRef">Наступний</button></li>
           </ul>
         </div>
       </div>
@@ -105,6 +125,10 @@ defineProps({
   }
 
   .article-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 64px;
     padding: 92px 48px 56px;
   }
 
@@ -113,6 +137,16 @@ defineProps({
     right: 48px;
     width: 40px;
     height: 40px;
+  }
+
+  .nav-btn-list {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-btn-list-item {
+  }
+  .nav-btn {
   }
 }
 

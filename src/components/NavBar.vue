@@ -8,17 +8,27 @@ import BurgerMenu from 'components/BurgerMenu.vue';
 import { ref, onBeforeMount, computed, watch } from 'vue';
 import { cardsValidator } from 'validator';
 import MobileMenu from 'components/MobileMenu.vue';
-import router from 'router';
 import { useRoute } from 'vue-router';
 import { getPrevAndNextCardId } from 'utils';
 
 const route = useRoute();
 
-const isOpenMenu = ref(false);
 const nextCardIdRef = ref(null);
 const prevCardIdRef = ref(null);
 const props = defineProps({
   cards: cardsValidator,
+  onZoomBtnClick: {
+    type: Function,
+    required: true,
+  },
+  onNavBtnClick: {
+    type: Function,
+    required: true,
+  },
+  isOpenMenu: {
+    type: Boolean,
+    required: true,
+  },
   showArticle: {
     type: Boolean,
     required: true,
@@ -33,10 +43,6 @@ const props = defineProps({
   },
   isDesk: {
     type: Boolean,
-    required: true,
-  },
-  activeArticleRefChange: {
-    type: Function,
     required: true,
   },
 });
@@ -58,30 +64,13 @@ const onActiveCardIdChange = ({ cardId }) => {
 };
 watch(onActiveCardIdChangeDependencies, onActiveCardIdChange);
 
-const onZoomBtnClick = (e) => {
-  isOpenMenu.value = !isOpenMenu.value;
-  e.currentTarget.blur();
-};
+const getMenuBtnClassNames = () => ['menu-btn', { 'menu-open': props.isOpenMenu }];
 
-const getMenuBtnClassNames = () => ['menu-btn', { 'menu-open': isOpenMenu.value }];
+const getMenuBtnWrapClassNames = () => ['menu-btn-wrap', { 'menu-open': props.isOpenMenu }];
 
-const getMenuBtnWrapClassNames = () => ['menu-btn-wrap', { 'menu-open': isOpenMenu.value }];
+const getNavBtnClassNames = () => ['nav-btn', { 'menu-open': props.isOpenMenu, active: props.showArticle }];
 
-const getNavBtnClassNames = () => ['nav-btn', { 'menu-open': isOpenMenu.value, active: props.showArticle }];
-
-const onNavBtnClick = (e) => {
-  e.currentTarget.blur();
-  const { cardId } = e.currentTarget.dataset;
-  router.push({ path: '/', query: { cardId } });
-
-  if (!props.isDesk) {
-    isOpenMenu.value = false;
-  }
-
-  props.activeArticleRefChange(cardId);
-};
-
-const getShowMobileMenu = () => isOpenMenu.value && !props.isDesk;
+const getShowMobileMenu = () => props.isOpenMenu && !props.isDesk;
 
 const menuBtnClassNames = computed(getMenuBtnClassNames);
 const menuBtnWrapClassNames = computed(getMenuBtnWrapClassNames);
