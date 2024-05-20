@@ -4,6 +4,7 @@ import { getPrevAndNextCardId } from 'utils';
 import { cardValidator } from 'validator';
 import { onBeforeMount, ref } from 'vue';
 import { useRoute } from 'vue-router';
+import NextBtnIcon from '../icons/cardArticle/next-btn-icon.svg?component';
 
 const route = useRoute();
 
@@ -39,8 +40,15 @@ onBeforeMount(() => {
           </button>
           <slot></slot>
           <ul class="nav-btn-list" v-show="isDesk">
-            <li class="nav-btn-list-item"><button class="nav-btn" type="button" @click="onNavBtnClick" :data-card-id="prevCardIdRef">Попередній</button></li>
-            <li class="nav-btn-list-item"><button class="nav-btn" type="button" @click="onNavBtnClick" :data-card-id="nextCardIdRef">Наступний</button></li>
+            <li class="nav-btn-list-item">
+              <button class="nav-btn" type="button" @click="onNavBtnClick" :data-card-id="prevCardIdRef"><span class="nav-btn-title">Попередній</span></button>
+            </li>
+            <li class="nav-btn-list-item">
+              <button class="nav-btn next" type="button" @click="onNavBtnClick" :data-card-id="nextCardIdRef">
+                <span class="nav-btn-title">Наступний</span>
+                <NextBtnIcon class="nav-btn-icon" />
+              </button>
+            </li>
           </ul>
         </div>
       </div>
@@ -122,6 +130,7 @@ onBeforeMount(() => {
     width: 53px;
     min-height: 100%;
     background-image: url('icons/cardArticle/article-bg-desk.svg');
+    background-size: contain;
   }
 
   .article-container {
@@ -144,9 +153,28 @@ onBeforeMount(() => {
     align-items: center;
     justify-content: space-between;
   }
-  .nav-btn-list-item {
-  }
+
   .nav-btn {
+    position: relative;
+    display: block;
+    padding: 0;
+    background-color: transparent;
+  }
+
+  .nav-btn-title {
+    color: rgb(53, 59, 63);
+    font-family: Shnobel;
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+
+  .nav-btn-icon {
+    position: absolute;
+    top: 0px;
+    left: -64px;
+    pointer-events: none;
   }
 }
 
