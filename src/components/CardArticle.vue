@@ -130,7 +130,7 @@ onBeforeMount(() => {
     width: 53px;
     min-height: 100%;
     background-image: url('icons/cardArticle/article-bg-desk.svg');
-    background-size: contain;
+    background-size: cover;
   }
 
   .article-container {
@@ -159,6 +159,7 @@ onBeforeMount(() => {
     display: block;
     padding: 0;
     background-color: transparent;
+    border: none;
   }
 
   .nav-btn-title {
