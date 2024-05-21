@@ -52,10 +52,12 @@ const playAnimationChange = (entries) => {
     const { cardId } = route.query;
     const isTargetCard = cardId === targetCardId;
     const isNewValue = playAnimationRef.value !== entry.isIntersecting;
-    const shouldChangeCardId = isNewValue && !props.isMoving;
-    console.log(props.isMoving);
-    if (shouldChangeCardId) {
+
+    if (isNewValue) {
       playAnimationRef.value = entry.isIntersecting;
+    }
+
+    if (entry.isIntersecting && !props.isMoving) {
       props.changeActiveCardId(props.card.id);
     }
 

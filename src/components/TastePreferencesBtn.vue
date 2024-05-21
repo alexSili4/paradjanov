@@ -39,9 +39,9 @@ defineProps({
         <span class="card-number">{{ card.number }}</span>
       </span>
     </div>
-    <Vue3Lottie :autoPlay="playAnimation" :animationData="corn" class="animation-corn" :height="card.animation[0].height" :width="card.animation[0].width" />
+    <!-- <Vue3Lottie :autoPlay="playAnimation" :animationData="corn" class="animation-corn" :height="card.animation[0].height" :width="card.animation[0].width" /> -->
     <HeroIcon class="hero-icon" />
-    <Vue3Lottie :autoPlay="playAnimation" :animationData="pot" class="animation-pot" :height="card.animation[1].height" :width="card.animation[1].width" />
+    <!-- <Vue3Lottie :autoPlay="playAnimation" :animationData="pot" class="animation-pot" :height="card.animation[1].height" :width="card.animation[1].width" /> -->
   </div>
 </template>
 

@@ -45,8 +45,8 @@ const isMovingRef = ref(false);
 
 onBeforeMount(() => {
   const defaultCardId = cards[0].id;
-  const { cardId } = route.query;
-  activeCardIdRef.value = cardId || defaultCardId;
+
+  activeCardIdRef.value = defaultCardId;
 });
 
 onMounted(() => {

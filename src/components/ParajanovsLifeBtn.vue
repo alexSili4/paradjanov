@@ -42,7 +42,7 @@ defineProps({
     <ShipToRightIconMobile class="ship-to-right-icon" v-else />
     <QuoteIconDesk class="quote-icon" v-if="isDesk" />
     <QuoteIconMobile class="quote-icon" v-else />
-    <Vue3Lottie :autoPlay="playAnimation" :animationData="parajanovsLife" :height="card.animation[0].height" :width="card.animation[0].width" class="animation-item" />
+    <!-- <Vue3Lottie :autoPlay="playAnimation" :animationData="parajanovsLife" :height="card.animation[0].height" :width="card.animation[0].width" class="animation-item" /> -->
     <div class="card-title-wrap">
       <p class="card-title">{{ card.title }}</p>
       <button type="button" class="card-btn card-article-btn" @click="onCardBtnClick" :disabled="isDraggable"></button>
