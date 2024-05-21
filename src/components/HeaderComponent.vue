@@ -8,7 +8,7 @@ import CloseBtnIcon from 'icons/close-btn.svg?component';
 import GlassesModalWin from 'components/GlassesModalWin.vue';
 import { glasses } from 'constants';
 
-const showCupModalWin = ref(false);
+const showGlassesModalWin = ref(false);
 
 defineProps({
   isDesk: {
@@ -17,12 +17,12 @@ defineProps({
   },
 });
 
-const toggleShowCupModalWin = () => {
-  showCupModalWin.value = !showCupModalWin.value;
+const toggleShowGlassesModalWin = () => {
+  showGlassesModalWin.value = !showGlassesModalWin.value;
 };
 
-const getShowCupBtnClassNames = () => ['show-cup-btn', { show: !showCupModalWin.value }];
-const getHideCupBtnClassNames = () => ['hide-cup-btn', { show: showCupModalWin.value }];
+const getShowCupBtnClassNames = () => ['show-cup-btn', { show: !showGlassesModalWin.value }];
+const getHideCupBtnClassNames = () => ['hide-cup-btn', { show: showGlassesModalWin.value }];
 
 const showCupBtnClassNames = computed(getShowCupBtnClassNames);
 const hideCupBtnClassNames = computed(getHideCupBtnClassNames);
@@ -35,13 +35,13 @@ const hideCupBtnClassNames = computed(getHideCupBtnClassNames);
       <LogoMobile class="logo-link-icon" v-else />
     </a>
     <div class="show-cup-btn-wrap">
-      <button type="button" :class="showCupBtnClassNames" @click="toggleShowCupModalWin">
+      <button type="button" :class="showCupBtnClassNames" @click="toggleShowGlassesModalWin">
         <img :src="handWithCup" alt="рука з чашкою" class="hand-with-cup-img" />
         <Warning class="warning-icon" v-show="isDesk" />
       </button>
-      <button type="button" :class="hideCupBtnClassNames" @click="toggleShowCupModalWin"><CloseBtnIcon class="close-btn-icon" /></button>
+      <button type="button" :class="hideCupBtnClassNames" @click="toggleShowGlassesModalWin"><CloseBtnIcon class="close-btn-icon" /></button>
     </div>
-    <GlassesModalWin :isShow="showCupModalWin" :glasses="glasses" />
+    <GlassesModalWin :isShow="showGlassesModalWin" :glasses="glasses" />
   </header>
 </template>
 

@@ -3,6 +3,9 @@ import ArrowIcon from 'icons/arrow.svg?component';
 import { glassesValidator } from 'validator';
 import { register } from 'swiper/element/bundle';
 import { ref } from 'vue';
+import GrapeIconMobile from '../icons/glassesModalWin/grape-mobile.svg?component';
+import GrapeWithLeafIconMobile from '../icons/glassesModalWin/grape-with-leaf-mobile.svg?component';
+import TowelIconMobile from '../icons/glassesModalWin/towel-mobile.svg?component';
 
 register();
 
@@ -34,6 +37,9 @@ const onPrevBtnClick = () => {
       <div class="glass-modal-win" v-show="isShow">
         <div class="container">
           <div class="img-slider-wrap">
+            <TowelIconMobile class="towel-icon" />
+            <GrapeWithLeafIconMobile class="grape-with-leaf-icon" />
+            <GrapeIconMobile class="grape-icon" />
             <swiper-container class="img-slider" ref="imgSlider" :slides-per-view="1" :space-between="10" :allowTouchMove="false">
               <swiper-slide :key="img" v-for="{ img, volume } in glasses">
                 <img :src="img" :alt="`${volume} мл`" />
@@ -95,7 +101,7 @@ const onPrevBtnClick = () => {
   padding-top: 109px;
   padding-bottom: 46px;
   background-color: #6572b5;
-  background-image: url('icons/cupModalWin/lower-star-mobile.svg'), url('icons/cupModalWin/top-star-mobile.svg'), url('icons/cupModalWin/bubbles-mobile.svg');
+  background-image: url('icons/glassessModalWin/lower-star-mobile.svg'), url('icons/glassessModalWin/top-star-mobile.svg'), url('icons/glassessModalWin/bubbles-mobile.svg');
   background-position:
     bottom 228px left calc(50% - 138px),
     top 65px right calc(50% - 54px),
@@ -124,6 +130,27 @@ const onPrevBtnClick = () => {
 }
 
 .img-slider {
+}
+
+.grape-icon {
+  position: absolute;
+  top: 298px;
+  left: 224px;
+  display: block;
+}
+
+.grape-with-leaf-icon {
+  position: absolute;
+  top: 267px;
+  left: 242px;
+  display: block;
+}
+
+.towel-icon {
+  position: absolute;
+  top: 250px;
+  left: -39px;
+  display: block;
 }
 
 .content-wrap {
@@ -214,8 +241,8 @@ const onPrevBtnClick = () => {
 
 @media screen and (min-width: 1280px) {
   .glass-modal-win {
-    background-image: url('icons/cupModalWin/lower-star-desk.svg'), url('icons/cupModalWin/top-star-desk.svg'), url('icons/cupModalWin/lower-bubbles-desk.svg'),
-      url('icons/cupModalWin/top-bubbles-desk.svg');
+    background-image: url('icons/glassessModalWin/lower-star-desk.svg'), url('icons/glassessModalWin/top-star-desk.svg'), url('icons/glassessModalWin/lower-bubbles-desk.svg'),
+      url('icons/glassessModalWin/top-bubbles-desk.svg');
     background-position:
       bottom 63px right 49px,
       top 112px left 380px,
