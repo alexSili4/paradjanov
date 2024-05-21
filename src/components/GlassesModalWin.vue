@@ -3,27 +3,28 @@ import ArrowIcon from 'icons/arrow.svg?component';
 import { glassesValidator } from 'validator';
 import { register } from 'swiper/element/bundle';
 import { ref } from 'vue';
-import { Swiper, SwiperSlide } from 'swiper/vue';
-import 'swiper/swiper-bundle.css';
 
 register();
 
-const mySwiper = ref(null);
-const mySwiper2 = ref(null);
+const glassesVolumesSlider = ref(null);
+const descSlider = ref(null);
+const imgSlider = ref(null);
 
-const props = defineProps({
+defineProps({
   isShow: { type: Boolean, required: true },
   glasses: glassesValidator,
 });
 
 const onNextBtnClick = () => {
-  mySwiper.value.swiper.slideNext();
-  mySwiper2.value.swiper.slideNext();
+  glassesVolumesSlider.value.swiper.slideNext();
+  descSlider.value.swiper.slideNext();
+  imgSlider.value.swiper.slideNext();
 };
 
 const onPrevBtnClick = () => {
-  mySwiper.value.swiper.slidePrev();
-  mySwiper2.value.swiper.slidePrev();
+  glassesVolumesSlider.value.swiper.slidePrev();
+  descSlider.value.swiper.slidePrev();
+  imgSlider.value.swiper.slidePrev();
 };
 </script>
 
@@ -32,13 +33,17 @@ const onPrevBtnClick = () => {
     <Transition name="container">
       <div class="glass-modal-win" v-show="isShow">
         <div class="container">
-          <div class="slider"></div>
+          <div class="img-slider-wrap">
+            <swiper-container class="img-slider" ref="imgSlider" :slides-per-view="1" :space-between="10" :allowTouchMove="false">
+              <swiper-slide :key="img" v-for="{ img, volume } in glasses">
+                <img :src="img" :alt="`${volume} мл`" />
+              </swiper-slide>
+            </swiper-container>
+          </div>
           <div class="content-wrap">
             <div class="volume-of-glasses-wrap">
-              <swiper-container ref="mySwiper" :slides-per-view="1" :space-between="10" :allowTouchMove="false">
-                <swiper-slide class="volume-of-glasses-text">Натхнені стакани {{ glasses[0].volume }} мл</swiper-slide>
-                <swiper-slide class="volume-of-glasses-text">Натхнені стакани {{ glasses[1].volume }} мл</swiper-slide>
-                <swiper-slide class="volume-of-glasses-text">Натхнені стакани {{ glasses[2].volume }} мл</swiper-slide>
+              <swiper-container ref="glassesVolumesSlider" :slides-per-view="1" :space-between="10" :allowTouchMove="false">
+                <swiper-slide class="volume-of-glasses-text" :key="volume" v-for="{ volume } in glasses">Натхнені стакани {{ volume }} мл</swiper-slide>
               </swiper-container>
               <ul class="controls-list">
                 <li class="controls-list-item">
@@ -55,15 +60,9 @@ const onPrevBtnClick = () => {
             </div>
             <div class="text-wrap">
               <p class="title">Натхнені стакани</p>
-              <swiper-container ref="mySwiper2" :slides-per-view="1" :space-between="10">
-                <swiper-slide
-                  ><p class="description">{{ glasses[0].desc }}</p></swiper-slide
-                >
-                <swiper-slide>
-                  <p class="description">{{ glasses[1].desc }}</p></swiper-slide
-                >
-                <swiper-slide
-                  ><p class="description">{{ glasses[2].desc }}</p></swiper-slide
+              <swiper-container ref="descSlider" :slides-per-view="1" :space-between="10">
+                <swiper-slide :key="desc" v-for="{ desc } in glasses">
+                  <p class="description">{{ desc }}</p></swiper-slide
                 >
               </swiper-container>
             </div>
@@ -117,11 +116,14 @@ const onPrevBtnClick = () => {
   padding-right: 16px;
 }
 
-.slider {
+.img-slider-wrap {
+  position: relative;
   width: 264px;
   height: 358px;
   margin-left: calc(50% - 5px - 264px / 2);
-  outline: 1px solid greenyellow;
+}
+
+.img-slider {
 }
 
 .content-wrap {
