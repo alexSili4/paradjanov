@@ -45,9 +45,9 @@ defineProps({
       </span>
     </div>
     <WoodIcon class="wood-icon" />
-    <!-- <Vue3Lottie :autoPlay="playAnimation" :animationData="centaur" class="animation-centaur" :height="card.animation[0].height" :width="card.animation[0].width" /> -->
-    <!-- <Vue3Lottie :autoPlay="playAnimation" :animationData="logoWithHero" class="animation-logo-with-hero" :height="card.animation[1].height" :width="card.animation[1].width" /> -->
-    <!-- <Vue3Lottie :autoPlay="playAnimation" :animationData="head" class="animation-head" :height="card.animation[2].height" :width="card.animation[2].width" /> -->
+    <Vue3Lottie :autoPlay="playAnimation" :animationData="centaur" class="animation-centaur" :height="card.animation[0].height" :width="card.animation[0].width" />
+    <Vue3Lottie :autoPlay="playAnimation" :animationData="logoWithHero" class="animation-logo-with-hero" :height="card.animation[1].height" :width="card.animation[1].width" />
+    <Vue3Lottie :autoPlay="playAnimation" :animationData="head" class="animation-head" :height="card.animation[2].height" :width="card.animation[2].width" />
   </div>
 </template>
 

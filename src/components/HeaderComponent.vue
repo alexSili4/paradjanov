@@ -41,7 +41,7 @@ const hideCupBtnClassNames = computed(getHideCupBtnClassNames);
       </button>
       <button type="button" :class="hideCupBtnClassNames" @click="toggleShowGlassesModalWin"><CloseBtnIcon class="close-btn-icon" /></button>
     </div>
-    <GlassesModalWin :isShow="showGlassesModalWin" :glasses="glasses" />
+    <GlassesModalWin :isShow="showGlassesModalWin" :glasses="glasses" :isDesk="isDesk" />
   </header>
 </template>
 

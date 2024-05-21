@@ -30,9 +30,9 @@ defineProps({
 <template>
   <div class="map-item-card">
     <LandIcon class="land-icon" />
-    <!-- <Vue3Lottie :autoPlay="playAnimation" :animationData="parajanovBat" class="animation-parajanov-bat" :height="card.animation[0].height" :width="card.animation[0].width" /> -->
-    <!-- <Vue3Lottie :autoPlay="playAnimation" :animationData="candles" class="animation-candles" :height="card.animation[2].height" :width="card.animation[2].width" /> -->
-    <!-- <Vue3Lottie :autoPlay="playAnimation" :animationData="heroes" class="animation-heroes" :height="card.animation[1].height" :width="card.animation[1].width" /> -->
+    <Vue3Lottie :autoPlay="playAnimation" :animationData="parajanovBat" class="animation-parajanov-bat" :height="card.animation[0].height" :width="card.animation[0].width" />
+    <Vue3Lottie :autoPlay="playAnimation" :animationData="candles" class="animation-candles" :height="card.animation[2].height" :width="card.animation[2].width" />
+    <Vue3Lottie :autoPlay="playAnimation" :animationData="heroes" class="animation-heroes" :height="card.animation[1].height" :width="card.animation[1].width" />
     <div class="card-title-wrap">
       <p class="card-title">{{ card.title }}</p>
       <button type="button" class="card-btn card-article-btn" @click="onCardBtnClick" :disabled="isDraggable"></button>
