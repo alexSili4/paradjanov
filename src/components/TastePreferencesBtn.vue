@@ -5,9 +5,9 @@ import LeafIcon from 'icons/tastePreferences/leaf.svg?component';
 import MainGrapeIcon from 'icons/tastePreferences/main-grape.svg?component';
 import NavArroWIcon from 'icons/tastePreferences/nav-arrow.svg?component';
 import HeroIcon from 'icons/tastePreferences/hero.svg?component';
-import corn from 'animations/corn.json';
-import pot from 'animations/pot.json';
-import { Vue3Lottie } from 'vue3-lottie';
+// import corn from 'animations/corn.json';
+// import pot from 'animations/pot.json';
+// import { Vue3Lottie } from 'vue3-lottie';
 
 defineProps({
   card: cardValidator,

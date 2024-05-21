@@ -1,15 +1,16 @@
 <script setup>
 import { cardValidator } from 'validator';
 import GrapeIcon from 'icons/inspiredByParajanov/grape.svg?component';
-import HeadsIcon from '../icons/inspiredByParajanov/heads.svg?component';
+import WoodIcon from 'icons/inspiredByParajanov/wood.svg?component';
 import LandIcon from 'icons/inspiredByParajanov/land.svg?component';
 import LeafIcon from 'icons/inspiredByParajanov/leaf.svg?component';
 import MainGrapeIcon from 'icons/inspiredByParajanov/main-grape.svg?component';
 import SunIcon from 'icons/inspiredByParajanov/sun.svg?component';
 import NavArroWIcon from 'icons/inspiredByParajanov/nav-arrow.svg?component';
-import centaur from 'animations/centaur.json';
-import logoWithHero from 'animations/logo-with-hero.json';
-import { Vue3Lottie } from 'vue3-lottie';
+// import centaur from 'animations/centaur.json';
+// import logoWithHero from 'animations/logo-with-hero.json';
+// import head from 'animations/head.json';
+// import { Vue3Lottie } from 'vue3-lottie';
 
 defineProps({
   card: cardValidator,
@@ -32,9 +33,6 @@ defineProps({
   <div class="map-item-card">
     <SunIcon class="sun-icon" />
     <LandIcon class="land-icon" />
-    <HeadsIcon class="heads-icon" />
-    <!-- <Vue3Lottie :autoPlay="playAnimation" :animationData="centaur" class="animation-centaur" :height="card.animation[0].height" :width="card.animation[0].width" /> -->
-    <!-- <Vue3Lottie :autoPlay="playAnimation" :animationData="logoWithHero" class="animation-logo-with-hero" :height="card.animation[1].height" :width="card.animation[1].width" /> -->
     <div class="card-title-wrap">
       <p class="card-title">{{ card.title }}</p>
       <button type="button" class="card-btn card-article-btn" @click="onCardBtnClick" :disabled="isDraggable"></button>
@@ -46,6 +44,10 @@ defineProps({
         <span class="card-number">{{ card.number }}</span>
       </span>
     </div>
+    <WoodIcon class="wood-icon" />
+    <!-- <Vue3Lottie :autoPlay="playAnimation" :animationData="centaur" class="animation-centaur" :height="card.animation[0].height" :width="card.animation[0].width" /> -->
+    <!-- <Vue3Lottie :autoPlay="playAnimation" :animationData="logoWithHero" class="animation-logo-with-hero" :height="card.animation[1].height" :width="card.animation[1].width" /> -->
+    <!-- <Vue3Lottie :autoPlay="playAnimation" :animationData="head" class="animation-head" :height="card.animation[2].height" :width="card.animation[2].width" /> -->
   </div>
 </template>
 
@@ -69,11 +71,10 @@ defineProps({
   display: block;
 }
 
-.heads-icon {
+.wood-icon {
   position: absolute;
-  z-index: 10;
-  top: 100px;
-  left: 23px;
+  top: 92px;
+  left: 31px;
   display: block;
 }
 
@@ -88,6 +89,12 @@ defineProps({
   z-index: 10;
   top: 0px;
   left: 186px;
+}
+
+.animation-head {
+  position: absolute;
+  top: 239px;
+  left: 50px;
 }
 
 .card-title-wrap {

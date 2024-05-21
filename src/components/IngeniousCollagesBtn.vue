@@ -6,8 +6,8 @@ import MainGrapeIcon from 'icons/ingeniousCollages/main-grape.svg?component';
 import NavArroWIcon from 'icons/ingeniousCollages/nav-arrow.svg?component';
 import GrapesIcon from 'icons/ingeniousCollages/grapes.svg?component';
 import SmallGrapeIcon from 'icons/ingeniousCollages/small-grape.svg?component';
-import ingeniousCollages from '../animations/ingeniousCollages.json';
-import { Vue3Lottie } from 'vue3-lottie';
+// import ingeniousCollages from 'animations/ingeniousCollages.json';
+// import { Vue3Lottie } from 'vue3-lottie';
 
 defineProps({
   card: cardValidator,

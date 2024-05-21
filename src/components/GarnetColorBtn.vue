@@ -10,8 +10,8 @@ import LandIcon from 'icons/garnetColor/land.svg?component';
 import LeftChickenIcon from 'icons/garnetColor/left-chicken.svg?component';
 import RightChickenIcon from 'icons/garnetColor/right-chicken.svg?component';
 import SmallGrapeIcon from 'icons/garnetColor/small-grape.svg?component';
-import garnetColor from 'animations/garnetColor.json';
-import { Vue3Lottie } from 'vue3-lottie';
+// import garnetColor from 'animations/garnetColor.json';
+// import { Vue3Lottie } from 'vue3-lottie';
 
 defineProps({
   card: cardValidator,

@@ -5,8 +5,8 @@ const cards = [
     title: 'жИТТЯ ПАРАДЖАНОВА',
     animation: [
       {
-        width: 641.6,
-        height: 494.43,
+        width: 641,
+        height: 656,
       },
     ],
   },
@@ -42,6 +42,11 @@ const cards = [
         width: 366,
         height: 437,
       },
+
+      {
+        width: 232.23,
+        height: 246.15,
+      },
     ],
   },
   {
@@ -50,7 +55,7 @@ const cards = [
     title: 'смакові вподобання',
     animation: [
       {
-        width: 723,
+        width: 732,
         height: 695,
       },
       {

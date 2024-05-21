@@ -54,23 +54,23 @@ const onPrevBtnClick = () => {
               <ul class="controls-list">
                 <li class="controls-list-item">
                   <button ref="prev" type="button" class="nav-btn" @click="onPrevBtnClick">
-                    <ArrowIcon class="nav-btn-icon prev-btn-icon" />
+                    <!-- <ArrowIcon class="nav-btn-icon prev-btn-icon" /> -->
                   </button>
                 </li>
                 <li class="controls-list-item">
                   <button ref="next" type="button" class="nav-btn" @click="onNextBtnClick">
-                    <ArrowIcon class="nav-btn-icon" />
+                    <!-- <ArrowIcon class="nav-btn-icon" /> -->
                   </button>
                 </li>
               </ul>
             </div>
             <div class="text-wrap">
               <p class="title">Натхнені стакани</p>
-              <swiper-container ref="descSlider" :slides-per-view="1" :space-between="10">
+              <!-- <swiper-container ref="descSlider" :slides-per-view="1" :space-between="10">
                 <swiper-slide :key="desc" v-for="{ desc } in glasses">
                   <p class="description">{{ desc }}</p></swiper-slide
                 >
-              </swiper-container>
+              </swiper-container> -->
             </div>
           </div>
         </div>

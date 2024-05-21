@@ -37,7 +37,7 @@ onBeforeMount(() => {
         <div class="article-decorative-element"></div>
         <div class="article-container">
           <button type="button" class="close-btn" @click="onCloseBtnClick">
-            <CloseBtnIcon class="close-btn-icon" />
+            <!-- <CloseBtnIcon class="close-btn-icon" /> -->
           </button>
           <slot></slot>
           <ul class="nav-btn-list" v-show="isDesk">
@@ -65,7 +65,7 @@ onBeforeMount(() => {
 
 .article-wrap {
   position: fixed;
-  z-index: 10;
+  z-index: 100000;
   top: 100px;
   right: 0;
   width: 100%;
