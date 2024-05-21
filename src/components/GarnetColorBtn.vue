@@ -10,8 +10,8 @@ import LandIcon from 'icons/garnetColor/land.svg?component';
 import LeftChickenIcon from 'icons/garnetColor/left-chicken.svg?component';
 import RightChickenIcon from 'icons/garnetColor/right-chicken.svg?component';
 import SmallGrapeIcon from 'icons/garnetColor/small-grape.svg?component';
-// import garnetColor from 'animations/garnetColor.json';
-// import { Vue3Lottie } from 'vue3-lottie';
+import garnetColor from 'animations/garnetColor.json';
+import { Vue3Lottie } from 'vue3-lottie';
 
 defineProps({
   card: cardValidator,
@@ -37,7 +37,7 @@ defineProps({
     <SmallGrapeIcon class="small-grape-icon" />
     <LeftChickenIcon class="left-chicken-icon" />
     <RightChickenIcon class="right-chicken-icon" />
-    <!-- <Vue3Lottie :autoPlay="playAnimation" :animationData="garnetColor" class="animation-item" :height="card.animation[0].height" :width="card.animation[0].width" /> -->
+    <Vue3Lottie :autoPlay="playAnimation" :animationData="garnetColor" class="animation-item" :height="card.animation[0].height" :width="card.animation[0].width" />
     <div class="card-title-wrap">
       <p class="card-title">{{ card.title }}</p>
       <button type="button" class="card-btn card-article-btn" @click="onCardBtnClick" :disabled="isDraggable"></button>

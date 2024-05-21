@@ -37,7 +37,7 @@ onBeforeMount(() => {
         <div class="article-decorative-element"></div>
         <div class="article-container">
           <button type="button" class="close-btn" @click="onCloseBtnClick">
-            <!-- <CloseBtnIcon class="close-btn-icon" /> -->
+            <CloseBtnIcon class="close-btn-icon" />
           </button>
           <slot></slot>
           <ul class="nav-btn-list" v-show="isDesk">
@@ -80,6 +80,8 @@ onBeforeMount(() => {
   width: 100%;
   height: 22px;
   background-image: url('icons/cardArticle/article-bg-mobile.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .article-container {
@@ -131,7 +133,6 @@ onBeforeMount(() => {
     width: 53px;
     min-height: 100%;
     background-image: url('icons/cardArticle/article-bg-desk.svg');
-    background-size: cover;
   }
 
   .article-container {

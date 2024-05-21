@@ -7,10 +7,10 @@ import LeafIcon from 'icons/inspiredByParajanov/leaf.svg?component';
 import MainGrapeIcon from 'icons/inspiredByParajanov/main-grape.svg?component';
 import SunIcon from 'icons/inspiredByParajanov/sun.svg?component';
 import NavArroWIcon from 'icons/inspiredByParajanov/nav-arrow.svg?component';
-// import centaur from 'animations/centaur.json';
-// import logoWithHero from 'animations/logo-with-hero.json';
-// import head from 'animations/head.json';
-// import { Vue3Lottie } from 'vue3-lottie';
+import centaur from 'animations/centaur.json';
+import logoWithHero from 'animations/logo-with-hero.json';
+import head from 'animations/head.json';
+import { Vue3Lottie } from 'vue3-lottie';
 
 defineProps({
   card: cardValidator,
@@ -45,9 +45,9 @@ defineProps({
       </span>
     </div>
     <WoodIcon class="wood-icon" />
-    <!-- <Vue3Lottie :autoPlay="playAnimation" :animationData="centaur" class="animation-centaur" :height="card.animation[0].height" :width="card.animation[0].width" /> -->
-    <!-- <Vue3Lottie :autoPlay="playAnimation" :animationData="logoWithHero" class="animation-logo-with-hero" :height="card.animation[1].height" :width="card.animation[1].width" /> -->
-    <!-- <Vue3Lottie :autoPlay="playAnimation" :animationData="head" class="animation-head" :height="card.animation[2].height" :width="card.animation[2].width" /> -->
+    <Vue3Lottie :autoPlay="playAnimation" :animationData="centaur" class="animation-centaur" :height="card.animation[0].height" :width="card.animation[0].width" />
+    <Vue3Lottie :autoPlay="playAnimation" :animationData="logoWithHero" class="animation-logo-with-hero" :height="card.animation[1].height" :width="card.animation[1].width" />
+    <Vue3Lottie :autoPlay="playAnimation" :animationData="head" class="animation-head" :height="card.animation[2].height" :width="card.animation[2].width" />
   </div>
 </template>
 

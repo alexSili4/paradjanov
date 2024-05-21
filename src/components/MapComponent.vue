@@ -6,8 +6,8 @@ import { cards } from 'constants';
 import { ref, onMounted, computed, watch, onBeforeMount } from 'vue';
 import { getPositionProps, getContentGeometry, getScale, getScaleOnResizeWindow, setFocusOnActiveCard } from 'utils';
 import InspiredByParajanov from 'components/InspiredByParajanov.vue';
-// import TastePreferences from 'components/TastePreferences.vue';
-// import GlassesFromSilpo from 'components/GlassesFromSilpo.vue';
+import TastePreferences from 'components/TastePreferences.vue';
+import GlassesFromSilpo from 'components/GlassesFromSilpo.vue';
 import IngeniousCollages from 'components/IngeniousCollages.vue';
 import GarnetColor from 'components/GarnetColor.vue';
 import { useRoute } from 'vue-router';
@@ -299,9 +299,6 @@ const mapClassNames = computed(getMapClassNames);
         :cancelMove="cancelMove"
         :isMoving="isMovingRef"
       />
-      <!-- 
-      
-      
       <TastePreferences
         :card="cards[3]"
         :onCardBtnClick="onCardBtnClick"
@@ -326,8 +323,6 @@ const mapClassNames = computed(getMapClassNames);
         :cancelMove="cancelMove"
         :isMoving="isMovingRef"
       />
-
- -->
       <IngeniousCollages
         :card="cards[5]"
         :onCardBtnClick="onCardBtnClick"
