@@ -1,31 +1,232 @@
-<script setup></script>
+<script setup>
+import ArticleTitleIconDesk from 'icons/cardArticle/article-title-icon-desk.svg?component';
+import ArticleTitleIconMobile from 'icons/cardArticle/article-title-icon-mobile.svg?component';
+</script>
 
 <template>
-  <div>
-    <p>ShadowsOfForgottenAncestors</p>
-    <p>
-      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Porro facilis impedit, explicabo, recusandae obcaecati placeat dolor corrupti excepturi amet quam corporis. Possimus illum perferendis
-      sequi quasi facilis voluptas est porro. Maiores nam vel porro dolorum aspernatur suscipit laboriosam quidem quis. Ipsam a distinctio voluptatem. Error nihil assumenda eligendi quis, perferendis
-      placeat libero aliquam veritatis nam soluta dolore? Eos accusamus, minus est deleniti velit consequatur ab odit unde vitae, porro quisquam saepe laboriosam quia accusantium aperiam odio iure vel
-      tempore ipsum libero commodi corporis? Cupiditate doloremque, quod ipsa consequatur ipsam libero aliquid neque? Distinctio maiores recusandae qui, nostrum quia illum hic numquam fugiat
-      perferendis mollitia quaerat veniam tempora atque, consequatur quam adipisci consequuntur reiciendis fugit ut optio dolore assumenda dolor labore. Illum inventore fugit consectetur? Excepturi
-      reprehenderit maiores similique voluptate eveniet soluta enim magnam culpa sed delectus hic ab fuga blanditiis, id ex pariatur aliquam ratione eum quisquam aperiam magni atque, consequatur
-      quasi? Quo blanditiis maiores vero debitis nobis dicta officiis doloremque totam minima. Quis, distinctio libero? Repellat aliquid corrupti incidunt harum, veniam veritatis aspernatur quidem!
-      Rem error a dolorum! Neque doloribus eius ea voluptate quia eaque fuga explicabo, maiores qui laudantium dolorem iure nam consequuntur rerum, nemo nesciunt sunt? Eum quos quam numquam. Expedita
-      suscipit optio, non tempore reiciendis doloremque ipsa consequatur, consequuntur consectetur molestiae officia laborum dicta enim corrupti dolorum in rerum illum sunt nihil ullam voluptatum
-      assumenda nemo. Repellat aperiam natus maiores asperiores commodi ullam quo numquam dolorem! Rem adipisci minus mollitia perferendis sit iusto ad natus incidunt consequuntur a ex, temporibus
-      vero porro cum harum id eligendi maiores voluptates! Cupiditate tempora placeat voluptatum ex excepturi sunt culpa deleniti, dolorum consectetur molestiae impedit, reprehenderit quas iure
-      deserunt, amet sed illo animi. Impedit molestiae delectus blanditiis, architecto quod tenetur quisquam maxime itaque magnam reprehenderit veniam temporibus doloremque totam soluta aliquid
-      suscipit neque accusantium quos dicta est corporis veritatis rerum repellendus deleniti. Ab ratione labore dolorum vitae id officia soluta a esse blanditiis repellendus. Deleniti asperiores
-      magnam eum ipsam quas distinctio quae veritatis perferendis qui cum praesentium, autem, voluptatem quam dignissimos suscipit facilis repudiandae, atque unde. Omnis, pariatur autem excepturi
-      consequuntur odit cum sapiente eligendi vitae laboriosam natus? Ratione non, officiis minima cum eius aspernatur itaque aperiam, impedit, id earum sint obcaecati quos porro quam reprehenderit
-      nisi. Eum nesciunt corrupti tempora dolorem, natus atque optio fuga alias provident quis praesentium obcaecati voluptatum, ab labore. Exercitationem maiores atque deleniti perferendis natus illo
-      tenetur laudantium enim provident dolor qui velit quisquam, similique, accusamus, dicta officiis. Tempora est nostrum, corporis error tempore soluta praesentium, aperiam alias sed perferendis
-      labore dolorum. Aliquid, dolore obcaecati. Quibusdam eos aut ipsa dolores. Illum voluptate dicta, nostrum consequuntur quae voluptatibus. Odio asperiores temporibus accusantium praesentium
-      soluta ratione porro illo dolorum ea iusto consequuntur doloremque modi, nemo dicta, culpa nesciunt illum. Quam similique nesciunt sint sequi eum provident facilis et omnis hic. Quasi, cum
-      porro! Rerum ipsa quas corporis repellat! Repudiandae, vitae praesentium illo nemo odio eligendi autem voluptatum, molestias obcaecati dolores ullam id, rerum provident magnam reiciendis quod!
+  <div class="container">
+    <div class="title-wrap">
+      <div class="title-icon-wrap">
+        <p class="title-icon-number">2</p>
+        <ArticleTitleIconMobile class="title-icon mobile" />
+        <ArticleTitleIconDesk class="title-icon desk" />
+      </div>
+      <p class="title-text">Тіні забутих предків</p>
+    </div>
+    <div class="article">
+      <p class="article-title">"візитівка" українського кіно</p>
+      <p class="article-text">
+        Перша хвиля світової популярності прийшла до Сергія Параджанова після виходу стрічки «Тіні забутих предків» (1964). Цей фільм є екранізацією однойменної повісті Михайла Коцюбинського про
+        карпатських Ромео і Джульєтту, яким ворожнеча двох сімей заважала возз'єднатися.
+      </p>
+    </div>
+    <p class="article-text end">
+      Стрічка отримала 39 міжнародних нагород та викликала великий інтерес за кордоном. Спочатку в Україні Параджанова проголосили головним національним режисером, співаком «українськості». За це ж
+      згодом його посадили за ґрати.
     </p>
+    <div class="video-wrap">
+      <p class="video-title">створення культової стрічки</p>
+      <div class="video-container">
+        <video class="video" controls loop preload="auto"></video>
+        <!-- src="@/video/parajanovsLife.webm"  -->
+      </div>
+    </div>
+    <div class="quote-wrap">
+      <p class="quote">Я помщуся світові любов'ю</p>
+      <p class="name">- Параджанов</p>
+    </div>
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.title-wrap {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.title-icon-wrap {
+  position: relative;
+}
+
+.title-icon-number {
+  position: absolute;
+  top: 13px;
+  left: 43px;
+  color: var(--white-color);
+  font-family: Shnobel;
+  font-size: 23.35px;
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+.title-icon {
+  display: block;
+}
+
+.title-text {
+  color: #353b3f;
+  font-family: Shnobel;
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.article {
+  margin-top: 44px;
+  margin-bottom: 32px;
+}
+
+.article-title {
+  color: #373730;
+  font-family: Shnobel;
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.article-text {
+  margin-top: 16px;
+  color: #373730;
+  font-family: Geologica;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1.4;
+}
+
+.video-wrap {
+  margin-top: 80px;
+}
+
+.video-title {
+  color: #373730;
+  font-family: Shnobel;
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.video-container {
+  flex-shrink: 0;
+}
+
+.video {
+  width: 100%;
+  height: 576.69px;
+}
+
+.quote-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  height: 209px;
+  margin-top: 80px;
+  background-size: 100% 209px;
+  background-image: url('icons/shadowsOfForgottenAncestors/quote-bg-mobile.svg');
+  background-repeat: no-repeat;
+  background-position: 0 0;
+}
+
+.quote {
+  color: #373730;
+  font-family: Geologica;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.name {
+  color: #373730;
+  font-family: Geologica;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.4;
+  text-align: center;
+}
+
+@media screen and (min-width: 1280px) {
+  .title-wrap {
+    justify-content: space-between;
+  }
+
+  .title-icon-number {
+    top: 19px;
+    left: 59px;
+    font-size: 36.17px;
+  }
+
+  .title-text {
+    width: 420px;
+    font-size: 72px;
+  }
+
+  .title-icon.mobile {
+    display: none;
+  }
+
+  .article {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 44px;
+    margin-bottom: 24px;
+  }
+
+  .article-text {
+    flex-shrink: 0;
+    width: 419px;
+  }
+
+  .article-text.end {
+    margin-left: auto;
+  }
+
+  .video-wrap {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .video-title {
+    flex-shrink: 0;
+    width: 167px;
+  }
+
+  .video-container {
+    width: 419px;
+  }
+
+  .video {
+    width: 365px;
+    height: 612px;
+  }
+
+  .quote-wrap {
+    gap: 24px;
+    height: 207px;
+    background-size: 100% 207px;
+    background-image: url('icons/shadowsOfForgottenAncestors/quote-bg-desk.svg');
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .container {
+    width: 343px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .title-icon.desk {
+    display: none;
+  }
+
+  .video {
+    margin-top: 16px;
+  }
+}
+</style>

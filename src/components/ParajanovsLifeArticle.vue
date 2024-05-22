@@ -1,14 +1,17 @@
 <script setup>
-import ArticleTitleIconDesk from 'icons/parajanovsLife/article-title-icon-desk.svg?component';
-import ArticleTitleIconMobile from 'icons/parajanovsLife/article-title-icon-mobile.svg?component';
+import ArticleTitleIconDesk from 'icons/cardArticle/article-title-icon-desk.svg?component';
+import ArticleTitleIconMobile from 'icons/cardArticle/article-title-icon-mobile.svg?component';
 </script>
 
 <template>
   <div class="container">
     <div class="title-wrap">
-      <ArticleTitleIconMobile class="title-icon mobile" />
-      <ArticleTitleIconDesk class="title-icon desk" />
-      <div class="title-text">жИТТЯ ПАРАДЖАНОВА</div>
+      <div class="title-icon-wrap">
+        <p class="title-icon-number">1</p>
+        <ArticleTitleIconMobile class="title-icon mobile" />
+        <ArticleTitleIconDesk class="title-icon desk" />
+      </div>
+      <p class="title-text">жИТТЯ ПАРАДЖАНОВА</p>
     </div>
     <div class="article">
       <p class="article-title">100 років з дня народження</p>
@@ -42,12 +45,26 @@ import ArticleTitleIconMobile from 'icons/parajanovsLife/article-title-icon-mobi
   align-items: center;
 }
 
+.title-icon-wrap {
+  position: relative;
+}
+
+.title-icon-number {
+  position: absolute;
+  top: 13px;
+  left: 43px;
+  color: var(--white-color);
+  font-family: Shnobel;
+  font-size: 23.35px;
+  font-weight: 400;
+  line-height: 1.3;
+}
+
 .title-icon {
   display: block;
 }
 
 .title-text {
-  width: 12px;
   color: #353b3f;
   font-family: Shnobel;
   font-size: 40px;
@@ -137,6 +154,12 @@ import ArticleTitleIconMobile from 'icons/parajanovsLife/article-title-icon-mobi
 @media screen and (min-width: 1280px) {
   .title-wrap {
     justify-content: space-between;
+  }
+
+  .title-icon-number {
+    top: 20px;
+    left: 66px;
+    font-size: 36.17px;
   }
 
   .title-text {

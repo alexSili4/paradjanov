@@ -175,6 +175,13 @@ const showMobileMenu = computed(getShowMobileMenu);
   opacity: 1;
 }
 
+@media screen and (max-width: 1279px) {
+  .nav-bar {
+    position: fixed;
+    z-index: 10000;
+  }
+}
+
 @media screen and (min-width: 1280px) {
   .nav-bar {
     left: 60px;
