@@ -5,12 +5,16 @@ import GarnetColorArticle from 'components/GarnetColorArticle.vue';
 import CardArticle from 'components/CardArticle.vue';
 import { computed, ref, onMounted } from 'vue';
 import { intersectionObserverOptions } from 'constants';
+import { useRoute } from 'vue-router';
+
+const route = useRoute();
 
 const mapItemRef = ref(null);
 const playAnimationRef = ref(false);
 
 const props = defineProps({
   card: cardValidator,
+  isMoving: { type: Boolean, required: true },
   onNavBtnClick: {
     type: Function,
     required: true,
@@ -36,15 +40,29 @@ const props = defineProps({
     type: Function,
     required: true,
   },
+  cancelMove: {
+    type: Function,
+    required: true,
+  },
 });
 
 const playAnimationChange = (entries) => {
   entries.forEach((entry) => {
+    const { cardId: targetCardId } = entry.target.dataset;
+    const { cardId } = route.query;
+    const isTargetCard = cardId === targetCardId;
     const isNewValue = playAnimationRef.value !== entry.isIntersecting;
 
     if (isNewValue) {
       playAnimationRef.value = entry.isIntersecting;
+    }
+
+    if (entry.isIntersecting && !props.isMoving) {
       props.changeActiveCardId(props.card.id);
+    }
+
+    if (isTargetCard) {
+      props.cancelMove();
     }
   });
 };

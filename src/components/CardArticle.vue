@@ -1,10 +1,11 @@
 <script setup>
-import CloseBtnIcon from 'icons/cardArticle/close-btn.svg';
+import CloseBtnIcon from 'icons/close-btn.svg?component';
 import { getPrevAndNextCardId } from 'utils';
 import { cardValidator } from 'validator';
 import { onBeforeMount, ref } from 'vue';
 import { useRoute } from 'vue-router';
-import NextBtnIcon from '../icons/cardArticle/next-btn-icon.svg?component';
+import NextBtnIcon from 'icons/cardArticle/next-btn-icon.svg?component';
+import { cards } from 'constants';
 
 const route = useRoute();
 
@@ -23,7 +24,7 @@ onBeforeMount(() => {
   const defaultCardId = props.card.id;
   const query = route.query;
   const cardId = query.cardId || defaultCardId;
-  const { prevCardId, nextCardId } = getPrevAndNextCardId(cardId);
+  const { prevCardId, nextCardId } = getPrevAndNextCardId({ cardId, cards });
   prevCardIdRef.value = prevCardId;
   nextCardIdRef.value = nextCardId;
 });
@@ -64,7 +65,7 @@ onBeforeMount(() => {
 
 .article-wrap {
   position: fixed;
-  z-index: 10;
+  z-index: 100000;
   top: 100px;
   right: 0;
   width: 100%;
@@ -79,6 +80,8 @@ onBeforeMount(() => {
   width: 100%;
   height: 22px;
   background-image: url('icons/cardArticle/article-bg-mobile.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .article-container {
@@ -130,7 +133,6 @@ onBeforeMount(() => {
     width: 53px;
     min-height: 100%;
     background-image: url('icons/cardArticle/article-bg-desk.svg');
-    background-size: cover;
   }
 
   .article-container {
