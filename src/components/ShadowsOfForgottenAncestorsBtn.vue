@@ -8,9 +8,14 @@ import NavArroWIcon from 'icons/shadowsOfForgottenAncestors/nav-arrow.svg?compon
 import parajanovBat from 'animations/parajanovBat.json';
 import heroes from 'animations/heroes.json';
 import candles from 'animations/candles.json';
+import { Vue3Lottie } from 'vue3-lottie';
 
 defineProps({
   card: cardValidator,
+  playAnimation: {
+    type: Boolean,
+    required: true,
+  },
   onCardBtnClick: {
     type: Function,
     required: true,
@@ -25,9 +30,9 @@ defineProps({
 <template>
   <div class="map-item-card">
     <LandIcon class="land-icon" />
-    <Vue3Lottie :autoPlay="true" :animationData="parajanovBat" class="animation-parajanov-bat" :height="card.animation[0].height" :width="card.animation[0].width" />
-    <Vue3Lottie :autoPlay="true" :animationData="candles" class="animation-candles" :height="card.animation[2].height" :width="card.animation[2].width" />
-    <Vue3Lottie :autoPlay="true" :animationData="heroes" class="animation-heroes" :height="card.animation[1].height" :width="card.animation[1].width" />
+    <!-- <Vue3Lottie :autoPlay="playAnimation" :animationData="parajanovBat" class="animation-parajanov-bat" :height="card.animation[0].height" :width="card.animation[0].width" /> -->
+    <!-- <Vue3Lottie :autoPlay="playAnimation" :animationData="candles" class="animation-candles" :height="card.animation[2].height" :width="card.animation[2].width" /> -->
+    <!-- <Vue3Lottie :autoPlay="playAnimation" :animationData="heroes" class="animation-heroes" :height="card.animation[1].height" :width="card.animation[1].width" /> -->
     <div class="card-title-wrap">
       <p class="card-title">{{ card.title }}</p>
       <button type="button" class="card-btn card-article-btn" @click="onCardBtnClick" :disabled="isDraggable"></button>

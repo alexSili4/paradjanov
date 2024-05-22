@@ -3,7 +3,11 @@ import { cardValidator } from 'validator';
 import IngeniousCollagesBtn from 'components/IngeniousCollagesBtn.vue';
 import IngeniousCollagesArticle from 'components/IngeniousCollagesArticle.vue';
 import CardArticle from 'components/CardArticle.vue';
-import { computed } from 'vue';
+import { computed, onMounted, ref } from 'vue';
+import { intersectionObserverOptions } from 'constants';
+
+const mapItemRef = ref(null);
+const playAnimationRef = ref(false);
 
 const props = defineProps({
   card: cardValidator,
@@ -28,14 +32,35 @@ const props = defineProps({
     type: Boolean,
     required: true,
   },
+  changeActiveCardId: {
+    type: Function,
+    required: true,
+  },
+});
+
+const playAnimationChange = (entries) => {
+  entries.forEach((entry) => {
+    const isNewValue = playAnimationRef.value !== entry.isIntersecting;
+
+    if (isNewValue) {
+      playAnimationRef.value = entry.isIntersecting;
+      props.changeActiveCardId(props.card.id);
+    }
+  });
+};
+
+const observer = new IntersectionObserver(playAnimationChange, intersectionObserverOptions);
+
+onMounted(() => {
+  observer.observe(mapItemRef.value);
 });
 
 const isShow = computed(() => props.activeArticle === props.card.id);
 </script>
 
 <template>
-  <li class="map-item" :data-card-id="card.id">
-    <IngeniousCollagesBtn :card="card" :onCardBtnClick="onCardBtnClick" :isDraggable="isDraggable" />
+  <li class="map-item" :data-card-id="card.id" ref="mapItemRef">
+    <IngeniousCollagesBtn :card="card" :onCardBtnClick="onCardBtnClick" :isDraggable="isDraggable" :playAnimation="playAnimationRef" />
     <CardArticle :isShow="isShow" :onCloseBtnClick="onCloseArticleBtnClick" :isDesk="isDesk" :onNavBtnClick="onNavBtnClick" :card="card">
       <IngeniousCollagesArticle />
     </CardArticle>

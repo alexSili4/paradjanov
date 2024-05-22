@@ -7,9 +7,14 @@ import NavArroWIcon from 'icons/ingeniousCollages/nav-arrow.svg?component';
 import GrapesIcon from 'icons/ingeniousCollages/grapes.svg?component';
 import SmallGrapeIcon from 'icons/ingeniousCollages/small-grape.svg?component';
 import ingeniousCollages from '../animations/ingeniousCollages.json';
+import { Vue3Lottie } from 'vue3-lottie';
 
 defineProps({
   card: cardValidator,
+  playAnimation: {
+    type: Boolean,
+    required: true,
+  },
   onCardBtnClick: {
     type: Function,
     required: true,
@@ -36,7 +41,7 @@ defineProps({
     </div>
     <GrapesIcon class="grapes-icon" />
     <SmallGrapeIcon class="small-grape-icon" />
-    <Vue3Lottie :autoPlay="true" :animationData="ingeniousCollages" class="animation-item" :height="card.animation[0].height" :width="card.animation[0].width" />
+    <!-- <Vue3Lottie :autoPlay="playAnimation" :animationData="ingeniousCollages" class="animation-item" :height="card.animation[0].height" :width="card.animation[0].width" /> -->
   </div>
 </template>
 

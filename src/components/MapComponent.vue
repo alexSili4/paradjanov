@@ -55,6 +55,14 @@ onMounted(() => {
   mapOriginalHeightRef.value = height;
 });
 
+const changeActiveCardId = (cardId) => {
+  if (showAllMap.value) {
+    return;
+  }
+
+  router.push({ path: '/', query: { cardId } });
+};
+
 const onQueriesChangeDependencies = () => route.query;
 const onQueriesChange = ({ cardId }) => {
   activeCardIdRef.value = cardId;
@@ -217,7 +225,7 @@ const onZoomBtnClick = (e) => {
 const onNavBtnClick = (e) => {
   e.currentTarget.blur();
   const { cardId } = e.currentTarget.dataset;
-  router.push({ path: '/', query: { cardId } });
+  changeActiveCardId(cardId);
 
   if (!props.isDesk) {
     isOpenMenuRef.value = false;
@@ -257,6 +265,7 @@ const mapClassNames = computed(getMapClassNames);
         :onCloseArticleBtnClick="onCloseArticleBtnClick"
         :activeArticle="activeArticleRef"
         :onNavBtnClick="onNavBtnClick"
+        :changeActiveCardId="changeActiveCardId"
       />
       <ShadowsOfForgottenAncestors
         :card="cards[1]"
@@ -266,6 +275,7 @@ const mapClassNames = computed(getMapClassNames);
         :activeArticle="activeArticleRef"
         :isDesk="isDesk"
         :onNavBtnClick="onNavBtnClick"
+        :changeActiveCardId="changeActiveCardId"
       />
       <InspiredByParajanov
         :card="cards[2]"
@@ -275,6 +285,7 @@ const mapClassNames = computed(getMapClassNames);
         :activeArticle="activeArticleRef"
         :isDesk="isDesk"
         :onNavBtnClick="onNavBtnClick"
+        :changeActiveCardId="changeActiveCardId"
       />
       <TastePreferences
         :card="cards[3]"
@@ -284,6 +295,7 @@ const mapClassNames = computed(getMapClassNames);
         :activeArticle="activeArticleRef"
         :isDesk="isDesk"
         :onNavBtnClick="onNavBtnClick"
+        :changeActiveCardId="changeActiveCardId"
       />
       <GlassesFromSilpo
         :card="cards[4]"
@@ -293,6 +305,7 @@ const mapClassNames = computed(getMapClassNames);
         :activeArticle="activeArticleRef"
         :isDesk="isDesk"
         :onNavBtnClick="onNavBtnClick"
+        :changeActiveCardId="changeActiveCardId"
       />
       <IngeniousCollages
         :card="cards[5]"
@@ -302,6 +315,7 @@ const mapClassNames = computed(getMapClassNames);
         :activeArticle="activeArticleRef"
         :isDesk="isDesk"
         :onNavBtnClick="onNavBtnClick"
+        :changeActiveCardId="changeActiveCardId"
       />
       <GarnetColor
         :card="cards[6]"
@@ -311,6 +325,7 @@ const mapClassNames = computed(getMapClassNames);
         :activeArticle="activeArticleRef"
         :isDesk="isDesk"
         :onNavBtnClick="onNavBtnClick"
+        :changeActiveCardId="changeActiveCardId"
       />
     </ul>
   </div>
