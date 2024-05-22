@@ -65,7 +65,7 @@ onBeforeMount(() => {
 
 .article-wrap {
   position: fixed;
-  z-index: 100000;
+  z-index: 1000;
   top: 100px;
   right: 0;
   width: 100%;
@@ -118,7 +118,6 @@ onBeforeMount(() => {
 
   .article-wrap {
     position: fixed;
-    z-index: 100;
     top: 0;
     right: 0;
     width: 726px;

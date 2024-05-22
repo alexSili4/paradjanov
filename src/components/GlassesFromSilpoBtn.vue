@@ -110,6 +110,7 @@ defineProps({
   position: absolute;
   top: 42px;
   left: 103px;
+  width: 343px;
   color: #353b3f;
   font-family: Shnobel;
   font-size: 90px;
