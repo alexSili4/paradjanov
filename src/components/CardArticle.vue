@@ -138,7 +138,7 @@ onBeforeMount(() => {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: 64px;
+    gap: 80px;
     padding: 92px 48px 56px;
   }
 
