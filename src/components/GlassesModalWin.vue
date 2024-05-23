@@ -44,7 +44,7 @@ const onPrevBtnClick = () => {
             <div class="volume-of-glasses-and-text-wrap">
               <div class="volume-of-glasses-wrap">
                 <swiper-container ref="glassesVolumesSlider" :slides-per-view="1" :space-between="10" :allowTouchMove="false">
-                  <swiper-slide class="volume-of-glasses-text" :key="volume" v-for="{ volume } in glasses">Натхнені стакани {{ volume }} мл</swiper-slide>
+                  <swiper-slide class="volume-of-glasses-text" :key="volume" v-for="{ volume } in glasses">{{ volume }} мл</swiper-slide>
                 </swiper-container>
                 <ul class="controls-list">
                   <li class="controls-list-item">
@@ -258,56 +258,11 @@ const onPrevBtnClick = () => {
   .volume-of-glasses-and-text-wrap {
     display: flex;
     flex-direction: column-reverse;
-  }
-
-  .volume-of-glasses-wrap {
-    position: relative;
-    width: 161px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .volume-of-glasses-text {
-    color: var(--white-color);
-    font-family: Geologica;
-    font-size: 18px;
-    font-weight: 300;
-    line-height: 1.4;
-    text-align: center;
+    gap: 86px;
   }
 
   .controls-list {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 343px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transform: translateX(-50%) translateY(-50%);
-  }
-
-  .nav-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 56px;
-    height: 56px;
-    border: none;
-    border-radius: 50%;
-    background-color: #3d3f7f;
-  }
-
-  .nav-btn-icon.prev-btn-icon {
-    transform: rotate(180deg);
-  }
-
-  .description {
-    color: var(--white-color);
-    font-family: Geologica;
-    font-size: 18px;
-    font-weight: 300;
-    line-height: 1.4;
+    width: 507px;
   }
 }
 
