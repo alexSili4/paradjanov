@@ -48,7 +48,7 @@ const hideCupBtnClassNames = computed(getHideCupBtnClassNames);
 <style scoped>
 .header {
   position: fixed;
-  z-index: 1000;
+  z-index: 1000000;
   top: 11px;
   left: 50%;
   display: flex;

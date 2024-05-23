@@ -25,7 +25,6 @@ import testVideo from 'video/test.mp4';
       <p class="video-title">Цікаві факти з життя майстра</p>
       <div class="video-container">
         <video class="video" controls loop preload="auto" :src="testVideo"></video>
-        <!-- src="@/video/parajanovsLife.webm"  -->
       </div>
     </div>
     <p class="article-text end">

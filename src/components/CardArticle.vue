@@ -3,11 +3,8 @@ import CloseBtnIcon from 'icons/close-btn.svg?component';
 import { getPrevAndNextCardId } from 'utils';
 import { cardValidator } from 'validator';
 import { onBeforeMount, ref } from 'vue';
-import { useRoute } from 'vue-router';
 import NextBtnIcon from 'icons/cardArticle/next-btn-icon.svg?component';
 import { cards } from 'constants';
-
-const route = useRoute();
 
 const nextCardIdRef = ref(null);
 const prevCardIdRef = ref(null);
@@ -64,7 +61,7 @@ onBeforeMount(() => {
 
 .article-wrap {
   position: fixed;
-  z-index: 1000;
+  z-index: 1000000;
   top: 100px;
   right: 0;
   width: 100%;
@@ -85,7 +82,7 @@ onBeforeMount(() => {
 
 .article-container {
   height: 100%;
-  padding: 24px 16px;
+  padding: 24px 16px 153px;
   overflow-y: auto;
 }
 

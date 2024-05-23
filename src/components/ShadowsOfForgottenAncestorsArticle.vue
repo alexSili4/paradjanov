@@ -23,9 +23,7 @@ import ArticleTitleIconMobile from 'icons/cardArticle/article-title-icon-mobile.
     <div class="video-wrap">
       <p class="video-title">створення культової стрічки</p>
       <iframe
-        class="video-container"
-        width="1250"
-        height="703"
+        class="video"
         src="https://www.youtube.com/embed/ua8FEfcBtmU"
         title="Життя Сергія Параджанова"
         frameborder="0"
@@ -78,6 +76,15 @@ import ArticleTitleIconMobile from 'icons/cardArticle/article-title-icon-mobile.
   font-weight: 400;
   line-height: 1.2;
   text-transform: uppercase;
+}
+
+.video-container {
+  flex-shrink: 0;
+}
+
+.video {
+  width: 100%;
+  height: 576.69px;
 }
 
 .article {
@@ -210,7 +217,7 @@ import ArticleTitleIconMobile from 'icons/cardArticle/article-title-icon-mobile.
   }
 
   .video {
-    width: 365px;
+    width: 419px;
     height: 612px;
   }
 
