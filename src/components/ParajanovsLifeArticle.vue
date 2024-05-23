@@ -1,6 +1,7 @@
 <script setup>
 import ArticleTitleIconDesk from 'icons/cardArticle/article-title-icon-desk.svg?component';
 import ArticleTitleIconMobile from 'icons/cardArticle/article-title-icon-mobile.svg?component';
+import testVideo from 'video/test.mp4';
 </script>
 
 <template>
@@ -20,17 +21,18 @@ import ArticleTitleIconMobile from 'icons/cardArticle/article-title-icon-mobile.
         українських фільмів
       </p>
     </div>
+    <div class="video-wrap">
+      <p class="video-title">Цікаві факти з життя майстра</p>
+      <div class="video-container">
+        <video class="video" controls loop preload="auto" :src="testVideo"></video>
+        <!-- src="@/video/parajanovsLife.webm"  -->
+      </div>
+    </div>
     <p class="article-text end">
       Але крім того, він геній і провокатор, що вигадав свою альтернативну біографію, згідно з якою він є нащадком грузинських князів, за життя товаришував з англійською королевою Єлизаветою; торгував
       діамантами, які отримував від Папи Римського, був рідним братом Федеріко Фелліні. І все це чиста правда, бо Параджанов не вмів вигадувати нічого, окрім правди
     </p>
-    <div class="video-wrap">
-      <p class="video-title">Цікаві факти з життя майстра</p>
-      <div class="video-container">
-        <video class="video" controls loop preload="auto"></video>
-        <!-- src="@/video/parajanovsLife.webm"  -->
-      </div>
-    </div>
+
     <div class="quote-wrap">
       <p class="quote">Я - вірменин, який народився у Тбілісі й сидів у російській в&#8217;язниці за український<br />націоналізм</p>
       <p class="name">- Параджанов</p>

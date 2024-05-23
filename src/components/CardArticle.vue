@@ -22,8 +22,7 @@ const props = defineProps({
 
 onBeforeMount(() => {
   const defaultCardId = props.card.id;
-  const query = route.query;
-  const cardId = query.cardId || defaultCardId;
+  const cardId = defaultCardId;
   const { prevCardId, nextCardId } = getPrevAndNextCardId({ cardId, cards });
   prevCardIdRef.value = prevCardId;
   nextCardIdRef.value = nextCardId;
