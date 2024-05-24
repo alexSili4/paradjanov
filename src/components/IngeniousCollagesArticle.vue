@@ -11,7 +11,7 @@ import collage9 from 'images/ingeniousCollages/collage9.jpg';
 import DecorativeElement1 from 'icons/ingeniousCollages/collage-decorative-elem-1.svg?component';
 import DecorativeElement2 from 'icons/ingeniousCollages/collage-decorative-elem-2.svg?component';
 import DecorativeElement3 from 'icons/ingeniousCollages/collage-decorative-elem-3.svg?component';
-import DecorativeElement4Desk from 'icons/ingeniousCollages/collage-decorative-elem-4-desk.svg?component';
+import decorativeElement4Desk from 'icons/ingeniousCollages/collage-decorative-elem-4-desk.jpg';
 import decorativeElement4Mobile from 'icons/ingeniousCollages/collage-decorative-elem-4-mobile.jpg';
 import ArticleTitleIconDesk from 'icons/cardArticle/article-title-icon-desk.svg?component';
 import ArticleTitleIconMobile from 'icons/cardArticle/article-title-icon-mobile.svg?component';
@@ -29,7 +29,7 @@ import DecorativeElement5 from 'icons/ingeniousCollages/collage-decorative-elem-
       <p class="title-text">Геніальні<br />колажі</p>
     </div>
     <div class="article">
-      <p class="article-title">спресовані фільми</p>
+      <p class="article-title">спресовані<br />фільми</p>
       <p class="article-text">
         Любов до старих речей та антураж антикварного магазину завжди надихали Параджанова на майбутні картини. Під час підготовки до фільмів режисер створював колажі, які допомагали візуалізувати
         майбутні кадри, Параджанов назвав їх «спресованими фільмами». Після того як радянська влада заборонила йому знімати, колажі стали його основною практикою.
@@ -96,7 +96,7 @@ import DecorativeElement5 from 'icons/ingeniousCollages/collage-decorative-elem-
       </li>
       <li class="collages-list-item">
         <div class="collage-wrap">
-          <DecorativeElement4Desk class="collage-icon collage-icon-4 desk" />
+          <img :src="decorativeElement4Desk" alt="колаж" class="collage-icon collage-icon-4 desk" />
           <img :src="decorativeElement4Mobile" alt="колаж" class="collage-icon collage-icon-4 mobile" />
           <img :src="collage7" alt="колаж" class="collage-img collage-img-7" />
           <div class="collage-text-wrap">
@@ -252,12 +252,6 @@ import DecorativeElement5 from 'icons/ingeniousCollages/collage-decorative-elem-
   height: 433.33px;
 }
 
-.collage-wrap.second {
-  width: 307px;
-  margin-top: 48px;
-  margin-left: auto;
-}
-
 .collage-wrap.third {
   width: 314px;
   margin-left: auto;
@@ -328,6 +322,76 @@ import DecorativeElement5 from 'icons/ingeniousCollages/collage-decorative-elem-
     flex-shrink: 0;
     width: 419px;
   }
+
+  .collages-list-item:not(:first-child) {
+    margin-top: 80px;
+  }
+
+  .collage-wrap.two {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .collage-wrap.two > .collage-wrap {
+    margin: 0;
+  }
+
+  .collage-img-2 {
+    width: 226px;
+    height: 319px;
+  }
+
+  .collage-img-3 {
+    width: 261px;
+    height: 348px;
+  }
+
+  .collage-img-5 {
+    width: 314px;
+    height: 276px;
+  }
+
+  .collage-img-6 {
+    width: 261px;
+    height: 328px;
+  }
+
+  .collage-img-7 {
+    width: 440px;
+    height: 382px;
+    margin-left: auto;
+  }
+
+  .collage-icon-4.mobile {
+    display: none;
+  }
+
+  .collage-icon-4.desk {
+    position: absolute;
+    top: 0px;
+    left: -50px;
+    display: block;
+  }
+
+  .collages-list-item:not(.two) .collage-text-wrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 419px;
+    margin-left: auto;
+  }
+
+  .collage-icon-2 {
+    left: 568px;
+  }
+
+  .collage-icon-3 {
+    left: 101px;
+  }
+
+  .collage-icon-5 {
+    left: 119px;
+  }
 }
 
 @media screen and (max-width: 1280px) {
@@ -347,6 +411,12 @@ import DecorativeElement5 from 'icons/ingeniousCollages/collage-decorative-elem-
 
   .collage-icon-4.desk {
     display: none;
+  }
+
+  .collage-wrap.second {
+    width: 307px;
+    margin-top: 48px;
+    margin-left: auto;
   }
 }
 </style>

@@ -107,6 +107,7 @@ const nextDataCardId = computed(() => (nextCardIdRef.value !== cards[4].id ? nex
 
 .close-btn {
   position: absolute;
+  z-index: 10;
   top: 24px;
   right: 16px;
   display: flex;
