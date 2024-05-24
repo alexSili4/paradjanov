@@ -4,7 +4,7 @@ import ParajanovsLife from 'components/ParajanovsLife.vue';
 import ShadowsOfForgottenAncestors from 'components/ShadowsOfForgottenAncestors.vue';
 import { cards } from 'constants';
 import { ref, onMounted, computed, watch, onBeforeMount } from 'vue';
-import { getPositionProps, getContentGeometry, getScale, getScaleOnResizeWindow, setFocusOnActiveCard } from 'utils';
+import { getPositionProps, getContentGeometry, getScale, getScaleOnResizeWindow, setFocusOnActiveCard, getPrevAndNextCardId } from 'utils';
 import InspiredByParajanov from 'components/InspiredByParajanov.vue';
 import TastePreferences from 'components/TastePreferences.vue';
 import GlassesFromSilpo from 'components/GlassesFromSilpo.vue';
@@ -46,11 +46,16 @@ const activeArticleRef = ref(null);
 const activeCardIdRef = ref(null);
 const isOpenMenuRef = ref(false);
 const isMovingRef = ref(false);
+const nextCardIdRef = ref(null);
+const prevCardIdRef = ref(null);
 
 onBeforeMount(() => {
   const defaultCardId = cards[0].id;
+  const { prevCardId, nextCardId } = getPrevAndNextCardId({ cardId: defaultCardId, cards });
 
   activeCardIdRef.value = defaultCardId;
+  prevCardIdRef.value = prevCardId;
+  nextCardIdRef.value = nextCardId;
 });
 
 onMounted(() => {
@@ -70,7 +75,10 @@ const changeActiveCardId = (cardId) => {
 
 const onQueriesChangeDependencies = () => route.query;
 const onQueriesChange = ({ cardId }) => {
+  const { prevCardId, nextCardId } = getPrevAndNextCardId({ cardId, cards });
   activeCardIdRef.value = cardId;
+  prevCardIdRef.value = prevCardId;
+  nextCardIdRef.value = nextCardId;
 };
 watch(onQueriesChangeDependencies, onQueriesChange);
 
@@ -278,6 +286,7 @@ const mapClassNames = computed(getMapClassNames);
         :changeActiveCardId="changeActiveCardId"
         :cancelMove="cancelMove"
         :isMoving="isMovingRef"
+        :isOpenMenu="isOpenMenuRef"
       />
       <ShadowsOfForgottenAncestors
         :card="cards[1]"
@@ -290,6 +299,7 @@ const mapClassNames = computed(getMapClassNames);
         :changeActiveCardId="changeActiveCardId"
         :cancelMove="cancelMove"
         :isMoving="isMovingRef"
+        :isOpenMenu="isOpenMenuRef"
       />
       <InspiredByParajanov
         :card="cards[2]"
@@ -302,6 +312,7 @@ const mapClassNames = computed(getMapClassNames);
         :changeActiveCardId="changeActiveCardId"
         :cancelMove="cancelMove"
         :isMoving="isMovingRef"
+        :isOpenMenu="isOpenMenuRef"
       />
       <TastePreferences
         :card="cards[3]"
@@ -314,6 +325,7 @@ const mapClassNames = computed(getMapClassNames);
         :changeActiveCardId="changeActiveCardId"
         :cancelMove="cancelMove"
         :isMoving="isMovingRef"
+        :isOpenMenu="isOpenMenuRef"
       />
       <GlassesFromSilpo
         :card="cards[4]"
@@ -327,6 +339,7 @@ const mapClassNames = computed(getMapClassNames);
         :cancelMove="cancelMove"
         :isMoving="isMovingRef"
         :toggleShowGlassesModalWin="toggleShowGlassesModalWin"
+        :isOpenMenu="isOpenMenuRef"
       />
       <IngeniousCollages
         :card="cards[5]"
@@ -339,6 +352,7 @@ const mapClassNames = computed(getMapClassNames);
         :changeActiveCardId="changeActiveCardId"
         :cancelMove="cancelMove"
         :isMoving="isMovingRef"
+        :isOpenMenu="isOpenMenuRef"
       />
       <GarnetColor
         :card="cards[6]"
@@ -351,6 +365,8 @@ const mapClassNames = computed(getMapClassNames);
         :changeActiveCardId="changeActiveCardId"
         :cancelMove="cancelMove"
         :isMoving="isMovingRef"
+        :onMenuBtnClick="onZoomBtnClick"
+        :isOpenMenu="isOpenMenuRef"
       />
     </ul>
   </div>
@@ -363,6 +379,8 @@ const mapClassNames = computed(getMapClassNames);
     :onNavBtnClick="onNavBtnClick"
     :onZoomBtnClick="onZoomBtnClick"
     :isOpenMenu="isOpenMenuRef"
+    :prevCardId="prevCardIdRef"
+    :nextCardId="nextCardIdRef"
   />
 </template>
 

@@ -5,6 +5,7 @@ import { cardValidator } from 'validator';
 import { onBeforeMount, ref } from 'vue';
 import NextBtnIcon from 'icons/cardArticle/next-btn-icon.svg?component';
 import { cards } from 'constants';
+import Arrow from 'icons/arrow.svg?component';
 
 const nextCardIdRef = ref(null);
 const prevCardIdRef = ref(null);
@@ -15,6 +16,7 @@ const props = defineProps({
   onNavBtnClick: { type: Function, required: true },
   isShow: { type: Boolean, required: true },
   isDesk: { type: Boolean, required: true },
+  isOpenMenu: { type: Boolean, required: true },
 });
 
 onBeforeMount(() => {
@@ -36,7 +38,7 @@ onBeforeMount(() => {
             <CloseBtnIcon class="close-btn-icon" />
           </button>
           <slot></slot>
-          <ul class="nav-btn-list" v-show="isDesk">
+          <ul class="nav-btn-list" v-if="isDesk">
             <li class="nav-btn-list-item">
               <button class="nav-btn" type="button" @click="onNavBtnClick" :data-card-id="prevCardIdRef"><span class="nav-btn-title">Попередній</span></button>
             </li>
@@ -44,6 +46,18 @@ onBeforeMount(() => {
               <button class="nav-btn next" type="button" @click="onNavBtnClick" :data-card-id="nextCardIdRef">
                 <span class="nav-btn-title">Наступний</span>
                 <NextBtnIcon class="nav-btn-icon" />
+              </button>
+            </li>
+          </ul>
+          <ul class="nav-bar" v-else>
+            <li>
+              <button type="button" class="nav-btn" :data-card-id="prevCardIdRef" @click="onNavBtnClick">
+                <Arrow class="nav-btn-icon prev-btn-icon" />
+              </button>
+            </li>
+            <li>
+              <button type="button" class="nav-btn" :data-card-id="nextCardIdRef" @click="onNavBtnClick">
+                <Arrow class="nav-btn-icon" />
               </button>
             </li>
           </ul>
@@ -82,7 +96,7 @@ onBeforeMount(() => {
 
 .article-container {
   height: 100%;
-  padding: 24px 16px 153px;
+  padding: 24px 16px;
   overflow-y: auto;
 }
 
@@ -104,6 +118,42 @@ onBeforeMount(() => {
 
 .close-btn:is(:hover, :focus) {
   background-color: #3d3f7f;
+}
+
+.nav-btn {
+  flex-shrink: 0;
+  padding: 15px;
+  border: none;
+  border-radius: 100px;
+  backdrop-filter: blur(20px);
+  background-color: #939ccb;
+  transition:
+    opacity var(--transition-duration-and-func),
+    visibility var(--transition-duration-and-func),
+    background-color var(--transition-duration-and-func);
+}
+
+.nav-btn-icon {
+  display: block;
+}
+
+.prev-btn-icon {
+  transform: rotate(180deg);
+}
+
+.menu-btn {
+  position: relative;
+  display: block;
+  border: none;
+  padding: 0;
+  background-color: transparent;
+}
+
+.nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 75px;
 }
 
 @media screen and (min-width: 1280px) {

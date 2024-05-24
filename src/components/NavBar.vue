@@ -5,16 +5,10 @@ import ZoomInMap from 'icons/navBar/zoom-in-map.svg?component';
 import MenuDesk from 'icons/navBar/menu-desk.svg?component';
 import MenuMobile from 'icons/navBar/menu-mobile.svg?component';
 import BurgerMenu from 'components/BurgerMenu.vue';
-import { ref, onBeforeMount, computed, watch } from 'vue';
+import { computed } from 'vue';
 import { cardsValidator } from 'validator';
 import MobileMenu from 'components/MobileMenu.vue';
-import { useRoute } from 'vue-router';
-import { getPrevAndNextCardId } from 'utils';
 
-const route = useRoute();
-
-const nextCardIdRef = ref(null);
-const prevCardIdRef = ref(null);
 const props = defineProps({
   cards: cardsValidator,
   onZoomBtnClick: {
@@ -45,30 +39,21 @@ const props = defineProps({
     type: Boolean,
     required: true,
   },
+  prevCardId: {
+    type: String,
+    required: true,
+  },
+  nextCardId: {
+    type: String,
+    required: true,
+  },
 });
-
-onBeforeMount(() => {
-  const defaultCardId = props.cards[0].id;
-  const query = route.query;
-  const cardId = query.cardId || defaultCardId;
-  const { prevCardId, nextCardId } = getPrevAndNextCardId({ cardId, cards: props.cards });
-  prevCardIdRef.value = prevCardId;
-  nextCardIdRef.value = nextCardId;
-});
-
-const onActiveCardIdChangeDependencies = () => route.query;
-const onActiveCardIdChange = ({ cardId }) => {
-  const { prevCardId, nextCardId } = getPrevAndNextCardId({ cardId, cards: props.cards });
-  prevCardIdRef.value = prevCardId;
-  nextCardIdRef.value = nextCardId;
-};
-watch(onActiveCardIdChangeDependencies, onActiveCardIdChange);
 
 const getMenuBtnClassNames = () => ['menu-btn', { 'menu-open': props.isOpenMenu }];
 
 const getMenuBtnWrapClassNames = () => ['menu-btn-wrap', { 'menu-open': props.isOpenMenu }];
 
-const getNavBtnClassNames = () => ['nav-btn', { 'menu-open': props.isOpenMenu, active: props.showArticle }];
+const getNavBtnClassNames = () => ['nav-btn', { 'menu-open': props.isOpenMenu }];
 
 const getShowMobileMenu = () => props.isOpenMenu && !props.isDesk;
 
@@ -83,7 +68,7 @@ const showMobileMenu = computed(getShowMobileMenu);
     <button type="button" class="zoom-btn" @click="toggleShowAllMap" v-show="isDesk">
       <ZoomInMap class="zoom-btn-icon" />
     </button>
-    <button type="button" :class="navBtnClassNames" v-show="!isDesk" :data-card-id="prevCardIdRef" @click="onNavBtnClick">
+    <button type="button" :class="navBtnClassNames" v-show="!isDesk" :data-card-id="prevCardId" @click="onNavBtnClick">
       <Arrow class="nav-btn-icon prev-btn-icon" />
     </button>
     <div :class="menuBtnWrapClassNames">
@@ -94,7 +79,7 @@ const showMobileMenu = computed(getShowMobileMenu);
       </button>
       <CardsNumberList :cards="cards" :isDesk="isDesk" :onNavBtnClick="onNavBtnClick" :activeCardId="activeCardId" />
     </div>
-    <button type="button" :class="navBtnClassNames" v-show="!isDesk" :data-card-id="nextCardIdRef" @click="onNavBtnClick">
+    <button type="button" :class="navBtnClassNames" v-show="!isDesk" :data-card-id="nextCardId" @click="onNavBtnClick">
       <Arrow class="nav-btn-icon" />
     </button>
     <div class="zoom-btn fake-btn" v-show="isDesk"></div>
@@ -128,10 +113,6 @@ const showMobileMenu = computed(getShowMobileMenu);
     background-color var(--transition-duration-and-func);
 }
 
-.nav-btn.active {
-  background-color: #939ccb;
-}
-
 .nav-btn.menu-open {
   visibility: hidden;
   opacity: 0;
@@ -152,7 +133,6 @@ const showMobileMenu = computed(getShowMobileMenu);
 
 .menu-btn {
   position: relative;
-
   display: block;
   border: none;
   padding: 0;
@@ -173,13 +153,6 @@ const showMobileMenu = computed(getShowMobileMenu);
 .menu-btn.menu-open .burger-menu-close-icon {
   transform: translateX(0) translateY(0);
   opacity: 1;
-}
-
-@media screen and (max-width: 1279px) {
-  .nav-bar {
-    position: fixed;
-    z-index: 10000000;
-  }
 }
 
 @media screen and (min-width: 1280px) {

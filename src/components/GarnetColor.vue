@@ -14,6 +14,7 @@ const playAnimationRef = ref(false);
 
 const props = defineProps({
   card: cardValidator,
+  isOpenMenu: { type: Boolean, required: true },
   isMoving: { type: Boolean, required: true },
   onNavBtnClick: {
     type: Function,
@@ -79,7 +80,7 @@ const isShow = computed(() => props.activeArticle === props.card.id);
 <template>
   <li class="map-item" :data-card-id="card.id" ref="mapItemRef">
     <GarnetColorBtn :card="card" :onCardBtnClick="onCardBtnClick" :isDraggable="isDraggable" :playAnimation="playAnimationRef" />
-    <CardArticle :isShow="isShow" :onCloseBtnClick="onCloseArticleBtnClick" :isDesk="isDesk" :onNavBtnClick="onNavBtnClick" :card="card">
+    <CardArticle :isShow="isShow" :onCloseBtnClick="onCloseArticleBtnClick" :isDesk="isDesk" :onNavBtnClick="onNavBtnClick" :card="card" :isOpenMenu="isOpenMenu">
       <GarnetColorArticle />
     </CardArticle>
   </li>
