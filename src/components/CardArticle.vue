@@ -2,7 +2,7 @@
 import CloseBtnIcon from 'icons/close-btn.svg?component';
 import { getPrevAndNextCardId } from 'utils';
 import { cardValidator } from 'validator';
-import { onBeforeMount, ref } from 'vue';
+import { computed, onBeforeMount, ref } from 'vue';
 import NextBtnIcon from 'icons/cardArticle/next-btn-icon.svg?component';
 import { cards } from 'constants';
 import Arrow from 'icons/arrow.svg?component';
@@ -26,6 +26,9 @@ onBeforeMount(() => {
   prevCardIdRef.value = prevCardId;
   nextCardIdRef.value = nextCardId;
 });
+
+const prevDataCardId = computed(() => (prevCardIdRef.value !== cards[4].id ? prevCardIdRef.value : cards[3].id));
+const nextDataCardId = computed(() => (nextCardIdRef.value !== cards[4].id ? nextCardIdRef.value : cards[5].id));
 </script>
 
 <template>
@@ -40,10 +43,12 @@ onBeforeMount(() => {
           <slot></slot>
           <ul class="nav-btn-list" v-if="isDesk">
             <li class="nav-btn-list-item">
-              <button class="nav-btn" type="button" @click="onNavBtnClick" :data-card-id="prevCardIdRef"><span class="nav-btn-title">Попередній</span></button>
+              <button class="nav-btn" type="button" @click="onNavBtnClick" :data-card-id="prevDataCardId">
+                <span class="nav-btn-title">Попередній</span>
+              </button>
             </li>
             <li class="nav-btn-list-item">
-              <button class="nav-btn next" type="button" @click="onNavBtnClick" :data-card-id="nextCardIdRef">
+              <button class="nav-btn next" type="button" @click="onNavBtnClick" :data-card-id="nextDataCardId">
                 <span class="nav-btn-title">Наступний</span>
                 <NextBtnIcon class="nav-btn-icon" />
               </button>
@@ -51,12 +56,12 @@ onBeforeMount(() => {
           </ul>
           <ul class="nav-bar" v-else>
             <li>
-              <button type="button" class="nav-btn" :data-card-id="prevCardIdRef" @click="onNavBtnClick">
+              <button type="button" class="nav-btn" :data-card-id="prevDataCardId" @click="onNavBtnClick">
                 <Arrow class="nav-btn-icon prev-btn-icon" />
               </button>
             </li>
             <li>
-              <button type="button" class="nav-btn" :data-card-id="nextCardIdRef" @click="onNavBtnClick">
+              <button type="button" class="nav-btn" :data-card-id="nextDataCardId" @click="onNavBtnClick">
                 <Arrow class="nav-btn-icon" />
               </button>
             </li>
