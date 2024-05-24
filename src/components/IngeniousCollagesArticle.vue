@@ -197,14 +197,14 @@ import DecorativeElement5 from 'icons/ingeniousCollages/collage-decorative-elem-
   position: relative;
 }
 
-.collage-icon-1 {
+.collage-icon-2 {
   position: absolute;
   top: -29px;
   left: 33px;
   display: block;
 }
 
-.collage-icon-2 {
+.collage-icon-1 {
   position: absolute;
   top: -29px;
   left: 281px;
@@ -381,8 +381,12 @@ import DecorativeElement5 from 'icons/ingeniousCollages/collage-decorative-elem-
     margin-left: auto;
   }
 
-  .collage-icon-2 {
+  .collage-icon-1 {
     left: 568px;
+  }
+
+  .collage-icon-2 {
+    left: 32px;
   }
 
   .collage-icon-3 {
