@@ -4,7 +4,7 @@ import collage2 from 'images/ingeniousCollages/collage2.jpg';
 import collage3 from 'images/ingeniousCollages/collage3.jpg';
 import collage4 from 'images/ingeniousCollages/collage4.jpg';
 import collage5 from 'images/ingeniousCollages/collage5.jpg';
-import collage6 from 'images/ingeniousCollages/collage6.jpg';
+import collage6 from 'images/ingeniousCollages/collage6.png';
 import collage7 from 'images/ingeniousCollages/collage7.jpg';
 import collage8 from 'images/ingeniousCollages/collage8.jpg';
 import collage9 from 'images/ingeniousCollages/collage9.jpg';
@@ -12,9 +12,10 @@ import DecorativeElement1 from 'icons/ingeniousCollages/collage-decorative-elem-
 import DecorativeElement2 from 'icons/ingeniousCollages/collage-decorative-elem-2.svg?component';
 import DecorativeElement3 from 'icons/ingeniousCollages/collage-decorative-elem-3.svg?component';
 import DecorativeElement4Desk from 'icons/ingeniousCollages/collage-decorative-elem-4-desk.svg?component';
-import DecorativeElement4Mobile from 'icons/ingeniousCollages/collage-decorative-elem-4-mobile.svg?component';
+import decorativeElement4Mobile from 'icons/ingeniousCollages/collage-decorative-elem-4-mobile.jpg';
 import ArticleTitleIconDesk from 'icons/cardArticle/article-title-icon-desk.svg?component';
 import ArticleTitleIconMobile from 'icons/cardArticle/article-title-icon-mobile.svg?component';
+import DecorativeElement5 from 'icons/ingeniousCollages/collage-decorative-elem-5.svg?component';
 </script>
 
 <template>
@@ -25,7 +26,7 @@ import ArticleTitleIconMobile from 'icons/cardArticle/article-title-icon-mobile.
         <ArticleTitleIconMobile class="title-icon mobile" />
         <ArticleTitleIconDesk class="title-icon desk" />
       </div>
-      <p class="title-text">Геніальні колажі</p>
+      <p class="title-text">Геніальні<br />колажі</p>
     </div>
     <div class="article">
       <p class="article-title">спресовані фільми</p>
@@ -37,8 +38,8 @@ import ArticleTitleIconMobile from 'icons/cardArticle/article-title-icon-mobile.
     <ul class="collages-list">
       <li class="collages-list-item">
         <div class="collage-wrap">
-          <DecorativeElement1 class="collage-icon collage-icon-2" />
-          <DecorativeElement2 class="collage-icon collage-icon-3" />
+          <DecorativeElement1 class="collage-icon collage-icon-1" />
+          <DecorativeElement2 class="collage-icon collage-icon-2" />
           <img :src="collage1" alt="колаж" class="collage-img collage-img-1" />
           <div class="collage-text-wrap">
             <p class="collage-title">Назва Колажа №1</p>
@@ -56,7 +57,7 @@ import ArticleTitleIconMobile from 'icons/cardArticle/article-title-icon-mobile.
               <p class="collage-year">1967 рік</p>
             </div>
           </div>
-          <div class="collage-wrap">
+          <div class="collage-wrap second">
             <img :src="collage3" alt="колаж" class="collage-img collage-img-3" />
             <div class="collage-text-wrap">
               <p class="collage-title">Назва Колажа №3</p>
@@ -76,7 +77,7 @@ import ArticleTitleIconMobile from 'icons/cardArticle/article-title-icon-mobile.
       </li>
       <li class="collages-list-item two">
         <div class="collage-wrap two">
-          <div class="collage-wrap">
+          <div class="collage-wrap third">
             <img :src="collage5" alt="колаж" class="collage-img collage-img-5" />
             <div class="collage-text-wrap two">
               <p class="collage-title">Назва Колажа №5</p>
@@ -84,7 +85,7 @@ import ArticleTitleIconMobile from 'icons/cardArticle/article-title-icon-mobile.
             </div>
           </div>
           <div class="collage-wrap">
-            <DecorativeElement3 class="collage-icon collage-icon-3" />
+            <DecorativeElement5 class="collage-icon collage-icon-5" />
             <img :src="collage6" alt="колаж" class="collage-img collage-img-6" />
             <div class="collage-text-wrap">
               <p class="collage-title">Назва Колажа №6</p>
@@ -96,18 +97,18 @@ import ArticleTitleIconMobile from 'icons/cardArticle/article-title-icon-mobile.
       <li class="collages-list-item">
         <div class="collage-wrap">
           <DecorativeElement4Desk class="collage-icon collage-icon-4 desk" />
-          <DecorativeElement4Mobile class="collage-icon collage-icon-4 mobile" />
+          <img :src="decorativeElement4Mobile" alt="колаж" class="collage-icon collage-icon-4 mobile" />
           <img :src="collage7" alt="колаж" class="collage-img collage-img-7" />
-          <div>
-            <p>Назва Колажа №7</p>
-            <p>1967 рік</p>
+          <div class="collage-text-wrap">
+            <p class="collage-title">Назва Колажа №7</p>
+            <p class="collage-year">1967 рік</p>
           </div>
         </div>
       </li>
       <li class="collages-list-item two">
         <div class="collage-wrap two">
-          <div class="collage-wrap">
-            <DecorativeElement3 class="collage-icon collage-icon-3" />
+          <div class="collage-wrap fourth">
+            <DecorativeElement3 class="collage-icon collage-icon-4" />
             <img :src="collage8" alt="колаж" class="collage-img collage-img-8" />
             <div class="collage-text-wrap two">
               <p class="collage-title">Назва Колажа №8</p>
@@ -153,59 +154,146 @@ import ArticleTitleIconMobile from 'icons/cardArticle/article-title-icon-mobile.
   display: block;
 }
 
-.mobile {
-}
-.desk {
-}
 .title-text {
+  color: #353b3f;
+  font-family: Shnobel;
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 1.2;
+  text-transform: uppercase;
 }
+
 .article {
+  margin-top: 44px;
 }
+
 .article-title {
+  color: #373730;
+  font-family: Shnobel;
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 1.2;
+  text-transform: uppercase;
 }
+
 .article-text {
+  margin-top: 16px;
+  color: #373730;
+  font-family: Geologica;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1.4;
 }
+
 .collages-list {
+  margin-top: 80px;
 }
-.collages-list-item {
+
+.collages-list-item:not(:first-child) {
+  margin-top: 48px;
 }
+
 .collage-wrap {
+  position: relative;
 }
-.collage-icon {
+
+.collage-icon-1 {
+  position: absolute;
+  top: -29px;
+  left: 33px;
+  display: block;
 }
+
 .collage-icon-2 {
+  position: absolute;
+  top: -29px;
+  left: 281px;
+  display: block;
 }
-.collage-icon-3 {
-}
+
 .collage-img {
+  position: relative;
+  max-width: 100%;
+  height: auto;
 }
-.collage-img-1 {
-}
+
 .collage-text-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
 }
+
 .collage-title {
+  color: #373730;
+  font-family: Geologica;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1.4;
 }
+
 .collage-year {
+  color: #373730;
+  font-family: Geologica;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1.4;
 }
-.two {
+
+.collage-icon-3 {
+  position: absolute;
+  top: -36px;
+  left: 142px;
+  display: block;
 }
+
 .collage-img-2 {
+  width: 307px;
+  height: 433.33px;
 }
-.collage-img-3 {
+
+.collage-wrap.second {
+  width: 307px;
+  margin-top: 48px;
+  margin-left: auto;
 }
-.collage-img-4 {
+
+.collage-wrap.third {
+  width: 314px;
+  margin-left: auto;
 }
-.collage-img-5 {
+
+.collage-wrap.third + .collage-wrap {
+  position: relative;
+  margin-top: 48px;
 }
-.collage-img-6 {
+
+.collage-icon-5 {
+  position: absolute;
+  top: -23px;
+  left: 142px;
+  display: block;
 }
+
+.collage-icon-4.mobile {
+  display: block;
+  margin-left: auto;
+}
+
+.collage-wrap.fourth {
+  width: 307px;
+  margin-left: auto;
+}
+
 .collage-icon-4 {
+  position: absolute;
+  top: -36px;
+  left: 101px;
+  display: block;
 }
-.collage-img-7 {
-}
-.collage-img-8 {
-}
-.collage-img-9 {
+
+.collage-wrap.fourth + .collage-wrap {
+  margin-top: 48px;
 }
 
 @media screen and (min-width: 1280px) {
@@ -222,6 +310,24 @@ import ArticleTitleIconMobile from 'icons/cardArticle/article-title-icon-mobile.
   .title-icon.mobile {
     display: none;
   }
+
+  .title-text {
+    width: 420px;
+    font-size: 72px;
+  }
+
+  .article {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 44px;
+    margin-bottom: 24px;
+  }
+
+  .article-text {
+    flex-shrink: 0;
+    width: 419px;
+  }
 }
 
 @media screen and (max-width: 1280px) {
@@ -232,6 +338,14 @@ import ArticleTitleIconMobile from 'icons/cardArticle/article-title-icon-mobile.
   }
 
   .title-icon.desk {
+    display: none;
+  }
+
+  .title-icon.desc {
+    display: none;
+  }
+
+  .collage-icon-4.desk {
     display: none;
   }
 }
