@@ -1,7 +1,6 @@
 <script setup>
 import ArticleTitleIconDesk from 'icons/cardArticle/article-title-icon-desk.svg?component';
 import ArticleTitleIconMobile from 'icons/cardArticle/article-title-icon-mobile.svg?component';
-import testVideo from 'video/test.mp4';
 </script>
 
 <template>
@@ -23,9 +22,15 @@ import testVideo from 'video/test.mp4';
     </div>
     <div class="video-wrap">
       <p class="video-title">Цікаві факти з життя майстра</p>
-      <div class="video-container">
-        <video class="video" controls loop preload="auto" :src="testVideo"></video>
-      </div>
+      <iframe
+        class="video"
+        src="https://www.youtube.com/embed/ua8FEfcBtmU"
+        title="Життя Сергія Параджанова"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+      ></iframe>
     </div>
     <p class="article-text end">
       Але крім того, він геній і провокатор, що вигадав свою альтернативну біографію, згідно з якою він є нащадком грузинських князів, за життя товаришував з англійською королевою Єлизаветою; торгував
@@ -204,7 +209,7 @@ import testVideo from 'video/test.mp4';
   }
 
   .video {
-    width: 365px;
+    width: 419px;
     height: 612px;
   }
 

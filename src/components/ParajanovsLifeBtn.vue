@@ -79,9 +79,10 @@ defineProps({
 .card-btn {
   position: absolute;
   z-index: 10;
-  top: 20px;
-  width: 100%;
-  height: 120px;
+  top: -10px;
+  left: 185px;
+  width: 85px;
+  height: 70px;
   padding: 0;
   border: none;
   background-color: transparent;
@@ -214,9 +215,10 @@ defineProps({
   }
 
   .card-btn {
-    top: 30px;
-    width: 100%;
-    height: 250px;
+    top: -25px;
+    left: 425px;
+    width: 210px;
+    height: 160px;
   }
 
   .icon-btn-wrap {

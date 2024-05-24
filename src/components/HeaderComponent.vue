@@ -3,26 +3,28 @@ import LogoDesk from 'icons/header/logo-desk.svg?component';
 import LogoMobile from 'icons/header/logo-mobile.svg?component';
 import handWithCup from 'images/header/hand-with-cup.png';
 import Warning from 'icons/header/warning.svg?component';
-import { computed, ref } from 'vue';
+import { computed } from 'vue';
 import CloseBtnIcon from 'icons/close-btn.svg?component';
 import GlassesModalWin from 'components/GlassesModalWin.vue';
 import { glasses } from 'constants';
 
-const showGlassesModalWin = ref(false);
-
-defineProps({
+const props = defineProps({
   isDesk: {
     type: Boolean,
     required: true,
   },
+  showGlassesModalWin: {
+    type: Boolean,
+    required: true,
+  },
+  toggleShowGlassesModalWin: {
+    type: Function,
+    required: true,
+  },
 });
 
-const toggleShowGlassesModalWin = () => {
-  showGlassesModalWin.value = !showGlassesModalWin.value;
-};
-
-const getShowCupBtnClassNames = () => ['show-cup-btn', { show: !showGlassesModalWin.value }];
-const getHideCupBtnClassNames = () => ['hide-cup-btn', { show: showGlassesModalWin.value }];
+const getShowCupBtnClassNames = () => ['show-cup-btn', { show: !props.showGlassesModalWin }];
+const getHideCupBtnClassNames = () => ['hide-cup-btn', { show: props.showGlassesModalWin }];
 
 const showCupBtnClassNames = computed(getShowCupBtnClassNames);
 const hideCupBtnClassNames = computed(getHideCupBtnClassNames);

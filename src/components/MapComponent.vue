@@ -20,6 +20,10 @@ const props = defineProps({
     type: Boolean,
     required: true,
   },
+  toggleShowGlassesModalWin: {
+    type: Function,
+    required: true,
+  },
 });
 
 document.addEventListener('mouseup', onMouseUp);
@@ -322,6 +326,7 @@ const mapClassNames = computed(getMapClassNames);
         :changeActiveCardId="changeActiveCardId"
         :cancelMove="cancelMove"
         :isMoving="isMovingRef"
+        :toggleShowGlassesModalWin="toggleShowGlassesModalWin"
       />
       <IngeniousCollages
         :card="cards[5]"
