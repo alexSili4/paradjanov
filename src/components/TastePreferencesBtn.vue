@@ -95,10 +95,10 @@ defineProps({
 .card-btn {
   position: absolute;
   z-index: 10;
-  top: 20px;
-  left: 140px;
-  width: calc(100% - 140px);
-  height: 250px;
+  top: 155px;
+  left: 480px;
+  width: 215px;
+  height: 200px;
   padding: 0;
   border: none;
   background-color: transparent;

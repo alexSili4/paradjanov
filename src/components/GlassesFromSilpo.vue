@@ -1,9 +1,7 @@
 <script setup>
 import { cardValidator } from 'validator';
 import GlassesFromSilpoBtn from 'components/GlassesFromSilpoBtn.vue';
-import GlassesFromSilpoArticle from 'components/GlassesFromSilpoArticle.vue';
-import CardArticle from 'components/CardArticle.vue';
-import { computed, onMounted, ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import { intersectionObserverOptions } from 'constants';
 import { useRoute } from 'vue-router';
 
@@ -44,6 +42,10 @@ const props = defineProps({
     type: Function,
     required: true,
   },
+  toggleShowGlassesModalWin: {
+    type: Function,
+    required: true,
+  },
 });
 
 const playAnimationChange = (entries) => {
@@ -72,16 +74,11 @@ const observer = new IntersectionObserver(playAnimationChange, intersectionObser
 onMounted(() => {
   observer.observe(mapItemRef.value);
 });
-
-const isShow = computed(() => props.activeArticle === props.card.id);
 </script>
 
 <template>
   <li class="map-item" :data-card-id="card.id" ref="mapItemRef">
-    <GlassesFromSilpoBtn :card="card" :onCardBtnClick="onCardBtnClick" :isDraggable="isDraggable" :playAnimation="playAnimationRef" />
-    <CardArticle :isShow="isShow" :onCloseBtnClick="onCloseArticleBtnClick" :isDesk="isDesk" :onNavBtnClick="onNavBtnClick" :card="card">
-      <GlassesFromSilpoArticle />
-    </CardArticle>
+    <GlassesFromSilpoBtn :card="card" :isDraggable="isDraggable" :playAnimation="playAnimationRef" :toggleShowGlassesModalWin="toggleShowGlassesModalWin" />
   </li>
 </template>
 

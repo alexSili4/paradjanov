@@ -18,12 +18,12 @@ defineProps({
     type: Boolean,
     required: true,
   },
-  onCardBtnClick: {
-    type: Function,
-    required: true,
-  },
   isDraggable: {
     type: Boolean,
+    required: true,
+  },
+  toggleShowGlassesModalWin: {
+    type: Function,
     required: true,
   },
 });
@@ -35,7 +35,7 @@ defineProps({
     <TowelIcon class="towel-icon" />
     <div class="card-title-wrap">
       <p class="card-title">{{ card.title }}</p>
-      <button type="button" class="card-btn card-article-btn" @click="onCardBtnClick" :disabled="isDraggable"></button>
+      <button type="button" class="card-btn card-article-btn" :disabled="isDraggable" @click="toggleShowGlassesModalWin"></button>
       <span class="icon-btn-wrap">
         <LeafIcon class="leaf-icon btn-icon" />
         <MainGrapeIcon class="main-grape-icon btn-icon" />
@@ -122,9 +122,10 @@ defineProps({
 .card-btn {
   position: absolute;
   z-index: 10;
-  top: 20px;
-  width: 100%;
-  height: 250px;
+  top: -105px;
+  left: -40px;
+  width: 220px;
+  height: 160px;
   padding: 0;
   border: none;
   background-color: transparent;

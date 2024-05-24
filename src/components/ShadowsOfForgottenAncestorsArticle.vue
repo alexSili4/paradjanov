@@ -20,17 +20,22 @@ import ArticleTitleIconMobile from 'icons/cardArticle/article-title-icon-mobile.
         карпатських Ромео і Джульєтту, яким ворожнеча двох сімей заважала возз'єднатися.
       </p>
     </div>
+    <div class="video-wrap">
+      <p class="video-title">створення культової стрічки</p>
+      <iframe
+        class="video"
+        src="https://www.youtube.com/embed/ua8FEfcBtmU"
+        title="Життя Сергія Параджанова"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+      ></iframe>
+    </div>
     <p class="article-text end">
       Стрічка отримала 39 міжнародних нагород та викликала великий інтерес за кордоном. Спочатку в Україні Параджанова проголосили головним національним режисером, співаком «українськості». За це ж
       згодом його посадили за ґрати.
     </p>
-    <div class="video-wrap">
-      <p class="video-title">створення культової стрічки</p>
-      <div class="video-container">
-        <video class="video" controls loop preload="auto"></video>
-        <!-- src="@/video/parajanovsLife.webm"  -->
-      </div>
-    </div>
     <div class="quote-wrap">
       <p class="quote">Я помщуся світові любов'ю</p>
       <p class="name">- Параджанов</p>
@@ -73,6 +78,15 @@ import ArticleTitleIconMobile from 'icons/cardArticle/article-title-icon-mobile.
   text-transform: uppercase;
 }
 
+.video-container {
+  flex-shrink: 0;
+}
+
+.video {
+  width: 100%;
+  height: 576.69px;
+}
+
 .article {
   margin-top: 44px;
   margin-bottom: 32px;
@@ -111,6 +125,7 @@ import ArticleTitleIconMobile from 'icons/cardArticle/article-title-icon-mobile.
 
 .video-container {
   flex-shrink: 0;
+  display: block;
 }
 
 .video {
@@ -202,7 +217,7 @@ import ArticleTitleIconMobile from 'icons/cardArticle/article-title-icon-mobile.
   }
 
   .video {
-    width: 365px;
+    width: 419px;
     height: 612px;
   }
 
