@@ -48,7 +48,7 @@ defineProps({
 <style scoped>
 .map-item-card {
   position: relative;
-  padding: 256px 228px 281px 548px;
+  padding: 256px 600px 281px 548px;
 }
 
 .animation-item {

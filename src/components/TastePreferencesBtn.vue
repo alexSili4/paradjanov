@@ -48,7 +48,7 @@ defineProps({
 <style scoped>
 .map-item-card {
   position: relative;
-  padding: 327px 277px 203px 514px;
+  padding: 327px 400px 203px 514px;
 }
 
 .hero-icon {

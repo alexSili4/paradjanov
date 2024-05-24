@@ -54,7 +54,7 @@ defineProps({
 <style scoped>
 .map-item-card {
   position: relative;
-  padding: 466px 548px 70px 157px;
+  padding: 466px 50px 70px 157px;
 }
 
 .sun-icon {
