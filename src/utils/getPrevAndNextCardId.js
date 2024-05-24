@@ -4,17 +4,26 @@ const getPrevAndNextCardId = ({ cardId, cards }) => {
 
   let prevCardId = cards[firstIndex].id;
   let nextCardId = cards[lastIndex].id;
+  const missingCardIndex = 4;
 
   const currentCardIndex = cards.findIndex(({ id }) => id === cardId);
   const nextCardIndex = currentCardIndex + 1;
   const prevCardIndex = currentCardIndex - 1;
 
   if (prevCardIndex > firstIndex) {
-    prevCardId = cards[prevCardIndex].id;
+    if (prevCardIndex === missingCardIndex) {
+      prevCardId = cards[3].id;
+    } else {
+      prevCardId = cards[prevCardIndex].id;
+    }
   }
 
   if (nextCardIndex < lastIndex) {
-    nextCardId = cards[nextCardIndex].id;
+    if (nextCardIndex === missingCardIndex) {
+      nextCardId = cards[5].id;
+    } else {
+      nextCardId = cards[nextCardIndex].id;
+    }
   }
 
   return { prevCardId, nextCardId };
