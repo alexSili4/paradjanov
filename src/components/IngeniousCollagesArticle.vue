@@ -20,8 +20,11 @@ import { ref } from 'vue';
 import Carousel from './CarouselComponent.vue';
 
 const showCarousel = ref(false);
+const targetIndex = ref(0);
 
-const toggleShowCarousel = () => {
+const toggleShowCarousel = (e) => {
+  const { index } = e.currentTarget.dataset;
+  targetIndex.value = Number(index);
   showCarousel.value = !showCarousel.value;
 };
 </script>
@@ -48,7 +51,7 @@ const toggleShowCarousel = () => {
         <div class="collage-wrap">
           <DecorativeElement1 class="collage-icon collage-icon-1" />
           <DecorativeElement2 class="collage-icon collage-icon-2" />
-          <img :src="collage1" alt="колаж" class="collage-img collage-img-1" @click="toggleShowCarousel" />
+          <img :src="collage1" alt="колаж" class="collage-img collage-img-1" @click="toggleShowCarousel" data-index="0" />
           <div class="collage-text-wrap">
             <p class="collage-title">Назва Колажа №1</p>
             <p class="collage-year">1967 рік</p>
@@ -59,14 +62,14 @@ const toggleShowCarousel = () => {
         <div class="collage-wrap two">
           <div class="collage-wrap">
             <DecorativeElement3 class="collage-icon collage-icon-3" />
-            <img :src="collage2" alt="колаж" class="collage-img collage-img-2" @click="toggleShowCarousel" />
+            <img :src="collage2" alt="колаж" class="collage-img collage-img-2" @click="toggleShowCarousel" data-index="1" />
             <div class="collage-text-wrap two">
               <p class="collage-title">Назва Колажа №2</p>
               <p class="collage-year">1967 рік</p>
             </div>
           </div>
           <div class="collage-wrap second">
-            <img :src="collage3" alt="колаж" class="collage-img collage-img-3" @click="toggleShowCarousel" />
+            <img :src="collage3" alt="колаж" class="collage-img collage-img-3" @click="toggleShowCarousel" data-index="2" />
             <div class="collage-text-wrap">
               <p class="collage-title">Назва Колажа №3</p>
               <p class="collage-year">1967 рік</p>
@@ -76,7 +79,7 @@ const toggleShowCarousel = () => {
       </li>
       <li class="collages-list-item">
         <div class="collage-wrap">
-          <img :src="collage4" alt="колаж" class="collage-img collage-img-4" @click="toggleShowCarousel" />
+          <img :src="collage4" alt="колаж" class="collage-img collage-img-4" @click="toggleShowCarousel" data-index="3" />
           <div class="collage-text-wrap">
             <p class="collage-title">Назва Колажа №4</p>
             <p class="collage-year">1967 рік</p>
@@ -86,7 +89,7 @@ const toggleShowCarousel = () => {
       <li class="collages-list-item two">
         <div class="collage-wrap two">
           <div class="collage-wrap third">
-            <img :src="collage5" alt="колаж" class="collage-img collage-img-5" @click="toggleShowCarousel" />
+            <img :src="collage5" alt="колаж" class="collage-img collage-img-5" @click="toggleShowCarousel" data-index="4" />
             <div class="collage-text-wrap two">
               <p class="collage-title">Назва Колажа №5</p>
               <p class="collage-year">1967 рік</p>
@@ -94,7 +97,7 @@ const toggleShowCarousel = () => {
           </div>
           <div class="collage-wrap">
             <DecorativeElement5 class="collage-icon collage-icon-5" />
-            <img :src="collage6" alt="колаж" class="collage-img collage-img-6" @click="toggleShowCarousel" />
+            <img :src="collage6" alt="колаж" class="collage-img collage-img-6" @click="toggleShowCarousel" data-index="5" />
             <div class="collage-text-wrap">
               <p class="collage-title">Назва Колажа №6</p>
               <p class="collage-year">1967 рік</p>
@@ -106,7 +109,7 @@ const toggleShowCarousel = () => {
         <div class="collage-wrap">
           <img :src="decorativeElement4Desk" alt="колаж" class="collage-icon collage-icon-4 desk" @click="toggleShowCarousel" />
           <img :src="decorativeElement4Mobile" alt="колаж" class="collage-icon collage-icon-4 mobile" @click="toggleShowCarousel" />
-          <img :src="collage7" alt="колаж" class="collage-img collage-img-7" @click="toggleShowCarousel" />
+          <img :src="collage7" alt="колаж" class="collage-img collage-img-7" @click="toggleShowCarousel" data-index="6" />
           <div class="collage-text-wrap">
             <p class="collage-title">Назва Колажа №7</p>
             <p class="collage-year">1967 рік</p>
@@ -117,14 +120,14 @@ const toggleShowCarousel = () => {
         <div class="collage-wrap two">
           <div class="collage-wrap fourth">
             <DecorativeElement3 class="collage-icon collage-icon-4" />
-            <img :src="collage8" alt="колаж" class="collage-img collage-img-8" @click="toggleShowCarousel" />
+            <img :src="collage8" alt="колаж" class="collage-img collage-img-8" @click="toggleShowCarousel" data-index="7" />
             <div class="collage-text-wrap two">
               <p class="collage-title">Назва Колажа №8</p>
               <p class="collage-year">1967 рік</p>
             </div>
           </div>
           <div class="collage-wrap">
-            <img :src="collage9" alt="колаж" class="collage-img collage-img-9" @click="toggleShowCarousel" />
+            <img :src="collage9" alt="колаж" class="collage-img collage-img-9" @click="toggleShowCarousel" data-index="8" />
             <div class="collage-text-wrap two">
               <p class="collage-title">Назва Колажа №9</p>
               <p class="collage-year">1967 рік</p>
@@ -133,7 +136,12 @@ const toggleShowCarousel = () => {
         </div>
       </li>
     </ul>
-    <Carousel :show="showCarousel" :onCloseBtnClick="toggleShowCarousel" />
+    <Carousel
+      :show="showCarousel"
+      :onCloseBtnClick="toggleShowCarousel"
+      :slides="[collage1, collage2, collage3, collage4, collage5, collage6, collage7, collage8, collage9]"
+      :targetIndex="targetIndex"
+    />
   </div>
 </template>
 
