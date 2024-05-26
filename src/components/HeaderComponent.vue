@@ -50,7 +50,7 @@ const hideCupBtnClassNames = computed(getHideCupBtnClassNames);
 <style scoped>
 .header {
   position: fixed;
-  z-index: 10000000;
+  z-index: 1000000;
   top: 11px;
   left: 50%;
   display: flex;
@@ -127,7 +127,6 @@ const hideCupBtnClassNames = computed(getHideCupBtnClassNames);
 
 @media screen and (min-width: 1280px) {
   .header {
-    z-index: 1000000;
     top: 24px;
     width: calc(100% - 60px - 60px);
   }
