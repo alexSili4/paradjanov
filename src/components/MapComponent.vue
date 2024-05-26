@@ -263,7 +263,7 @@ const onNavBtnClick = (e) => {
 function shakeElement(element) {
   const originalStyle = element.style.transform;
 
-  element.style.transition = 'transform 200ms cubic-bezier(0.4, 0, 0.2, 1)';
+  element.style.transition = 'transform 400ms cubic-bezier(0.4, 0, 0.2, 1)';
   element.style.transform = `translate(5px, 5px)`;
   setTimeout(() => {
     element.style.transform = `translate(-5px, -5px)`;
@@ -274,10 +274,10 @@ function shakeElement(element) {
         setTimeout(() => {
           element.style.transform = originalStyle;
           element.style.transition = '';
-        }, 100);
-      }, 100);
-    }, 100);
-  }, 100);
+        }, 200);
+      }, 200);
+    }, 200);
+  }, 200);
 }
 
 const getMapInlineStyles = () => {
