@@ -6,6 +6,8 @@ import { computed, onBeforeMount, ref } from 'vue';
 import NextBtnIcon from 'icons/cardArticle/next-btn-icon.svg?component';
 import { cards } from 'constants';
 import Arrow from 'icons/arrow.svg?component';
+import MenuMobile from 'icons/navBar/menu-mobile.svg?component';
+import BurgerMenu from 'components/BurgerMenu.vue';
 
 const nextCardIdRef = ref(null);
 const prevCardIdRef = ref(null);
@@ -17,6 +19,7 @@ const props = defineProps({
   isShow: { type: Boolean, required: true },
   isDesk: { type: Boolean, required: true },
   isOpenMenu: { type: Boolean, required: true },
+  onMenuBtnClick: { type: Function, required: true },
 });
 
 onBeforeMount(() => {
@@ -29,12 +32,18 @@ onBeforeMount(() => {
 
 const prevDataCardId = computed(() => (prevCardIdRef.value !== cards[4].id ? prevCardIdRef.value : cards[3].id));
 const nextDataCardId = computed(() => (nextCardIdRef.value !== cards[4].id ? nextCardIdRef.value : cards[5].id));
+
+const getMenuBtnClassNames = () => ['menu-btn', { 'menu-open': props.isOpenMenu }];
+const getMenuBtnWrapClassNames = () => ['menu-btn-wrap', { 'menu-open': props.isOpenMenu }];
+
+const menuBtnClassNames = computed(getMenuBtnClassNames);
+const menuBtnWrapClassNames = computed(getMenuBtnWrapClassNames);
 </script>
 
 <template>
   <Teleport to="body">
     <Transition name="container">
-      <div class="article-wrap" v-show="isShow">
+      <div class="article-wrap" v-show="isShow && !isOpenMenu">
         <div class="article-decorative-element"></div>
         <div class="article-container">
           <button type="button" class="close-btn" @click="onCloseBtnClick">
@@ -59,6 +68,14 @@ const nextDataCardId = computed(() => (nextCardIdRef.value !== cards[4].id ? nex
               <button type="button" class="nav-btn" :data-card-id="prevDataCardId" @click="onNavBtnClick">
                 <Arrow class="nav-btn-icon prev-btn-icon" />
               </button>
+            </li>
+            <li>
+              <div :class="menuBtnWrapClassNames">
+                <button type="button" :class="menuBtnClassNames" @click="onMenuBtnClick">
+                  <MenuMobile class="menu-btn-icon" />
+                  <BurgerMenu :isOpenMenu="isOpenMenu" :isDesk="isDesk" />
+                </button>
+              </div>
             </li>
             <li>
               <button type="button" class="nav-btn" :data-card-id="nextDataCardId" @click="onNavBtnClick">

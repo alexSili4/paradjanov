@@ -313,6 +313,7 @@ const mapClassNames = computed(getMapClassNames);
         :cancelMove="cancelMove"
         :isMoving="isMovingRef"
         :isOpenMenu="isOpenMenuRef"
+        :onMenuBtnClick="onZoomBtnClick"
       />
       <ShadowsOfForgottenAncestors
         :card="cards[1]"
