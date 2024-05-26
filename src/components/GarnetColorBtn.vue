@@ -19,6 +19,7 @@ defineProps({
     type: Boolean,
     required: true,
   },
+
   onCardBtnClick: {
     type: Function,
     required: true,

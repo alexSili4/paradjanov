@@ -327,6 +327,7 @@ const mapClassNames = computed(getMapClassNames);
         :cancelMove="cancelMove"
         :isMoving="isMovingRef"
         :isOpenMenu="isOpenMenuRef"
+        :onMenuBtnClick="onZoomBtnClick"
       />
       <InspiredByParajanov
         :card="cards[2]"
@@ -340,6 +341,7 @@ const mapClassNames = computed(getMapClassNames);
         :cancelMove="cancelMove"
         :isMoving="isMovingRef"
         :isOpenMenu="isOpenMenuRef"
+        :onMenuBtnClick="onZoomBtnClick"
       />
       <TastePreferences
         :card="cards[3]"
@@ -353,6 +355,7 @@ const mapClassNames = computed(getMapClassNames);
         :cancelMove="cancelMove"
         :isMoving="isMovingRef"
         :isOpenMenu="isOpenMenuRef"
+        :onMenuBtnClick="onZoomBtnClick"
       />
       <GlassesFromSilpo
         :card="cards[4]"
@@ -380,6 +383,7 @@ const mapClassNames = computed(getMapClassNames);
         :cancelMove="cancelMove"
         :isMoving="isMovingRef"
         :isOpenMenu="isOpenMenuRef"
+        :onMenuBtnClick="onZoomBtnClick"
       />
       <GarnetColor
         :card="cards[6]"

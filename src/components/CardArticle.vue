@@ -43,7 +43,7 @@ const menuBtnWrapClassNames = computed(getMenuBtnWrapClassNames);
 <template>
   <Teleport to="body">
     <Transition name="container">
-      <div class="article-wrap" v-show="isShow && !isOpenMenu">
+      <div class="article-wrap" v-show="isDesk ? isShow : isShow && !isOpenMenu">
         <div class="article-decorative-element"></div>
         <div class="article-container">
           <button type="button" class="close-btn" @click="onCloseBtnClick">
