@@ -33,9 +33,17 @@ onBeforeMount(() => {
 const prevDataCardId = computed(() => (prevCardIdRef.value !== cards[4].id ? prevCardIdRef.value : cards[3].id));
 const nextDataCardId = computed(() => (nextCardIdRef.value !== cards[4].id ? nextCardIdRef.value : cards[5].id));
 
+const getPrevHideBtn = () => ['nav-btn-list-item', { 'hide-btn': props.card.id === cards[0].id }];
+const getNextHideBtn = () => ['nav-btn-list-item', { 'hide-btn': props.card.id === cards[cards.length - 1].id }];
+const getPrevNavBarHideBtn = () => [{ 'hide-btn': props.card.id === cards[0].id }];
+const getNextNavBarHideBtn = () => [{ 'hide-btn': props.card.id === cards[cards.length - 1].id }];
 const getMenuBtnClassNames = () => ['menu-btn', { 'menu-open': props.isOpenMenu }];
 const getMenuBtnWrapClassNames = () => ['menu-btn-wrap', { 'menu-open': props.isOpenMenu }];
 
+const prevHideBtn = computed(getPrevHideBtn);
+const nextHideBtn = computed(getNextHideBtn);
+const prevNavBarHideBtn = computed(getPrevNavBarHideBtn);
+const nextNavBarHideBtn = computed(getNextNavBarHideBtn);
 const menuBtnClassNames = computed(getMenuBtnClassNames);
 const menuBtnWrapClassNames = computed(getMenuBtnWrapClassNames);
 </script>
@@ -51,12 +59,12 @@ const menuBtnWrapClassNames = computed(getMenuBtnWrapClassNames);
           </button>
           <slot></slot>
           <ul class="nav-btn-list" v-if="isDesk">
-            <li class="nav-btn-list-item">
+            <li :class="prevHideBtn">
               <button class="nav-btn" type="button" @click="onNavBtnClick" :data-card-id="prevDataCardId">
                 <span class="nav-btn-title">Попередній</span>
               </button>
             </li>
-            <li class="nav-btn-list-item">
+            <li :class="nextHideBtn">
               <button class="nav-btn next" type="button" @click="onNavBtnClick" :data-card-id="nextDataCardId">
                 <span class="nav-btn-title">Наступний</span>
                 <NextBtnIcon class="nav-btn-icon" />
@@ -64,7 +72,7 @@ const menuBtnWrapClassNames = computed(getMenuBtnWrapClassNames);
             </li>
           </ul>
           <ul class="nav-bar" v-else>
-            <li>
+            <li :class="prevNavBarHideBtn">
               <button type="button" class="nav-btn" :data-card-id="prevDataCardId" @click="onNavBtnClick">
                 <Arrow class="nav-btn-icon prev-btn-icon" />
               </button>
@@ -77,7 +85,7 @@ const menuBtnWrapClassNames = computed(getMenuBtnWrapClassNames);
                 </button>
               </div>
             </li>
-            <li>
+            <li :class="nextNavBarHideBtn">
               <button type="button" class="nav-btn" :data-card-id="nextDataCardId" @click="onNavBtnClick">
                 <Arrow class="nav-btn-icon" />
               </button>
@@ -177,6 +185,11 @@ const menuBtnWrapClassNames = computed(getMenuBtnWrapClassNames);
   align-items: center;
   justify-content: space-between;
   margin-top: 75px;
+}
+
+.hide-btn {
+  pointer-events: none;
+  opacity: 0;
 }
 
 @media screen and (min-width: 1280px) {

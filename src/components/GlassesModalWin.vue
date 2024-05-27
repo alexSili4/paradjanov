@@ -12,7 +12,7 @@ defineProps({
     <Transition name="container">
       <div class="glass-modal-win" v-show="isShow">
         <div class="video-container">
-          <video class="video" autoplay muted loop :src="glassesVideo"></video>
+          <video class="video" autoplay muted loop playsinline :src="glassesVideo"></video>
           <div class="video-decorative-elem"></div>
         </div>
         <div class="container">

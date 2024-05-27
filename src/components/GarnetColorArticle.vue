@@ -1,6 +1,7 @@
 <script setup>
 import ArticleTitleIconDesk from 'icons/cardArticle/article-title-icon-desk.svg?component';
 import ArticleTitleIconMobile from 'icons/cardArticle/article-title-icon-mobile.svg?component';
+import poster from '../images/garnetColor/poster.jpg';
 </script>
 
 <template>
@@ -14,18 +15,15 @@ import ArticleTitleIconMobile from 'icons/cardArticle/article-title-icon-mobile.
       <p class="title-text">Колір граната</p>
     </div>
     <div class="article">
-      <p class="article-title">Унікальна естетика стрічки</p>
+      <p class="article-title">Квінтесенція краси</p>
       <p class="article-text">
         «Колір граната» (1968) - поетична кінопритча, що розповідає про життя видатного вірменського поета Саят-Нову. Цей кіношедевр став візитівкою Параджанова та одним із найкрасивіших фільмів
         світового кінематографу.
       </p>
     </div>
-    <p class="article-text end">
-      «Колір граната» є найбільш цитованим кінотвором режисера, бо кожен кадр стрічки заворожує своєю естетикою - кольором, ритмом, фактурою. Численні посилання на цей шедевр можна побачити,
-      наприклад, у кліпах: «Bedtime Story» Мадонни та «911» американської співачки Леді Гаги, в якому відтворено цілі сцени з цього параджанівського шедевру.
-    </p>
+    <p class="article-text end">Ця стрічка є найбільш цитованим кінотвором режисера, бо кожен кадр стрічки заворожує своєю естетикою - кольором, ритмом, фактурою.</p>
     <div class="video-wrap">
-      <p class="video-title">Цікаві факти з життя майстра</p>
+      <p class="video-title">Цікаві факти про стрічку</p>
       <div class="video-container">
         <video class="video" controls loop preload="auto"></video>
         <!-- src="@/video/parajanovsLife.webm"  -->
@@ -34,6 +32,11 @@ import ArticleTitleIconMobile from 'icons/cardArticle/article-title-icon-mobile.
     <div class="quote-wrap">
       <p class="quote">Мною все життя рухає заздрість. Я заздрив красивим — і став привабливим, я заздрив розумним — і став несподіваним</p>
       <p class="name">- Параджанов</p>
+    </div>
+    <div class="poster-wrap">
+      <img :src="poster" alt="Колаж до фільму 'Колір граната'." class="poster-img" />
+      <p class="poster-title">Колаж до фільму "Колір граната", створений Параджановим у 1967 році.</p>
+      <p class="poster-desс">Фото надано музеєм Сергія Параджанова у Єревані.</p>
     </div>
   </div>
 </template>
@@ -75,7 +78,7 @@ import ArticleTitleIconMobile from 'icons/cardArticle/article-title-icon-mobile.
 
 .article {
   margin-top: 44px;
-  margin-bottom: 32px;
+  margin-bottom: 16px;
 }
 
 .article-title {
@@ -97,7 +100,7 @@ import ArticleTitleIconMobile from 'icons/cardArticle/article-title-icon-mobile.
 }
 
 .video-wrap {
-  margin-top: 80px;
+  margin-top: 48px;
 }
 
 .video-title {
@@ -125,7 +128,7 @@ import ArticleTitleIconMobile from 'icons/cardArticle/article-title-icon-mobile.
   justify-content: center;
   gap: 16px;
   height: 236px;
-  margin-top: 80px;
+  margin-top: 28px;
   background-size: 100% 236px;
   background-image: url('icons/garnetColor/quote-bg-mobile.svg');
   background-repeat: no-repeat;
@@ -149,6 +152,29 @@ import ArticleTitleIconMobile from 'icons/cardArticle/article-title-icon-mobile.
   font-weight: 300;
   line-height: 1.4;
   text-align: center;
+}
+
+.poster-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 56px;
+}
+
+.poster-title {
+  color: rgb(55, 55, 48);
+  font-family: Geologica;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.4;
+}
+
+.poster-desc {
+  color: rgb(55, 55, 48);
+  font-family: Geologica;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.4;
 }
 
 @media screen and (min-width: 1280px) {
@@ -176,12 +202,16 @@ import ArticleTitleIconMobile from 'icons/cardArticle/article-title-icon-mobile.
     justify-content: space-between;
     align-items: flex-end;
     margin-top: 44px;
-    margin-bottom: 24px;
+  }
+
+  .article-title {
+    width: 173px;
   }
 
   .article-text {
     flex-shrink: 0;
     width: 419px;
+    margin-top: 24px;
   }
 
   .article-text.end {
@@ -191,9 +221,11 @@ import ArticleTitleIconMobile from 'icons/cardArticle/article-title-icon-mobile.
   .video-wrap {
     display: flex;
     justify-content: space-between;
+    margin-top: 72px;
   }
 
   .video-title {
+    align-self: flex-end;
     flex-shrink: 0;
     width: 167px;
   }
@@ -212,10 +244,17 @@ import ArticleTitleIconMobile from 'icons/cardArticle/article-title-icon-mobile.
     height: 222px;
     background-size: 100% 222px;
     background-image: url('icons/garnetColor/quote-bg-desk.svg');
+    margin-top: 40px;
   }
 
   .quote {
     width: 409px;
+  }
+
+  .poster-wrap {
+    width: 419px;
+    margin-left: auto;
+    margin-top: 72px;
   }
 }
 

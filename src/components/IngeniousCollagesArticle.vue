@@ -127,7 +127,57 @@ const toggleShowCarousel = (e) => {
           </div>
         </div>
       </li>
+      <li class="collages-list-item">
+        <div class="collage-wrap">
+          <img :src="collages[9].src" alt="колаж" class="collage-img collage-img-4" @click="toggleShowCarousel" data-index="9" />
+          <div class="collage-text-wrap">
+            <p class="collage-title">{{ collages[9].title }}</p>
+            <p class="collage-year">{{ collages[9].year }}</p>
+          </div>
+        </div>
+      </li>
+      <li class="collages-list-item two">
+        <div class="collage-wrap two">
+          <div class="collage-wrap third">
+            <img :src="collages[10].src" alt="колаж" class="collage-img collage-img-10" @click="toggleShowCarousel" data-index="10" />
+            <div class="collage-text-wrap two">
+              <p class="collage-title">{{ collages[10].title }}</p>
+              <p class="collage-year">{{ collages[10].year }}</p>
+            </div>
+          </div>
+          <div class="collage-wrap">
+            <DecorativeElement5 class="collage-icon collage-icon-6" />
+            <img :src="collages[11].src" alt="колаж" class="collage-img collage-img-11" @click="toggleShowCarousel" data-index="11" />
+            <div class="collage-text-wrap">
+              <p class="collage-title">{{ collages[11].title }}</p>
+              <p class="collage-year">{{ collages[11].year }}</p>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="collages-list-item two">
+        <div class="collage-wrap two">
+          <div class="collage-wrap third">
+            <img :src="collages[12].src" alt="колаж" class="collage-img collage-img-12" @click="toggleShowCarousel" data-index="12" />
+            <div class="collage-text-wrap two">
+              <p class="collage-title">{{ collages[12].title }}</p>
+              <p class="collage-year">{{ collages[12].year }}</p>
+            </div>
+          </div>
+          <div class="collage-wrap">
+            <DecorativeElement5 class="collage-icon collage-icon-6" />
+            <img :src="collages[13].src" alt="колаж" class="collage-img collage-img-13" @click="toggleShowCarousel" data-index="13" />
+            <div class="collage-text-wrap">
+              <p class="collage-title">{{ collages[13].title }}</p>
+              <p class="collage-year">{{ collages[13].year }}</p>
+            </div>
+          </div>
+        </div>
+      </li>
     </ul>
+    <p class="gratitude">
+      Дякуємо <a href="https://parajanovmuseum.am/" target="_blank" noopener noreferrer nofollow>музею Сергія Параджанова</a> у Єревані, який ласкаво надав нам фотографії колажів великого митця.
+    </p>
     <Carousel :show="showCarousel" :onCloseBtnClick="toggleShowCarousel" :slides="collages" :targetIndex="targetIndex" />
   </div>
 </template>
@@ -295,6 +345,35 @@ const toggleShowCarousel = (e) => {
   margin-top: 48px;
 }
 
+.collage-icon-6 {
+  position: absolute;
+  top: -23px;
+  left: 128px;
+}
+
+.collage-img-9 {
+  width: 307px;
+  height: 316px;
+}
+
+.collage-img-10 {
+  width: 242px;
+  height: 356px;
+}
+
+.collage-img-11 {
+  width: 269px;
+  height: 386px;
+}
+
+.gratitude {
+  margin-top: 48px;
+  font-family: Geologica;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1.4;
+}
+
 @media screen and (min-width: 1280px) {
   .title-wrap {
     justify-content: space-between;
@@ -404,6 +483,48 @@ const toggleShowCarousel = (e) => {
 
   .collage-icon-5 {
     left: 119px;
+  }
+
+  .collage-icon-6 {
+    position: absolute;
+    top: -23px;
+    left: 103px;
+  }
+
+  .collage-img-9 {
+    width: 261px;
+    height: 269px;
+  }
+
+  .collage-img-10 {
+    width: 260px;
+    height: 386px;
+  }
+
+  .collage-img-11 {
+    width: 229px;
+    height: 328px;
+  }
+
+  .collage-img-12 {
+    width: 212px;
+    height: 319px;
+  }
+
+  .collage-img-13 {
+    width: 232px;
+    height: 348px;
+  }
+
+  .gratitude {
+    width: 419px;
+    margin-top: 72px;
+    margin-left: auto;
+  }
+
+  .gratitude > a {
+    color: currentColor;
+    text-decoration: underline;
   }
 }
 

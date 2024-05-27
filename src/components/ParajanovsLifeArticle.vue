@@ -178,9 +178,19 @@ import poster from '../images/parajanovsLife/poster.jpg';
 }
 
 .poster-title {
+  color: rgb(55, 55, 48);
+  font-family: Geologica;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.4;
 }
 
 .poster-desc {
+  color: rgb(55, 55, 48);
+  font-family: Geologica;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.4;
 }
 
 @media screen and (min-width: 1280px) {
