@@ -176,8 +176,19 @@ swiper-slide .gallery-img {
 }
 
 .title {
+  color: var(--white-color);
+  font-family: Geologica;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1.4;
 }
+
 .year {
+  color: var(--white-color);
+  font-family: Geologica;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1.4;
 }
 
 @media screen and (min-width: 1280px) {

@@ -14,14 +14,14 @@ import ArticleTitleIconMobile from 'icons/cardArticle/article-title-icon-mobile.
       <p class="title-text">Тіні забутих предків</p>
     </div>
     <div class="article">
-      <p class="article-title">"візитівка" українського кіно</p>
+      <p class="article-title">«Візитівка» українського кіно</p>
       <p class="article-text">
         Перша хвиля світової популярності прийшла до Сергія Параджанова після виходу стрічки «Тіні забутих предків» (1964). Цей фільм є екранізацією однойменної повісті Михайла Коцюбинського про
-        карпатських Ромео і Джульєтту, яким ворожнеча двох сімей заважала возз'єднатися.
+        карпатських Ромео і Джульєтту, яким ворожнеча двох сімей заважала возз'єднатися
       </p>
     </div>
     <div class="video-wrap">
-      <p class="video-title">створення культової стрічки</p>
+      <p class="video-title">Цікаві факти про стрічку</p>
       <iframe
         class="video"
         src="https://www.youtube.com/embed/ua8FEfcBtmU"
@@ -89,7 +89,6 @@ import ArticleTitleIconMobile from 'icons/cardArticle/article-title-icon-mobile.
 
 .article {
   margin-top: 44px;
-  margin-bottom: 32px;
 }
 
 .article-title {
@@ -110,8 +109,12 @@ import ArticleTitleIconMobile from 'icons/cardArticle/article-title-icon-mobile.
   line-height: 1.4;
 }
 
+.article-text.end {
+  margin-top: 48px;
+}
+
 .video-wrap {
-  margin-top: 80px;
+  margin-top: 48px;
 }
 
 .video-title {
@@ -140,7 +143,7 @@ import ArticleTitleIconMobile from 'icons/cardArticle/article-title-icon-mobile.
   justify-content: center;
   gap: 16px;
   height: 209px;
-  margin-top: 80px;
+  margin-top: 48px;
   background-size: 100% 209px;
   background-image: url('icons/shadowsOfForgottenAncestors/quote-bg-mobile.svg');
   background-repeat: no-repeat;
@@ -190,7 +193,6 @@ import ArticleTitleIconMobile from 'icons/cardArticle/article-title-icon-mobile.
     justify-content: space-between;
     align-items: flex-end;
     margin-top: 44px;
-    margin-bottom: 24px;
   }
 
   .article-text {
@@ -199,15 +201,18 @@ import ArticleTitleIconMobile from 'icons/cardArticle/article-title-icon-mobile.
   }
 
   .article-text.end {
+    margin-top: 72px;
     margin-left: auto;
   }
 
   .video-wrap {
     display: flex;
     justify-content: space-between;
+    margin-top: 72px;
   }
 
   .video-title {
+    align-self: flex-end;
     flex-shrink: 0;
     width: 167px;
   }
@@ -226,6 +231,7 @@ import ArticleTitleIconMobile from 'icons/cardArticle/article-title-icon-mobile.
     height: 207px;
     background-size: 100% 207px;
     background-image: url('icons/shadowsOfForgottenAncestors/quote-bg-desk.svg');
+    margin-top: 72px;
   }
 }
 

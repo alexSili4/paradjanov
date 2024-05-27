@@ -14,17 +14,10 @@ import ArticleTitleIconMobile from 'icons/cardArticle/article-title-icon-mobile.
       <p class="title-text">Натхнені Параджановим</p>
     </div>
     <div class="article">
-      <p class="article-title">надихає митців у всьому світі</p>
+      <p class="article-title">Вплив на попкультуру</p>
       <p class="article-text">Сергій Параджанов і попкультура перебувають у доволі тісних відносинах. Режисери, кліпмейкери та митці постійно надихаються творчістю Параджанова.</p>
     </div>
-    <p class="article-text end">
-      Посилання на його кінотвори нескладно віднайти в кліпі Девіда Бові «Black star» та у першому сезоні культового серіалу HBO «Справжній детектив» Кері Фукунаґи та Ніка Піццолато.
-    </p>
-    <p class="article-text end">
-      Ще в середині 1990-х ікона попмузики - Мадонна зняла експериментальне музичне відео на пісню «Bedtime Story» з бюджетом 5 мільйонів доларів, яке нашпиговане «відеоцитатами» з «Кольору граната».
-    </p>
     <div class="video-wrap">
-      <p class="video-title">Вплив на попкультуру</p>
       <div class="video-container">
         <video class="video" controls loop preload="auto"></video>
         <!-- src="@/video/parajanovsLife.webm"  -->
@@ -34,6 +27,16 @@ import ArticleTitleIconMobile from 'icons/cardArticle/article-title-icon-mobile.
       <p class="quote">Найстрашніше — проґавити прекрасне!</p>
       <p class="name">- Параджанов</p>
     </div>
+    <div class="article">
+      <p class="article-title">Натхненник для митців</p>
+      <p class="article-text">
+        Посилання на його кінотвори нескладно віднайти в кліпах Девіда Бові «Black star» та Леді Гаги «911», а також у першому сезоні культового серіалу HBO «Справжній детектив» Кері Фукунаґи та Ніка
+        Піццолато.
+      </p>
+    </div>
+    <p class="article-text end">
+      Ще в середині 1990-х ікона попмузики - Мадонна зняла експериментальне музичне відео на пісню «Bedtime Story» з бюджетом 5 мільйонів доларів, яке нашпиговане «відеоцитатами» з «Кольору граната».
+    </p>
   </div>
 </template>
 
@@ -75,7 +78,6 @@ import ArticleTitleIconMobile from 'icons/cardArticle/article-title-icon-mobile.
 
 .article {
   margin-top: 44px;
-  margin-bottom: 32px;
 }
 
 .article-title {
@@ -97,7 +99,7 @@ import ArticleTitleIconMobile from 'icons/cardArticle/article-title-icon-mobile.
 }
 
 .video-wrap {
-  margin-top: 80px;
+  margin-top: 48px;
 }
 
 .video-title {
@@ -125,7 +127,7 @@ import ArticleTitleIconMobile from 'icons/cardArticle/article-title-icon-mobile.
   justify-content: center;
   gap: 16px;
   height: 209px;
-  margin-top: 80px;
+  margin-top: 24px;
   background-size: 100% 209px;
   background-image: url('icons/inspiredByParajanov/quote-bg-mobile.svg');
   background-repeat: no-repeat;
@@ -199,6 +201,7 @@ import ArticleTitleIconMobile from 'icons/cardArticle/article-title-icon-mobile.
 
   .video-container {
     width: 419px;
+    margin-left: auto;
   }
 
   .video {

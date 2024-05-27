@@ -14,22 +14,25 @@ import ArticleTitleIconMobile from 'icons/cardArticle/article-title-icon-mobile.
       <p class="title-text">Смакові вподобання</p>
     </div>
     <div class="article">
-      <p class="article-title">надихає митців у всьому світі</p>
+      <p class="article-title">Їжа, як мистецтво</p>
       <p class="article-text">
         Сергій Параджанов - найгастрономічніший режисер світового кіно. Про їжу він вмів говорити й показувати так, як мало хто. В іншу епоху схоже смакуватиме страви у своїх фільмах лише Квентін
-        Тарантіно. Але американець живописав бургери, колу, картоплю фрі, молочні коктейлі. А Сергій Параджанов яблука, рибу, хліб, сир, гранат.
+        Тарантіно. Але американець живописав бургери, колу, картоплю фрі, молочні коктейлі. А Сергій Параджанов - яблука, рибу, хліб, сир, гранат.
       </p>
     </div>
-    <p class="article-text end">
-      Їжа була для нього сакральною на екрані і в побуті. Якось сусідка принесла Сергію каструлю з м'ясом та картоплею. Режисер царським жестом відіслав її назад. За кілька хвилин сусідка повернулася
-      знову, цього разу вона прикрасила страву зеленню, а зверху встромила… троянду! «Це інша справа», - сказав Параджанов і вдячно прийняв страву з рук жінки.
-    </p>
     <div class="video-wrap">
-      <p class="video-title">Рецепт з фільму</p>
+      <p class="video-title">Про їжу у кіно і в житті</p>
       <div class="video-container">
         <video class="video" controls loop preload="auto"></video>
         <!-- src="@/video/parajanovsLife.webm"  -->
       </div>
+    </div>
+    <div class="article end">
+      <p class="article-title">Більше, ніж просто їжа</p>
+      <p class="article-text">
+        Їжа була для нього сакральною на екрані і в побуті. Якось сусідка принесла Сергію каструлю з м'ясом та картоплею. Режисер царським жестом відіслав її назад. За кілька хвилин сусідка
+        повернулася знову, цього разу вона прикрасила страву зеленню, а зверху встромила… троянду!<br />«Це інша справа», - сказав Параджанов і вдячно прийняв страву з рук жінки.
+      </p>
     </div>
   </div>
 </template>
@@ -71,7 +74,10 @@ import ArticleTitleIconMobile from 'icons/cardArticle/article-title-icon-mobile.
 
 .article {
   margin-top: 44px;
-  margin-bottom: 32px;
+}
+
+.article.end {
+  margin-top: 48px;
 }
 
 .article-title {
@@ -93,7 +99,7 @@ import ArticleTitleIconMobile from 'icons/cardArticle/article-title-icon-mobile.
 }
 
 .video-wrap {
-  margin-top: 80px;
+  margin-top: 48px;
 }
 
 .video-title {
@@ -139,7 +145,14 @@ import ArticleTitleIconMobile from 'icons/cardArticle/article-title-icon-mobile.
     justify-content: space-between;
     align-items: flex-end;
     margin-top: 44px;
-    margin-bottom: 24px;
+  }
+
+  .article.end {
+    margin-top: 72px;
+  }
+
+  .article-title {
+    width: 173px;
   }
 
   .article-text {
@@ -154,9 +167,11 @@ import ArticleTitleIconMobile from 'icons/cardArticle/article-title-icon-mobile.
   .video-wrap {
     display: flex;
     justify-content: space-between;
+    margin-top: 72px;
   }
 
   .video-title {
+    align-self: flex-end;
     flex-shrink: 0;
     width: 167px;
   }

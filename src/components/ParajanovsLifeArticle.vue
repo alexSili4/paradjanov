@@ -1,6 +1,7 @@
 <script setup>
 import ArticleTitleIconDesk from 'icons/cardArticle/article-title-icon-desk.svg?component';
 import ArticleTitleIconMobile from 'icons/cardArticle/article-title-icon-mobile.svg?component';
+import poster from '../images/parajanovsLife/poster.jpg';
 </script>
 
 <template>
@@ -14,14 +15,14 @@ import ArticleTitleIconMobile from 'icons/cardArticle/article-title-icon-mobile.
       <p class="title-text">жИТТЯ ПАРАДЖАНОВА</p>
     </div>
     <div class="article">
-      <p class="article-title">100 років з дня народження</p>
+      <p class="article-title">2024 рік - рік Параджанова</p>
       <p class="article-text">
         100 років тому народився Сергій Параджанов - видатний український та вірменський кінорежисер, автор легендарних «Тіней забутих предків», які посідають 1-ше місце у списку 100 найкращих
         українських фільмів
       </p>
     </div>
     <div class="video-wrap">
-      <p class="video-title">Цікаві факти з життя майстра</p>
+      <p class="video-title">Цікаві факти про майстра</p>
       <iframe
         class="video"
         src="https://www.youtube.com/embed/ua8FEfcBtmU"
@@ -32,14 +33,19 @@ import ArticleTitleIconMobile from 'icons/cardArticle/article-title-icon-mobile.
         allowfullscreen
       ></iframe>
     </div>
-    <p class="article-text end">
-      Але крім того, він геній і провокатор, що вигадав свою альтернативну біографію, згідно з якою він є нащадком грузинських князів, за життя товаришував з англійською королевою Єлизаветою; торгував
-      діамантами, які отримував від Папи Римського, був рідним братом Федеріко Фелліні. І все це чиста правда, бо Параджанов не вмів вигадувати нічого, окрім правди
-    </p>
-
     <div class="quote-wrap">
       <p class="quote">Я - вірменин, який народився у Тбілісі й сидів у російській в&#8217;язниці за український<br />націоналізм</p>
       <p class="name">- Параджанов</p>
+    </div>
+    <p class="article-text end after-video">
+      Сергій Параджанов - геній і провокатор, що вигадав свою альтернативну біографію, згідно з якою він є нащадком грузинських князів, за життя товаришував з англійською королевою Єлизаветою;
+      торгував діамантами, які отримував від Папи Римського, був рідним братом Федеріко Фелліні. І все це чиста правда, бо Параджанов не вмів вигадувати нічого, окрім правди.
+    </p>
+    <p class="article-text end last">2024 рік за рішенням ЮНЕСКО було визнано роком Сергія Параджанова.</p>
+    <div class="poster-wrap">
+      <img :src="poster" alt="Плакат до фільму «Тіні забутих предків»" class="poster-img" />
+      <p class="poster-title">Плакат до фільму «Тіні забутих предків», намальований Параджановим у 1974-1977 роках.</p>
+      <p class="poster-desc">Фото надано музеєм Сергія Параджанова у Єревані.</p>
     </div>
   </div>
 </template>
@@ -81,7 +87,6 @@ import ArticleTitleIconMobile from 'icons/cardArticle/article-title-icon-mobile.
 
 .article {
   margin-top: 44px;
-  margin-bottom: 32px;
 }
 
 .article-title {
@@ -103,7 +108,7 @@ import ArticleTitleIconMobile from 'icons/cardArticle/article-title-icon-mobile.
 }
 
 .video-wrap {
-  margin-top: 80px;
+  margin-top: 72px;
 }
 
 .video-title {
@@ -131,7 +136,7 @@ import ArticleTitleIconMobile from 'icons/cardArticle/article-title-icon-mobile.
   justify-content: center;
   gap: 16px;
   height: 236px;
-  margin-top: 80px;
+  margin-top: 40px;
   background-size: 100% 236px;
   background-image: url('icons/parajanovsLife/quote-bg-mobile.svg');
   background-repeat: no-repeat;
@@ -155,6 +160,27 @@ import ArticleTitleIconMobile from 'icons/cardArticle/article-title-icon-mobile.
   font-weight: 300;
   line-height: 1.4;
   text-align: center;
+}
+
+.after-video {
+  margin-top: 48px;
+}
+
+.last {
+  margin-top: 24px;
+}
+
+.poster-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.poster-title {
+}
+
+.poster-desc {
 }
 
 @media screen and (min-width: 1280px) {
@@ -182,7 +208,6 @@ import ArticleTitleIconMobile from 'icons/cardArticle/article-title-icon-mobile.
     justify-content: space-between;
     align-items: flex-end;
     margin-top: 44px;
-    margin-bottom: 24px;
   }
 
   .article-text {
@@ -197,9 +222,11 @@ import ArticleTitleIconMobile from 'icons/cardArticle/article-title-icon-mobile.
   .video-wrap {
     display: flex;
     justify-content: space-between;
+    margin-top: 72px;
   }
 
   .video-title {
+    align-self: flex-end;
     flex-shrink: 0;
     width: 167px;
   }
@@ -222,6 +249,23 @@ import ArticleTitleIconMobile from 'icons/cardArticle/article-title-icon-mobile.
 
   .quote {
     width: 409px;
+  }
+
+  .after-video {
+    margin-top: 72px;
+  }
+
+  .last {
+    margin-top: 20px;
+  }
+
+  .poster-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 419px;
+    margin-top: 24px;
+    margin-left: auto;
   }
 }
 
