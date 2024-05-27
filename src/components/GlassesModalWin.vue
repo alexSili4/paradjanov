@@ -1,33 +1,10 @@
 <script setup>
-import ArrowIcon from 'icons/arrow.svg?component';
-import { glassesValidator } from 'validator';
-import { register } from 'swiper/element/bundle';
-import { ref } from 'vue';
 import glassesVideo from 'video/glasses.mp4';
-
-register();
-
-const glassesVolumesSlider = ref(null);
-const descSlider = ref(null);
-const imgSlider = ref(null);
 
 defineProps({
   isShow: { type: Boolean, required: true },
-  glasses: glassesValidator,
   isDesk: { type: Boolean, required: true },
 });
-
-const onNextBtnClick = () => {
-  glassesVolumesSlider.value.swiper.slideNext();
-  descSlider.value.swiper.slideNext();
-  imgSlider.value.swiper.slideNext();
-};
-
-const onPrevBtnClick = () => {
-  glassesVolumesSlider.value.swiper.slidePrev();
-  descSlider.value.swiper.slidePrev();
-  imgSlider.value.swiper.slidePrev();
-};
 </script>
 
 <template>
@@ -41,32 +18,10 @@ const onPrevBtnClick = () => {
         <div class="container">
           <div class="content-wrap">
             <p class="title">Натхнені стакани</p>
-            <div class="volume-of-glasses-and-text-wrap">
-              <div class="volume-of-glasses-wrap">
-                <swiper-container ref="glassesVolumesSlider" :slides-per-view="1" :space-between="10" :allowTouchMove="false">
-                  <swiper-slide class="volume-of-glasses-text" :key="volume" v-for="{ volume } in glasses">{{ volume }} мл</swiper-slide>
-                </swiper-container>
-                <ul class="controls-list">
-                  <li class="controls-list-item">
-                    <button ref="prev" type="button" class="nav-btn" @click="onPrevBtnClick">
-                      <ArrowIcon class="nav-btn-icon prev-btn-icon" />
-                    </button>
-                  </li>
-                  <li class="controls-list-item">
-                    <button ref="next" type="button" class="nav-btn" @click="onNextBtnClick">
-                      <ArrowIcon class="nav-btn-icon" />
-                    </button>
-                  </li>
-                </ul>
-              </div>
-              <div class="text-wrap">
-                <swiper-container class="desc-slider" ref="descSlider" :slides-per-view="1" :space-between="10">
-                  <swiper-slide :key="desc" v-for="{ desc } in glasses">
-                    <p class="description">{{ desc }}</p></swiper-slide
-                  >
-                </swiper-container>
-              </div>
-            </div>
+            <p class="description">
+              100 років тому народився хлопчик якому судилося зняти кілька фільмів, визнаних шедеврами, потрапити до радянської в'язниці, вижити там у найважчих умовах і стати одним із найвидатніших
+              кінорежисерів ХХ століття.
+            </p>
           </div>
         </div>
       </div>
@@ -93,7 +48,6 @@ const onPrevBtnClick = () => {
   left: 0;
   width: 100%;
   height: 100%;
-
   background-color: #6572b5;
   background-image: url('icons/glassesModalWin/lower-star-mobile.svg'), url('icons/glassesModalWin/top-star-mobile.svg'), url('icons/glassesModalWin/bubbles-mobile.svg');
   background-position:
@@ -135,10 +89,6 @@ const onPrevBtnClick = () => {
   padding-right: 16px;
 }
 
-.content-wrap {
-  position: relative;
-}
-
 .title {
   color: var(--white-color);
   font-family: Shnobel;
@@ -149,53 +99,8 @@ const onPrevBtnClick = () => {
   text-transform: uppercase;
 }
 
-.volume-of-glasses-and-text-wrap {
-  margin-top: 40px;
-}
-
-.volume-of-glasses-wrap {
-  position: relative;
-  width: 161px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.volume-of-glasses-text {
-  color: var(--white-color);
-  font-family: Geologica;
-  font-size: 18px;
-  font-weight: 300;
-  line-height: 1.4;
-  text-align: center;
-}
-
-.controls-list {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 343px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  transform: translateX(-50%) translateY(-50%);
-}
-
-.nav-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 56px;
-  height: 56px;
-  border: none;
-  border-radius: 50%;
-  background-color: #3d3f7f;
-}
-
-.nav-btn-icon.prev-btn-icon {
-  transform: rotate(180deg);
-}
-
 .description {
+  margin-top: 40px;
   color: var(--white-color);
   font-family: Geologica;
   font-size: 18px;
@@ -254,16 +159,6 @@ const onPrevBtnClick = () => {
     letter-spacing: 0%;
     text-wrap: nowrap;
   }
-
-  .volume-of-glasses-and-text-wrap {
-    display: flex;
-    flex-direction: column-reverse;
-    gap: 86px;
-  }
-
-  .controls-list {
-    width: 507px;
-  }
 }
 
 @media screen and (max-width: 1279px) {
@@ -272,15 +167,8 @@ const onPrevBtnClick = () => {
   }
 
   .container {
-    margin-top: 47px;
-  }
-
-  .text-wrap {
-    margin-top: 32px;
-  }
-
-  .desc-slider {
-    margin-top: 24px;
+    position: relative;
+    margin-top: 48px;
   }
 }
 </style>

@@ -6,7 +6,6 @@ import Warning from 'icons/header/warning.svg?component';
 import { computed } from 'vue';
 import CloseBtnIcon from 'icons/close-btn.svg?component';
 import GlassesModalWin from 'components/GlassesModalWin.vue';
-import { glasses } from 'constants';
 
 const props = defineProps({
   isDesk: {
@@ -43,7 +42,7 @@ const hideCupBtnClassNames = computed(getHideCupBtnClassNames);
       </button>
       <button type="button" :class="hideCupBtnClassNames" @click="toggleShowGlassesModalWin"><CloseBtnIcon class="close-btn-icon" /></button>
     </div>
-    <GlassesModalWin :isShow="showGlassesModalWin" :glasses="glasses" :isDesk="isDesk" />
+    <GlassesModalWin :isShow="showGlassesModalWin" :isDesk="isDesk" />
   </header>
 </template>
 

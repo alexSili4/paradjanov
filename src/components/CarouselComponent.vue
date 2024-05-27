@@ -30,13 +30,19 @@ onUpdated(() => {
           <CloseBtnIcon class="close-btn-icon" />
         </button>
         <swiper-container ref="imgSlider" style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="mySwiper" thumbs-swiper=".mySwiper2" space-between="10" navigation="true">
-          <swiper-slide :key="index" v-for="(src, index) in slides">
-            <img :src="src" class="gallery-img" />
+          <swiper-slide :key="index" v-for="({ src, title, year }, index) in slides">
+            <div class="card-wrap">
+              <img :src="src" class="gallery-img" />
+              <div class="text-wrap">
+                <p class="title">{{ title }}</p>
+                <p class="year">{{ year }}</p>
+              </div>
+            </div>
           </swiper-slide>
         </swiper-container>
 
         <swiper-container class="mySwiper2" space-between="10" slides-per-view="4" free-mode="true" watch-slides-progress="true">
-          <swiper-slide :key="index" v-for="(src, index) in slides">
+          <swiper-slide :key="index" v-for="({ src }, index) in slides">
             <img :src="src" />
           </swiper-slide>
         </swiper-container></div
@@ -160,6 +166,18 @@ swiper-slide {
 swiper-slide .gallery-img {
   object-fit: contain;
   background-color: transparent;
+}
+
+.text-wrap {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.title {
+}
+.year {
 }
 
 @media screen and (min-width: 1280px) {
