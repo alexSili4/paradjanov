@@ -221,7 +221,8 @@ import ArticleTitleIconMobile from 'icons/cardArticle/article-title-icon-mobile.
 
 @media screen and (max-width: 1280px) {
   .container {
-    width: 343px;
+    width: 100%;
+    max-width: 343px;
     margin-left: auto;
     margin-right: auto;
   }
