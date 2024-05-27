@@ -197,7 +197,6 @@ function onMouseUp() {
   document.removeEventListener('mousemove', onMouseMove);
   if (isDraggableRef.value) {
     isDraggableRef.value = false;
-    shakeElement(mapRef.value);
   }
 }
 
@@ -205,7 +204,6 @@ function onTouchend() {
   document.removeEventListener('touchmove', onMouseMove);
   if (isDraggableRef.value) {
     isDraggableRef.value = false;
-    shakeElement(mapRef.value);
   }
 }
 
@@ -259,26 +257,6 @@ const onNavBtnClick = (e) => {
     activeArticleRef.value = cardId;
   }
 };
-
-function shakeElement(element) {
-  const originalStyle = element.style.transform;
-
-  element.style.transition = 'transform 400ms cubic-bezier(0.4, 0, 0.2, 1)';
-  element.style.transform = `translate(5px, 5px)`;
-  setTimeout(() => {
-    element.style.transform = `translate(-5px, -5px)`;
-    setTimeout(() => {
-      element.style.transform = `translate(5px, -5px)`;
-      setTimeout(() => {
-        element.style.transform = `translate(-5px, 5px)`;
-        setTimeout(() => {
-          element.style.transform = originalStyle;
-          element.style.transition = '';
-        }, 200);
-      }, 200);
-    }, 200);
-  }, 200);
-}
 
 const getMapInlineStyles = () => {
   const scale = props.isDesk ? scaleRef.value : 1;
