@@ -40,7 +40,7 @@ const toggleShowCarousel = (e) => {
       <p class="title-text">Геніальні<br />колажі</p>
     </div>
     <div class="article">
-      <p class="article-title">спресовані<br />фільми</p>
+      <p class="article-title">спресовані фільми</p>
       <p class="article-text">
         Любов до старих речей та антураж антикварного магазину завжди надихали Параджанова на майбутні картини. Під час підготовки до фільмів режисер створював колажі, які допомагали візуалізувати
         майбутні кадри, Параджанов назвав їх «спресованими фільмами». Після того як радянська влада заборонила йому знімати, колажі стали його основною практикою.
@@ -334,6 +334,10 @@ const toggleShowCarousel = (e) => {
     align-items: flex-end;
     margin-top: 44px;
     margin-bottom: 24px;
+  }
+
+  .article-title {
+    width: 150px;
   }
 
   .article-text {
