@@ -94,8 +94,8 @@ onUpdated(() => {
 }
 
 swiper-container {
-  width: 100%;
-  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 swiper-slide {
@@ -107,7 +107,7 @@ swiper-slide {
   align-items: center;
 }
 
-swiper-slide img {
+swiper-slide > img {
   display: block;
   width: 100%;
   height: 100%;
@@ -152,7 +152,7 @@ swiper-slide {
   opacity: 1;
 }
 
-swiper-slide img {
+swiper-slide > img {
   display: block;
   width: 100%;
   height: 100%;
@@ -168,6 +168,16 @@ swiper-slide .gallery-img {
   background-color: transparent;
 }
 
+.card-wrap {
+  height: 100%;
+}
+
+.card-wrap img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .text-wrap {
   display: flex;
   gap: 20px;
@@ -176,11 +186,13 @@ swiper-slide .gallery-img {
 }
 
 .title {
+  max-width: 335px;
   color: var(--white-color);
   font-family: Geologica;
   font-size: 18px;
   font-weight: 300;
   line-height: 1.4;
+  text-align: left;
 }
 
 .year {
