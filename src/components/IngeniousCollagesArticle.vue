@@ -105,7 +105,7 @@ const toggleShowCarousel = (e) => {
           </div>
         </div>
       </li>
-      <li class="collages-list-item">
+      <li class="collages-list-item collage-7">
         <div class="collage-wrap">
           <img :src="decorativeElement4Desk" alt="колаж" class="collage-icon collage-icon-4 desk" @click="toggleShowCarousel" />
           <img :src="decorativeElement4Mobile" alt="колаж" class="collage-icon collage-icon-4 mobile" @click="toggleShowCarousel" />
@@ -422,9 +422,16 @@ const toggleShowCarousel = (e) => {
 
 @media screen and (max-width: 1280px) {
   .container {
-    width: 343px;
+    width: 100%;
+    max-width: 343px;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  .collage-icon-4.mobile {
+    top: -128px;
+    left: 100%;
+    transform: translateX(-100%);
   }
 
   .title-icon.desk {
@@ -433,6 +440,10 @@ const toggleShowCarousel = (e) => {
 
   .title-icon.desc {
     display: none;
+  }
+
+  .collages-list-item.collage-7 {
+    margin-top: 176px;
   }
 
   .collage-icon-4.desk {
