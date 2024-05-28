@@ -100,7 +100,7 @@ const isShow = computed(() => props.activeArticle === props.card.id);
 @media screen and (max-width: 1279px) {
   .map-item {
     top: 840px;
-    left: 2150px;
+    left: 2035px;
     transform-origin: left top;
     transform: scale(0.4277);
   }

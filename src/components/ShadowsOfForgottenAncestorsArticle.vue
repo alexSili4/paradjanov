@@ -25,8 +25,8 @@ import poster from 'images/parajanovsLife/poster.jpg';
       <p class="video-title">Цікаві факти про стрічку</p>
       <iframe
         class="video"
-        src="https://www.youtube.com/embed/ua8FEfcBtmU"
-        title="Життя Сергія Параджанова"
+        src="https://www.youtube.com/embed/26Bw-6ENF_E"
+        title="Про стрічку «Тіні забутих предків» у проєкті «Натхнені Параджановим» від «Сільпо»"
         frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         referrerpolicy="strict-origin-when-cross-origin"

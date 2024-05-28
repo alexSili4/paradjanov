@@ -24,8 +24,8 @@ import ArticleTitleIconMobile from 'icons/cardArticle/article-title-icon-mobile.
       <p class="video-title">Цікаві факти про майстра</p>
       <iframe
         class="video"
-        src="https://www.youtube.com/embed/ua8FEfcBtmU"
-        title="Життя Сергія Параджанова"
+        src="https://www.youtube.com/embed/armHLIrGAgE"
+        title="Цікаві факти про життя Сергія Параджанова у проєкті «Натхнені Параджановим» від «Сільпо»"
         frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         referrerpolicy="strict-origin-when-cross-origin"

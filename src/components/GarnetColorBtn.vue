@@ -59,7 +59,7 @@ defineProps({
 <style scoped>
 .map-item-card {
   position: relative;
-  padding: 469px 600px 106px 495px;
+  padding: 469px 400px 106px 495px;
 }
 
 .land-icon {

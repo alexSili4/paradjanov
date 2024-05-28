@@ -19,8 +19,15 @@ import ArticleTitleIconMobile from 'icons/cardArticle/article-title-icon-mobile.
     </div>
     <div class="video-wrap">
       <div class="video-container">
-        <video class="video" controls loop preload="auto"></video>
-        <!-- src="@/video/parajanovsLife.webm"  -->
+        <iframe
+          class="video"
+          src="https://www.youtube.com/embed/GPabBaL_fCY"
+          title="Про митців, натхнених Параджановим, у проєкті «Натхнені Параджановим» від «Сільпо»"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+        ></iframe>
       </div>
     </div>
     <div class="quote-wrap">

@@ -25,8 +25,15 @@ import poster from '../images/garnetColor/poster.jpg';
     <div class="video-wrap">
       <p class="video-title">Цікаві факти про стрічку</p>
       <div class="video-container">
-        <video class="video" controls loop preload="auto"></video>
-        <!-- src="@/video/parajanovsLife.webm"  -->
+        <iframe
+          class="video"
+          src="https://www.youtube.com/embed/0BQCBE-CIQk"
+          title="Про стрічку «Колір граната» у проєкті «Натхнені Параджановим» від «Сільпо»"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+        ></iframe>
       </div>
     </div>
     <div class="quote-wrap">

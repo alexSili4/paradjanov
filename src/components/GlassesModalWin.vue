@@ -53,13 +53,11 @@ defineProps({
   width: 100%;
   height: 100%;
   background-color: #6572b5;
-  background-image: url('icons/glassesModalWin/lower-star-mobile.svg'), url('icons/glassesModalWin/top-star-mobile.svg'), url('icons/glassesModalWin/bubbles-mobile.svg');
+  background-image: url('icons/glassesModalWin/top-star-mobile.svg'), url('icons/glassesModalWin/bubbles-mobile.svg');
   background-position:
-    bottom 228px left calc(50% - 138px),
     top 65px right calc(50% - 54px),
     top 74px left calc(50% - 18px);
   background-size:
-    47px 48px,
     38px 39px,
     309px 306px;
   background-repeat: no-repeat;
