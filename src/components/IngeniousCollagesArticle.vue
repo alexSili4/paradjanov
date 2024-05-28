@@ -142,7 +142,7 @@ const toggleShowCarousel = (e) => {
       </li>
       <li class="collages-list-item two">
         <div class="collage-wrap two">
-          <div class="collage-wrap third">
+          <div class="collage-wrap fifth">
             <img :src="collages[10].src" alt="колаж" class="collage-img collage-img-10" @click="toggleShowCarousel" data-index="10" />
             <div class="collage-text-wrap two">
               <p class="collage-title">{{ collages[10].title }}</p>
@@ -161,7 +161,7 @@ const toggleShowCarousel = (e) => {
       </li>
       <li class="collages-list-item two">
         <div class="collage-wrap two">
-          <div class="collage-wrap third">
+          <div class="collage-wrap sixth">
             <img :src="collages[12].src" alt="колаж" class="collage-img collage-img-12" @click="toggleShowCarousel" data-index="12" />
             <div class="collage-text-wrap two">
               <p class="collage-title">{{ collages[12].title }}</p>
@@ -169,7 +169,6 @@ const toggleShowCarousel = (e) => {
             </div>
           </div>
           <div class="collage-wrap">
-            <DecorativeElement5 class="collage-icon collage-icon-6" />
             <img :src="collages[13].src" alt="колаж" class="collage-img collage-img-13" @click="toggleShowCarousel" data-index="13" />
             <div class="collage-text-wrap">
               <p class="collage-title">{{ collages[13].title }}</p>
@@ -355,6 +354,16 @@ const toggleShowCarousel = (e) => {
   left: 128px;
 }
 
+.collage-img-6 {
+  width: 307px;
+  height: 386px;
+}
+
+.collage-img-8 {
+  width: 255px;
+  height: 319px;
+}
+
 .collage-img-9 {
   width: 307px;
   height: 316px;
@@ -368,6 +377,16 @@ const toggleShowCarousel = (e) => {
 .collage-img-11 {
   width: 269px;
   height: 386px;
+}
+
+.collage-img-12 {
+  width: 213px;
+  height: 319px;
+}
+
+.collage-img-13 {
+  width: 232px;
+  height: 348px;
 }
 
 .gratitude {
@@ -408,6 +427,18 @@ const toggleShowCarousel = (e) => {
   font-weight: 300;
   line-height: 1.4;
   text-align: center;
+}
+
+.collage-wrap.fifth {
+  width: 242px;
+  margin-left: auto;
+  margin-bottom: 48px;
+}
+
+.collage-wrap.sixth {
+  width: 213px;
+  margin-left: auto;
+  margin-bottom: 48px;
 }
 
 @media screen and (min-width: 1280px) {
@@ -569,6 +600,15 @@ const toggleShowCarousel = (e) => {
     background-size: 100% 207px;
     background-image: url('icons/shadowsOfForgottenAncestors/quote-bg-desk.svg');
     margin-top: 72px;
+  }
+
+  .collage-wrap.fifth {
+    width: 260px;
+  }
+
+  .collage-img-10 {
+    width: 260px;
+    height: 386px;
   }
 }
 

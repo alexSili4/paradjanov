@@ -40,7 +40,6 @@ onUpdated(() => {
             </div>
           </swiper-slide>
         </swiper-container>
-
         <swiper-container class="mySwiper2" space-between="10" slides-per-view="4" free-mode="true" watch-slides-progress="true">
           <swiper-slide :key="index" v-for="({ src }, index) in slides">
             <img :src="src" />
@@ -68,7 +67,7 @@ onUpdated(() => {
   z-index: 1000000;
   width: 100%;
   height: 100%;
-  padding: 100px 20px;
+  padding: 20px;
   background-color: rgba(18, 20, 23, 0.9);
 }
 
@@ -93,90 +92,9 @@ onUpdated(() => {
   background-color: #3d3f7f;
 }
 
-swiper-container {
-  max-width: 100%;
-  max-height: 100%;
-}
+/*  */
 
-swiper-slide {
-  text-align: center;
-  font-size: 18px;
-  background: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-swiper-slide > img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-body {
-  background: #000;
-  color: #000;
-}
-
-swiper-container {
-  width: 100%;
-  height: 300px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-swiper-slide {
-  background-size: cover;
-  background-position: center;
-}
-
-.mySwiper {
-  height: 80%;
-  width: 100%;
-}
-
-.mySwiper2 {
-  height: 20%;
-  box-sizing: border-box;
-  padding: 10px 0;
-}
-
-.mySwiper2 swiper-slide {
-  width: 25%;
-  height: 100%;
-  opacity: 0.4;
-}
-
-.mySwiper2 .swiper-slide-thumb-active {
-  opacity: 1;
-}
-
-swiper-slide > img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-swiper-slide {
-  background-color: transparent;
-}
-
-swiper-slide .gallery-img {
-  object-fit: contain;
-  background-color: transparent;
-}
-
-.card-wrap {
-  height: 100%;
-}
-
-.card-wrap img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
+/*  */
 
 .text-wrap {
   display: flex;
