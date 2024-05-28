@@ -59,48 +59,48 @@ defineProps({
 <style scoped>
 .map-item-card {
   position: relative;
-  padding: 469px 600px 106px 695px;
+  padding: 469px 600px 106px 495px;
 }
 
 .land-icon {
   position: absolute;
   top: 174px;
-  left: 560px;
+  left: 360px;
   display: block;
 }
 
 .comet-icon {
   position: absolute;
   top: -63px;
-  left: 1195px;
+  left: 995px;
   display: block;
 }
 
 .small-grape-icon {
   position: absolute;
   top: 730px;
-  left: 1121px;
+  left: 921px;
   display: block;
 }
 
 .left-chicken-icon {
   position: absolute;
   top: 498px;
-  left: 589px;
+  left: 389px;
   display: block;
 }
 
 .right-chicken-icon {
   position: absolute;
   top: 408px;
-  left: 1278px;
+  left: 1078px;
   display: block;
 }
 
 .animation-item {
   position: absolute;
   top: 121px;
-  left: 637px;
+  left: 437px;
 }
 
 .card-title-wrap {
@@ -192,7 +192,7 @@ defineProps({
 .grapes-icon {
   position: absolute;
   top: 680px;
-  left: 1206px;
+  left: 1006px;
   display: block;
 }
 
