@@ -226,6 +226,7 @@ defineProps({
   left: -90px;
   width: calc(118.12px / 0.4277);
   height: calc(200px / 0.4277);
+  pointer-events: none;
 }
 
 @media screen and (min-width: 1280px) {

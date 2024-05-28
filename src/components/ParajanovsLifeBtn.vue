@@ -204,6 +204,7 @@ defineProps({
   left: 192px;
   width: 118.12px;
   height: 200px;
+  pointer-events: none;
 }
 
 @media screen and (max-width: 1279px) {

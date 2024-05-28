@@ -32,11 +32,15 @@ const toggleShowCarousel = (e) => {
       <p class="title-text">Геніальні<br />колажі</p>
     </div>
     <div class="article">
-      <p class="article-title">спресовані фільми</p>
+      <p class="article-title">Епатажний художник</p>
       <p class="article-text">
-        Любов до старих речей та антураж антикварного магазину завжди надихали Параджанова на майбутні картини. Під час підготовки до фільмів режисер створював колажі, які допомагали візуалізувати
-        майбутні кадри, Параджанов назвав їх «спресованими фільмами». Після того як радянська влада заборонила йому знімати, колажі стали його основною практикою.
+        Коли радянська влада заборонила Параджанову знімати фільми, він почав створювати колажі. В них він майстерно поєднував, здавалося б, непоєднуване: фото, мереживо, сухі рослини, уламки посуду,
+        прикраси.
       </p>
+    </div>
+    <div class="quote-wrap">
+      <p class="quote">Колаж - це спресоване кіно.</p>
+      <p class="name">- Параджанов</p>
     </div>
     <ul class="collages-list">
       <li class="collages-list-item">
@@ -374,6 +378,38 @@ const toggleShowCarousel = (e) => {
   line-height: 1.4;
 }
 
+.quote-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  height: 209px;
+  margin-top: 48px;
+  background-size: 100% 209px;
+  background-image: url('icons/shadowsOfForgottenAncestors/quote-bg-mobile.svg');
+  background-repeat: no-repeat;
+  background-position: 0 0;
+}
+
+.quote {
+  color: #373730;
+  font-family: Geologica;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.name {
+  color: #373730;
+  font-family: Geologica;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.4;
+  text-align: center;
+}
+
 @media screen and (min-width: 1280px) {
   .title-wrap {
     justify-content: space-between;
@@ -525,6 +561,14 @@ const toggleShowCarousel = (e) => {
   .gratitude > a {
     color: currentColor;
     text-decoration: underline;
+  }
+
+  .quote-wrap {
+    gap: 24px;
+    height: 207px;
+    background-size: 100% 207px;
+    background-image: url('icons/shadowsOfForgottenAncestors/quote-bg-desk.svg');
+    margin-top: 72px;
   }
 }
 
