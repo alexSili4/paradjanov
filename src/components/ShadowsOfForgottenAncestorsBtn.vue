@@ -9,6 +9,7 @@ import parajanovBat from 'animations/parajanovBat.json';
 import heroes from 'animations/heroes.json';
 import candles from 'animations/candles.json';
 import { Vue3Lottie } from 'vue3-lottie';
+import tap from 'animations/hand.json';
 
 defineProps({
   card: cardValidator,
@@ -36,6 +37,7 @@ defineProps({
     <div class="card-title-wrap">
       <p class="card-title">{{ card.title }}</p>
       <button type="button" class="card-btn card-article-btn" @click="onCardBtnClick" :disabled="isDraggable"></button>
+      <Vue3Lottie :autoPlay="playAnimation" :animationData="tap" class="tap-animation" />
       <span class="icon-btn-wrap">
         <LeafIcon class="leaf-icon btn-icon" />
         <MainGrapeIcon class="main-grape-icon btn-icon" />
@@ -191,9 +193,22 @@ defineProps({
   opacity: 0;
 }
 
+.tap-animation {
+  position: absolute;
+  z-index: 10;
+  top: -110px;
+  left: -160px;
+  width: calc(118.12px / 0.4277);
+  height: calc(200px / 0.4277);
+}
+
 @media screen and (min-width: 1280px) {
   .card-btn:is(:hover, :focus) ~ .icon-btn-wrap > .card-number {
     opacity: 0;
+  }
+
+  .tap-animation {
+    display: none;
   }
 }
 
@@ -202,82 +217,4 @@ defineProps({
     display: none;
   }
 }
-
-/* .card-btn {
-
-} */
-
-/* .card-btn-disabled {
-  pointer-events: none;
-} */
-
-/* .card-title-wrap {
-  position: absolute;
-  top: 442px;
-  left: 211px;
-  width: 550px;
-  height: 293px;
-  background-image: ;
-  background-repeat: no-repeat;
-  background-size: 550px 293px;
-  background-position: 0 0;
-  padding-top: 42px;
-  padding-left: 71px;
-  text-align: left;
-} */
-
-/* .land-icon {
-
-} */
-
-/* .candles-icon {
-  position: absolute;
-  top: 1px;
-  left: 368px;
-  display: block;
-} */
-
-/* .icon-btn-wrap {
-  position: absolute;
-  top: 353px;
-  left: 1px;
-  width: 314px;
-  height: 313px;
-  padding-top: 6px;
-  padding-left: 13px;
-} */
-
-/* .leaf-icon {
-  position: absolute;
-  top: 213px;
-  left: 121px;
-  display: block;
-} */
-
-/* .btn-icon {
-  transition:
-    transform var(--transition-duration-and-func),
-    opacity var(--transition-duration-and-func);
-} */
-
-/* .main-grape-icon {
-  position: relative;
-  display: block;
-} */
-
-/* .grape-icon {
-  position: absolute;
-  top: 141px;
-  left: 23px;
-  display: block;
-} */
-
-/* .nav-arrow-icon {
-
-} */
-
-/*  */
-
-/*
-} */
 </style>

@@ -11,6 +11,7 @@ import centaur from 'animations/centaur.json';
 import logoWithHero from 'animations/logo-with-hero.json';
 import head from 'animations/head.json';
 import { Vue3Lottie } from 'vue3-lottie';
+import tap from 'animations/hand.json';
 
 defineProps({
   card: cardValidator,
@@ -36,6 +37,7 @@ defineProps({
     <div class="card-title-wrap">
       <p class="card-title">{{ card.title }}</p>
       <button type="button" class="card-btn card-article-btn" @click="onCardBtnClick" :disabled="isDraggable"></button>
+      <Vue3Lottie :autoPlay="playAnimation" :animationData="tap" class="tap-animation" />
       <span class="icon-btn-wrap">
         <LeafIcon class="leaf-icon btn-icon" />
         <MainGrapeIcon class="main-grape-icon btn-icon" />
@@ -207,9 +209,22 @@ defineProps({
   transform: rotate(12.31deg);
 }
 
+.tap-animation {
+  position: absolute;
+  z-index: 10;
+  top: -5px;
+  left: -120px;
+  width: calc(118.12px / 0.4277);
+  height: calc(200px / 0.4277);
+}
+
 @media screen and (min-width: 1280px) {
   .card-btn:is(:hover, :focus) ~ .icon-btn-wrap > .card-number {
     opacity: 0;
+  }
+
+  .tap-animation {
+    display: none;
   }
 }
 

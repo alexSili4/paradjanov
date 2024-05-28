@@ -15,6 +15,7 @@ import ShipToRightIconMobile from 'icons/parajanovsLife/ship-to-right-mobile.svg
 import QuoteIconMobile from 'icons/parajanovsLife/quote-mobile.svg?component';
 import { Vue3Lottie } from 'vue3-lottie';
 import parajanovsLife from 'animations/parajanovsLife.json';
+import tap from 'animations/hand.json';
 
 defineProps({
   isDesk: Boolean,
@@ -46,6 +47,7 @@ defineProps({
     <div class="card-title-wrap">
       <p class="card-title">{{ card.title }}</p>
       <button type="button" class="card-btn card-article-btn" @click="onCardBtnClick" :disabled="isDraggable"></button>
+      <Vue3Lottie :autoPlay="playAnimation" :animationData="tap" class="tap-animation" />
       <span class="icon-btn-wrap">
         <LeafIconDesk class="leaf-icon btn-icon" v-if="isDesk" />
         <LeafIconMobile class="leaf-icon btn-icon" v-else />
@@ -195,6 +197,15 @@ defineProps({
   left: 69px;
 }
 
+.tap-animation {
+  position: absolute;
+  z-index: 10;
+  top: -45px;
+  left: 192px;
+  width: 118.12px;
+  height: 200px;
+}
+
 @media screen and (max-width: 1279px) {
   .animation-item {
     transform-origin: left top;
@@ -282,6 +293,10 @@ defineProps({
   .animation-item {
     top: 127px;
     left: 80px;
+  }
+
+  .tap-animation {
+    display: none;
   }
 }
 </style>

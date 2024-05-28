@@ -12,6 +12,7 @@ import RightChickenIcon from 'icons/garnetColor/right-chicken.svg?component';
 import SmallGrapeIcon from 'icons/garnetColor/small-grape.svg?component';
 import garnetColor from 'animations/garnetColor.json';
 import { Vue3Lottie } from 'vue3-lottie';
+import tap from 'animations/hand.json';
 
 defineProps({
   card: cardValidator,
@@ -42,6 +43,7 @@ defineProps({
     <div class="card-title-wrap">
       <p class="card-title">{{ card.title }}</p>
       <button type="button" class="card-btn card-article-btn" @click="onCardBtnClick" :disabled="isDraggable"></button>
+      <Vue3Lottie :autoPlay="playAnimation" :animationData="tap" class="tap-animation" />
       <span class="icon-btn-wrap">
         <MainGrapeIcon class="main-grape-icon btn-icon" />
         <LeafIcon class="leaf-icon btn-icon" />
@@ -217,9 +219,22 @@ defineProps({
   transform: rotate(13.41deg);
 }
 
+.tap-animation {
+  position: absolute;
+  z-index: 10;
+  top: 40px;
+  left: -90px;
+  width: calc(118.12px / 0.4277);
+  height: calc(200px / 0.4277);
+}
+
 @media screen and (min-width: 1280px) {
   .card-btn:is(:hover, :focus) ~ .icon-btn-wrap > .card-number {
     opacity: 0;
+  }
+
+  .tap-animation {
+    display: none;
   }
 }
 
