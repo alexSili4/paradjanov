@@ -48,6 +48,11 @@ const isOpenMenuRef = ref(false);
 const isMovingRef = ref(false);
 const nextCardIdRef = ref(null);
 const prevCardIdRef = ref(null);
+const velocityX = ref(0);
+const velocityY = ref(0);
+const lastMouseX = ref(0);
+const lastMouseY = ref(0);
+const inertiaFrameRef = ref(null);
 
 onBeforeMount(() => {
   const defaultCardId = cards[0].id;
@@ -126,6 +131,11 @@ function onMouseMove(e) {
   const targetElement = mapRef.value;
   const { clientX, clientY } = e;
 
+  velocityX.value = clientX - lastMouseX.value;
+  velocityY.value = clientY - lastMouseY.value;
+  lastMouseX.value = clientX;
+  lastMouseY.value = clientY;
+
   const { shouldUpdatePositionTop, shouldUpdatePositionLeft, leftPosition, topPosition } = getPositionProps({
     element: targetElement,
     offsetY: offsetYRef.value,
@@ -154,6 +164,9 @@ function onMouseDown(e) {
   const { left, top } = getContentGeometry(targetElement);
   const { clientX, clientY } = e;
 
+  lastMouseX.value = clientX;
+  lastMouseY.value = clientY;
+
   document.addEventListener('mousemove', onMouseMove);
   offsetXRef.value = clientX - left;
   offsetYRef.value = clientY - top;
@@ -168,6 +181,11 @@ function onTouchmove(e) {
 
   const targetElement = mapRef.value;
   const { clientX, clientY } = e.changedTouches[0];
+
+  velocityX.value = clientX - lastMouseX.value;
+  velocityY.value = clientY - lastMouseY.value;
+  lastMouseX.value = clientX;
+  lastMouseY.value = clientY;
 
   const { shouldUpdatePositionTop, shouldUpdatePositionLeft, leftPosition, topPosition } = getPositionProps({
     element: targetElement,
@@ -192,6 +210,9 @@ function onTouchstart(e) {
   const { left, top } = getContentGeometry(targetElement);
   const { clientX, clientY } = e.changedTouches[0];
 
+  lastMouseX.value = clientX;
+  lastMouseY.value = clientY;
+
   document.addEventListener('touchmove', onTouchmove);
   offsetXRef.value = clientX - left;
   offsetYRef.value = clientY - top;
@@ -199,12 +220,45 @@ function onTouchstart(e) {
 
 function onMouseUp() {
   document.removeEventListener('mousemove', onMouseMove);
-  isDraggableRef.value = false;
+  applyInertia();
 }
 
 function onTouchend() {
   document.removeEventListener('touchmove', onTouchmove);
-  isDraggableRef.value = false;
+  applyInertia();
+}
+
+function applyInertia() {
+  if (inertiaFrameRef.value) {
+    cancelAnimationFrame(inertiaFrameRef.value);
+  }
+
+  const friction = 0.95;
+
+  function step() {
+    const { innerHeight, innerWidth } = window;
+    const isValidLeftValue = innerWidth - leftRef.value + 100 <= mapOriginalWidthRef.value && leftRef.value <= -50;
+    const isValidTopValue = innerHeight - topRef.value + 100 <= mapOriginalHeightRef.value && topRef.value <= -50;
+
+    if (isValidLeftValue) {
+      leftRef.value += velocityX.value;
+    }
+
+    if (isValidTopValue) {
+      console.log(topRef.value);
+      topRef.value += velocityY.value;
+    }
+
+    velocityX.value *= friction;
+    velocityY.value *= friction;
+
+    if (Math.abs(velocityX.value) > 0.5 || Math.abs(velocityY.value) > 0.5) {
+      inertiaFrameRef.value = requestAnimationFrame(step);
+    } else {
+      isDraggableRef.value = false;
+    }
+  }
+  inertiaFrameRef.value = requestAnimationFrame(step);
 }
 
 const onCloseArticleBtnClick = (e) => {
