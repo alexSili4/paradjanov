@@ -179,7 +179,7 @@ const toggleShowCarousel = (e) => {
       </li>
     </ul>
     <p class="gratitude">
-      Дякуємо <a href="https://parajanovmuseum.am/" target="_blank" noopener noreferrer nofollow>музею Сергія Параджанова</a> у Єревані, який ласкаво надав нам фотографії колажів великого митця.
+      Дякуємо <a href="https://parajanovmuseum.am/" target="_blank" noopener noreferrer nofollow>музею Сергія Параджанова</a> у Єревані, який люб'язно надав нам фотографії колажів великого митця.
     </p>
     <Carousel :show="showCarousel" :onCloseBtnClick="toggleShowCarousel" :slides="collages" :targetIndex="targetIndex" />
   </div>

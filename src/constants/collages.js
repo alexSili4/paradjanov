@@ -25,7 +25,7 @@ const collages = [
   { src: collage9, title: 'Автопортрет на фоні Ахпату', year: '1963' },
   { src: collage10, title: 'Перелік описаного майна', year: '1977' },
   { src: collage11, title: 'Козак Мамай', year: '1965' },
-  { src: collage12, title: 'Інфаркт', year: '' },
+  { src: collage12, title: 'Інфаркт', year: '1986' },
   { src: collage13, title: 'Валіза мого дитинства, перетворена на слона', year: '1984' },
   { src: collage14, title: 'Фаюмський портрет', year: '1972' },
 ];

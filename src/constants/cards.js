@@ -67,7 +67,7 @@ const cards = [
   {
     id: 'v',
     number: 5,
-    title: 'Натхнені стакани',
+    title: 'Натхнені стакани*',
     animation: [
       {
         width: 252,

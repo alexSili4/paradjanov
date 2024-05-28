@@ -36,7 +36,7 @@ import poster from '../images/garnetColor/poster.jpg';
     <div class="poster-wrap">
       <img :src="poster" alt="Колаж до фільму 'Колір граната'." class="poster-img" />
       <p class="poster-title">Колаж до фільму "Колір граната", створений Параджановим у 1967 році.</p>
-      <p class="poster-desс">Фото надано музеєм Сергія Параджанова у Єревані.</p>
+      <p class="poster-desс">Фото надано музеєм Сергія Параджанова в Єревані.</p>
     </div>
   </div>
 </template>

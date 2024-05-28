@@ -1,7 +1,6 @@
 <script setup>
 import ArticleTitleIconDesk from 'icons/cardArticle/article-title-icon-desk.svg?component';
 import ArticleTitleIconMobile from 'icons/cardArticle/article-title-icon-mobile.svg?component';
-import poster from '../images/parajanovsLife/poster.jpg';
 </script>
 
 <template>
@@ -42,11 +41,6 @@ import poster from '../images/parajanovsLife/poster.jpg';
       торгував діамантами, які отримував від Папи Римського, був рідним братом Федеріко Фелліні. І все це чиста правда, бо Параджанов не вмів вигадувати нічого, окрім правди.
     </p>
     <p class="article-text end last">2024 рік за рішенням ЮНЕСКО було визнано роком Сергія Параджанова.</p>
-    <div class="poster-wrap">
-      <img :src="poster" alt="Плакат до фільму «Тіні забутих предків»" class="poster-img" />
-      <p class="poster-title">Плакат до фільму «Тіні забутих предків», намальований Параджановим у 1974-1977 роках.</p>
-      <p class="poster-desc">Фото надано музеєм Сергія Параджанова у Єревані.</p>
-    </div>
   </div>
 </template>
 
@@ -170,29 +164,6 @@ import poster from '../images/parajanovsLife/poster.jpg';
   margin-top: 24px;
 }
 
-.poster-wrap {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-top: 24px;
-}
-
-.poster-title {
-  color: rgb(55, 55, 48);
-  font-family: Geologica;
-  font-size: 16px;
-  font-weight: 300;
-  line-height: 1.4;
-}
-
-.poster-desc {
-  color: rgb(55, 55, 48);
-  font-family: Geologica;
-  font-size: 16px;
-  font-weight: 300;
-  line-height: 1.4;
-}
-
 @media screen and (min-width: 1280px) {
   .title-wrap {
     justify-content: space-between;
@@ -267,15 +238,6 @@ import poster from '../images/parajanovsLife/poster.jpg';
 
   .last {
     margin-top: 20px;
-  }
-
-  .poster-wrap {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    width: 419px;
-    margin-top: 24px;
-    margin-left: auto;
   }
 }
 
