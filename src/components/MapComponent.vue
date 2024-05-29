@@ -12,6 +12,7 @@ import IngeniousCollages from 'components/IngeniousCollages.vue';
 import GarnetColor from 'components/GarnetColor.vue';
 import { useRoute } from 'vue-router';
 import router from 'router';
+import CursorClue from './CursorClue.vue';
 
 const route = useRoute();
 
@@ -278,6 +279,7 @@ const mapClassNames = computed(getMapClassNames);
 
 <template>
   <div class="map-container">
+    <CursorClue :isDesk="isDesk" />
     <ul :class="mapClassNames" @mousedown="onMouseDown" @touchstart="onTouchstart" ref="mapRef" :style="mapInlineStyles">
       <ParajanovsLife
         :isDesk="isDesk"
@@ -396,6 +398,7 @@ const mapClassNames = computed(getMapClassNames);
 <style scoped>
 .map-container {
   position: relative;
+  z-index: 1;
   height: 100vh;
   overflow: hidden;
 }
