@@ -46,7 +46,7 @@ defineProps({
     <Vue3Lottie :autoPlay="playAnimation" :animationData="parajanovsLife" :height="card.animation[0].height" :width="card.animation[0].width" class="animation-item" />
     <div class="card-title-wrap">
       <p class="card-title">{{ card.title }}</p>
-      <button type="button" class="card-btn card-article-btn" @click="onCardBtnClick" :disabled="isDraggable"></button>
+      <button type="button" class="card-btn card-article-btn" @click="onCardBtnClick"></button>
       <Vue3Lottie :autoPlay="playAnimation" :animationData="tap" class="tap-animation" />
       <span class="icon-btn-wrap">
         <LeafIconDesk class="leaf-icon btn-icon" v-if="isDesk" />
@@ -80,7 +80,7 @@ defineProps({
 
 .card-btn {
   position: absolute;
-  z-index: 10;
+  z-index: 20;
   top: -10px;
   left: 185px;
   width: 85px;
@@ -94,7 +94,6 @@ defineProps({
   position: absolute;
   top: -43px;
   left: 174px;
-  pointer-events: none;
 }
 
 .main-grape-icon {
@@ -136,7 +135,7 @@ defineProps({
 
 .card-btn:is(:hover, :focus) {
   cursor:
-    url('icons/cursor-pointer.svg') 25 0,
+    url('icons/cursor-pointer.svg') 23.8 0,
     auto;
 }
 
@@ -204,7 +203,6 @@ defineProps({
   left: 192px;
   width: 118.12px;
   height: 200px;
-  pointer-events: none;
 }
 
 @media screen and (max-width: 1279px) {

@@ -36,7 +36,7 @@ defineProps({
     <Vue3Lottie :autoPlay="playAnimation" :animationData="heroes" class="animation-heroes" :height="card.animation[1].height" :width="card.animation[1].width" />
     <div class="card-title-wrap">
       <p class="card-title">{{ card.title }}</p>
-      <button type="button" class="card-btn card-article-btn" @click="onCardBtnClick" :disabled="isDraggable"></button>
+      <button type="button" class="card-btn card-article-btn" @click="onCardBtnClick"></button>
       <Vue3Lottie :autoPlay="playAnimation" :animationData="tap" class="tap-animation" />
       <span class="icon-btn-wrap">
         <LeafIcon class="leaf-icon btn-icon" />
@@ -104,7 +104,7 @@ defineProps({
 
 .card-btn {
   position: absolute;
-  z-index: 10;
+  z-index: 20;
   top: -20px;
   left: -160px;
   width: 190px;
@@ -118,7 +118,6 @@ defineProps({
   position: absolute;
   top: -88px;
   left: -189px;
-  pointer-events: none;
 }
 
 .leaf-icon {
@@ -167,7 +166,7 @@ defineProps({
 
 .card-btn:is(:hover, :focus) {
   cursor:
-    url('icons/cursor-pointer.svg') 25 0,
+    url('icons/cursor-pointer.svg') 23.8 0,
     auto;
 }
 
@@ -200,7 +199,6 @@ defineProps({
   left: -160px;
   width: calc(118.12px / 0.4277);
   height: calc(200px / 0.4277);
-  pointer-events: none;
 }
 
 @media screen and (min-width: 1280px) {
