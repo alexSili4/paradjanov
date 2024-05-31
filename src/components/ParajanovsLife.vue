@@ -132,5 +132,9 @@ const isShow = computed(() => props.activeArticle === props.card.id);
   .nav-sheep-animation {
     display: none;
   }
+
+  .pointer-animation {
+    display: none;
+  }
 }
 </style>
