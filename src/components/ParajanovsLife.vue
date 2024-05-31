@@ -7,6 +7,8 @@ import { computed, onMounted, ref } from 'vue';
 import { intersectionObserverOptions } from 'constants';
 import { useRoute } from 'vue-router';
 import navSheep from '../animations/sheep.json';
+import pointer from '../animations/pointer.json';
+import { Vue3Lottie } from 'vue3-lottie';
 
 const route = useRoute();
 
@@ -87,6 +89,7 @@ const isShow = computed(() => props.activeArticle === props.card.id);
 
 <template>
   <li class="map-item" :data-card-id="card.id" ref="mapItemRef">
+    <Vue3Lottie :animationData="pointer" class="pointer-animation" />
     <Vue3Lottie :animationData="navSheep" class="nav-sheep-animation" />
     <ParajanovsLifeBtn :isDesk="isDesk" :card="card" :onCardBtnClick="onCardBtnClick" :isDraggable="isDraggable" :playAnimation="playAnimationRef" />
     <CardArticle :isShow="isShow" :onCloseBtnClick="onCloseArticleBtnClick" :isDesk="isDesk" :onNavBtnClick="onNavBtnClick" :card="card" :isOpenMenu="isOpenMenu" :onMenuBtnClick="onMenuBtnClick">
@@ -114,6 +117,14 @@ const isShow = computed(() => props.activeArticle === props.card.id);
     left: 753px;
     width: 1683.57px;
     height: 1200px;
+  }
+
+  .pointer-animation {
+    position: absolute;
+    top: 550px;
+    left: 1150px;
+    width: 158.68px;
+    height: 138px;
   }
 }
 
