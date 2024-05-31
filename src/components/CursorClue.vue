@@ -1,5 +1,5 @@
 <script setup>
-import { onBeforeMount, ref } from 'vue';
+import { computed, onBeforeMount, ref } from 'vue';
 
 const props = defineProps({
   isDesk: { type: Boolean, required: true },
@@ -36,11 +36,15 @@ function updateMousePosition(e) {
   mouseX.value = e.clientX;
   mouseY.value = e.clientY;
 }
+
+const getCursorInlineStyles = () => ({ left: `${mouseX.value + 20}px`, top: `${mouseY.value - 80}px` });
+
+const cursorInlineStyles = computed(getCursorInlineStyles);
 </script>
 
 <template>
   <Transition name="container">
-    <div v-show="showClue" class="floating-block" :style="{ left: mouseX + 20 + 'px', top: mouseY + 20 + 'px' }">111111111111</div>
+    <div v-show="showClue" class="floating-block" :style="cursorInlineStyles">ТЯГНИ ТА ПІЗНАВАЙ</div>
   </Transition>
 </template>
 
@@ -58,9 +62,10 @@ function updateMousePosition(e) {
 .floating-block {
   position: absolute;
   z-index: 100000000000000;
-  width: 50px;
-  height: 50px;
-  background-color: red;
+  width: 117.3px;
+  height: 69.5px;
+  background-image: url('icons/cursor-clue-bg.svg');
+  background-size: 117.3px 69.5px;
   pointer-events: none;
 }
 </style>

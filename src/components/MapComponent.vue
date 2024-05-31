@@ -261,17 +261,16 @@ const onNavBtnClick = (e) => {
 
 const getMapInlineStyles = () => {
   const scale = props.isDesk ? scaleRef.value : 1;
-  const cursor = activeArticleRef.value ? 'auto' : 'move';
 
   return {
     top: `${topRef.value}px`,
     left: `${leftRef.value}px`,
-    cursor: isDraggableRef.value ? 'grabbing' : cursor,
     transform: `scale(${scale})`,
+    cursor: isDraggableRef.value ? 'grabbing' : '',
   };
 };
 
-const getMapClassNames = () => ['map', { 'map-transform': !isDraggableRef.value }];
+const getMapClassNames = () => ['map', { 'map-transform': !isDraggableRef.value && !activeArticleRef.value }];
 
 const mapInlineStyles = computed(getMapInlineStyles);
 const mapClassNames = computed(getMapClassNames);
@@ -449,6 +448,9 @@ const mapClassNames = computed(getMapClassNames);
     top var(--smooth-transition),
     left var(--smooth-transition),
     transform var(--smooth-transition);
+  cursor:
+    url('icons/cursor-move.svg') 29.5 29.5,
+    auto;
 }
 
 @media screen and (min-width: 1280px) {
