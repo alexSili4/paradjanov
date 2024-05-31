@@ -44,7 +44,7 @@ const cursorInlineStyles = computed(getCursorInlineStyles);
 
 <template>
   <Transition name="container">
-    <div v-show="showClue" class="floating-block" :style="cursorInlineStyles">ТЯГНИ ТА ПІЗНАВАЙ</div>
+    <div v-show="showClue" class="clue" :style="cursorInlineStyles"><p class="clue-title">ТЯГНИ ТА ПІЗНАВАЙ</p></div>
   </Transition>
 </template>
 
@@ -59,13 +59,25 @@ const cursorInlineStyles = computed(getCursorInlineStyles);
   opacity: 0;
 }
 
-.floating-block {
+.clue {
   position: absolute;
   z-index: 100000000000000;
   width: 117.3px;
   height: 69.5px;
   background-image: url('icons/cursor-clue-bg.svg');
   background-size: 117.3px 69.5px;
+
   pointer-events: none;
+}
+
+.clue-title {
+  color: #353b3f;
+  font-family: Shnobel;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.04;
+  text-align: center;
+  text-transform: uppercase;
+  transform: translateY(8px);
 }
 </style>

@@ -17,6 +17,7 @@ import { Vue3Lottie } from 'vue3-lottie';
 import parajanovsLife from 'animations/parajanovsLife.json';
 import tap from 'animations/hand.json';
 
+
 defineProps({
   isDesk: Boolean,
   playAnimation: {

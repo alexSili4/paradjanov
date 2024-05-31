@@ -266,11 +266,16 @@ const getMapInlineStyles = () => {
     top: `${topRef.value}px`,
     left: `${leftRef.value}px`,
     transform: `scale(${scale})`,
-    cursor: isDraggableRef.value ? 'grabbing' : '',
   };
 };
 
-const getMapClassNames = () => ['map', { 'map-transform': !isDraggableRef.value && !activeArticleRef.value }];
+const getMapClassNames = () => [
+  'map',
+  {
+    'map-transform': !isDraggableRef.value,
+    'cursor-auto': activeArticleRef.value,
+  },
+];
 
 const mapInlineStyles = computed(getMapInlineStyles);
 const mapClassNames = computed(getMapClassNames);
@@ -441,6 +446,9 @@ const mapClassNames = computed(getMapClassNames);
     0 0;
   background-repeat: no-repeat;
   transform-origin: left top;
+  cursor:
+    url('icons/cursor-grabbing.svg') 38.5 35.5,
+    auto;
 }
 
 .map-transform {
@@ -451,6 +459,10 @@ const mapClassNames = computed(getMapClassNames);
   cursor:
     url('icons/cursor-move.svg') 29.5 29.5,
     auto;
+}
+
+.cursor-auto {
+  cursor: auto;
 }
 
 @media screen and (min-width: 1280px) {
