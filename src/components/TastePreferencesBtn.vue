@@ -200,10 +200,10 @@ defineProps({
   }
 
   .card-btn {
-    top: 20px;
-    left: 100px;
-    width: 580px;
-    height: 250px;
+    top: 0px;
+    left: 80px;
+    width: 615px;
+    height: 290px;
   }
 }
 
