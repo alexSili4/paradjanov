@@ -135,7 +135,6 @@ defineProps({
   padding: 0;
   border: none;
   background-color: transparent;
-  outline: 2px solid greenyellow;
 }
 
 .icon-btn-wrap {

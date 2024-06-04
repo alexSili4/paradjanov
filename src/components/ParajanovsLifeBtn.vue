@@ -88,7 +88,6 @@ defineProps({
   padding: 0;
   border: none;
   background-color: transparent;
-  outline: 1px solid greenyellow;
 }
 
 .icon-btn-wrap {
