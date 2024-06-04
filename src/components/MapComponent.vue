@@ -210,6 +210,7 @@ function onTouchend() {
 
 const onCloseArticleBtnClick = (e) => {
   e.currentTarget.blur();
+
   activeArticleRef.value = null;
 };
 

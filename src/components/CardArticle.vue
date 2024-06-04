@@ -22,6 +22,12 @@ const props = defineProps({
   onMenuBtnClick: { type: Function, required: true },
 });
 
+const hideModalWin = (e) => {
+  if (e.target === e.currentTarget) {
+    props.onCloseBtnClick(e);
+  }
+};
+
 onBeforeMount(() => {
   const defaultCardId = props.card.id;
   const cardId = defaultCardId;
@@ -51,46 +57,48 @@ const menuBtnWrapClassNames = computed(getMenuBtnWrapClassNames);
 <template>
   <Teleport to="body">
     <Transition name="container">
-      <div class="article-wrap" v-show="isDesk ? isShow : isShow && !isOpenMenu">
-        <div class="article-decorative-element"></div>
-        <div class="article-container">
-          <button type="button" class="close-btn" @click="onCloseBtnClick">
-            <CloseBtnIcon class="close-btn-icon" />
-          </button>
-          <slot></slot>
-          <ul class="nav-btn-list" v-if="isDesk">
-            <li :class="prevHideBtn">
-              <button class="nav-btn" type="button" @click="onNavBtnClick" :data-card-id="prevDataCardId">
-                <span class="nav-btn-title">Попередній</span>
-              </button>
-            </li>
-            <li :class="nextHideBtn">
-              <button class="nav-btn next" type="button" @click="onNavBtnClick" :data-card-id="nextDataCardId">
-                <span class="nav-btn-title">Наступний</span>
-                <NextBtnIcon class="nav-btn-icon" />
-              </button>
-            </li>
-          </ul>
-          <ul class="nav-bar" v-else>
-            <li :class="prevNavBarHideBtn">
-              <button type="button" class="nav-btn" :data-card-id="prevDataCardId" @click="onNavBtnClick">
-                <Arrow class="nav-btn-icon prev-btn-icon" />
-              </button>
-            </li>
-            <li>
-              <div :class="menuBtnWrapClassNames">
-                <button type="button" :class="menuBtnClassNames" @click="onMenuBtnClick">
-                  <MenuMobile class="menu-btn-icon" />
-                  <BurgerMenu :isOpenMenu="isOpenMenu" :isDesk="isDesk" />
+      <div class="backdrop" v-show="isDesk ? isShow : isShow && !isOpenMenu" @click="hideModalWin">
+        <div class="article-wrap">
+          <div class="article-decorative-element"></div>
+          <div class="article-container">
+            <button type="button" class="close-btn" @click="onCloseBtnClick">
+              <CloseBtnIcon class="close-btn-icon" />
+            </button>
+            <slot></slot>
+            <ul class="nav-btn-list" v-if="isDesk">
+              <li :class="prevHideBtn">
+                <button class="nav-btn" type="button" @click="onNavBtnClick" :data-card-id="prevDataCardId">
+                  <span class="nav-btn-title">Попередній</span>
                 </button>
-              </div>
-            </li>
-            <li :class="nextNavBarHideBtn">
-              <button type="button" class="nav-btn" :data-card-id="nextDataCardId" @click="onNavBtnClick">
-                <Arrow class="nav-btn-icon" />
-              </button>
-            </li>
-          </ul>
+              </li>
+              <li :class="nextHideBtn">
+                <button class="nav-btn next" type="button" @click="onNavBtnClick" :data-card-id="nextDataCardId">
+                  <span class="nav-btn-title">Наступний</span>
+                  <NextBtnIcon class="nav-btn-icon" />
+                </button>
+              </li>
+            </ul>
+            <ul class="nav-bar" v-else>
+              <li :class="prevNavBarHideBtn">
+                <button type="button" class="nav-btn" :data-card-id="prevDataCardId" @click="onNavBtnClick">
+                  <Arrow class="nav-btn-icon prev-btn-icon" />
+                </button>
+              </li>
+              <li>
+                <div :class="menuBtnWrapClassNames">
+                  <button type="button" :class="menuBtnClassNames" @click="onMenuBtnClick">
+                    <MenuMobile class="menu-btn-icon" />
+                    <BurgerMenu :isOpenMenu="isOpenMenu" :isDesk="isDesk" />
+                  </button>
+                </div>
+              </li>
+              <li :class="nextNavBarHideBtn">
+                <button type="button" class="nav-btn" :data-card-id="nextDataCardId" @click="onNavBtnClick">
+                  <Arrow class="nav-btn-icon" />
+                </button>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </Transition>
@@ -103,9 +111,18 @@ const menuBtnWrapClassNames = computed(getMenuBtnWrapClassNames);
   transition: transform var(--transition-duration-and-func);
 }
 
-.article-wrap {
+.backdrop {
   position: fixed;
   z-index: 1000000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.article-wrap {
+  position: fixed;
+  z-index: 1000001;
   top: 100px;
   right: 0;
   width: 100%;
@@ -132,7 +149,7 @@ const menuBtnWrapClassNames = computed(getMenuBtnWrapClassNames);
 
 .close-btn {
   position: absolute;
-  z-index: 10;
+  z-index: 1000003;
   top: 24px;
   right: 16px;
   display: flex;
