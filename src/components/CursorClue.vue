@@ -44,7 +44,7 @@ const cursorInlineStyles = computed(getCursorInlineStyles);
 
 <template>
   <Transition name="container">
-    <div v-show="showClue" class="clue" :style="cursorInlineStyles"><p class="clue-title">ТЯГНИ ТА ПІЗНАВАЙ</p></div>
+    <div v-show="showClue" class="clue" :style="cursorInlineStyles"><p class="clue-title">Клікай і тягни</p></div>
   </Transition>
 </template>
 

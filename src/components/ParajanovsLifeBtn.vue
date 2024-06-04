@@ -17,7 +17,6 @@ import { Vue3Lottie } from 'vue3-lottie';
 import parajanovsLife from 'animations/parajanovsLife.json';
 import tap from 'animations/hand.json';
 
-
 defineProps({
   isDesk: Boolean,
   playAnimation: {
@@ -89,6 +88,7 @@ defineProps({
   padding: 0;
   border: none;
   background-color: transparent;
+  outline: 1px solid greenyellow;
 }
 
 .icon-btn-wrap {
@@ -226,10 +226,10 @@ defineProps({
   }
 
   .card-btn {
-    top: -25px;
-    left: 425px;
-    width: 210px;
-    height: 160px;
+    top: 20px;
+    left: 20px;
+    width: 630px;
+    height: 260px;
   }
 
   .icon-btn-wrap {

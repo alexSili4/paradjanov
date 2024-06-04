@@ -131,6 +131,7 @@ defineProps({
   padding: 0;
   border: none;
   background-color: transparent;
+  outline: 2px solid greenyellow;
 }
 
 .icon-btn-wrap {
@@ -223,6 +224,13 @@ defineProps({
 
   .tap-animation {
     display: none;
+  }
+
+  .card-btn {
+    top: -105px;
+    left: -10px;
+    width: 520px;
+    height: 380px;
   }
 }
 

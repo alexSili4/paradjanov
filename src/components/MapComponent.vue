@@ -447,7 +447,7 @@ const mapClassNames = computed(getMapClassNames);
   background-repeat: no-repeat;
   transform-origin: left top;
   cursor:
-    url('icons/cursor-grabbing.svg') 38.5 35.5,
+    url('icons/cursor-grabbing.svg') 38.5 0,
     auto;
 }
 
@@ -457,7 +457,7 @@ const mapClassNames = computed(getMapClassNames);
     left var(--smooth-transition),
     transform var(--smooth-transition);
   cursor:
-    url('icons/cursor-move.svg') 29.5 29.5,
+    url('icons/cursor-move.svg') 28.5 0,
     auto;
 }
 
