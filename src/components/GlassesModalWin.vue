@@ -91,6 +91,10 @@ defineProps({
   padding-right: 16px;
 }
 
+.content-wrap {
+  position: relative;
+}
+
 .title {
   color: var(--white-color);
   font-family: Shnobel;
