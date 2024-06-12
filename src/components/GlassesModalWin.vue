@@ -159,16 +159,19 @@ defineProps({
   }
 
   .container {
-    width: 508px;
+    width: 580px;
     margin-left: 46px;
     padding-top: 228px;
   }
 
   .title {
-    width: 100%;
+    width: auto;
     font-size: 90px;
     letter-spacing: 0%;
-    text-wrap: nowrap;
+  }
+
+  .description {
+    width: 476px;
   }
 }
 
